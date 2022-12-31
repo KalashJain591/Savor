@@ -1,12 +1,13 @@
 import React from 'react'
+import Profile from './profile.png'
 import './login.css'
 export default function Login() {
   return (
     <div className='container'>
         <form >
-        {/* <div>
-            <img src="" alt="" />
-        </div> */}
+        <div style={{textAlign:"center"}}>
+            <img src={Profile} class="rounded-circle" alt="..." width={"200px"}/>
+        </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
