@@ -4,7 +4,7 @@ import './login.css'
 export default function Login() {
   return (
     <div className='container'>
-        <form >
+        <form className='loginform'>
         <div style={{textAlign:"center"}}>
             <img src={Profile} class="rounded-circle" alt="..." width={"200px"}/>
         </div>
