@@ -4,7 +4,6 @@ import {FiShoppingCart} from "react-icons/fi"
 import "./Header.css";
 function NavBar() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -17,16 +16,16 @@ function NavBar() {
               <a href="/">Home Page</a>
             </li>
             <li className="Nav-list">
-              <a href="/Products">Products</a>
+              <a href="/products">Products</a>
             </li>
             <li className="Nav-list">
-              <a href="/About">About Us</a>
+              <a href="/aboutus">About Us</a>
             </li>
             <li className="Nav-list">
-              <a href="/Contact">Contact Us</a>
+              <a href="/contactus">Contact Us</a>
             </li>
             <li className="Nav-list">
-              <a href="/Account"><i class="fa-solid fa-user"></i></a>
+              <a href="/dashboard"><i class="fa-solid fa-user"></i></a>
             </li>
             <li className="Nav-list">
               <a href="/Cart"><FiShoppingCart className="cart-trolley"/></a>
