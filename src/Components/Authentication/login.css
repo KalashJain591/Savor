@@ -1,4 +1,5 @@
 form{
+    background: linear-gradient(90deg, rgba(124,196,70,1) 20%, rgba(79,184,72,1) 45%, rgba(33,173,76,1) 73%);
     border: 1px solid black;
     padding: 20px;
     border-radius: 5px;
