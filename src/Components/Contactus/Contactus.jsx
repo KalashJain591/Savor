@@ -1,85 +1,82 @@
-import styled from "styled-components";
-
-const Contactus = () => {
-  const Wrapper = styled.section`
-    padding: 9rem 0 5rem 0;
-    text-align: center;
-
-    .container {
-      margin-top: 6rem;
-
-      .contact-form {
-        max-width: 50rem;
-        margin: auto;
-
-        .contact-inputs {
-          display: flex;
-          flex-direction: column;
-          gap: 3rem;
-
-          input[type="submit"] {
-            cursor: pointer;
-            transition: all 0.2s;
-
-            &:hover {
-              
-              transform: scale(0.9);
-            }
-          }
-        }
-      }
-    }
-  `;
-
+import React from 'react'
+import './contactus.css'
+export default function Contactus() {
   return (
-    <Wrapper>
-      <h2 className="common-heading">Contact page</h2>
+    <div>
+      <div>
+      <section className="contact-sec sec-pad">
+  <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <div className="contact-detail">
+          <h1 className="section-title">Contact us</h1>
 
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.265588856342!2d73.91455641541671!3d18.562061287384868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b3a3bf%3A0x6f7fdcc8e4d6c77e!2sPhoenix%20Marketcity%20-%20Viman%20Nagar!5e0!3m2!1sen!2sin!4v1664345115285!5m2!1sen!2sin"
-        width="100%"
-        height="400"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <ul className="contact-ul">
+            <li><i className="fa fa-location-dot"></i> Indore, Madhya Pradesh</li>
 
-      <div className="container">
-        <div className="contact-form">
-          <form
-            action="https://formspree.io/f/xeqdgwnq"
-            method="POST"
-            className="contact-inputs">
-            <input
-              type="text"
-              placeholder="username"
-              name="username"
-              required
-              autoComplete="off"
-            />
+            <li>
+              <i className="fa fa-phone"></i>
+              <a href="tel:08510004495"><b>0255000XXXX</b></a>,
+              <a href="tel:08510005495"><b>0251600XXXX</b></a>
+            </li>
 
-            <input
-              type="email"
-              name="Email"
-              placeholder="Email"
-              autoComplete="off"
-              required
-            />
+            <li>
+              <i className="fa-solid fa-envelope"></i>
+              <a href="mailto:pardeepkumar4bjp@gmail.com"><b>savronaturals@gmail.com</b></a>
+            </li>
+          </ul>
 
-            <textarea
-              name="Message"
-              cols="30"
-              rows="10"
-              required
-              autoComplete="off"
-              placeholder="Enter you message"></textarea>
-
-            <input type="submit" value="send" />
-          </form>
+          <span>
+            <a href="#" className="fb"><i className="fa-brands fa-facebook"></i></a>
+            <a href="#" className="insta"><i className="fa-brands fa-instagram"></i></a>
+            <a href="#" className="twitter"><i className="fa-brands fa-twitter"></i></a>
+          </span>
         </div>
       </div>
-    </Wrapper>
-  );
-};
 
-export default Contactus;
+      <div className="col-md-6">
+        <form action="#" className="contFrm" method="POST">
+          <div className="row">
+            <div className="col-sm-6">
+              <input type="text" name="name" placeholder="Your Name" className="inptFld" required />
+            </div>
+
+            <div className="col-sm-6">
+              <input type="email" name="email" placeholder="Email Address" className="inptFld" required />
+            </div>
+
+            <div className="col-sm-6">
+              <input type="tel" name="phone" placeholder="Phone Number" className="inptFld" required />
+            </div>
+
+            <div className="col-sm-6">
+              <input type="text" name="sub" placeholder="Subject" className="inptFld" required />
+            </div>
+
+            <div className="col-12">
+              <textarea className="inptFld" rows="" cols="" placeholder="Your Message..." required></textarea>
+            </div>
+
+            <div className="col-12">
+              <input type="submit" name="submit" value="SUBMIT" className="inptBtn" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div style={{textAlign: "center" , marginTop: "20px"}}>
+      <p> Copyright &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Savro Naturals
+      </p>
+    </div>
+
+  </div>
+</section>
+    </div>
+    </div>
+  )
+}
