@@ -8,6 +8,7 @@ import Contactus from './Components/Contactus/Contactus';
 import Login from './Components/Authentication/Login';
 import Register from './Components/Authentication/Register';
 import Dashboard from './Components/Authentication/Dashboard';
+import Cart from "./Components/Cart/Cart";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/Cart" element={<Cart/>}/>
         </Routes>
     </>
   );

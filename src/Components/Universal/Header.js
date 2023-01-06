@@ -59,6 +59,9 @@ function NavBar() {
                 <li className="R_Nav-list">
                   <a href="/Account">Account</a>
                 </li>
+                <li className="R_Nav-list">
+                  <a href="/Cart">Your Cart</a>
+                </li>
               </ul>
             </Offcanvas.Body>
           </Offcanvas>
