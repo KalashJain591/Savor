@@ -1,33 +1,35 @@
-import React, { useContext } from 'react'
+
 import styled from "styled-components";
 import { useCartContext } from '../../Context/cart_context';
-
+import CartItem from './CartItem';
 export default function Cart() {
-    const {cart}=useCartContext();
-    return (
-        <>
-        <h1 className='m-5'>Your Cart<hr></hr></h1>
-            <div className="container-fluid  container-sm col-lg-8 table-responsive mb-5">
-                <table className="table text-center mb-0">
-                    <thead className="text-dark">
-                        <tr>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* {cartdata.map(cartdata => (
-                                    <Cartrow title={cartdata.title} rate={cartdata.rate} />))} */}
-                    </tbody>
-                </table>
+  const { cart } = useCartContext();
 
-            </div>
-        </>
+  return (
+    <>
+      <h1 className='m-5'>Your Cart<hr></hr></h1>
+      <div className="container-fluid  container-sm col-lg-8 table-responsive mb-5">
+        <table className="table text-center mb-0">
+          <thead className="text-dark">
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cart.map(Element => (
+             <CartItem key={Element.id} {...Element}  />
+           ))}
+          </tbody>
+        </table>
 
-    )
+      </div>
+    </>
+
+  )
 }
 const EmptyDiv = styled.div`
   display: grid;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {FiShoppingCart} from "react-icons/fi"
+import {NavLink} from "react-router-dom"
 import "./Header.css";
 function NavBar() {
   const [show, setShow] = useState(false);
@@ -13,22 +14,22 @@ function NavBar() {
         <div className="NavBar-nav">
           <ul className="Navigation">
             <li className="Nav-list">
-              <a href="/">Home Page</a>
+              < NavLink to ="/">Home Page</NavLink>
             </li>
             <li className="Nav-list">
-              <a href="/products">Products</a>
+              < NavLink to ="/products">Products</NavLink>
             </li>
             <li className="Nav-list">
-              <a href="/aboutus">About Us</a>
+              < NavLink to ="/aboutus">About Us</NavLink>
             </li>
             <li className="Nav-list">
-              <a href="/contactus">Contact Us</a>
+              < NavLink to ="/contactus">Contact Us</NavLink>
             </li>
             <li className="Nav-list">
-              <a href="/dashboard"><i class="fa-solid fa-user"></i></a>
+              < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
             </li>
             <li className="Nav-list">
-              <a href="/Cart"><FiShoppingCart className="cart-trolley"/></a>
+              < NavLink to ="/Cart"><FiShoppingCart className="cart-trolley"/></NavLink>
             </li>
           </ul>
         </div>
@@ -45,22 +46,22 @@ function NavBar() {
             <Offcanvas.Body>
               <ul className="R_Navigation">
                 <li className="R_Nav-list">
-                  <a href="/">Home Page</a>
+                  < NavLink to ="/">Home Page</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  <a href="/Products">Products</a>
+                  < NavLink to ="/Products">Products</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  <a href="/About">About Us</a>
+                  < NavLink to ="/About">About Us</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  <a href="/Contact">Contact Us</a>
+                  < NavLink to ="/Contact">Contact Us</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  <a href="/Account">Account</a>
+                  < NavLink to ="/Account">Account</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  <a href="/Cart">Your Cart</a>
+                  < NavLink to ="/Cart">Your Cart</NavLink>
                 </li>
               </ul>
             </Offcanvas.Body>
