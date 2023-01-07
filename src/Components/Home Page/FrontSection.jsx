@@ -14,7 +14,7 @@ function FrontSection() {
           </div>
         </Col>
         <Col className='imageSection'>
-          <img src="https://www.24mantra.com/wp-content/uploads/2020/09/824-px-x-465-Raggi-Laddu-Recipe-for-a-Perfectly-Healthy-Snack.jpg" alt="" srcset="" />
+          <img src="https://www.24mantra.com/wp-content/uploads/2020/09/824-px-x-465-Raggi-Laddu-Recipe-for-a-Perfectly-Healthy-Snack.jpg" alt="" srcSet="" />
         </Col>
       </Row>
     </Container>

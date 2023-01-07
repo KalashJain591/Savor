@@ -2,6 +2,8 @@ import React from 'react'
 import FeatureCard from './FeatureCard'
 import { itemData } from '../../itemData'
 import { useCartContext } from '../../Context/cart_context'
+import { NavLink } from 'react-router-dom';
+
 export default function Features() {
   const { addToCart } = useCartContext();
   return (
@@ -14,11 +16,14 @@ export default function Features() {
             {
               itemData.map((data, key) => (
                 <div className='d-flex col-lg-4 col-12 p-2 justify-content-center'>
-                  <div className='d-flex flex-column'>
+                  <div className='d-flex align-items-center flex-column'>
                     <FeatureCard className='text-center' title={data.title} image={data.image} Rate={data.Rate} />
                     <div className="card-body">
-                      <p href="/" className="text-center btn-primary btn-lg" onClick={() => addToCart(data.id,data.title, data.Rate, data.Company,key)} >Add to cart</p>
-                    </div></div>
+                      <NavLink  to="/cart" onClick={() => addToCart(data.id, data.title, data.Rate, data.Company, key)} >
+                        <button   className="btn-primary btn-lg"  >Add to cart</button>
+                      </NavLink>
+                    </div>
+                  </div>
                 </div>
               ))
             }
