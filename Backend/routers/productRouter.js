@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Product = require("../models/productModel");
 const auth=require("../middleware/auth");
+
 //Root route
 router.get("/",(req, res) => {
     try {
@@ -17,8 +18,6 @@ router.get("/",(req, res) => {
 router.route("/addproduct").post((req, res) => {
     //Retrieve data for post
     const { imgurl,name,  description, price, stock,  category} = req.body;
-    const date = Date.parse(req.body.date);
-    const comments = [];
     //Create a new Post and save it to DB
     const newProduct = new Product({
     imgurl,
