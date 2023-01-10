@@ -16,7 +16,7 @@ export default function Cart() {
               <th>Price</th>
               <th>Quantity</th>
               <th>Total</th>
-              <th>Remove</th>
+              <th>Remov</th>
             </tr>
           </thead>
           <tbody>
@@ -25,8 +25,8 @@ export default function Cart() {
            ))}
           </tbody>
         </table>
-
       </div>
+      
     </>
 
   )
