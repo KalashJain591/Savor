@@ -58,10 +58,10 @@ else{
 }
  
 if (action.type === "SET_DECREMENT") {
+  console.log({cat});
   let updatedProduct = state.cart.map((curElem) => {
-   
     if (curElem.id === action.payload) {
-      console.log("reached");
+      // console.log("reached");
       let decAmount = curElem.Quantity - 1;
 
       if (decAmount <= 1) {
@@ -81,9 +81,12 @@ if (action.type === "SET_DECREMENT") {
 }
 
   if (action.type === "SET_INCREMENT") {
+ 
+    console.log(state.cart)
+
     let updatedProduct = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
-        console.log("reached");
+        // console.log("reached");
         let incAmount = curElem.Quantity + 1;
 
         if (incAmount >= curElem.max) {
@@ -122,6 +125,7 @@ if (action.type === "SET_DECREMENT") {
   }
 
   if (action.type === "CART_TOTAL_ITEM") {
+console.log("Chill");
     let updatedItemVal = state.cart.reduce((initialVal, curElem) => {
       let { amount } = curElem;
 
@@ -151,10 +155,6 @@ if (action.type === "SET_DECREMENT") {
       total_price,
     };
   }
-
-  
-
-
 
 
   return state;
