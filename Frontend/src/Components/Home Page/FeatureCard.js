@@ -3,7 +3,6 @@ import { useCartContext } from '../../Context/cart_context'
 export default function FeatureCard(props) {
   return (
     <div>
-      
       <div className="card " style={{ width: '18rem' }}>
         <img src="/images/dal_image1.jpg" className="card-img-top p-2 zoom " alt="images" width="250" height="250" />
         <div className="card-body p-0">
@@ -13,7 +12,6 @@ export default function FeatureCard(props) {
         <div className="card-body p-0">
           <p className="card-text ps-1" >Rate - {props.Rate}</p>
         </div>
-
     </div>
   </div >
   )

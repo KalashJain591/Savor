@@ -152,11 +152,6 @@ if (action.type === "SET_DECREMENT") {
     };
   }
 
-  
-
-
-
-
   return state;
 
 

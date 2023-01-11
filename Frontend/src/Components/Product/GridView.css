@@ -1,0 +1,6 @@
+.product-grid-section{
+    /* border: 5px solid black; */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

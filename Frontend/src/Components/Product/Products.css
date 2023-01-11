@@ -1,0 +1,22 @@
+.display-filterProduct-section{
+    display: flex;
+    width: 80%;
+}
+.Filter-Section{
+    width: 20%;
+}
+.product-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.display-product-section{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    /* border: 5px solid red; */
+}
+.main-product-list{
+    width: 100%;
+    /* display: flex; */
+}

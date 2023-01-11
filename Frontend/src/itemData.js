@@ -1,4 +1,3 @@
-
 export const itemData=
 [
     {
@@ -23,6 +22,5 @@ export const itemData=
         "Rate":"100",
         "Company":"ABC",
         "image":"./dal_image1.jpg",
-        
     }
 ]

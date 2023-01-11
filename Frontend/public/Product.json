@@ -1,0 +1,110 @@
+[ 
+  {
+    "id": 1,
+    "name":"Red Chilli Powder",
+    "image":"https://cdn.myshopmatic.com/images/J86PLG/mGxPPJGJRO.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": true
+  },
+  {
+    "id": 2,
+    "name":"Turmeric Powder",
+    "image":"https://i0.wp.com/www.urbangreensmarket.com/wp-content/uploads/2019/05/turmeric-powder-1.jpg?fit=1465%2C1465&ssl=1",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": true 
+  },
+  {
+    "id": 3,
+    "name":"Peanut Oil",
+    "image":"https://th.bing.com/th/id/OIP.QTpEo-LzyS6kPu0zcuN7YQHaIV?pid=ImgDet&rs=1",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": true 
+  },
+  {
+    "id": 4,
+    "name":"Mustard Oil",
+    "image":"https://5.imimg.com/data5/DE/MT/MY-3237341/cooking-mustard-oil-500x500.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 5,
+    "name":"Khand Sugar",
+    "image":"https://5.imimg.com/data5/JD/IM/JF/SELLER-43505416/certified-organic-raw-sugar-desi-khand--500x500.jpeg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 6,
+    "name":"Jaggery Powder",
+    "image":"https://5.imimg.com/data5/SELLER/Default/2021/4/FM/BN/KT/26815431/jaggery-powder.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 7,
+    "name":"Bajra",
+    "image":"https://th.bing.com/th/id/OIP.AjhPJ51ODu1To89MACesVQHaHa?pid=ImgDet&rs=1",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 8,
+    "name":"Makka",
+    "image":"https://5.imimg.com/data5/FH/GL/MY-17022991/makka-grains.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 9,
+    "name":"Chana Dal",
+    "image":"https://saudiagroup.com/pub/media/catalog/product/cache/2a0b860d8a20befcb7fa9964e6991af0/c/h/chana_dal_1kg__1_1.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 10,
+    "name":"Urad Dal",
+    "image":"https://5.imimg.com/data5/LN/FE/MY-32923298/white-urad-dal-500x500.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 11,
+    "name":"Gram Flour",
+    "image":"https://femina.wwmindia.com/content/2018/apr/what-is-gram-flour.jpg",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  },
+  {
+    "id": 12,
+    "name":"Jwar Flour",
+    "image":"https://th.bing.com/th/id/OIP.ETsDsY6oflMMQ_mfrPoRgQHaHa?pid=ImgDet&rs=1",
+    "size":"200px",
+    "rate": 350,
+    "quantity": 1,
+    "feature": false 
+  }
+]

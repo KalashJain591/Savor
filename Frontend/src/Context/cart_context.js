@@ -4,7 +4,6 @@ import reducer from "../Reducer/CartReducer";
 // import {ItemData} from "../Data/ItemData";
 const CartContext = createContext();
 const initialState = {
-
   cart: [],
   total_item: "",
   total_price: "",
