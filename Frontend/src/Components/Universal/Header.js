@@ -54,13 +54,13 @@ function NavBar() {
                   < NavLink to ="/">Home Page</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to ="/Products">Products</NavLink>
+                  < NavLink to ="/products">Products</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to ="/About">About Us</NavLink>
+                  < NavLink to ="/aboutus">About Us</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to ="/Contact">Contact Us</NavLink>
+                  < NavLink to ="/contactus">Contact Us</NavLink>
                 </li>
                 {loggedIn?  
             <li className="R_Nav-list">
