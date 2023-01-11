@@ -2,8 +2,10 @@ import React from 'react'
 import './contactus.css'
 export default function Contactus() {
   return (
-    <div>
-      <div>
+    <div className='bgcol'>
+          <h1  style={{textAlign:"center" ,color:'gray', fontSize:"40px", marginTop:"8px" }}>Contact us </h1>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235526.90924403243!2d75.7237605292052!3d22.72422843169994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1673347131144!5m2!1sen!2sin" style={{border:"3px solid  rgba(124,196,70,1) ", borderRadius:"8px", padding:"12px"}}  width={"100%"} height={"450"}  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <section className="contact-sec sec-pad">
   <div className="container">
     <div className="row">
@@ -64,19 +66,9 @@ export default function Contactus() {
         </form>
       </div>
     </div>
-
-    <div style={{textAlign: "center" , marginTop: "20px"}}>
-      <p> Copyright &copy;
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        Savro Naturals
-      </p>
-    </div>
-
+    <hr style={{color:"black"}}/>
   </div>
 </section>
-    </div>
     </div>
   )
 }

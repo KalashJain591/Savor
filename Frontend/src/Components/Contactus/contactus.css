@@ -1,17 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-}
 
-body {
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-}
+/* .bgcol{
+  background:  #90EE90; 
+} */
 
 ul {
   list-style: none;
@@ -31,13 +23,14 @@ input {
 
 .sec-pad {
   padding: 60px 0 0;
-  margin: 50px 0;
+  /* margin: 50px 0; */
 }
 
 .contact-sec {
   /* align-item: center; */
   display: flex;
-  background-color: #5cbde466;
+  background: linear-gradient(90deg, rgba(124,196,70,1) 20%, rgba(79,184,72,1) 45%, rgba(33,173,76,1) 73%);
+  /* background-color: #5cbde466; */
 }
 
 .contact-sec .contact-ul li,
