@@ -3,7 +3,6 @@ import {
   useContext,
   useEffect,
   useReducer,
-  useState,
 } from "react";
 // import axios from "axios";
 import reducer from "../Reducer/ProductReducer";
@@ -19,11 +18,11 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const getProducts = async () => {
+    
     const res = await fetch("/product");
     const products = await res.json();
     // console.log(products);
     dispatch({ type: "SET_API_DATA", payload: products });
-
   };
   useEffect(() => {
     getProducts();

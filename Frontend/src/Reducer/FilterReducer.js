@@ -46,14 +46,16 @@ const FilterReducer = (state, action) => {
         }
     }
     if (action.type === "CLEAR_FILTER") {
-        return {
-            ...state.filters,
-            filters: {
-                text: "",
-                category: "All",
-            }
-        }
+        console.log("reducer")
+        // return {
+        //     ...state.filters,
+        //     // filters: {
+        //     //     // text: "",
+        //     //     // category: "All"
+        //     // }
+        // }
     }
+    // console.log(...state.filters)
     return state;
 
 }
