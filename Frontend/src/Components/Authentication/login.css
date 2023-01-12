@@ -110,8 +110,11 @@ body {
     border: 2px solid #F0FF42;
     position: absolute;
     border-radius: 5px;
+    
   }
-  
+  .submit-btn:hover{
+    box-shadow: 5px 5px 6px #ccc ;
+  }
   .forget-pass {
     text-align: center;
     display: block;

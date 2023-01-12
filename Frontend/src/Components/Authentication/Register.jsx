@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import './login.css'
+import AuthContext from '../../Context/auth_context';
 export default function Register() {
+  const { getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
    const [ user, setUser] = useState({
       name: "",
@@ -20,9 +23,9 @@ export default function Register() {
   async function signup() {
    try {
      const { name, email,phoneno, password } = user
-     console.log(user);
-   //   await axios.post("/auth/register",user);
-   //   await getLoggedIn();
+    //  console.log(user);
+     await axios.post("/auth/register",user);
+     await getLoggedIn();
      history("/");
    } catch (err) {
      console.error(err);
