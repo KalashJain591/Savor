@@ -8,7 +8,7 @@ function NavBar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const { loggedIn } = useContext(AuthContext);
+  const { loggedIn } = useContext(AuthContext);
   return (
     <>
       <div className="NavBar">
@@ -26,13 +26,13 @@ function NavBar() {
             <li className="Nav-list">
               < NavLink to ="/contactus">Contact Us</NavLink>
             </li>
-            {/* {loggedIn?  
+            {loggedIn?  
             <li className="Nav-list">
               < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
             </li> 
             :           <li className="Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
-            </li> } */}
+            </li> }
             <li className="Nav-list">
               < NavLink to ="/Cart"><FiShoppingCart className="cart-trolley"/></NavLink>
             </li>
@@ -62,13 +62,13 @@ function NavBar() {
                 <li className="R_Nav-list">
                   < NavLink to ="/contactus">Contact Us</NavLink>
                 </li>
-                {/* {loggedIn?  
+                {loggedIn?  
             <li className="R_Nav-list">
               < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
             </li> 
             :           <li className="R_Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
-            </li> } */}
+            </li> }
                 <li className="R_Nav-list">
                   < NavLink to ="/Cart">Your Cart</NavLink>
                 </li>

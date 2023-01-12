@@ -2,8 +2,8 @@ import React from 'react'
 import './login.css'
 export default function Login() {
   return (
-   <div className="card">
-      <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/>
+   <div className="containerdiv card1">
+      {/* <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/> */}
    <form>
       <h2 className="title"> Log in</h2>
       <p className="subtitle">Don't have an account? <a href="/register"> Signup</a></p>
@@ -13,14 +13,14 @@ export default function Login() {
             <p className="btn-text">Sign in with Google</p>
          </button>
       </div>
-      <p className="or"><span>or</span></p>
+      <p className="or1"><span>or</span></p>
       <div className="email-login">
-         <label htmlFor="email"> <b>Email</b></label>
-         <input type="text" placeholder="Enter Email" name="uname" required/>
+         <label htmlFor="Phone No"> <b>Phone No</b></label>
+         <input type="text" placeholder="Enter Your Phone Number" name="phoneno" required/>
          <label htmlFor="psw"><b>Password</b></label>
-         <input type="password" placeholder="Enter Password" name="psw" required/>
+         <input type="password" placeholder="Enter Password" name="password" required/>
       </div>
-      <button className="submit-btn">Sign up</button>
+      <button className="submit-btn">Sign in</button>
       {/* <a className="forget-pass" href="#">Forgot password?</a> */}
    </form>
 </div>
