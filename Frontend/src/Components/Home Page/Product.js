@@ -2,12 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import "./Product.css"
 const Product = (curElem) => {
-  const {id, name, imgurl, price } = curElem
+  const {_id, name, images, price } = curElem
   return (
-    <NavLink className="singleProduct-origin" to={`/singleProduct/${id}`}>
+    <NavLink className="singleProduct-origin" to={`/SingleProduct/${_id}`}>
       <div className="product-card">
         <figure>
-          <img src={imgurl} alt={name}/>
+          <img src={images[0].imgUrl} alt={name}/>
           {/* <figcaption className='caption'>{}</figcaption> */}
         </figure>
         <div className="card-data">

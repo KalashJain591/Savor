@@ -31,6 +31,7 @@ export const FilterContextProvider = ({children}) =>{
 
     //clearFilter
     const clearFilters = () =>{
+        console.log("clear filter")
         dispatch({type: "CLEAR_FILTER"})
     }
     

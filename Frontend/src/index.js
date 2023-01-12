@@ -7,9 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./Context/cart_context";
 import { FilterContextProvider } from "./Context/FilterContext";
 import { AppProvider } from "./Context/ProductContext";
+import { AuthContextProvider } from "./Context/auth_context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-
+  <AuthContextProvider>
   <BrowserRouter>
     <AppProvider>
       <FilterContextProvider>
@@ -19,6 +20,7 @@ root.render(
       </FilterContextProvider>
     </AppProvider>
   </BrowserRouter>
+  </AuthContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
