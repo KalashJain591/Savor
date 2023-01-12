@@ -11,6 +11,7 @@ import Dashboard from './Components/Authentication/Dashboard';
 import Cart from "./Components/Cart/Cart";
 import Products from './Components/Product/Products';
 import Footer from './Components/Universal/Footer';
+import CheckoutForm from './Components/Checkout/CheckoutForm';
 function App() {
   return (
     <>
@@ -24,7 +25,8 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/Cart" element={<Cart/>}/>
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
         </Routes>
       <Footer/>
     </>
