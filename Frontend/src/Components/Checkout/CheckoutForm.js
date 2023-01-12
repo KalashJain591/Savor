@@ -1,11 +1,11 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import PaymentSummary from '../Cart/PaymentSummary'
 export default function CheckoutForm() {
 
     // creating  a state to store the values from the user
-    const [Record,SetRecord]=useState([]);
+    const [Record, SetRecord] = useState([]);
 
-    
+
 
 
     const [BillingInfo, setBillingInfo] = useState({
@@ -28,11 +28,11 @@ export default function CheckoutForm() {
         console.log(name, value);
         setBillingInfo({ ...BillingInfo, [name]: value })
     }
-    const onSubmit=(e)=>{
+    const onSubmit = (e) => {
         e.preventDefault();
-        const newRecord={...BillingInfo,id :new Date().getTime().toString()}
+        const newRecord = { ...BillingInfo, id: new Date().getTime().toString() }
         console.log(newRecord);
-        SetRecord([...Record,newRecord]);
+        SetRecord([...Record, newRecord]);
         setBillingInfo({
             firstName: "",
             lastName: "",
@@ -43,7 +43,9 @@ export default function CheckoutForm() {
             state: "",
             city: "",
             zip: "",
-    
+            mobileNumber1: "",
+            mobileNumber2: "",
+
         });
     }
 
@@ -53,14 +55,14 @@ export default function CheckoutForm() {
             <div className="container mb-4">
                 <main>
 
-                    <div className="row">
+                    <div className="row d-flex .flex-wrap-reverse">
                         <div className="col-md-7 col-lg-8">
                             <h4 className="mb-3">Billing address</h4>
                             <form action='' onSubmit={onSubmit}>
                                 <div className="row g-3">
                                     <div className="col-sm-6">
                                         <label className="form-label" >First name</label>
-                                        <input type="text" className="form-control" name="firstName" placeholder=" " value={BillingInfo.firstName} onChange={handleInput} required  />
+                                        <input type="text" className="form-control" name="firstName" placeholder=" " value={BillingInfo.firstName} onChange={handleInput} required />
                                     </div>
 
                                     <div className="col-sm-6">
@@ -82,7 +84,7 @@ export default function CheckoutForm() {
 
                                     <div className="col-12">
                                         <label for="email" className="form-label">Email <span className="text-muted">(Optional)</span></label>
-                                        <input type="email" className="form-control" name='email' placeholder="you@example.com" value={BillingInfo.email} onChange={handleInput} required />
+                                        <input type="email" pattern='[a-z0-9]+@[a-z]+\.[a-z]{2,3}' className="form-control" name='email' placeholder="you@example.com" value={BillingInfo.email} onChange={handleInput} required />
                                         <div className="invalid-feedback">
                                             Please enter a valid email address for shipping updates.
                                         </div>
@@ -105,10 +107,10 @@ export default function CheckoutForm() {
 
                                     <div className="col-md-4">
                                         <label for="state" className="form-label">State</label>
-                                        <select className="form-select" id="state"  placeholder='choose...' name='state' value={BillingInfo.state} onChange={handleInput} required >
-                                       
+                                        <select className="form-select" id="state" placeholder='choose...' name='state' value={BillingInfo.state} onChange={handleInput} required >
+
                                             <option>Madhya Pradesh</option>
-                                           
+
                                         </select>
                                         <div className="invalid-feedback">
                                             Please provide a valid state.
@@ -116,21 +118,39 @@ export default function CheckoutForm() {
                                     </div>
                                     <div className="col-md-5">
                                         <label for="city" className="form-label">City</label>
-                                        <select className="form-select" id="country" name='city' placeholder='choose...' value={BillingInfo.city} onChange={handleInput}  required>
-                                            
+                                        <select className="form-select" id="country" name='city' placeholder='choose...' value={BillingInfo.city} onChange={handleInput} required>
+
                                             <option>Indore</option>
                                             <option>Ujjain</option>
                                             <option>Bhopal</option>
                                             <option>Dewas</option>
                                         </select>
-                                        
+
                                     </div>
 
                                     <div className="col-md-3">
                                         <label for="zip" className="form-label" >Postal Code</label>
-                                        <input type="text" className="form-control" name="zip" value={BillingInfo.zip} onChange={handleInput} required   />
+                                        <input type="text" className="form-control" name="zip" value={BillingInfo.zip} onChange={handleInput} required />
                                         <div className="invalid-feedback">
                                             Please fill  the postal code
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <label for="username" className="form-label" >Mobile number 1:</label>
+                                        <div className="input-group">
+                                            <span className="input-group-text">+91</span>
+                                            <input type="tel"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" className="form-control" name="userName" placeholder="enter your 10-digit  mobile number" value={BillingInfo.mobileNumber1}  minlength="10" maxlength="10" onChange={handleInput} required />
+                                            <div className="invalid-feedback">
+                                                Your username is required.
+                                            </div>
+                                        </div>
+                                        <label for="username" className="form-label" >Mobile number 2:</label>
+                                        <div className="input-group">
+                                            <span className="input-group-text">+91</span>
+                                            <input type="tel"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" className="form-control" name="userName" placeholder="enter your 10-digit  mobile  number" value={BillingInfo.mobileNumber2} minlength="10" maxlength="10" onChange={handleInput} />
+                                            <div className="invalid-feedback">
+                                                Your username is required.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
