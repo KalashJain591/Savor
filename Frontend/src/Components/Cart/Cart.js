@@ -3,10 +3,11 @@
 import { useCartContext } from '../../Context/cart_context';
 import { NavLink } from 'react-router-dom'
 import CartItem from './CartItem';
+
+import PaymentSummary from './PaymentSummary';
 export default function Cart() {
-  const { cart, total_items, total_price, clearCart,final_amount,shipping_fee,Discount } = useCartContext();
-  if(cart.length===0)
-  {
+  const { cart, clearCart, } = useCartContext();
+  if (cart.length === 0) {
     return (<><h1 className='text-center fs-1'>No Item in Your Cart</h1>
     </>)
   }
@@ -36,51 +37,14 @@ export default function Cart() {
             <button class="btn btn-md btn-success  ms-auto m-2 " onClick={clearCart.bind(this)}>Clear Cart </button>
           </div>
         </div>
-        <div className="  col-12 col-lg-4">
-          <div className="card p-0 container-fluid">
-            <div className="card-header ">
-              <h5 className="mb-0">Your Order Summary</h5>
-            </div>
-            <div className="card-body d-flex flex-column   ">
-              <ul className="list-group list-group-flush">
-                <li
-                  className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                  Price ({total_items} items)
-                  <span>+ {total_price}</span>
-                </li>
-                <li
-                  className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                  Discount (5%)
-                  <span>- ₹{Discount}</span>
-                </li>
-                
-
-                <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                  Delivery Charges
-                  <span>+ {shipping_fee}</span>
-                </li>
-                <li
-                  className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                  <div>
-                    <strong><h3>Total Amount</h3></strong>
-                    <strong>
-                      <p className="mb-0">(GST included )</p>
-                    </strong>
-                  </div>
-                  <span><strong><h4>₹{final_amount}</h4></strong></span>
-                </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center px-0 text-success">
-                  <strong className='fs-2'>You will save ₹ {Discount} on this order</strong>
-                </li>
-              </ul>
-              <div className="align-self-center m-4">
-                <button type="button" className="btn btn-primary  btn-md ">
-                  Proceed for Payment
-                </button></div>
-            </div>
+        <div className="  d-flex flex-column col-12 col-lg-4">
+        <PaymentSummary />
+        <div className="align-self-center m-4">
+          <NavLink to="./checkout"> <button type="button" className="btn btn-primary  btn-lg ">
+            Proceed for Payment
+          </button></NavLink>
           </div>
         </div>
-
       </div>
 
     </>

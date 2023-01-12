@@ -5,8 +5,8 @@ const CartAmountToggler = ({Quantity,SetDecrease,SetIncrease}) => {
     // console.log(id);
   return (
     <div className="cart-button">
-    <div className="amount-toggle">
-      <button onClick={() => SetDecrease()}>
+    <div className="amount-toggle d-flex flex-row justify-content-evenly">
+      <button  onClick={() => SetDecrease()}>
         <FaMinus />
       </button>
       <div className="amount-style">{Quantity}</div>
