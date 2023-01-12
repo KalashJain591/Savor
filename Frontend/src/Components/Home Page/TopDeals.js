@@ -7,7 +7,7 @@ import "./TopDeals.css"
 
 function TopDeals() {
   const { featureProducts } = useProductContext();
-  // console.log("fp", featureProducts);
+  console.log("fp", featureProducts);
   return (
     <div className='grid-three'>
       <div className="product-three">

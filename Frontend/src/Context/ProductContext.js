@@ -19,7 +19,7 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const getProducts = async () => {
-    const res = await fetch("http://localhost:3000/Product.json");
+    const res = await fetch("/product");
     const products = await res.json();
     // console.log(products);
     dispatch({ type: "SET_API_DATA", payload: products });

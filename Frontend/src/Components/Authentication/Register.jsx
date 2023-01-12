@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './login.css'
+import './register.css'
 export default function Register() {
   return (
     <div className="card">

@@ -14,7 +14,7 @@ const ProductReducer = (state, action) => {
     // }
     if(action.type === "SET_API_DATA"){
         const featureData = action.payload.filter((curElem)=>{
-            return curElem.feature === true;
+            return curElem.feature === "true";
         });
         console.log("ac", featureData)
         return{

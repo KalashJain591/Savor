@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Product from '../Home Page/Product'
 import "./GridView.css"
 const GridView = ({ products }) => {
-    console.log("products", products)
+    // console.log("products", products)
     return (
         <div className='product-grid-section'>
             {products.map((e) => {

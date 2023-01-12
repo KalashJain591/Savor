@@ -1,14 +1,33 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const orderSchema = new mongoose.Schema({
-  userid: { type: String, required: true },
-  ordered_items:[],
-  quantity:[],
-  totalprice: Number,
-  status: { type: String, required: true },
-  address: { type: String, required: true },
+const OrderSchema = new Schema({
+  userId: {
+    type: String
+  },
+  products: [
+    {
+      productId: {
+        type: String
+      },
+      imgurl: String,
+      name: String,
+      quantity: {
+        type: Number,
+        required: true,
+        min: [1, 'Quantity can not be less then 1.']
+      },
+      price: Number
+    }
+  ],
+  bill: {
+    type: Number,
+    required: true
+  },
+  date_added: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-const Order = mongoose.model("order", orderSchema);
-
-module.exports = Order;
+module.exports = Order = mongoose.model('order', OrderSchema);

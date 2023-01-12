@@ -2,11 +2,11 @@ import React from 'react'
 import FilterSection from './FilterSection'
 import Sort from './Sort'
 import ProductList from './ProductList'
-import { useFilterContext } from '../../Context/FilterContext'
+// import { useFilterContext } from '../../Context/FilterContext'
 import "./Products.css"
 function Products() {
-  const { filter_products } = useFilterContext();
-  console.log("fp ", filter_products)
+  // const { filter_products } = useFilterContext();
+  // console.log("fp ", filter_products)
   return (
     <div className="product-section">
       <div className="display-filterProduct-section">

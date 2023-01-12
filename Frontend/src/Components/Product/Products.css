@@ -1,6 +1,6 @@
 .display-filterProduct-section{
     display: flex;
-    width: 80%;
+    width: 90%;
 }
 .Filter-Section{
     width: 20%;
@@ -20,3 +20,7 @@
     width: 100%;
     /* display: flex; */
 }
+.Filter-Section{
+    display: flex;
+    justify-content: flex-start;
+}    

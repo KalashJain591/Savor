@@ -9,7 +9,7 @@ const initialState ={
     grid_view: true,
     filters: {
         text: "",
-
+        category: "All",
     }
 }
 export const FilterContextProvider = ({children}) =>{
@@ -21,19 +21,30 @@ export const FilterContextProvider = ({children}) =>{
        return dispatch({type: "SET_GRIDVIEW"});
     }
 
-    //Search Fucntion
+    //updateFilterValue
     const updateFilterValue = (event) =>{
         let name = event.target.name;
         let value = event.target.value
 
         return dispatch({type: "UPDATE_FILTER_VALUE", payload:{name, value}})
     }
+
+    //clearFilter
+    const clearFilters = () =>{
+        dispatch({type: "CLEAR_FILTER"})
+    }
+    
+    useEffect(()=>{
+        dispatch({type: "FILTER_PRODUCTS"})
+    }, [products, state.filters])
+
+    //display all products
     useEffect(()=>{
         dispatch({type: "LOAD_FILTER_PRODUCT", payload: products})
     },[products])
 
     return(
-        <FilterContext.Provider value = {{...state, setGridView, updateFilterValue}}>
+        <FilterContext.Provider value = {{...state, setGridView, updateFilterValue, clearFilters}}>
             {children}
         </FilterContext.Provider> 
     )
