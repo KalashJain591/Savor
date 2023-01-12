@@ -1,110 +1,291 @@
-[ 
+[
   {
-    "name":"Red Chilli Powder",
-    "imgurl":"https://cdn.myshopmatic.com/images/J86PLG/mGxPPJGJRO.jpg",
+    "name": "Red Chilli Powder",
+    "images":[ 
+      {
+        "imgUrl":"https://cdn.myshopmatic.com/images/J86PLG/mGxPPJGJRO.jpg"
+      },
+      {
+        "imgUrl":"https://cdn.myshopmatic.com/images/J86PLG/mGxPPJGJRO.jpg"
+      },
+      {
+        "imgUrl":"https://cdn.myshopmatic.com/images/J86PLG/mGxPPJGJRO.jpg"
+      },
+      {
+        "imgUrl":"https://cdn.myshopmatic.com/images/J86PLG/mGxPPJGJRO.jpg"
+      }
+    ],
+
     "description": "",
-    "category":"Spices",
+    "category": "Spices",
     "price": 350,
     "stock": 1,
-    "feature": true
+    "feature": true,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Turmeric Powder",
-    "imgurl":"https://i0.wp.com/www.urbangreensmarket.com/wp-content/uploads/2019/05/turmeric-powder-1.jpg?fit=1465%2C1465&ssl=1",
-    "description":"",
-    "category":"Spices",
+    "name": "Turmeric Powder",
+    "images":[ 
+      {
+        "imgUrl":"https://i0.wp.com/www.urbangreensmarket.com/wp-content/uploads/2019/05/turmeric-powder-1.jpg?fit=1465%2C1465&ssl=1"
+      },
+      {
+        "imgUrl":"https://i0.wp.com/www.urbangreensmarket.com/wp-content/uploads/2019/05/turmeric-powder-1.jpg?fit=1465%2C1465&ssl=1"
+      },
+      {
+        "imgUrl":"https://i0.wp.com/www.urbangreensmarket.com/wp-content/uploads/2019/05/turmeric-powder-1.jpg?fit=1465%2C1465&ssl=1"
+      },
+      {
+        "imgUrl":"https://i0.wp.com/www.urbangreensmarket.com/wp-content/uploads/2019/05/turmeric-powder-1.jpg?fit=1465%2C1465&ssl=1"
+      }
+    ],
+    "description": "",
+    "category": "Spices",
     "price": 350,
     "stock": 2,
-    "feature": true 
+    "feature": true,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Peanut Oil",
-    "imgurl":"https://th.bing.com/th/id/OIP.QTpEo-LzyS6kPu0zcuN7YQHaIV?pid=ImgDet&rs=1",
-    "description":"",
-    "category":"Cold Pressed Oil",
+    "name": "Peanut Oil",
+    "images":[ 
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.QTpEo-LzyS6kPu0zcuN7YQHaIV?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.QTpEo-LzyS6kPu0zcuN7YQHaIV?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.QTpEo-LzyS6kPu0zcuN7YQHaIV?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.QTpEo-LzyS6kPu0zcuN7YQHaIV?pid=ImgDet&rs=1"
+      }
+    ],
+    "description": "",
+    "category": "Cold Pressed Oil",
     "price": 350,
     "stock": 2,
-    "feature": true 
+    "feature": true,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Mustard Oil",
-    "imgurl":"https://5.imimg.com/data5/DE/MT/MY-3237341/cooking-mustard-oil-500x500.jpg",
-    "description":"",
-    "category":"Cold Pressed Oil",
+    "name": "Mustard Oil",
+    "images":[ 
+      {
+        "imgUrl":"https://5.imimg.com/data5/DE/MT/MY-3237341/cooking-mustard-oil-500x500.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/DE/MT/MY-3237341/cooking-mustard-oil-500x500.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/DE/MT/MY-3237341/cooking-mustard-oil-500x500.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/DE/MT/MY-3237341/cooking-mustard-oil-500x500.jpg"
+      }
+    ],
+    "description": "",
+    "category": "Cold Pressed Oil",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Khand Sugar",
-    "imgurl":"https://5.imimg.com/data5/JD/IM/JF/SELLER-43505416/certified-organic-raw-sugar-desi-khand--500x500.jpeg",
-    "description":"",
-    "category":"Sweetner",
+    "name": "Khand Sugar",
+    "images":[ 
+      {
+        "imgUrl":"https://5.imimg.com/data5/JD/IM/JF/SELLER-43505416/certified-organic-raw-sugar-desi-khand--500x500.jpeg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/JD/IM/JF/SELLER-43505416/certified-organic-raw-sugar-desi-khand--500x500.jpeg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/JD/IM/JF/SELLER-43505416/certified-organic-raw-sugar-desi-khand--500x500.jpeg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/JD/IM/JF/SELLER-43505416/certified-organic-raw-sugar-desi-khand--500x500.jpeg"
+      }
+    ],
+    "description": "",
+    "category": "Sweetner",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Jaggery Powder",
-    "imgurl":"https://5.imimg.com/data5/SELLER/Default/2021/4/FM/BN/KT/26815431/jaggery-powder.jpg",
-    "description":"",
-    "category":"Sweetner",
+    "name": "Jaggery Powder",
+    "images":[ 
+      {
+        "imgUrl":"https://5.imimg.com/data5/SELLER/Default/2021/4/FM/BN/KT/26815431/jaggery-powder.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/SELLER/Default/2021/4/FM/BN/KT/26815431/jaggery-powder.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/SELLER/Default/2021/4/FM/BN/KT/26815431/jaggery-powder.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/SELLER/Default/2021/4/FM/BN/KT/26815431/jaggery-powder.jpg"
+      }
+    ],
+    "description": "",
+    "category": "Sweetner",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Bajra",
-    "imgurl":"https://th.bing.com/th/id/OIP.AjhPJ51ODu1To89MACesVQHaHa?pid=ImgDet&rs=1",
-    "description":"",
-    "category":"Cereals",
+    "name": "Bajra",
+    "images":[ 
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.AjhPJ51ODu1To89MACesVQHaHa?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.AjhPJ51ODu1To89MACesVQHaHa?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.AjhPJ51ODu1To89MACesVQHaHa?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.AjhPJ51ODu1To89MACesVQHaHa?pid=ImgDet&rs=1"
+      }
+    ],
+    "description": "",
+    "category": "Cereals",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Makka",
-    "imgurl":"https://5.imimg.com/data5/FH/GL/MY-17022991/makka-grains.jpg",
-    "description":"",
-    "category":"Cereals",
+    "name": "Makka",
+    "images":[ 
+      {
+        "imgUrl":"https://5.imimg.com/data5/FH/GL/MY-17022991/makka-grains.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/FH/GL/MY-17022991/makka-grains.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/FH/GL/MY-17022991/makka-grains.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/FH/GL/MY-17022991/makka-grains.jpg"
+      }
+    ],
+    "description": "",
+    "category": "Cereals",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Chana Dal",
-    "imgurl":"https://saudiagroup.com/pub/media/catalog/product/cache/2a0b860d8a20befcb7fa9964e6991af0/c/h/chana_dal_1kg__1_1.jpg",
-    "description":"",
-    "category":"Pulses",
+    "name": "Chana Dal",
+    "images":[ 
+      {
+        "imgUrl":"https://saudiagroup.com/pub/media/catalog/product/cache/2a0b860d8a20befcb7fa9964e6991af0/c/h/chana_dal_1kg__1_1.jpg"
+      },
+      {
+        "imgUrl":"https://saudiagroup.com/pub/media/catalog/product/cache/2a0b860d8a20befcb7fa9964e6991af0/c/h/chana_dal_1kg__1_1.jpg"
+      },
+      {
+        "imgUrl":"https://saudiagroup.com/pub/media/catalog/product/cache/2a0b860d8a20befcb7fa9964e6991af0/c/h/chana_dal_1kg__1_1.jpg"
+      },
+      {
+        "imgUrl":"https://saudiagroup.com/pub/media/catalog/product/cache/2a0b860d8a20befcb7fa9964e6991af0/c/h/chana_dal_1kg__1_1.jpg"
+      }
+    ],
+    "description": "",
+    "category": "Pulses",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Urad Dal",
-    "imgurl":"https://5.imimg.com/data5/LN/FE/MY-32923298/white-urad-dal-500x500.jpg",
-    "description":"",
-    "category":"Pulses",
+    "name": "Urad Dal",
+    "images":[ 
+      {
+        "imgUrl":"https://5.imimg.com/data5/LN/FE/MY-32923298/white-urad-dal-500x500.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/LN/FE/MY-32923298/white-urad-dal-500x500.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/LN/FE/MY-32923298/white-urad-dal-500x500.jpg"
+      },
+      {
+        "imgUrl":"https://5.imimg.com/data5/LN/FE/MY-32923298/white-urad-dal-500x500.jpg"
+      }
+    ],
+    "description": "",
+    "category": "Pulses",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Gram Flour",
-    "imgurl":"https://femina.wwmindia.com/content/2018/apr/what-is-gram-flour.jpg",
-    "description":"",
-    "category":"Flour",
+    "name": "Gram Flour",
+    "images":[ 
+      {
+        "imgUrl":"https://femina.wwmindia.com/content/2018/apr/what-is-gram-flour.jpg"
+      },
+      {
+        "imgUrl":"https://femina.wwmindia.com/content/2018/apr/what-is-gram-flour.jpg"
+      },
+      {
+        "imgUrl":"https://femina.wwmindia.com/content/2018/apr/what-is-gram-flour.jpg"
+      },
+      {
+        "imgUrl":"https://femina.wwmindia.com/content/2018/apr/what-is-gram-flour.jpg"
+      }
+    ],
+    "description": "",
+    "category": "Flour",
     "price": 350,
     "stock": 2,
-    "feature": false 
+    "feature": false,
+    "rating": 3.5,
+    "reviews": 5
   },
   {
-    "name":"Jwar Flour",
-    "imgurl":"https://th.bing.com/th/id/OIP.ETsDsY6oflMMQ_mfrPoRgQHaHa?pid=ImgDet&rs=1",
-    "description":"",
-    "category":"Flour",
+    "name": "Jwar Flour",
+    "images":[ 
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.ETsDsY6oflMMQ_mfrPoRgQHaHa?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.ETsDsY6oflMMQ_mfrPoRgQHaHa?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.ETsDsY6oflMMQ_mfrPoRgQHaHa?pid=ImgDet&rs=1"
+      },
+      {
+        "imgUrl":"https://th.bing.com/th/id/OIP.ETsDsY6oflMMQ_mfrPoRgQHaHa?pid=ImgDet&rs=1"
+      }
+    ],
+    "description": "",
+    "category": "Flour",
     "price": 350,
     "stock": 2,
-    "feature": "false" 
+    "feature": "false",
+    "rating": 3.5,
+    "reviews": 5
   }
 ]

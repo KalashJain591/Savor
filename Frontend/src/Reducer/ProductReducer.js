@@ -5,13 +5,12 @@ const ProductReducer = (state, action) => {
     //         isLoading: true,
     //     };
     // }
-    // if (action.type === "API_ERROR"){
-    //     return{
-    //         ...state,
-    //         isLoading: false,
-    //         isError: true, 
-    //     };
-    // }
+    if (action.type === "API_ERROR"){
+        return{
+            ...state,
+            isError: true, 
+        };
+    }
     if(action.type === "SET_API_DATA"){
         const featureData = action.payload.filter((curElem)=>{
             return curElem.feature === "true";
@@ -22,6 +21,18 @@ const ProductReducer = (state, action) => {
             products: action.payload,
             featureProducts: featureData,
         }
+    }
+    if(action.type === "SET_SINGLE_PRODUCT"){
+        return{
+            ...state,
+            singleProduct: action.payload,
+        }
+    }
+    if (action.type === "SET_SINGLE_ERROR"){
+        return{
+            ...state,
+            isError: true, 
+        };
     }
   return state;
 }

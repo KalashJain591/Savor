@@ -12,6 +12,7 @@ import Cart from "./Components/Cart/Cart";
 import Products from './Components/Product/Products';
 import Footer from './Components/Universal/Footer';
 import CheckoutForm from './Components/Checkout/CheckoutForm';
+import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
 function App() {
   return (
     <>
@@ -21,7 +22,7 @@ function App() {
           <Route path="/contactus" element={<Contactus/>}/>
           <Route path="/aboutus" element={<Aboutus/>}/>
           <Route path="/products" element={<Products/>}/>
-          <Route path="/singleProducts/:id" element={<singleProducts/>}/>
+          {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
