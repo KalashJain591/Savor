@@ -27,6 +27,7 @@ mongoose.connect(process.env.MDB_CONNECT,{
     console.log("Connected to MongoDB");
   }
 );
+
 // set up routes
 app.use("/auth", require("./routers/userRouter"));
 app.use("/product", require("./routers/productRouter"));
