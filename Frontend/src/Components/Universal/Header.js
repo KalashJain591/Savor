@@ -3,11 +3,13 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import {FiShoppingCart} from "react-icons/fi"
 import {NavLink} from "react-router-dom"
 import AuthContext from "../../Context/auth_context"
+import { useCartContext } from "../../Context/cart_context";
 import "./Header.css";
 function NavBar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const {total_items} =useCartContext()
   // const { loggedIn } = useContext(AuthContext);
   return (
     <>
@@ -33,9 +35,12 @@ function NavBar() {
             :           <li className="Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> } */}
-            <li className="Nav-list">
-              < NavLink to ="/Cart"><FiShoppingCart className="cart-trolley"/></NavLink>
-            </li>
+          <li>
+            <NavLink to="/cart" className="navbar-link cart-trolley--link me-2">
+              <FiShoppingCart className="cart-trolley" />
+              <span className="item-count"> {total_items}</span>
+            </NavLink>
+          </li>
           </ul>
         </div>
         <div className="R_NavBar-nav">
@@ -70,8 +75,8 @@ function NavBar() {
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> } */}
                 <li className="R_Nav-list">
-                  < NavLink to ="/Cart">Your Cart</NavLink>
-                </li>
+                  < NavLink to ="/Cart">Your Cart ({total_items}) items </NavLink>
+          </li>
               </ul>
             </Offcanvas.Body>
           </Offcanvas>
