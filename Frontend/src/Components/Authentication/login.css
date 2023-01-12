@@ -1,13 +1,15 @@
-  .social-login img {
+body {
+  background-color: #F6FBF4;
+}
+ .social-login img {
     width: 24px;
   }
   a {
     text-decoration: none;
   }
-  
-  .card {
+  .card1 {
     font-family: sans-serif;
-    width: 75%;
+    max-width: 27rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3em;
@@ -17,7 +19,7 @@
     padding: 1.8rem;
     box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
   }
-  
+
   .card-img{
    left: 50%;
    /* background-color: gray; */
@@ -53,8 +55,11 @@
   }
   
   .ggle-btn {
-    background: #fff;
-    border: solid 2px rgb(245 239 239);
+    background: #FFD4B2;
+    padding: 12px;
+    border: 2px solid #F0FF42;
+    position: absolute;
+    border-radius: 5px;
     border-radius: 8px;
     font-weight: bold;
     display: flex;
@@ -64,14 +69,16 @@
     align-items: center;
     gap: 5px;
     justify-content: center;
+    margin: 20px 0 20px 0 ;
+    
   }
 
-  .or {
+  .or1 {
     text-align: center;
     font-weight: bold;
     border-bottom: 2px solid rgb(245 239 239);
     line-height: 0.1em;
-    margin: 25px 0;
+    margin: 80px 0 0 0;
   }
   .or span {
     background: #fff;
