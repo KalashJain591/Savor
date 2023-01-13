@@ -24,16 +24,17 @@ function NavBar() {
         <div className="NavBar-nav">
           <ul className="Navigation">
             <li className="Nav-list">
+              < NavLink to ="/">Home Page</NavLink>
               < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/products">Products</NavLink>
+              < NavLink to ="/products">Products</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/aboutus">About Us</NavLink>
+              < NavLink to ="/aboutus">About Us</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/contactus">Contact Us</NavLink>
+              < NavLink to ="/contactus">Contact Us</NavLink>
             </li>
             {loggedIn?  
             <>
@@ -47,10 +48,10 @@ function NavBar() {
             : <li className="Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> }
-            <li style={{paddingRight:"18px"}}>
+            <li  className="Nav-list">
               <NavLink to="/cart" className="navbar-link cart-trolley--link  me-2 ">
                 <FiShoppingCart className="cart-trolley " />
-                <span className="item-count " style={{fontSize:"12  px"}}>{total_items}</span>
+                <span className="item-count ">{total_items}</span>
               </NavLink>
             </li>
          
