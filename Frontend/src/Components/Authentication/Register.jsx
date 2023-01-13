@@ -60,12 +60,12 @@ export default function Register() {
    </div>
    <p className="or1"><span>or</span></p>
    <div className="email-login">
-   <label htmlFor="Phone No"> <b>Full Name</b></label>
+   <label htmlFor="name"> <b>Full Name</b></label>
       <input type="text" name="name" 
             value={user.name} 
             placeholder="Enter Your Name" 
             onChange={ handleChange } required/>
-      <label htmlFor="Phone No"> <b>Phone No</b></label>
+      <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
       <input type="text" name="phoneno"
              value={user.phoneno}
               placeholder="Enter Your Phone Number"
