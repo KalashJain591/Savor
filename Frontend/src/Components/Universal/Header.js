@@ -47,10 +47,10 @@ function NavBar() {
             : <li className="Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> }
-            <li>
-              <NavLink to="/cart" className="navbar-link cart-trolley--link  me-2">
+            <li style={{paddingRight:"18px"}}>
+              <NavLink to="/cart" className="navbar-link cart-trolley--link  me-2 ">
                 <FiShoppingCart className="cart-trolley " />
-                <span className="item-count ">{total_items}</span>
+                <span className="item-count " style={{fontSize:"12  px"}}>{total_items}</span>
               </NavLink>
             </li>
          

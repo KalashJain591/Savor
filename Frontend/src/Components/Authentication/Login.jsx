@@ -41,7 +41,7 @@ export default function Login() {
       </div>
       <p className="or1"><span>or</span></p>
       <div className="email-login">
-         <label htmlFor="Phone No"> <b>Phone No</b></label>
+         <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
          <input type="text" placeholder="Enter Your Phone Number" name="phoneno"
              value={user.phoneno}
               onChange={ handleChange } required/>
