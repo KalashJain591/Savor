@@ -25,6 +25,7 @@ function NavBar() {
           <ul className="Navigation">
             <li className="Nav-list">
               < NavLink to ="/">Home Page</NavLink>
+              < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>
             <li className="Nav-list">
               < NavLink to ="/products">Products</NavLink>
@@ -70,7 +71,7 @@ function NavBar() {
           <Offcanvas.Body>
             <ul className="R_Navigation">
               <li className="R_Nav-list">
-                < NavLink to="/">Home Page</NavLink>
+                < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
               </li>
               <li className="R_Nav-list">
                 < NavLink to="/products">Products</NavLink>

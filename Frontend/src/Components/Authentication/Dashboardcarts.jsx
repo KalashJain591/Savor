@@ -9,7 +9,7 @@ export default function Dashboardcarts() {
     <div>
         <div className="card shadow-sm">
           <div className="card-header bg-transparent border-0">
-            <h3 className="mb-0"><FiShoppingCart className="cart-trolley"/> Purchased Products</h3>
+            <h3 className="mb-0"><FiShoppingCart className="cart-trolley"/> Already Purchased Products</h3>
           </div>
           <div className="card-body pt-0">
             <table className="table table-bordered">
