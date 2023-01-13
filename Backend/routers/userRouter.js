@@ -129,5 +129,17 @@ router.get("/loggedIn", (req, res) => {
   }
 });
 
+router.get("/dashboard", async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) return res.json(false);
+    var decoded = jwt_decode(token);
+    const userdetails=await User.findById(decoded.user);
+    // console.log(decoded);
+    res.send(userdetails);
+  } catch (err) {
+    res.json(false);
+  }
+});
 
 module.exports = router;
