@@ -2,48 +2,37 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {FiShoppingCart} from "react-icons/fi"
-import {NavLink, useNavigate} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import AuthContext from "../../Context/auth_context"
+import { useCartContext } from "../../Context/cart_context";
 import "./Header.css";
 function NavBar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { getLoggedIn,loggedIn } = useContext(AuthContext);
-  const history = useNavigate()
-  async function logOut() {
-    await axios.get("/auth/logout");
-    await getLoggedIn();
-    history('/');
-  }
-
+  const { loggedIn } = useContext(AuthContext);
   return (
     <>
       <div className="NavBar">
         <div className="NavBar-nav">
           <ul className="Navigation">
             <li className="Nav-list">
-              < NavLink to ="/">Home Page</NavLink>
+              < NavLink to="/">Home Page</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to ="/products">Products</NavLink>
+              < NavLink to="/products">Products</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to ="/aboutus">About Us</NavLink>
+              < NavLink to="/aboutus">About Us</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to ="/contactus">Contact Us</NavLink>
+              < NavLink to="/contactus">Contact Us</NavLink>
             </li>
             {loggedIn?  
-            <>
-             <li className="Nav-list">
-             < NavLink onClick={logOut}><i class="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
-             </li>
             <li className="Nav-list">
               < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
-            </li>
-            </> 
-            : <li className="Nav-list">
+            </li> 
+            :           <li className="Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> }
             <li className="Nav-list">
@@ -75,26 +64,27 @@ function NavBar() {
                 <li className="R_Nav-list">
                   < NavLink to ="/contactus">Contact Us</NavLink>
                 </li>
-                {loggedIn? 
-                <> 
-                <li className="R_Nav-list">
-                < NavLink onClick={logOut}><i class="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
-                 </li>
+                {loggedIn?  
             <li className="R_Nav-list">
               < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
             </li> 
-            </>
             :           <li className="R_Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> }
                 <li className="R_Nav-list">
-                  < NavLink to ="/Cart">Your Cart</NavLink>
+                  < NavLink to="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
                 </li>
-              </ul>
-            </Offcanvas.Body>
-          </Offcanvas>
-        </div>
+                : <li className="R_Nav-list">
+                  < NavLink to="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
+                </li>}
+              <li className="R_Nav-list">
+                < NavLink to="/Cart">Your Cart ({total_items}) items </NavLink>
+              </li>
+            </ul>
+          </Offcanvas.Body>
+        </Offcanvas>
       </div>
+    </div>
     </>
   );
 }
