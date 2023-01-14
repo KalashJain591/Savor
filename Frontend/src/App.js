@@ -13,7 +13,10 @@ import Products from './Components/Product/Products';
 import Footer from './Components/Universal/Footer';
 import CheckoutForm from './Components/Checkout/CheckoutForm';
 import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
+import { useContext } from 'react';
+import AuthContext from './Context/auth_context';
 function App() {
+  const { loggedIn } = useContext(AuthContext);
   return (
     <>
      <Header/>
@@ -23,9 +26,9 @@ function App() {
           <Route path="/aboutus" element={<Aboutus/>}/>
           <Route path="/products" element={<Products/>}/>
           {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/login" element={loggedIn ? <Dashboard/>:<Login/>}/>
+          <Route path="/register" element={loggedIn ? <Dashboard/>:<Register/>}/>
+          <Route path="/dashboard" element={loggedIn ?<Dashboard/>:<Login/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
         </Routes>
