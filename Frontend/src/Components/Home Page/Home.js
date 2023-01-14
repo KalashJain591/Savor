@@ -7,6 +7,7 @@ import TopDeals from './TopDeals'
 export default function Home() {
   return (
     <div>
+        
         <FrontSection/>
         <Features/>
         <TopDeals/>
