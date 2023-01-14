@@ -8,6 +8,7 @@ import Carousel from './CarouselSection1'
 export default function Home() {
   return (
     <div>
+      <Carousel/>
         <FrontSection/>
         <Features/>
         <TopDeals/>
