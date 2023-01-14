@@ -135,19 +135,22 @@
     font-size: 1.4rem;
     padding: 0.8rem 1.4rem;
   }
-  .item-count {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-    /* background-color: #000; */
-    /* border-radius: 80%; */
-    transform: translateY(-60%);
- 
-    /* transform: translateX(50%); */
-  }
+
+    .item-count {
+      position: absolute;
+      top: 0;
+      right: -8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFF;
+      background-color: orangered;
+      border-radius: 80%;
+      transform: translateY(-60%);
+      /* transform: translateX(50%); */
+      width: 77%;
+      text-align: center;
+    }
+  
 
  
 

@@ -33,8 +33,8 @@ export default function Cart() {
             </tbody>
           </table>
           <div class="d-flex bd-highlight mb-3">
-            <NavLink to="/">  <button class=" btn btn-md btn-success m-2 ">Continue Shopping </button></NavLink>
-            <button class="btn btn-md btn-success  ms-auto m-2 " onClick={clearCart.bind(this)}>Clear Cart </button>
+            <NavLink to="/">  <button class=" btn btn-md btn-success m-2 " style={{backgroundColor:"#13C50C"}}>Continue Shopping </button></NavLink>
+            <button class="btn btn-md btn-  ms-auto m-2 " style={{backgroundColor:"gray"}} onClick={clearCart.bind(this)}>Clear Cart </button>
           </div>
         </div>
         <div className="  d-flex flex-column col-12 col-lg-4">
