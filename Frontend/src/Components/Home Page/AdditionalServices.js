@@ -3,8 +3,10 @@ import React from 'react'
 export default function AdditionalServices() {
   return (
     <div className='container my-5'>
+      <br/>
+      <h3 style={{textAlign:"center"}}>Features Section: </h3>
     <div className=" row align-items-center">
-    <div className="col-lg-4 col-12 text-center border-0 rounded-3">
+    <div className=" col-lg-4 col-12 text-center border-0 rounded-3">
         <img src="/images/deliveryicon.png" alt='img'></img>
       <p>Fast delivery</p>
     </div>

@@ -8,9 +8,10 @@ const jwt_decode=require("jwt-decode")
 
 router.post("/register", async (req, res) => {
   try {
-    const { name,email,phoneno , password, passwordVerify } = req.body;
+    // console.log("register");
+    const { name,email,phoneno , password } = req.body;
     // validation
-    if (!name||!email ||!phoneno ||!password || !passwordVerify)
+    if (!name||!email ||!phoneno ||!password )
       return res
         .status(400)
         .json({ errorMessage: "Please enter all required fields." });
@@ -19,12 +20,7 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({
         errorMessage: "Please enter a password of at least 6 characters.",
       });
-
-    if (password !== passwordVerify)
-      return res.status(400).json({
-        errorMessage: "Please enter the same password twice.",
-      });
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ phoneno });
     if (existingUser)
       return res.status(400).json({
         errorMessage: "An account with this email already exists.",
@@ -68,14 +64,15 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    
+    const { phoneno, password } = req.body;
     // validate
-    if (!email || !password)
+    if (!phoneno || !password)
       return res
         .status(400)
         .json({ errorMessage: "Please enter all required fields." });
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ phoneno });
     if (!existingUser)
       return res.status(401).json({ errorMessage: "Wrong email or password." });
 
@@ -85,7 +82,6 @@ router.post("/login", async (req, res) => {
     );
     if (!passwordCorrect)
       return res.status(401).json({ errorMessage: "Wrong email or password." });
-
     // sign the token
 
     const token = jwt.sign(
@@ -133,5 +129,17 @@ router.get("/loggedIn", (req, res) => {
   }
 });
 
+router.get("/dashboard", async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) return res.json(false);
+    var decoded = jwt_decode(token);
+    const userdetails=await User.findById(decoded.user);
+    // console.log(decoded);
+    res.send(userdetails);
+  } catch (err) {
+    res.json(false);
+  }
+});
 
 module.exports = router;
