@@ -6,7 +6,8 @@ export default function Association() {
     <div>
       <div className="container my-5">
         <div className="row text-center">
-          <p>In Association with </p>
+        <br/>
+      <h3 style={{textAlign:"center"}}>Association With:</h3>
         </div>
         <div className="row justify-content-evenly">
           {data.map((e) => {
