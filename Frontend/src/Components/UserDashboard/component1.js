@@ -8,7 +8,8 @@ export default function Component1(props) {
     <div className="box m-3" style={{padding:"15px 20px 20px"}}>
       <div className=' d-inline-flex align-items-center' style={{paddingBottom:"15px 15px"}}>
         <div>
-          <img src="s" alt ="imaje" className='comp1img '/>
+          <img src={s} alt ="imaje" className='comp1img '/>
+          {console.log(s)}
         </div>
         <div>
         <h2 style={{paddingRight:"4px",fontSize:"28px"}}>{dashData[idx].title}</h2>
