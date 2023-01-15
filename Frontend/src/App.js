@@ -13,6 +13,7 @@ import Products from './Components/Product/Products';
 import Footer from './Components/Universal/Footer';
 import CheckoutForm from './Components/Checkout/CheckoutForm';
 import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
+import UserDashboard from './Components/UserDashboard/UserDashboard';
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
+          <Route path ="/UserDashboard" element={<UserDashboard/>}/>
         </Routes>
       <Footer/>
     </>

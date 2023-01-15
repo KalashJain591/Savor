@@ -24,7 +24,7 @@ function NavBar() {
         <div className="NavBar-nav">
           <ul className="Navigation">
             <li className="Nav-list">
-              < NavLink to ="/">Home Page</NavLink>
+             
               < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>
             <li className="Nav-list">
@@ -44,6 +44,7 @@ function NavBar() {
             <li className="Nav-list">
               < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
             </li>
+            
             </> 
             : <li className="Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
@@ -54,7 +55,9 @@ function NavBar() {
                 <span className="item-count ">{total_items}</span>
               </NavLink>
             </li>
-         
+            <li className="Nav-list">
+              < NavLink to ="/UserDashboard">Dashboard</NavLink>
+            </li>
          
         </ul>
       </div>
