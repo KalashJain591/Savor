@@ -1,4 +1,9 @@
 .carousel-img{
-height:450px;
-object-fit: cover;
+    height:500px;
+    object-fit: cover;
+}
+@media screen and (max-width:544px) {
+    .carousel-img{
+        height: 178px;
+    }
 }

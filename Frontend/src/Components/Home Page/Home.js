@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <Carousel/>
-        <FrontSection/>
+        {/* <FrontSection/> */}
         <Features/>
         <TopDeals/>
         <AdditionalServices/>

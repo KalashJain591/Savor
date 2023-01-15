@@ -29,9 +29,6 @@ function App() {
           <Route path="/aboutus" element={<Aboutus/>}/>
           <Route path="/products" element={<Products/>}/>
           <Route path="/SingleProduct/:id" element={<SingleProduct/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
           {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
           <Route path="/login" element={loggedIn ? <Dashboard/>:<Login/>}/>
           <Route path="/register" element={loggedIn ? <Dashboard/>:<Register/>}/>

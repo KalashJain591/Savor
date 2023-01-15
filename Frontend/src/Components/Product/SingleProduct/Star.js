@@ -17,12 +17,14 @@ const Star = ({rating, reviews}) => {
         )
     })
     return(
-        <section className='star-section'>
+        <div className='star-section'>
             <div className="star-icon-style">
                 {ratingStar}
+            </div>
+            <div className="reviews-section">
                 <p>({reviews} customer reviews)</p>
             </div>
-        </section>
+        </div>
     )
 }
 

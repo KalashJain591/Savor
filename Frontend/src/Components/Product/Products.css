@@ -1,5 +1,6 @@
 .display-filterProduct-section{
     display: flex;
+    flex-wrap: wrap;
     width: 90%;
 }
 .Filter-Section{
@@ -9,6 +10,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .display-product-section{
     display: flex;
@@ -23,4 +25,16 @@
 .Filter-Section{
     display: flex;
     justify-content: flex-start;
-}    
+} 
+@media screen and (max-width: 500px){
+    .Filter-Section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .display-filterProduct-section{
+        justify-content: center;
+        width: 90%;
+    }
+    
+}   
