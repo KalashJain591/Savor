@@ -8,7 +8,7 @@ import PaymentSummary from './PaymentSummary';
 export default function Cart() {
   const { cart, clearCart, } = useCartContext();
   if (cart.length === 0) {
-    return (<><h1 className='text-center fs-1'>No Item in Your Cart</h1>
+    return (<><h1 className='text-center fs-1' style={{height:"18rem", display:"flex", alignItems:"center", justifyContent:"center" }} >No Item in Your Cart</h1>
     </>)
   }
   return (

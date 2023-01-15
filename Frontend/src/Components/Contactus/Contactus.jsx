@@ -2,72 +2,97 @@ import React from 'react'
 import './contactus.css'
 export default function Contactus() {
   return (
-    <div className='bgcol'>
-          <h1  style={{textAlign:"center" ,color:'gray', fontSize:"40px", marginTop:"8px" }}>Contact us </h1>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14719.972156865595!2d75.8277861!3d22.7285001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc3e29863ff9874e3!2sSavor%20Naturals!5e0!3m2!1sen!2sin!4v1673534575361!5m2!1sen!2sin"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"  style={{border:"3px solid  rgba(124,196,70,1) ", borderRadius:"8px", padding:"12px"}}  width={"100%"} height={"450"}  ></iframe>
-      <section className="contact-sec sec-pad">
-  <div className="container">
-    <div className="row">
-      <div className="col-md-6">
-        <div className="contact-detail">
-          <h1 className="section-title">Contact us</h1>
-
-          <ul className="contact-ul">
-            <li><i className="fa fa-location-dot"></i> Indore, Madhya Pradesh</li>
-
-            <li>
-              <i className="fa fa-phone"></i>
-              <a href="tel:08510004495"><b>0255000XXXX</b></a>,
-              <a href="tel:08510005495"><b>0251600XXXX</b></a>
-            </li>
-
-            <li>
-              <i className="fa-solid fa-envelope"></i>
-              <a href="mailto:pardeepkumar4bjp@gmail.com"><b>savronaturals@gmail.com</b></a>
-            </li>
-          </ul>
-
-          <span>
-            <a href="#" className="fb"><i className="fa-brands fa-facebook"></i></a>
-            <a href="#" className="insta"><i className="fa-brands fa-instagram"></i></a>
-            <a href="#" className="twitter"><i className="fa-brands fa-twitter"></i></a>
-          </span>
+    <section class="contact-page-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fas fa-map-marked"></i>
+              </div>
+              <div class="contact-info-text">
+                <h2>address</h2>
+                <span>1215 Lorem Ipsum, Ch 176080 </span> 
+                <span>Chandigarh , INDIA</span> 
+              </div>
+            </div>            
+          </div>          
+        </div>          
+        <div class="col-md-4">
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-info-text">
+                <h2>E-mail</h2>
+                <span>info@LoremIpsum.com</span> 
+                <span>yourmail@gmail.com</span>
+              </div>
+            </div>            
+          </div>                
+        </div>                
+        <div class="col-md-4">
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-info-text">
+                <h2>office time</h2>
+                <span>Mon - Thu  9:00 am - 4.00 pm</span>
+                <span>Thu - Mon  10.00 pm - 5.00 pm</span>
+              </div>
+            </div>            
+          </div>          
+        </div>          
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="contact-page-form" method="post">
+            <h2>Get in Touch</h2> 
+            <form action="contact-mail.php" method="post">
+              <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="single-input-field">
+                  <input type="text" placeholder="Your Name" name="name"/>
+                </div>
+              </div>  
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="single-input-field">
+                  <input type="text" placeholder="E-mail" name="email" required/>
+                </div>
+              </div>                              
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="single-input-field">
+                  <input type="text" placeholder="Phone Number" name="phone"/>
+                </div>
+              </div>  
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="single-input-field">
+                  <input type="text" placeholder="Subject" name="subject"/>
+                </div>
+              </div>                
+              <div class="col-md-12 message-input">
+                <div class="single-input-field">
+                  <textarea  placeholder="Write Your Message" name="message"></textarea>
+                </div>
+              </div>                                                
+              <div class="single-input-fieldsbtn">
+                <input type="submit" value="Send Now"/>
+              </div>                          
+            </div>
+            </form>   
+          </div>      
         </div>
-      </div>
-
-      <div className="col-md-6">
-        <form action="#" className="contFrm" method="POST">
-          <div className="row">
-            <div className="col-sm-6">
-              <input type="text" name="name" placeholder="Your Name" className="inptFld" required />
-            </div>
-
-            <div className="col-sm-6">
-              <input type="email" name="email" placeholder="Email Address" className="inptFld" required />
-            </div>
-
-            <div className="col-sm-6">
-              <input type="tel" name="phone" placeholder="Phone Number" className="inptFld" required />
-            </div>
-
-            <div className="col-sm-6">
-              <input type="text" name="sub" placeholder="Subject" className="inptFld" required />
-            </div>
-
-            <div className="col-12">
-              <textarea className="inptFld" rows="" cols="" placeholder="Your Message..." required></textarea>
-            </div>
-
-            <div className="col-12">
-              <input type="submit" name="submit" value="SUBMIT" className="inptBtn" />
-            </div>
-          </div>
-        </form>
+        <div class="col-md-4">        
+          <div class="contact-page-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14719.972156865595!2d75.8277861!3d22.7285001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc3e29863ff9874e3!2sSavor%20Naturals!5e0!3m2!1sen!2sin!4v1673534575361!5m2!1sen!2sin" width={"100%"} height={"450"}  style={{border:"0"}} allowfullscreen></iframe>
+          </div>          
+        </div>        
       </div>
     </div>
-    <hr style={{color:"black"}}/>
-  </div>
-</section>
-    </div>
+  </section>
   )
 }
