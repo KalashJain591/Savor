@@ -23,6 +23,7 @@ function NavBar() {
       <div className="NavBar">
         <div className="NavBar-nav">
           <ul className="Navigation">
+          
             <li className="Nav-list">
               < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>
