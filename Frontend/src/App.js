@@ -16,6 +16,7 @@ import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
 import UserDashboard from './Components/UserDashboard/UserDashboard';
 import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
+import Orders from './Components/UserDashboard/orders';
 function App() {
   const { loggedIn } = useContext(AuthContext);
   return (
@@ -35,6 +36,8 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
           <Route path ="/UserDashboard" element={<UserDashboard/>}/>
+          <Route path ="/UserDashboard/cart" element={<Cart/>}/>
+          <Route path ="/UserDashboard/orders" element={<Orders/>}/>
         </Routes>
       <Footer/>
     </>

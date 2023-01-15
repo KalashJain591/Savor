@@ -90,12 +90,15 @@ function NavBar() {
                 < NavLink onClick={logOut}><i class="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
                  </li>
             <li className="R_Nav-list">
-              < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
+              < NavLink to ="/dashboard"><i className="fa-solid fa-user"></i>Dashboard</NavLink>
             </li> 
             </>
             :           <li className="R_Nav-list">
             < NavLink to ="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li> }
+            <li className="R_Nav-list">
+              < NavLink to ="/UserDashboard"><i className="fa-solid fa-user"></i>Dashboard</NavLink>
+            </li>
             </ul>
           </Offcanvas.Body>
         </Offcanvas>
