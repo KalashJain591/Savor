@@ -1,0 +1,27 @@
+.star-icon-style{
+    display: flex;
+}
+.star-section{
+    display: flex;
+    flex-wrap: wrap;
+}
+.star-color{
+    color: rgb(231, 167, 27);
+}
+.star-icon-style{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.reviews-section{
+    display: flex;
+    align-items: center;
+}
+.reviews-section p{
+    font-size: 80%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: #666;
+    margin: 0;
+}

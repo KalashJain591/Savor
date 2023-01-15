@@ -1,0 +1,104 @@
+.single-product-page{
+    /* border: 2px solid black; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    padding: 50px 0; 
+}
+.single-product-info{
+    /* border: 2px solid red; */
+    width: 90%;
+    display: flex;
+    /* justify-content: center; */
+}
+.single-product-image-section{
+    /* border: 2px solid purple; */
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+}
+.parent-image{
+    display: flex;
+    justify-content: center;
+    /* height: 600px; */
+}
+.parent-image img{
+    width: 90%;
+    box-shadow: 1px 1px 10px 3px #666;
+}
+.child-sec2-img{
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.child-images{
+    display: flex;
+    width: 80%;
+    margin-top: 40px ;
+    display: flex;
+    justify-content: center;
+}
+.child-single-img{
+    /* border: 2px solid green; */
+    width: 100%;
+    margin: 0 10px;
+    box-shadow: 1px 1px 10px 3px #666;
+}
+.child-single-img img{
+    width: 100%;
+}
+.single-product-description{
+    /* border: 2px solid purple; */
+    padding: 40px 20px;
+    width: 50%;
+    font-family: 'Poppins', sans-serif;
+}
+.product-info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.product-description{
+    padding: 20px 0;
+}
+.product-data-warranty{
+    display: flex;
+    justify-content: space-between;
+}
+.warranty-img{
+    /* border: 2px solid blueviolet; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* width: 25%; */
+    align-items: center;
+    /* padding: 20px 0; */
+}
+.img-contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.warranty-icon{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #eee;
+    border-radius: 50%;
+    align-items: center;
+}
+.warranty-img p{
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+.product-details{
+    margin: 30px 0;
+}
