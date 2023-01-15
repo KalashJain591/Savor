@@ -13,6 +13,7 @@ import Products from './Components/Product/Products';
 import Footer from './Components/Universal/Footer';
 import CheckoutForm from './Components/Checkout/CheckoutForm';
 import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
+import UserDashboard from './Components/UserDashboard/UserDashboard';
 import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/dashboard" element={loggedIn ?<Dashboard/>:<Login/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
+          <Route path ="/UserDashboard" element={<UserDashboard/>}/>
         </Routes>
       <Footer/>
     </>
