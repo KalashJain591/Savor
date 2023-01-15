@@ -13,8 +13,10 @@ import Products from './Components/Product/Products';
 import Footer from './Components/Universal/Footer';
 import CheckoutForm from './Components/Checkout/CheckoutForm';
 import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
+import UserDashboard from './Components/UserDashboard/UserDashboard';
 import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
+import Orders from './Components/UserDashboard/orders';
 function App() {
   const { loggedIn } = useContext(AuthContext);
   return (
@@ -27,12 +29,16 @@ function App() {
           <Route path="/contactus" element={<Contactus/>}/>
           <Route path="/aboutus" element={<Aboutus/>}/>
           <Route path="/products" element={<Products/>}/>
+          <Route path="/SingleProduct/:id" element={<SingleProduct/>}/>
           {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
           <Route path="/login" element={loggedIn ? <Dashboard/>:<Login/>}/>
           <Route path="/register" element={loggedIn ? <Dashboard/>:<Register/>}/>
           <Route path="/dashboard" element={loggedIn ?<Dashboard/>:<Login/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
+          <Route path ="/UserDashboard" element={<UserDashboard/>}/>
+          <Route path ="/UserDashboard/cart" element={<Cart/>}/>
+          <Route path ="/UserDashboard/orders" element={<Orders/>}/>
         </Routes>
       <Footer/>
     </>

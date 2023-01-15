@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const jwt_decode=require("jwt-decode")
 
 // register
-
 router.post("/register", async (req, res) => {
   try {
     // console.log("register");
@@ -141,5 +140,76 @@ router.get("/dashboard", async (req, res) => {
     res.json(false);
   }
 });
+
+
+
+
+
+router.post("/signinwithgoogle", async (req, res) => {
+  try {
+    // console.log(req.body);
+    // console.log("SIGN IN WITH GOOGLE");
+    const { profilePic,name,email } = req.body;
+    // validation
+    if (!profilePic||!name||!email)
+      return res
+        .status(400)
+        .json({ errorMessage: "Please enter all required fields." });
+
+    const existingUser = await User.findOne({ email });
+    //existing user
+    // console.log("Existing User" ,existingUser);
+    if (existingUser){
+      // sign the token
+    const token = jwt.sign(
+      {
+        user: existingUser._id,
+      },
+      process.env.JWT_SECRET
+    );
+
+    // send the token in a HTTP-only cookie
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      })
+      .send();
+      
+    }
+    else{
+      //register
+    const newUser = new User({
+      profilePic,
+      name,
+      email
+    });
+    const savedUser = await newUser.save();
+    // sign the token
+    const token = jwt.sign(
+      {
+        user: savedUser._id,
+      },
+      process.env.JWT_SECRET
+    );
+    // send the token in a HTTP-only cookie
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      })
+      .send();
+  }
+  } catch (err) {
+    console.error(err);
+    res.status(200).send("Successfully google sigin");
+  }
+});
+
+
+
+
 
 module.exports = router;

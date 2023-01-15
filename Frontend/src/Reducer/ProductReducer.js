@@ -1,10 +1,10 @@
 const ProductReducer = (state, action) => {
-    // if(action.type === "SET_LOADING"){
-    //     return{
-    //         ...state,
-    //         isLoading: true,
-    //     };
-    // }
+    if(action.type === "SET_LOADING"){
+        return{
+            ...state,
+            isLoading: true,
+        };
+    }
     if (action.type === "API_ERROR"){
         return{
             ...state,
@@ -18,6 +18,7 @@ const ProductReducer = (state, action) => {
         console.log("ac", featureData)
         return{
             ...state,
+            isLoading: false,
             products: action.payload,
             featureProducts: featureData,
         }
@@ -27,12 +28,6 @@ const ProductReducer = (state, action) => {
             ...state,
             singleProduct: action.payload,
         }
-    }
-    if (action.type === "SET_SINGLE_ERROR"){
-        return{
-            ...state,
-            isError: true, 
-        };
     }
   return state;
 }

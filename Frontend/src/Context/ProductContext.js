@@ -14,6 +14,7 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const getProducts = async () => {
+    dispatch({ type: "SET_LOADING"});
     try{
       const res = await fetch("/product");
       const products = await res.json();
@@ -26,13 +27,14 @@ const AppProvider = ({ children }) => {
 
   //2nd data fetching
   const getSingleProduct = async(url) =>{
+    dispatch({ type: "SET_LOADING"});
     try{
       const res = await fetch(url);
       const singleProduct = await res.json();
       // console.log(products);
-      dispatch({ type: "SET_SINGLE_PRODUCT"});
+      dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct});
     } catch(error){
-      dispatch({ type: "SET_SINGLE_ERROR" });
+      dispatch({ type: "API_ERROR" });
     }
   }
 

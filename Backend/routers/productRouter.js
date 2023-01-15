@@ -43,6 +43,7 @@ router.route("/:id").get((req, res) => {
         .then((product) => res.json(product))
         .catch((err) => res.status(400).json("Error: " + err));
 });
+
 router.route("/category/:id").get((req, res) => {
     Product.find({"category":req.params.id})
         .then((product) => res.json(product))
