@@ -57,7 +57,7 @@ const SingleProduct = () => {
                     </div>
                 </div>
                 <div className="single-product-description">
-                    <h2 className="single-product-heading">{name}</h2>
+                    <p className="single-product-heading">{name}</p>
                     <div className="customer-info">
                         <Star rating={rating} reviews={reviews} />
                         {/* <p>{rating}</p>

@@ -13,7 +13,7 @@ export default function Home() {
         {/* <Features/> */}
         <TopDeals/>
         <AdditionalServices/>
-        <Association/>
+        {/* <Association/> */}
     </div>
   )
 }

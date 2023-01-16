@@ -8,6 +8,7 @@
 .service-container{
     width: 80%;
     display: flex;
+    flex-wrap: wrap;
     /* justify-content: space-around; */
 }
 .single-service{
@@ -86,4 +87,15 @@
 .icon-text p{
     font-size: 13px;
     color: #666;
+    text-align: center;
+}
+@media screen and (max-width: 828px) {
+    .single-service{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 420px) {
+    .single-service{
+        width: 100%;
+    }
 }
