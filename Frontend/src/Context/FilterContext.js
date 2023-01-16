@@ -1,4 +1,4 @@
-import { useContext, createContext, useReducer, useEffect } from "react";
+import { useContext, createContext, useReducer, useEffect, useState } from "react";
 import { useProductContext } from "./ProductContext";
 import reducer from "../Reducer/FilterReducer";
 const FilterContext = createContext();
@@ -15,7 +15,8 @@ const initialState ={
 export const FilterContextProvider = ({children}) =>{
     const {products} = useProductContext();
     const[state, dispatch] = useReducer(reducer, initialState)
-
+    //for each filter heading
+    const [Currentfilter,setCurrentfilter]=useState("All");
     //Set Grid Value
     const setGridView = () =>{
        return dispatch({type: "SET_GRIDVIEW"});
@@ -25,12 +26,15 @@ export const FilterContextProvider = ({children}) =>{
     const updateFilterValue = (event) =>{
         let name = event.target.name;
         let value = event.target.value
-
+        //change heading
+        setCurrentfilter(value);
+        //
         return dispatch({type: "UPDATE_FILTER_VALUE", payload:{name, value}})
     }
 
     //clearFilter
     const clearFilters = () =>{
+        setCurrentfilter("All");
         console.log("clear filter")
         dispatch({type: "CLEAR_FILTER"})
     }
@@ -45,7 +49,7 @@ export const FilterContextProvider = ({children}) =>{
     },[products])
 
     return(
-        <FilterContext.Provider value = {{...state, setGridView, updateFilterValue, clearFilters}}>
+        <FilterContext.Provider value = {{...state, setGridView, updateFilterValue, clearFilters,Currentfilter}}>
             {children}
         </FilterContext.Provider> 
     )

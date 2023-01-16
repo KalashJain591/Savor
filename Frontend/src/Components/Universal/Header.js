@@ -31,13 +31,13 @@ function NavBar() {
               < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/products">Products</NavLink>
+              < NavLink to="/products"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Products</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/aboutus">About Us</NavLink>
+              < NavLink to="/aboutus"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/contactus">Contact Us</NavLink>
+              < NavLink to="/contactus"><i class="fa fa-address-book" aria-hidden="true"></i> Contact Us</NavLink>
             </li>
             {loggedIn ?
               <>

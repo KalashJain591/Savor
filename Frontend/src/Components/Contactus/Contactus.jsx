@@ -13,8 +13,8 @@ export default function Contactus() {
               </div>
               <div class="contact-info-text">
                 <h2>address</h2>
-                <span>1215 Lorem Ipsum, Ch 176080 </span> 
-                <span>Chandigarh , INDIA</span> 
+                <span>184, 60 Feet Rd, Shakti Nagar, Loknayak Nagar, Sukhdev Vihar,</span> 
+                <span> Indore, Madhya Pradesh 452005</span> 
               </div>
             </div>            
           </div>          
@@ -27,7 +27,7 @@ export default function Contactus() {
               </div>
               <div class="contact-info-text">
                 <h2>E-mail</h2>
-                <span>info@LoremIpsum.com</span> 
+                <span> admin@savornaturals.in</span> 
                 <span>yourmail@gmail.com</span>
               </div>
             </div>            
@@ -41,8 +41,8 @@ export default function Contactus() {
               </div>
               <div class="contact-info-text">
                 <h2>office time</h2>
-                <span>Mon - Thu  9:00 am - 4.00 pm</span>
-                <span>Thu - Mon  10.00 pm - 5.00 pm</span>
+                <span> 24 x 7 Support</span>
+                {/* <span>Thu - Mon  10.00 pm - 5.00 pm</span> */}
               </div>
             </div>            
           </div>          
