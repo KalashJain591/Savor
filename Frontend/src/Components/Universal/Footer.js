@@ -5,7 +5,7 @@ export default function Footer() {
       <div className="footer-section">
         <div className="footer-container">
           <div className="footer-image footer-solo-section">
-            <img src="./images/Savor_Logo.png" alt="" srcset="" />
+            <img src="/images/Savor_Logo.png" alt=""/>
           </div>
           <div className="footer-content-section footer-solo-section">
             <div className="content-section-heading">
