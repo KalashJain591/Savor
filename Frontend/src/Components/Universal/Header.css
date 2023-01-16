@@ -8,11 +8,19 @@
 }
 .navbar-image {
   /* border: 2px solid black; */
-  width: 20%;
+  width: 25%;
+  display: flex;
+  /* align-items: center; */
+  padding-left: 10px;
 }
-.navbar-image img {
+.navbar-image .logo-img {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+.navbar-image .logo-tag {
   /* border: 2px solid black; */
-  width: 100%;
+  width: 72%;
   height: 55px;
   z-index: 1;
   object-fit: fill;
@@ -28,7 +36,7 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  width: 80%;
+  width: 75%;
 }
 .NavBar {
   background: linear-gradient(
@@ -85,25 +93,28 @@
   margin: 3px;
   background-color: white;
 }
-.R_navbar-image img {
-  width: 42%;
-  position: absolute;
-  top: 4px;
-  right: 28%;
-  height: 34px;
-}
-@media screen and (max-width: 902px) and (min-width:544px) {
-  .R_navbar-image img {
+@media screen and (max-width: 980px) and (min-width: 544px) {
+  .R_navbar-image img{
     width: 27%;
     position: absolute;
     top: 4px;
     right: 36%;
-    height: 34px;
+    height: 50px;
   }
 }
-@media screen and (max-width: 906px) {
+@media screen and (max-width: 544px) {
+  .R_navbar-image img {
+    width: 37%;
+    position: absolute;
+    top: 4px;
+    right: 31%;
+    height: 50px;
+  }
+}
+@media screen and (max-width: 980px) {
   .R_NavBar-nav {
     display: block;
+    height: 50px;
     /* flex-direction: column; */
   }
   .Navigation {

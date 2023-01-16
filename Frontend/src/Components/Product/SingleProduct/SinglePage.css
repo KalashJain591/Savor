@@ -10,6 +10,7 @@
     /* border: 2px solid red; */
     width: 90%;
     display: flex;
+    flex-wrap: wrap;
     /* justify-content: center; */
 }
 .single-product-image-section{
@@ -17,12 +18,14 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     padding: 40px 20px;
+    align-items: center;
 }
 .parent-image{
     display: flex;
     justify-content: center;
+    align-items: center;
     /* height: 600px; */
 }
 .parent-image img{
@@ -57,6 +60,9 @@
     width: 50%;
     font-family: 'Poppins', sans-serif;
 }
+.single-product-description .single-product-heading{
+    font-size: 1.5rem;
+}
 .product-info{
     display: flex;
     justify-content: space-between;
@@ -65,24 +71,31 @@
 .product-description{
     padding: 20px 0;
 }
+.product-description p{
+    font-size: 80%;
+}
 .product-data-warranty{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .warranty-img{
     /* border: 2px solid blueviolet; */
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* width: 25%; */
+    width: 25%;
     align-items: center;
-    /* padding: 20px 0; */
+    padding: 10px;
 }
 .img-contain{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.img-contain p{
+    text-align: center;
 }
 .warranty-icon{
     width: 50px;
@@ -101,4 +114,13 @@
 }
 .product-details{
     margin: 30px 0;
+}
+@media screen and (max-width: 698px){
+    .single-product-image-section{
+        width: 100%;
+    }
+    .single-product-description{
+        justify-content: center;
+        width: 100%;
+    }
 }

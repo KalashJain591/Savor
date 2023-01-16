@@ -1,39 +1,101 @@
-.service-section .icon-box {
-	margin-bottom: 20px;
-	padding: 30px;
-	border-radius: 6px;
-	background-color: #f8f9fa;
+.service-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #f7f6f2;
+    padding: 60px 0;
 }
-.service-section .icon-box:hover .service-title a {
-	color: #10de47;
+.service-container{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
 }
-.service-section .icon-box .service-icon {
-	float: left;
-	color: #b5302a;
-	font-size: 40px;
+.single-service{
+    /* border: 2px solid blue; */
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-.service-section .icon-box .service-title {
-	margin-left: 70px;
-	font-weight: 700;
-	margin-bottom: 15px;
-	font-size: 18px;
-	line-height: 1.2;
+.single-service:hover .service1, .single-service:hover .service2{
+    background: #82ae46;
 }
-.service-section .icon-box .service-title a {
-	color: #556270;
-	transition: 0.3s;
-	text-decoration: none;
+.service1{
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    
 }
-.service-section .icon-box .service-para {
-	margin-left: 70px;
-	line-height: 24px;
-	font-size: 14px;
+/* .service1:hover, .service2:hover{
+    cursor: pointer;
+    background: #82ae46;
+} */
+.service2{
+    border: 1px solid white;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #e4b2d7;
 }
-.service-section .service-main-heading {
-	color: #556270;
-	padding: 0;
-	margin-bottom: 20px;
-	line-height: 1;
-	font-size: 30px;
-	font-weight: 700;
+.icon-feature{
+    font-size: 25px;
+    color: #fff;
+    font-weight: bold;
+}
+.truck1{
+    background-color: #e3afd5;
+}
+.truck2{
+    background-color: #e4b2d7;
+}
+.mortar1{
+    background-color: #ddc399;
+}
+.mortar2{
+    background-color: #dcc697;
+}
+.ranking-star1{
+    background-color: #a6d2e1;
+}
+.ranking-star2{
+    background-color: #a1d2e3;
+}
+.headset1{
+    background-color: #dfd590;
+}
+.headset2{
+    background-color: #dcd690;
+}
+.icon-text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+}
+.icon-text h6{
+    text-align: center;
+    font-weight: bold;
+}
+.icon-text p{
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+@media screen and (max-width: 828px) {
+    .single-service{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 420px) {
+    .single-service{
+        width: 100%;
+    }
 }
