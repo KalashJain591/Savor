@@ -30,7 +30,7 @@ export default function Features() {
                     Rate={data.Rate}
                   />
                   <div className="card-body">
-                    <NavLink
+                    {/* <NavLink
                       to="/cart"
                       onClick={() =>
                         addToCart(
@@ -45,7 +45,7 @@ export default function Features() {
                       <button className="btn-primary btn-lg">
                         Add to cart
                       </button>
-                    </NavLink>
+                    </NavLink> */}
                   </div>
                 </div>
               </div>

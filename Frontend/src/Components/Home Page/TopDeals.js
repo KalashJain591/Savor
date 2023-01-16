@@ -9,13 +9,18 @@ function TopDeals() {
   const { featureProducts } = useProductContext();
   console.log("fp", featureProducts);
   return (
-    <div className='grid-three'>
-      <div className="product-three">
-        {featureProducts.map((curElem) => {
-          return <Product key={curElem.id} {...curElem} />
-        })}
+    <section className="topDealsSection">
+      <div className="top-deal-content">
+        <h2>Feature Products</h2>
+        <div className='grid-three'>
+          <div className="product-three">
+            {featureProducts.map((curElem) => {
+              return <Product key={curElem._id} {...curElem} />
+            })}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 export default TopDeals

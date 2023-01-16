@@ -16,8 +16,8 @@ const getLocalCartData = () => {
 
 }
 const initialState = {
-  //  cart:[],
-  cart: getLocalCartData(),
+   cart:[],
+  // cart: getLocalCartData(),
   total_items: 0,
   total_price: 0,
   shipping_fee: 50,
@@ -29,8 +29,8 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // add to cart functionality
-  const addToCart = (id, title, Rate, Company, key) => {
-    dispatch({ type: "ADD_TO_CART", payload: { id, title, Rate, Company, key } });
+  const addToCart = (id, price, images, name) => {
+    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name } });
   };
 
   const SetDecrease = (id) => {
@@ -54,7 +54,7 @@ dispatch({type:"CLEAR_CART"});
     dispatch({type:"TOTAL_ITEMS"});
     dispatch({type:"TOTAL_AMOUNT"});
     dispatch({type:"FINAL_AMOUNT"});
-    localStorage.setItem("kalashCart", JSON.stringify(state.cart));
+    // localStorage.setItem("kalashCart", JSON.stringify(state.cart));
   }, [state.cart])
 
   

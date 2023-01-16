@@ -1,9 +1,27 @@
+.topDealsSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.top-deal-content{
+    width: 90%;
+}
+.top-deal-content h2{
+    font-weight: 600;
+}
+.top-deal-content h2{
+    /* border-bottom: 4px solid black; */
+    /* margin-bottom: 15px;  */
+    display: flex;
+    justify-content: center;
+}
 .grid-three{
     display: flex;
     width: 100%;
     justify-content: center;
+    padding: 60px 0;
 }
 .product-three{
     display: flex;
-    width: 80%;
+    width: 90%;
 }

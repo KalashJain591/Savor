@@ -24,14 +24,13 @@ const SingleProduct = () => {
         name,
         category,
         description,
-        feature,
-        images = [{ url: "" }],
+        images,
         price,
         rating,
         stock,
         reviews
     } = singleProduct
-    const [img, setImg] = useState(images[0])
+    const [img, setImg] = useState(images && images[0].imgUrl)
     console.log("test", images)
     useEffect(() => {
         // product();
@@ -42,10 +41,9 @@ const SingleProduct = () => {
         <section className='single-product-page'>
             <div className="single-product-info">
                 <div className="single-product-image-section">
-                    {images ? (
-                        <div className="parent-image">
-                            <img src={images[0].imgUrl} alt={name} />
-                        </div>) : (<div className="Loading-page">Loading...</div>)}
+                    <div className="parent-image">
+                        <img src={img} alt={name} />
+                    </div>
                     <div className="child-sec2-img">
                         <div className="child-images">
                             {images && images.map((item) => {
@@ -61,7 +59,7 @@ const SingleProduct = () => {
                 <div className="single-product-description">
                     <h2 className="single-product-heading">{name}</h2>
                     <div className="customer-info">
-                        <Star rating={rating} reviews = {reviews}/>
+                        <Star rating={rating} reviews={reviews} />
                         {/* <p>{rating}</p>
                         <p>{reviews} customer reviews</p> */}
                     </div>
@@ -102,7 +100,7 @@ const SingleProduct = () => {
                         <p>Available : <span>{stock ? "Is Available" : "Out of stock"}</span></p>
                         <p>Weight : <span>{price}Kg</span></p>
                     </div>
-                    <hr/>
+                    <hr />
                 </div>
             </div>
         </section>

@@ -1,14 +1,9 @@
-
-
-import { itemData } from '../itemData';
-
-
 const CartReducer = (state, action) => {
 
   if (action.type === "ADD_TO_CART") {
-    console.log("clicked");
-    console.log(state.cart);
-    let { id, title, Rate, Company, key } = action.payload;
+    // console.log("clicked");
+    // console.log(state.cart);
+    let { id, price, images, name } = action.payload;
     // console.log(itemData[key]);
    
   // tackle the existing product
@@ -42,15 +37,14 @@ const CartReducer = (state, action) => {
 else{
     let cartProduct = {
       id: id,
-      title: title,
-      Rate: Rate,
+      name: name,
+      price: price,
       Quantity:1,
-      image: itemData[key].image,
+      images: images[0].imgUrl,
       max: 6,
-      Company: Company,
-      total_cost:Rate
+      total_cost:price
     };
-    // console.log(state.cart);
+    console.log(state.cart);
     return {
       ...state,
       cart: [...state.cart, cartProduct],
@@ -72,7 +66,7 @@ if (action.type === "SET_DECREMENT") {
       return {
         ...curElem,
         Quantity: decAmount,
-        total_cost:decAmount*(curElem.Rate),
+        total_cost:decAmount*(curElem.price),
       };
     } else {
       return curElem;
@@ -94,7 +88,7 @@ if (action.type === "SET_DECREMENT") {
         return {
           ...curElem,
           Quantity: incAmount,
-          total_cost:incAmount*(curElem.Rate)
+          total_cost:incAmount*(curElem.price)
         };
       } else {
         return curElem;
