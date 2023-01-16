@@ -25,3 +25,22 @@
     box-shadow: 4px 4px;  
     background-color: rgb(199, 253, 195);
 }
+.profile-box{
+    width: 300px;
+    height: 300px; 
+   background-color: pink;
+}
+.profile-photo{
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    
+}
+.email{
+    padding: 15px 20px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}

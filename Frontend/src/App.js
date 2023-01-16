@@ -17,6 +17,7 @@ import UserDashboard from './Components/UserDashboard/UserDashboard';
 import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
+import Account from './Components/UserDashboard/Account';
 function App() {
   const { loggedIn } = useContext(AuthContext);
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path ="/UserDashboard" element={<UserDashboard/>}/>
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
+          <Route path ="/UserDashboard/account" element={<Account/>}/>
         </Routes>
       <Footer/>
     </>

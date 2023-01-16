@@ -19,7 +19,7 @@ export const dashData=[{
     imgUrl:"/images/account.png",
     desc:"Track , Return or Buy things again",
     title:"Your Account",
-    DirectTo:"/UserDashboard/cart",
+    DirectTo:"/UserDashboard/account",
 
 },
 {
