@@ -10,10 +10,10 @@ export default function Home() {
     <div>
       <Carousel/>
         {/* <FrontSection/> */}
-        <Features/>
+        {/* <Features/> */}
         <TopDeals/>
         <AdditionalServices/>
-        <Association/>
+        {/* <Association/> */}
     </div>
   )
 }

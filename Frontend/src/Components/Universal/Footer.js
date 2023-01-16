@@ -2,46 +2,47 @@ import React from "react";
 import "./Footer.css";
 export default function Footer() {
   return (
-    <div>
-      <footer className="w-100 py-4 flex-shrink-0">
-        <div className="container py-4">
-          <div className="row gy-4 gx-5">
-            <div className="col-lg-4 col-md-6">
-              <h5 className="h1 text-white">Savor Naturals</h5>
-              <p className="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-              <p className="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a className="text-primary" href="#">Bootstrapious.com</a></p>
-            </div>
-            <div className="col-lg-2 col-md-6">
-              <h5 className="text-white mb-3">Quick links</h5>
-              <ul className="list-unstyled text-muted">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Get started</a></li>
-                <li><a href="#">FAQ</a></li>
-              </ul>
-            </div>
-            <div className="col-lg-2 col-md-6">
-              <h5 className="text-white mb-3">Quick links</h5>
-              <ul className="list-unstyled text-muted">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Get started</a></li>
-                <li><a href="#">FAQ</a></li>
-              </ul>
-            </div>
-            {/* <div className="col-lg-4 col-md-6">
-                    <h5 className="text-white mb-3">Newsletter</h5>
-                    <p className="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                    <form action="#">
-                        <div className="input-group mb-3">
-                            <input className="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                            <button className="btn btn-warning" type="button"><i className="fas fa-paper-plane"></i></button>
-                        </div>
-                    </form>
-                </div> */}
+      <div className="footer-section">
+        <div className="footer-container">
+          <div className="footer-image footer-solo-section">
+            <img src="/images/Savor_Logo.png" alt=""/>
           </div>
-                  </div>
-      </footer >
-    </div >
+          <div className="footer-content-section footer-solo-section">
+            <div className="content-section-heading">
+              <h6>Category</h6>
+              <ul>
+                <li>Spices</li>
+                <li>Flours</li>
+                <li>Healthy Snacks</li>
+                <li>Sweetners</li>
+                <li>Cereals</li>
+                <li>GoSeva Products</li>
+              </ul>
+            </div>
+          </div>
+          <div className="footer-help-section footer-solo-section">
+            <h6>Help</h6>
+            <ul>
+              <li>Shipping Information (FAQs)</li>
+              <li>Returns & Exchange (Contact)</li>
+              <li>Terms & Conditions</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+          <div className="footer-contact-section footer-solo-section">
+            <h6>Have a Questions?</h6>
+            <div className="footer-address solo-contact">
+              <i class="fa-solid fa-location-dot"></i>
+
+            </div>
+            <div className="footer-contact-no solo-contact">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div className="footer-gmail solo-contact">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+          </div>
+        </div>
+      </div>
   );
 }

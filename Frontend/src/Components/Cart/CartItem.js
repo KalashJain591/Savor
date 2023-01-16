@@ -4,13 +4,13 @@ import { FaTrash } from 'react-icons/fa';
 
 import CartAmountToggler from './CartAmountToggler';
 
-export default function CartItem({ title, Rate, Quantity, id,total_cost }) {
+export default function CartItem({id, price, images, name, total_cost, Quantity }) {
     const { removeItem, SetDecrease, SetIncrease } = useCartContext();
     return (
         <>
             <tr>
-                <td className="align-middle "><img src="/images/dal_image1.jpg"  class='m-0 ' alt="" style={{ width: "70px", padding: "0px"}} /> {title}</td>
-                <td className="align-middle" value="1">₹{Rate}</td>
+                <td className="align-middle "><img src={images}  class='m-0 ' alt="" style={{ width: "70px", padding: "0px", margin:"10px"}} /> {name}</td>
+                <td className="align-middle" value="1">₹{price}</td>
 
                 <td className="align-middle"><CartAmountToggler Quantity={Quantity} id={id} SetDecrease={() => SetDecrease(id)}
                     SetIncrease={() => SetIncrease(id)} /> </td>

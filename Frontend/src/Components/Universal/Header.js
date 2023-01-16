@@ -23,7 +23,8 @@ function NavBar() {
       <div className="NavBar">
         <div className="NavBar-nav">
           <div className="navbar-image">
-            <img src="/images/SavorLogoTag.png" alt="" srcset="" />
+            <img className='logo-img'src="/images/logo-img.png" alt=""/>
+            <img className='logo-tag' src="/images/SavorLogoTag.png" alt=""/>
           </div>
           <ul className="Navigation">
             <li className="Nav-list">
@@ -64,7 +65,7 @@ function NavBar() {
         </div>
         <div className="R_NavBar-nav">
           <div className="R_navbar-image">
-            <img src="/images/SavorLogoTag.png" alt="" srcset="" />
+            <img src="/images/SavorLogoTag.png" alt="" />
           </div>
           <div onClick={handleShow} className="Burger">
             <div className="line"></div>
