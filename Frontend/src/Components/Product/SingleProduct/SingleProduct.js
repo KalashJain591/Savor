@@ -34,7 +34,7 @@ const SingleProduct = () => {
         var cnt=0;
         {images && images.map((item) => {
             if(cnt===0){
-                setImg(item.imgUrl)
+                setImg(item.imgUrl);
             }
             cnt++;
         })}
