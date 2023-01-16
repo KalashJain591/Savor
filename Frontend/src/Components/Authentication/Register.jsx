@@ -55,22 +55,22 @@ export default function Register() {
    <p className="subtitle">Do you have an account? <a href="/login"> Sign in</a></p>
    <Signinwithgoogle/>
    <div className="email-login">
-   <label htmlFor="name"> <b>Full Name</b> <i class="fa fa-user" aria-hidden="true"></i></label>
+   <label htmlFor="name"> <b>Full Name</b> <i className="fa fa-user" aria-hidden="true"></i></label>
       <input type="text" name="name" 
             value={user.name} 
             placeholder="Enter Your Name" 
             onChange={ handleChange } required/>
-      <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
+      <label htmlFor="Phone No"> <b>Phone No</b> <i className="fa fa-phone" aria-hidden="true"></i></label>
       <input type="text" name="phoneno"
              value={user.phoneno}
               placeholder="Enter Your Phone Number"
                onChange={ handleChange } required/>
-      <label htmlFor="email"> <b>Email</b> <i class="fa fa-envelope" aria-hidden="true"></i></label>
+      <label htmlFor="email"> <b>Email</b> <i className="fa fa-envelope" aria-hidden="true"></i></label>
       <input type="text" name="email"
              value={user.email}
               placeholder="Enter Your Email"
                onChange={ handleChange } />
-      <label htmlFor="psw"><b>Password</b> <i class="fa fa-eye-slash" aria-hidden="true"></i></label>
+      <label htmlFor="psw"><b>Password</b> <i className="fa fa-eye-slash" aria-hidden="true"></i></label>
       <input type="password" name="password"
              value={user.password}
               placeholder="Enter Your Password"

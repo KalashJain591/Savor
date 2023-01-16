@@ -32,13 +32,13 @@ export default function Footer() {
           <div className="footer-contact-section footer-solo-section">
             <h6>Have a Questions?</h6>
             <div className="footer-address solo-contact">
-              <i class="fa-solid fa-location-dot"></i> 184, 60 Feet Rd, Shakti Nagar, Loknayak Nagar, Sukhdev Vihar, Indore, Madhya Pradesh 452005
+              <i className="fa-solid fa-location-dot"></i> 184, 60 Feet Rd, Shakti Nagar, Loknayak Nagar, Sukhdev Vihar, Indore, Madhya Pradesh 452005
             </div>
             <div className="footer-contact-no solo-contact">
-              <i class="fa-solid fa-phone"></i> 9827141324
+              <i className="fa-solid fa-phone"></i> 9827141324
             </div>
             <div className="footer-gmail solo-contact">
-              <i class="fa-solid fa-envelope"></i> admin@savornaturals.in
+              <i className="fa-solid fa-envelope"></i> admin@savornaturals.in
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ const Product = (curElem) => {
         <div className="card-data">
           <div className="card-data-flex">
             <p className='card-data--name'>{name}</p>
-            <p>{heart ? (<i class="fa-solid fa-heart red-heart" onClick={() => setHeart(false)}></i>) : (<i class="fa-regular fa-heart" onClick={() => setHeart(true)}></i>)}</p>
+            <p>{heart ? (<i className="fa-solid fa-heart red-heart" onClick={() => setHeart(false)}></i>) : (<i className="fa-regular fa-heart" onClick={() => setHeart(true)}></i>)}</p>
           </div>
           <div className="card-data-rating">
             <Star rating={rating} reviews={reviews} />
@@ -26,7 +26,7 @@ const Product = (curElem) => {
             <p>₹{price}</p>
             <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name)}>
               <div className="addTocart">
-                <button class="add-cart"><i className="fas fa-plus"></i></button>
+                <button className="add-cart"><i className="fas fa-plus"></i></button>
               </div>
             </NavLink>
           </div>

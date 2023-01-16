@@ -28,21 +28,21 @@ function NavBar() {
           </div>
           <ul className="Navigation">
             <li className="Nav-list">
-              < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+              < NavLink to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/products"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Products</NavLink>
+              < NavLink to="/products"><i className="fa fa-shopping-basket" aria-hidden="true"></i> Products</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/aboutus"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</NavLink>
+              < NavLink to="/aboutus"><i className="fa fa-info-circle" aria-hidden="true"></i> About Us</NavLink>
             </li>
             <li className="Nav-list">
-              < NavLink to="/contactus"><i class="fa fa-address-book" aria-hidden="true"></i> Contact Us</NavLink>
+              < NavLink to="/contactus"><i className="fa fa-address-book" aria-hidden="true"></i> Contact Us</NavLink>
             </li>
             {loggedIn ?
               <>
                 <li className="Nav-list">
-                  < NavLink onClick={logOut}><i class="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
+                  < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
                 </li>
                 <li className="Nav-list">
                   < NavLink to="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
@@ -79,7 +79,7 @@ function NavBar() {
             <Offcanvas.Body>
               <ul className="R_Navigation">
                 <li className="R_Nav-list">
-                  < NavLink to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+                  < NavLink to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
                 </li>
                 <li className="R_Nav-list">
                   < NavLink to="/products">Products</NavLink>
@@ -93,7 +93,7 @@ function NavBar() {
                 {loggedIn ?
                   <>
                     <li className="R_Nav-list">
-                      < NavLink onClick={logOut}><i class="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
+                      < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
                     </li>
                     <li className="R_Nav-list">
                       < NavLink to="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
