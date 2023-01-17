@@ -9,42 +9,91 @@ export default function Account() {
     const [gender, setgender] = useState(userData[0].gender);
     const [address, setaddress] = useState(userData[0].addres);
     const [email, setemail] = useState(userData[0].email);
+    const [emailError, setEmailError] = useState('');
+    const [mobError, setmobError] = useState('');
+    const [NameError, setNameError] = useState('');
+    const [Password, setPassword] = useState(userData[0].password);
+    const [PasswordError, setPasswordError] = useState('');
 
 
     const [editmode, seteditmode] = useState(false);
-   
+
+    const validemail = (email) => {
+        const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+
+        if (!emailRegex.test(email)) {
+            setEmailError('Invalid email address');
+            return false;
+        }
+        setEmailError('');
+        return true;
+
+    }
+    const validmob = (phone) => {
+        const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        if (!phoneRegex.test(phone)) {
+            setmobError('Invalid phone number');
+            return false;
+        }
+        setmobError('');
+        return true;
+    }
+    const validname = (name) => {
+        if (!name) {
+            setNameError('Complete Name is required');
+            return false;
+        }
+        setNameError('');
+        return true;
+    }
+const  validpassword=(password)=>{
+    if (!password) {
+        setPasswordError('Password is required');
+        return false;
+    }
+    setNameError('');
+    return true;
+}
+
+
     const setProfile = (e) => {
         if (editmode) {
             e.preventDefault();
-            userData[0].firstname = fname
-            userData[0].lastname = lname
-            userData[0].gender = gender
-            userData[0].phoneno = mob
-            userData[0].email = email
-            userData[0].addres = address
-            console.log(userData);
+            if (validemail(email) && validmob(mob) && validname(fname) && validname(lname) && validpassword(Password)) {
+                userData[0].firstname = fname
+                userData[0].lastname = lname
+                userData[0].gender = gender
+                userData[0].phoneno = mob
+                userData[0].email = email
+                userData[0].addres = address
+            }
+            else
+                return
+            // console.log(userData);
         }
 
         seteditmode(!editmode);
     }
     const changeProfile = (e) => {
-       let key=e.target.id
-       let val=e.target.value
-       if(key==="fname")
-       setFname(val);
-       if(key==="lname")
-       setLname(val);
-       if(key==="gender")
-       setgender(val);
+        let key = e.target.id
+        let val = e.target.value
+        if (key === "fname")
+            setFname(val);
+        if (key === "lname")
+            setLname(val);
+        if (key === "gender")
+            setgender(val);
 
-       if(key==="mob")
-       setmob(val);
-       if(key==="fname")
-       setFname(val);
-       if(key==="address")
-       setaddress(val);
-       if(key==="email")
-       setemail(val);
+        if (key === "mob")
+            setmob(val);
+        if (key === "fname")
+            setFname(val);
+        if (key === "address")
+            setaddress(val);
+        if (key === "email")
+            setemail(val);
+        if (key === "password")
+            setPassword(val);
 
     }
 
@@ -70,7 +119,7 @@ export default function Account() {
                         </div>
                         <form>
                             <div className='my-3'>
-                                <span >Your Name </span><br />
+                                <span >Your Name </span><br /> {NameError && <div style={{ fontColor: "red" }}>{NameError}</div>}
                                 <input type="text" value={fname} id="fname" onChange={changeProfile} disabled={!editmode} className="me-3" ></input>
                                 <input type="text" value={lname} id="lname" onChange={changeProfile} disabled={!editmode} className=" me-3"></input>
                             </div>
@@ -84,11 +133,15 @@ export default function Account() {
                                 </select>
                             </div>
                             <div className='my-3'>
-                                <span>Email Information  </span><br />
+                                <span>Email Information  </span><br /> {emailError && <div style={{ fontColor: "red" }}>{emailError}</div>}
                                 <input type="email" pattern='[a-z0-9]+@[a-z]+\.[a-z]{2,3}' id="email" value={email} onChange={changeProfile} disabled={!editmode} required className='email'></input>
                             </div>
                             <div className='my-3'>
-                                <span>Mobile Number </span><br />
+                                <span>Your Password</span><br /> {PasswordError && <div style={{ fontColor: "red" }}>{PasswordError}</div>}
+                                <input type="password" id="password" value={Password} onChange={changeProfile} disabled={!editmode} required ></input>
+                            </div>
+                            <div className='my-3'>
+                                <span>Mobile Number </span><br /> {mobError && <div style={{ fontColor: "red" }}>{mobError}</div>}
                                 <input type="text" maxLength={10} id="mob" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" value={mob} onChange={changeProfile} required disabled={!editmode} ></input>
 
                             </div>
@@ -109,3 +162,4 @@ export default function Account() {
 
     )
 }
+
