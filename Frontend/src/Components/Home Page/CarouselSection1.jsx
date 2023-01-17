@@ -27,7 +27,7 @@ function Carousel() {
           </div>
           <div className="carousel-item">
             <img
-              src="https://thumbs.dreamstime.com/b/indian-salted-snack-ratlami-sev-namkeen-196439171.jpg"
+              src="https://tasteofindore.store/wp-content/uploads/2019/11/snew2.jpg"
               className="carousel-img d-block w-100 "
               height={"369px"}
               alt="..."

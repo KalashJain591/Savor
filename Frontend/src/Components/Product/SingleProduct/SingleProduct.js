@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, NavLink } from "react-router-dom"
 import { useProductContext } from '../../../Context/ProductContext';
 import Star from "./Star"
 import axios from "axios"
 import "./SinglePage.css"
+import { useCartContext } from "../../../Context/cart_context";
+import CartAmountToggler from '../../Cart/CartAmountToggler';
 const API = "/product";
 const SingleProduct = () => {
     // const [dataProduct, setDataProduct] = useState()
@@ -13,7 +15,7 @@ const SingleProduct = () => {
     //         console.log(response.data)
     //       });
     // }
-
+    const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
@@ -31,7 +33,15 @@ const SingleProduct = () => {
         reviews
     } = singleProduct
     const [img, setImg] = useState(images && images[0].imgUrl)
-    console.log("test", images)
+    // console.log("test", images)
+    const [Quantity, setQuantity] = useState(1);
+
+    const SetIncrease = () => {
+        Quantity < stock ? setQuantity(Quantity + 1) : setQuantity(stock)
+    }
+    const SetDecrease = () => {
+        Quantity > 1 ? setQuantity(Quantity - 1) : setQuantity(1);
+    }
     useEffect(() => {
         // product();
         getSingleProduct(`${API}/${id}`);
@@ -101,6 +111,11 @@ const SingleProduct = () => {
                         <p>Weight : <span>{price}Kg</span></p>
                     </div>
                     <hr />
+                    <NavLink to="/cart" onClick={() => addToCart(id, price, images, name)}>
+                        <div className="single-addTocart">
+                            <button class="add-single-cart">Add To Cart</button>
+                        </div>
+                    </NavLink>
                 </div>
             </div>
         </section>

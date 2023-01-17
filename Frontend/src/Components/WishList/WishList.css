@@ -1,0 +1,8 @@
+.wishList-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.wishList-container{
+    width: 80%;
+}

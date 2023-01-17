@@ -68,6 +68,10 @@
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
   } 
   @media screen and (min-width: 1333px){
     .singleProduct-origin{
