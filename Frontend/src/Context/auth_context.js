@@ -6,15 +6,17 @@ const AuthContext = createContext();
 function AuthContextProvider(props) {
 const [loggedIn, setLoggedIn] = useState(undefined);
 const[UserName,setUsername]=useState("");
+const[userprofile,setuserprofile]=useState("");
 
-  async function getuser() {
-//     try {
-//     const name=await axios.get("/auth/getusername");
-//   setUsername(name.data);  
-//   // console.log(name.data+" nahi chal raha hey");
-//   } catch (err) {
-//       console.error(err);
-//     }
+  async function getuserdeatils() {
+    try {
+    const res=await axios.get("/auth/dashboard");
+    setUsername(res.data.name);  
+    setuserprofile(res.data.profilePic);
+    // console.log("DASBOARD",res.data.profilePic);
+    } catch (err) {
+        console.error(err);
+    }
   }
   async function getLoggedIn() {
     const loggedInRes = await axios.get("/auth/loggedIn");
@@ -22,11 +24,12 @@ const[UserName,setUsername]=useState("");
   }
   
   useEffect(() => {
+    getuserdeatils();
     getLoggedIn();
   }, []);
 
   return (
-    <AuthContext.Provider value={{UserName,setUsername, loggedIn, getLoggedIn }}>
+    <AuthContext.Provider value={{UserName,userprofile,getuserdeatils, loggedIn, getLoggedIn }}>
       {props.children}
     </AuthContext.Provider>
   );
