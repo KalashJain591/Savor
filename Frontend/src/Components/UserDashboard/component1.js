@@ -6,7 +6,7 @@ export default function Component1(props) {
   
   return (
     <>
-    <NavLink to={dashData[idx].DirectTo}>
+    <NavLink to={dashData[idx].DirectTo}  style={{color:"black"}}>
     {  console.log(dashData[props.idx].DirectTo)}
     <div className="box m-3" style={{padding:"15px 20px 20px"}}>
       <div className=' d-inline-flex align-items-center' style={{paddingBottom:"15px 15px"}}>

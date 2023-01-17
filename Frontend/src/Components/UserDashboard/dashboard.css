@@ -20,11 +20,14 @@
     padding:0px 0px 15px
 
 }
-.box{
-    border: 1px solid rgb(187, 218, 238); 
-    box-shadow: 4px 4px;  
-    background-color: rgb(199, 253, 195);
+.box{ 
+    border: 1px solid rgb(187, 218, 238);
+    box-shadow: 10px 10px 10px #06970eeb;
+    border-radius: 5%;
+    background-color: white ;
 }
+    
+
 .profile-box{
     width: 300px;
     height: 300px; 
@@ -50,3 +53,7 @@
     font-family: monospace;
     font-weight: bold;
 }
+
+
+
+
