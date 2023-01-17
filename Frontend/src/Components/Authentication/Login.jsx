@@ -36,11 +36,11 @@ export default function Login() {
       <p className="subtitle">Don't have an account? <a href="/register"> Signup</a></p>
       <Signinwithgoogle/>
       <div className="email-login">
-         <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
+         <label htmlFor="Phone No"> <b>Phone No</b> <i className="fa fa-phone" aria-hidden="true"></i></label>
          <input type="text" placeholder="Enter Your Phone Number" name="phoneno"
              value={user.phoneno}
               onChange={ handleChange } required/>
-         <label htmlFor="psw"><b>Password</b> <i class="fa fa-eye-slash" aria-hidden="true"></i></label>
+         <label htmlFor="psw"><b>Password</b> <i className="fa fa-eye-slash" aria-hidden="true"></i></label>
          <input  type="password" name="password"
              value={user.password}
               placeholder="Your Password"

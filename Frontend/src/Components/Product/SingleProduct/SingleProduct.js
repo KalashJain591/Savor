@@ -15,7 +15,7 @@ const SingleProduct = () => {
     //         console.log(response.data)
     //       });
     // }
-    const { addToCart } = useCartContext();
+
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
@@ -33,19 +33,23 @@ const SingleProduct = () => {
         reviews
     } = singleProduct
     const [img, setImg] = useState(images && images[0].imgUrl)
-    // console.log("test", images)
-    const [Quantity, setQuantity] = useState(1);
-
-    const SetIncrease = () => {
-        Quantity < stock ? setQuantity(Quantity + 1) : setQuantity(stock)
-    }
-    const SetDecrease = () => {
-        Quantity > 1 ? setQuantity(Quantity - 1) : setQuantity(1);
-    }
+    console.log("test", images)
     useEffect(() => {
         // product();
-        getSingleProduct(`${API}/${id}`);
+        getSingleProduct(`${API}/${id}`); 
     }, [])
+
+    useEffect(() => {
+        var cnt=0;
+        {images && images.map((item) => {
+            if(cnt===0){
+                setImg(item.imgUrl);
+            }
+            cnt++;
+        })}
+
+    }, [singleProduct])
+
 
     return (
         <section className='single-product-page'>
@@ -83,25 +87,25 @@ const SingleProduct = () => {
                     <div className="product-data-warranty">
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-truck-fast warranty-icon"></i>
+                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Free Delivery</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-arrows-rotate warranty-icon"></i>
+                                <i className="fa-solid fa-arrows-rotate warranty-icon"></i>
                                 <p>30 Days Replacement</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-truck-fast warranty-icon"></i>
+                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Savor Delivered</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-shield-halved warranty-icon"></i>
+                                <i className="fa-solid fa-shield-halved warranty-icon"></i>
                                 <p>6 months warranty</p>
                             </div>
                         </div>

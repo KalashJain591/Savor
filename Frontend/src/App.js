@@ -18,6 +18,7 @@ import WishList from './Components/WishList/WishList';
 import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
+import Account from './Components/UserDashboard/Account';
 import Adminpanel from './Components/AdminPanel/Adminpanel';
 function App() {
   const { loggedIn } = useContext(AuthContext);
@@ -39,7 +40,9 @@ function App() {
           <Route path ="/UserDashboard" element={<UserDashboard/>}/>
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
+          <Route path ="/UserDashboard/account" element={<Account/>}/>
           <Route path ="/adminpanel" element={<Adminpanel/>}/>
+     
         </Routes>
       <Footer/>
     </>

@@ -7,7 +7,7 @@ export default function AdditionalServices() {
         <div className="single-service">
           <div className="service1 truck1">
             <div className="service2 truck2">
-            <i class="fa-sharp fa-solid fa-truck icon-feature"></i>
+            <i className="fa-sharp fa-solid fa-truck icon-feature"></i>
             </div>
           </div>
           <div className="icon-text">
@@ -18,7 +18,7 @@ export default function AdditionalServices() {
         <div className="single-service">
           <div className="service1 mortar1">
             <div className="service2 mortar2">
-            <i class="fa-solid fa-mortar-pestle icon-feature"></i>
+            <i className="fa-solid fa-mortar-pestle icon-feature"></i>
             </div>
           </div>
           <div className="icon-text">
@@ -29,7 +29,7 @@ export default function AdditionalServices() {
         <div className="single-service">
           <div className="service1 ranking-star1">
             <div className="service2 ranking-star2">
-            <i class="fa-solid fa-ranking-star icon-feature"></i>
+            <i className="fa-solid fa-ranking-star icon-feature"></i>
             </div>
           </div>
           <div className="icon-text">
@@ -40,7 +40,7 @@ export default function AdditionalServices() {
         <div className="single-service">
           <div className="service1 headset1">
             <div className="service2 headset2">
-              <i class="fa-solid fa-headset icon-feature"></i>
+              <i className="fa-solid fa-headset icon-feature"></i>
             </div>
           </div>
           <div className="icon-text">

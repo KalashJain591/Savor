@@ -31,7 +31,7 @@ const Product = (curElem) => {
             <p>₹{price}</p>
             <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name)}>
               <div className="addTocart">
-                <button class="add-cart"><i className="fas fa-plus"></i></button>
+                <button className="add-cart"><i className="fas fa-plus"></i></button>
               </div>
             </NavLink>
           </div>

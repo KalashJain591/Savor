@@ -10,7 +10,7 @@ export default function UserDashboard() {
         <div className='row text-center'>
           <h1>User Dashboard</h1>
         </div>
-        <div class="d-flex flex-column-reverse  justify-content-between align-items-center">
+        <div className="d-flex flex-column-reverse  justify-content-between align-items-center">
           <div>
             <h1>Hello User ,</h1>
             <p className='fs-5  desc fs-4'>We've designed your dashboard to be intuitive and user-friendly. You can easily
@@ -20,9 +20,13 @@ export default function UserDashboard() {
               to our customer service team.</p>
           </div>
           <div>
-          <img src='/images/user_image.jpg ' className='UserImage' /></div>
+            <img src='/images/user_image.jpg ' className='UserImage' /></div>
         </div>
         <hr />
+
+     
+
+
 
         <div className='d-flex flex-wrap justify-content-evenly '>
           {dashData.map((curElem, key) => {

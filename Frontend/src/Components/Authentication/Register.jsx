@@ -1,19 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import './login.css'
 import AuthContext from '../../Context/auth_context';
 import Signinwithgoogle from './Signinwithgoogle';
+import { storage } from '../../Firebase/firebase';
+import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
+import {v4} from 'uuid';
+import { async } from '@firebase/util';
+
 export default function Register() {
+  const [imageUpload,setImageUpload]=useState(null);
+  const fileListRef=ref(storage,'files/');
   const { getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
    const [ user, setUser] = useState({
+      profilePic:"",
       name: "",
       email:"",
       phoneno:"",
       password:"",
   })
-
   const handleChange = e => {
       const { name, value } = e.target
       setUser({
@@ -21,13 +28,38 @@ export default function Register() {
           [name]: value
       })
   }
+
+async function callapi(url) {
+  try{
+    const {profilePic, name, email,phoneno, password } = user
+    await axios.post("/auth/register",{profilePic:url,name, email,phoneno, password});
+          await getLoggedIn();
+          history("/"); 
+  }catch(err){
+    console.log(err);
+  }
+
+} 
   async function signup() {
    try {
-     const { name, email,phoneno, password } = user
+   if(imageUpload!==null){
+    const imageRef=ref(storage,'files/'+v4()+imageUpload.name);
+    await uploadBytes(imageRef,imageUpload).then((snapshot)=>{
+      getDownloadURL(snapshot.ref).then((url)=>{
+        setUser({
+          ...user,
+          profilePic:url
+        })
+        // console.log("UPDATED USER",user,url);
+          callapi(url);
+        // console.log("stored in firebase");
+      })
+    }) 
+   }
+   else{
+    callapi("https://img.icons8.com/fluency/512/test-account.png");
+   }
     //  console.log(user);
-     await axios.post("/auth/register",user);
-     await getLoggedIn();
-     history("/");
    } catch (err) {
      console.error(err);
    }
@@ -55,22 +87,26 @@ export default function Register() {
    <p className="subtitle">Do you have an account? <a href="/login"> Sign in</a></p>
    <Signinwithgoogle/>
    <div className="email-login">
-   <label htmlFor="name"> <b>Full Name</b> <i class="fa fa-user" aria-hidden="true"></i></label>
+   <label htmlFor="name"> <b>Profile Photo</b> <i className="fa fa-user" aria-hidden="true"></i></label> 
+        <input type="file" className='btn btn-secondary mx-4 my-4'  accept="image/png, image/gif, image/jpeg"  onChange={(event)=>{setImageUpload(event.target.files[0]) }} />
+      {/* <button  type="button"  className='btn btn-secondary' onClick={uploadImage}>Upload File</button> */}
+
+   <label htmlFor="name"> <b>Full Name</b> <i className="fa fa-user" aria-hidden="true"></i></label>
       <input type="text" name="name" 
             value={user.name} 
             placeholder="Enter Your Name" 
             onChange={ handleChange } required/>
-      <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
+      <label htmlFor="Phone No"> <b>Phone No</b> <i className="fa fa-phone" aria-hidden="true"></i></label>
       <input type="text" name="phoneno"
              value={user.phoneno}
               placeholder="Enter Your Phone Number"
                onChange={ handleChange } required/>
-      <label htmlFor="email"> <b>Email</b> <i class="fa fa-envelope" aria-hidden="true"></i></label>
+      <label htmlFor="email"> <b>Email</b> <i className="fa fa-envelope" aria-hidden="true"></i></label>
       <input type="text" name="email"
              value={user.email}
               placeholder="Enter Your Email"
                onChange={ handleChange } />
-      <label htmlFor="psw"><b>Password</b> <i class="fa fa-eye-slash" aria-hidden="true"></i></label>
+      <label htmlFor="psw"><b>Password</b> <i className="fa fa-eye-slash" aria-hidden="true"></i></label>
       <input type="password" name="password"
              value={user.password}
               placeholder="Enter Your Password"
