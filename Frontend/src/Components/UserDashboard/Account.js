@@ -100,7 +100,7 @@ const  validpassword=(password)=>{
     return (
         <div>
             <div className='container'>
-                <h1 className='text-center'> Your Account </h1>
+                <h1 className='text-center acc '> Your Account </h1>
                 <div className='row'>
                     <div className='col-12 col-sm-4 d-flex flex-column'>
                         <div className='align-self-center'>
