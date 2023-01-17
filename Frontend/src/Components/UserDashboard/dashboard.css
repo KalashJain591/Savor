@@ -44,3 +44,9 @@
     border-radius: 8px;
     box-sizing: border-box;
 }
+.acc{
+    margin: 20px;
+    font-size: 43px;
+    font-family: monospace;
+    font-weight: bold;
+}

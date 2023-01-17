@@ -5,5 +5,6 @@ export const userData=[{
  gender:"Male",
  phoneno:"9617450917",
  email:" kalashj93@gmail.com",  
- addres:"123 -B  Indore"
+ addres:"123 -B  Indore",
+ password:"helloworld"
 }]
