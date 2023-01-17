@@ -20,9 +20,13 @@ export default function UserDashboard() {
               to our customer service team.</p>
           </div>
           <div>
-          <img src='/images/user_image.jpg ' className='UserImage' /></div>
+            <img src='/images/user_image.jpg ' className='UserImage' /></div>
         </div>
         <hr />
+
+     
+
+
 
         <div className='d-flex flex-wrap justify-content-evenly '>
           {dashData.map((curElem, key) => {

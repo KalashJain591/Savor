@@ -42,6 +42,7 @@ function App() {
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
           <Route path ="/adminpanel" element={<Adminpanel/>}/>
+     
         </Routes>
       <Footer/>
     </>
