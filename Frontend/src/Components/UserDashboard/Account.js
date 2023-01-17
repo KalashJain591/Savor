@@ -125,7 +125,7 @@ const  validpassword=(password)=>{
                             </div>
                             <div className='my-3'>
                                 <span>Your Gender </span>
-                                <select id="gender" class="form-select " style={{ width: "30%" }} aria-label="Default select example" onChange={changeProfile}>
+                                <select id="gender" className="form-select " style={{ width: "30%" }} aria-label="Default select example" onChange={changeProfile}>
                                     <option selected>{gender}</option>
                                     <option value="Male" disabled={!editmode} >Male</option>
                                     <option value="Female" disabled={!editmode} >Female</option>

@@ -6,13 +6,6 @@ import axios from "axios"
 import "./SinglePage.css"
 const API = "/product";
 const SingleProduct = () => {
-    // const [dataProduct, setDataProduct] = useState()
-    // const product = async() =>{
-    //          await  axios.get(`/product/${id}`).then((response) => {
-    //         setDataProduct(response.data);
-    //         console.log(response.data)
-    //       });
-    // }
 
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
@@ -30,12 +23,24 @@ const SingleProduct = () => {
         stock,
         reviews
     } = singleProduct
-    const [img, setImg] = useState(images && images[0].imgUrl)
-    console.log("test", images)
+    const [img, setImg] = useState("")
+    // console.log("test", images)
     useEffect(() => {
         // product();
-        getSingleProduct(`${API}/${id}`);
+        getSingleProduct(`${API}/${id}`); 
     }, [])
+
+    useEffect(() => {
+        var cnt=0;
+        {images && images.map((item) => {
+            if(cnt===0){
+                setImg(item.imgUrl);
+            }
+            cnt++;
+        })}
+
+    }, [singleProduct])
+
 
     return (
         <section className='single-product-page'>
@@ -73,25 +78,25 @@ const SingleProduct = () => {
                     <div className="product-data-warranty">
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-truck-fast warranty-icon"></i>
+                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Free Delivery</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-arrows-rotate warranty-icon"></i>
+                                <i className="fa-solid fa-arrows-rotate warranty-icon"></i>
                                 <p>30 Days Replacement</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-truck-fast warranty-icon"></i>
+                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Savor Delivered</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-shield-halved warranty-icon"></i>
+                                <i className="fa-solid fa-shield-halved warranty-icon"></i>
                                 <p>6 months warranty</p>
                             </div>
                         </div>
