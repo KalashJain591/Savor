@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getStorage } from 'firebase/storage';
 const firebaseConfig = {
   apiKey: "AIzaSyD5oEDEDlycflFfIVXqXp1DW3psKibqDhY",
   authDomain: "savornaturals-911a0.firebaseapp.com",
@@ -14,6 +15,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+//for image storage
+export const storage=getStorage(app)
 
 const provider = new GoogleAuthProvider();
 
@@ -23,7 +26,7 @@ export const signInWithGoogle = () => {
       const name = result.user.displayName;
       const email = result.user.email;
       const profilePic = result.user.photoURL;
-       axios.post("auth/signinwithgoogle",{profilePic,name,email });
+      axios.post("/auth/signinwithgoogle",{profilePic,name,email });
        window.location.reload(false);
     })
     .catch((error) => {
