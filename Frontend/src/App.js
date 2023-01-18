@@ -25,19 +25,18 @@ function App() {
     <>
      <Header/>
         <Routes>
-
           <Route exact path="/" element={<Home/>}/>
           <Route path="/contactus" element={<Contactus/>}/>
           <Route path="/aboutus" element={<Aboutus/>}/>
           <Route path="/products" element={<Products/>}/>
           <Route path="/SingleProduct/:id" element={<SingleProduct/>}/>
           {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
-          <Route path="/login" element={loggedIn ? <Dashboard/>:<Login/>}/>
-          <Route path="/register" element={loggedIn ? <Dashboard/>:<Register/>}/>
-          <Route path="/dashboard" element={loggedIn ?<Dashboard/>:<Login/>}/>
+          <Route path="/login" element={loggedIn ?<UserDashboard/>:<Login/>}/>
+          <Route path="/register" element={loggedIn ? <UserDashboard/>:<Register/>}/>
+          {/* <Route path="/dashboard" element={loggedIn ?<UserDashboard/>:<Login/>}/> */}
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
-          <Route path ="/UserDashboard" element={<UserDashboard/>}/>
+          <Route path ="/UserDashboard" element={loggedIn ?<UserDashboard/>:<Login/>}/>
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
