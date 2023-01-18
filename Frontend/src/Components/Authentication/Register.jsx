@@ -7,7 +7,6 @@ import Signinwithgoogle from './Signinwithgoogle';
 import { storage } from '../../Firebase/firebase';
 import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
 import {v4} from 'uuid';
-import { async } from '@firebase/util';
 import Loading from './Loading';
 
 export default function Register() {
@@ -21,6 +20,7 @@ export default function Register() {
       name: "",
       email:"",
       phoneno:"",
+      dob:"",
       password:"",
   })
   const handleChange = e => {
@@ -33,8 +33,8 @@ export default function Register() {
 
 async function callapi(url) {
   try{
-    const {profilePic, name, email,phoneno, password } = user
-    await axios.post("/auth/register",{profilePic:url,name, email,phoneno, password});
+    const {profilePic, name, email,phoneno,dob, password } = user
+    await axios.post("/auth/register",{profilePic:url,name, email,phoneno,dob, password});
           await getLoggedIn();
           history("/"); 
   }catch(err){
@@ -69,7 +69,7 @@ async function callapi(url) {
 
 
  const register = () => {
-     const { name, email,phoneno, password } = user
+     const { name, email,phoneno,dob, password } = user
       if(phoneno.length!==10){
        alert("Invalid Phone Number");
      }
@@ -109,7 +109,7 @@ async function callapi(url) {
             placeholder="Enter Your Name" 
             onChange={ handleChange } required/>
       <label htmlFor="Phone No"> <b>Phone No</b> <i className="fa fa-phone" aria-hidden="true"></i></label>
-      <input type="text" name="phoneno"
+      <input type="tel" name="phoneno"
              value={user.phoneno}
               placeholder="Enter Your Phone Number"
                onChange={ handleChange } required/>
@@ -118,6 +118,10 @@ async function callapi(url) {
              value={user.email}
               placeholder="Enter Your Email"
                onChange={ handleChange } />
+      
+      <label htmlFor="birthday">Date of Birth <i class="fa fa-birthday-cake" aria-hidden="true"></i> </label>
+       <input type="date" id="dob" name="dob" value={user.dob} onChange={ handleChange } />
+
       <label htmlFor="psw"><b>Password</b> <i className="fa fa-eye-slash" aria-hidden="true"></i></label>
       <input type="password" name="password"
              value={user.password}
