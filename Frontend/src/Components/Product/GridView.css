@@ -4,3 +4,12 @@
     display: flex;
     flex-wrap: wrap;
 }
+@media screen and (min-width: 1333px){
+    .singleProduct-origin{
+        width: 30%;
+    }
+    .product-grid-section{
+        justify-content: center;
+    }
+    
+  }
