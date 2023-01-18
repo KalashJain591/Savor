@@ -16,9 +16,9 @@ root.render(
     <AppProvider>
       <FilterContextProvider>
         <CartProvider>
-          <WishListProvider>
+          {/* <WishListProvider> */}
              <App />
-          </WishListProvider>
+          {/* </WishListProvider> */}
         </CartProvider>
       </FilterContextProvider>
     </AppProvider>

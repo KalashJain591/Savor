@@ -62,7 +62,7 @@ body {
       rgba(33, 173, 76, 1) 73%
     );;
     padding: 12px;
-    border: 2px solid #F0FF42;
+    border: none;
     position: absolute;
     border-radius: 5px;
     border-radius: 8px;
@@ -75,6 +75,7 @@ body {
     gap: 5px;
     justify-content: center;
     /* margin: 20px 0 20px 0 ; */
+    color: white;
     
   }
 
@@ -118,13 +119,14 @@ body {
       rgba(33, 173, 76, 1) 73%
     );
     padding: 12px;
-    border: 2px solid #F0FF42;
+    border: none;
     position: absolute;
     border-radius: 5px;
-    
-  }
-  .submit-btn:hover{
-    box-shadow: 5px 5px 6px #ccc ;
+    box-shadow: 6px 6px 6px #ccc ;
+    font-family: 'poppins';
+    font-weight: 600;
+    color: white;
+
   }
   .forget-pass {
     text-align: center;

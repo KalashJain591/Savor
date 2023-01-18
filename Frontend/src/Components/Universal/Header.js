@@ -10,7 +10,7 @@ function NavBar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { getLoggedIn, loggedIn ,UserName,userprofile,getuserdeatils } = useContext(AuthContext);
+  const { getLoggedIn, loggedIn, UserName, userprofile, getuserdeatils } = useContext(AuthContext);
   const history = useNavigate()
   async function logOut() {
     await axios.get("/auth/logout");
@@ -21,15 +21,15 @@ function NavBar() {
   useEffect(() => {
     getuserdeatils();
   }, [])
-  
+
   const { total_items } = useCartContext()
   return (
     <>
       <div className="NavBar">
         <div className="NavBar-nav">
           <div className="navbar-image">
-            <img className='logo-img'src="/images/logo-img.png" alt=""/>
-            <img className='logo-tag' src="/images/SavorLogoTag.png" alt=""/>
+            <img className='logo-img' src="/images/logo-img.png" alt="" />
+            <img className='logo-tag' src="/images/SavorLogoTag.png" alt="" />
           </div>
           <ul className="Navigation">
             <li className="Nav-list">
@@ -52,8 +52,8 @@ function NavBar() {
                 <li className="Nav-list">
                   < NavLink to="/UserDashboard">
                     {/* {UserName} */}
-                  <img src={userprofile} width={"35px"} height={"35px"} style={{borderRadius:"25px"}}/>
-                   </NavLink>
+                    <img src={userprofile} width={"35px"} height={"35px"} style={{ borderRadius: "25px" }} />
+                  </NavLink>
                 </li>
 
               </>
@@ -82,21 +82,25 @@ function NavBar() {
           </div>
           <Offcanvas show={show} className="off_canvas" onHide={handleClose}>
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Savor</Offcanvas.Title>
+              <Offcanvas.Title>
+                <div className="R-navbar-image">
+                  <img className='R-logo-tag' src="/images/SavorLogoTag.png" alt="" />
+                </div>
+              </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <ul className="R_Navigation">
                 <li className="R_Nav-list">
-                  < NavLink to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+                  < NavLink to="/" onClick={handleClose}><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to="/products">Products</NavLink>
+                  < NavLink to="/products" onClick={handleClose}><i className="fa fa-shopping-basket" aria-hidden="true"></i>Products</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to="/aboutus">About Us</NavLink>
+                  < NavLink to="/aboutus" onClick={handleClose}><i className="fa fa-info-circle" aria-hidden="true"></i>About Us</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to="/contactus">Contact Us</NavLink>
+                  < NavLink to="/contactus" onClick={handleClose}><i className="fa fa-address-book" aria-hidden="true"></i>Contact Us</NavLink>
                 </li>
                 {loggedIn ?
                   <>
@@ -104,11 +108,11 @@ function NavBar() {
                       < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
                     </li>
                     <li className="R_Nav-list">
-                      < NavLink to="/dashboard"><i className="fa-solid fa-user"></i></NavLink>
+                      < NavLink to="/dashboard" onClick={handleClose}><i className="fa-solid fa-user"></i></NavLink>
                     </li>
                   </>
                   : <li className="R_Nav-list">
-                    < NavLink to="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
+                    < NavLink to="/login" onClick={handleClose}>Sign in <i className="fa fa-sign-in"></i></NavLink>
                   </li>}
               </ul>
             </Offcanvas.Body>

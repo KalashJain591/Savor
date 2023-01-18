@@ -77,6 +77,7 @@
     .singleProduct-origin{
         width: 30%;
     }
+    
   }
   @media screen and (max-width: 912px){
     .singleProduct-origin{
@@ -89,6 +90,7 @@
         justify-content: center;
     }
     .singleProduct-origin{
-        width: 80%;
+        width: 100%;
+        /* margin: 0; */
     }
   }

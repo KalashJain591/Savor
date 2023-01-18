@@ -15,7 +15,7 @@ const SingleProduct = () => {
     //         console.log(response.data)
     //       });
     // }
-
+    const {addToCart} = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>

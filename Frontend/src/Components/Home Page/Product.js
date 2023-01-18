@@ -7,7 +7,7 @@ import "./Product.css"
 
 const Product = (curElem) => {
   const { addToCart } = useCartContext();
-  const { addToWishList } = useWishListContext();
+  // const { addToWishList } = useWishListContext();
 
   const { _id, name, images, price, rating, reviews } = curElem;
   const [heart, setHeart] = useState(false)
@@ -22,7 +22,7 @@ const Product = (curElem) => {
             <NavLink to={`/SingleProduct/${_id}`}>
               <p className='card-data--name'>{name}</p>
             </NavLink>
-            <p>{heart ? (<i class="fa-solid fa-heart red-heart" onClick={() => {setHeart(false); addToWishList()}}></i>) : (<i class="fa-regular fa-heart" onClick={() => setHeart(true)}></i>)}</p>
+            <p>{heart ? (<i class="fa-solid fa-heart red-heart" onClick={() => setHeart(false)}></i>) : (<i class="fa-regular fa-heart" onClick={() => setHeart(true)}></i>)}</p>
           </div>
           <div className="card-data-rating">
             <Star rating={rating} reviews={reviews} />
