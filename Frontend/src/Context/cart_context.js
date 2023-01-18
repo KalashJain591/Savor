@@ -6,7 +6,7 @@ const CartContext = createContext();
 
 // to prevent the data loss on refresh/rendering ,we use local storage to temp store the data
 const getLocalCartData = () => {
-  let locaCartData = localStorage.getItem("kalashCart");
+  let locaCartData = localStorage.getItem("SavorCart");
   if (locaCartData === null) {
     return [];
   }
@@ -16,8 +16,8 @@ const getLocalCartData = () => {
 
 }
 const initialState = {
-   cart:[],
-  // cart: getLocalCartData(),
+  //  cart:[],
+  cart: getLocalCartData(),
   total_items: 0,
   total_price: 0,
   shipping_fee: 50,
@@ -29,24 +29,24 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // add to cart functionality
-  const addToCart = (id, price, images, name) => {
-    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name } });
+  const addToCart = (id, price, images, name, userId) => {
+    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId } });
   };
 
-  const SetDecrease = (id) => {
-    dispatch({ type: "SET_DECREMENT", payload: id });
+  const SetDecrease = (id, userId) => {
+    dispatch({ type: "SET_DECREMENT", payload: {id,userId} });
   };
 
-  const SetIncrease = (id) => {
-    dispatch({ type: "SET_INCREMENT", payload: id });
+  const SetIncrease = (id, userId) => {
+    dispatch({ type: "SET_INCREMENT", payload: {id,userId} });
   };
 
-  const removeItem = (id) => {
-    dispatch({ type: "REMOVE_ITEM", payload: id });
+  const removeItem = (id,userId) => {
+    dispatch({ type: "REMOVE_ITEM", payload: {id,userId} });
   }
    
   const clearCart=()=>{
-dispatch({type:"CLEAR_CART"});
+  dispatch({type:"CLEAR_CART"});
   }
   // to add data in local storage
   // using set method
@@ -54,15 +54,12 @@ dispatch({type:"CLEAR_CART"});
     dispatch({type:"TOTAL_ITEMS"});
     dispatch({type:"TOTAL_AMOUNT"});
     dispatch({type:"FINAL_AMOUNT"});
-    // localStorage.setItem("kalashCart", JSON.stringify(state.cart));
+    localStorage.setItem("SavorCart", JSON.stringify(state.cart));
+    // console.log(state.cart);
   }, [state.cart])
-
-  
 
   return <CartContext.Provider value={{ ...state, addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>
     {children}
-
-
   </CartContext.Provider>
 
 }

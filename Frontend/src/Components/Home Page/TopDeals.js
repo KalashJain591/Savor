@@ -7,7 +7,7 @@ import "./TopDeals.css"
 
 function TopDeals() {
   const { featureProducts } = useProductContext();
-  console.log("fp", featureProducts);
+  // console.log("fp", featureProducts);
   return (
     <section className="topDealsSection">
       <div className="top-deal-content">
