@@ -18,11 +18,11 @@ export default function PaymentSummary() {
                   Price ({total_items} items)
                   <span>+ {total_price}</span>
                 </li>
-                <li
+                {/* <li
                   className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Discount (5%)
                   <span>- ₹{Discount}</span>
-                </li>
+                </li> */}
 
 
                 <li className="list-group-item d-flex justify-content-between align-items-center px-0">
