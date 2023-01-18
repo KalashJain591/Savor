@@ -20,6 +20,7 @@ import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
 import Account from './Components/UserDashboard/Account';
 import Adminpanel from './Components/AdminPanel/Adminpanel';
+import Error404 from './Components/Error404';
 function App() {
   const { loggedIn } = useContext(AuthContext);
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
           <Route path ="/adminpanel" element={<Adminpanel/>}/>
+          <Route path='*' element={<Error404 />}/>
      
         </Routes>
       <Footer/>

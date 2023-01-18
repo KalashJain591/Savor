@@ -132,7 +132,8 @@ if (action.type === "SET_DECREMENT") {
    return {...state,total_price:updated};
   }
   if(action.type==="FINAL_AMOUNT"){
-    let discount=(state.total_price*5)/100;
+    // let discount=(state.total_price*5)/100;
+    let discount=0;
     // console.log(state.total_price);
   let updated=state.total_price-discount+state.shipping_fee;
   return {...state,final_amount:updated,Discount:discount};
