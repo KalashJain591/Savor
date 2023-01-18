@@ -54,7 +54,6 @@ export default function CheckoutForm() {
         <div>
             <div className="container mb-4">
                 <main>
-
                     <div className="row d-flex .flex-wrap-reverse">
                         <div className="col-md-7 col-lg-8">
                             <h4 className="mb-3">Billing address</h4>

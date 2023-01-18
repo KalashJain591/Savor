@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./dashboard.css"
 import Component1 from './component1';
 import { dashData } from './dashboardData';
 export default function UserDashboard() {
-  const [DashItem, setDashItem] = useState("Order");
+ 
   return (
     <>
       <div className='container mb-4'>
@@ -20,7 +20,7 @@ export default function UserDashboard() {
               to our customer service team.</p>
           </div>
           <div>
-            <img src='/images/user_image.jpg ' className='UserImage' /></div>
+            <img src='/images/user_image.jpg ' className='UserImage'  alt ="user"/></div>
         </div>
         <hr />
 
