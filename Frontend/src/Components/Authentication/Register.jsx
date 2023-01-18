@@ -8,8 +8,10 @@ import { storage } from '../../Firebase/firebase';
 import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
 import {v4} from 'uuid';
 import { async } from '@firebase/util';
+import Loading from './Loading';
 
 export default function Register() {
+  const [loadingbtn,setloadingbtn]=useState(false);
   const [imageUpload,setImageUpload]=useState(null);
   const fileListRef=ref(storage,'files/');
   const { getLoggedIn } = useContext(AuthContext);
@@ -75,13 +77,23 @@ async function callapi(url) {
        alert("Invalid Email");
      }
      else if(name&& email && phoneno && password ){
+      setloadingbtn(true);
          signup();
      } else {
          alert("Please fill all the fields")
      }
    }
+   
+  const loadingstyle={
+    filter:"blur(8px)"
+  }   
+  const nothing={
+  }   
+  
+ 
   return (
-   <div className="containerdiv card1">
+    <div>
+   <div className="containerdiv card1" style={loadingbtn?loadingstyle:nothing}>
    {/* <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/> */}
    <h2 className="title"> Sign up</h2>
    <p className="subtitle">Do you have an account? <a href="/login"> Sign in</a></p>
@@ -115,6 +127,7 @@ async function callapi(url) {
    <button  onClick={register} className="submit-btn">Sign up</button>
    {/* <a className="forget-pass" href="#">Forgot password?</a> */}
 </div>
-
+   {loadingbtn? <Loading/>:<></>}
+</div>
   )
 }
