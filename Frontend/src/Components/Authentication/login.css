@@ -98,7 +98,8 @@ body {
   .email-login label {
     color: rgb(170 166 166);
   }
-  
+  input[type="tel"],
+  input[type="date"],
   input[type="text"],
   input[type="password"] {
     padding: 15px 20px;
