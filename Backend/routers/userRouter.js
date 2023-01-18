@@ -8,7 +8,7 @@ const jwt_decode=require("jwt-decode")
 router.post("/register", async (req, res) => {
   try {
     // console.log("register");
-    const { profilePic,name,email,phoneno , password } = req.body;
+    const { profilePic,name,email,phoneno ,dob, password } = req.body;
     // validation
     // console.log(req.body);
     if (!name||!email ||!phoneno ||!password )
@@ -35,6 +35,7 @@ router.post("/register", async (req, res) => {
       name,
       email,
       phoneno,
+      dob,
       passwordHash,
     });
 

@@ -52,7 +52,7 @@ export default function CheckoutForm() {
     return (
 
         <div>
-            <div className="container mb-4">
+            <div className="container my-4">
                 <main>
                     <div className="row d-flex .flex-wrap-reverse">
                         <div className="col-md-7 col-lg-8">

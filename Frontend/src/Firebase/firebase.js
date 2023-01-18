@@ -26,8 +26,12 @@ export const signInWithGoogle = () => {
       const name = result.user.displayName;
       const email = result.user.email;
       const profilePic = result.user.photoURL;
-      axios.post("/auth/signinwithgoogle",{profilePic,name,email });
-       window.location.reload(false);
+      axios.post("/auth/signinwithgoogle",{profilePic,name,email })
+      .then((response) => {
+        window.location.reload(false);
+      });
+
+      //  window.location.reload(false);
     })
     .catch((error) => {
       console.log(error);

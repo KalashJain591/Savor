@@ -68,11 +68,16 @@
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
   } 
   @media screen and (min-width: 1333px){
     .singleProduct-origin{
         width: 30%;
     }
+    
   }
   @media screen and (max-width: 912px){
     .singleProduct-origin{
@@ -85,6 +90,7 @@
         justify-content: center;
     }
     .singleProduct-origin{
-        width: 80%;
+        width: 100%;
+        /* margin: 0; */
     }
   }

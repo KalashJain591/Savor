@@ -1,0 +1,8 @@
+.spinner{
+    position: absolute;
+    bottom: 30vh;
+    padding-left: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

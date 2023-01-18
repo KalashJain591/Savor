@@ -14,6 +14,7 @@ import Footer from './Components/Universal/Footer';
 import CheckoutForm from './Components/Checkout/CheckoutForm';
 import SingleProduct from "./Components/Product/SingleProduct/SingleProduct"
 import UserDashboard from './Components/UserDashboard/UserDashboard';
+import WishList from './Components/WishList/WishList';
 import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
@@ -25,13 +26,12 @@ function App() {
     <>
      <Header/>
         <Routes>
-
           <Route exact path="/" element={<Home/>}/>
           <Route path="/contactus" element={<Contactus/>}/>
           <Route path="/aboutus" element={<Aboutus/>}/>
           <Route path="/products" element={<Products/>}/>
           <Route path="/SingleProduct/:id" element={<SingleProduct/>}/>
-          {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
+          <Route path="/wishList" element={<WishList/>}/>
           <Route path="/login" element={loggedIn ? <Dashboard/>:<Login/>}/>
           <Route path="/register" element={loggedIn ? <Dashboard/>:<Register/>}/>
           <Route path="/dashboard" element={loggedIn ?<Dashboard/>:<Login/>}/>

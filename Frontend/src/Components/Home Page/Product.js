@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Star from "../Product/SingleProduct/Star"
 import { useCartContext } from "../../Context/cart_context";
+import {useWishListContext} from "../../Context/WishListContext"
 import "./Product.css"
 
 const Product = (curElem) => {
   const { addToCart } = useCartContext();
+  // const { addToWishList } = useWishListContext();
+
   const { _id, name, images, price, rating, reviews } = curElem;
   const [heart, setHeart] = useState(false)
   return (
@@ -16,8 +19,10 @@ const Product = (curElem) => {
         </NavLink>
         <div className="card-data">
           <div className="card-data-flex">
-            <p className='card-data--name'>{name}</p>
-            <p>{heart ? (<i className="fa-solid fa-heart red-heart" onClick={() => setHeart(false)}></i>) : (<i className="fa-regular fa-heart" onClick={() => setHeart(true)}></i>)}</p>
+            <NavLink to={`/SingleProduct/${_id}`}>
+              <p className='card-data--name'>{name}</p>
+            </NavLink>
+            <p>{heart ? (<i class="fa-solid fa-heart red-heart" onClick={() => setHeart(false)}></i>) : (<i class="fa-regular fa-heart" onClick={() => setHeart(true)}></i>)}</p>
           </div>
           <div className="card-data-rating">
             <Star rating={rating} reviews={reviews} />
