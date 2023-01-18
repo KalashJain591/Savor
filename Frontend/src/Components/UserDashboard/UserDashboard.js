@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+
+import React, { useContext, useState } from 'react'
 import "./dashboard.css"
 import Component1 from './component1';
 import { dashData } from './dashboardData';
+import AuthContext from '../../Context/auth_context';
+
 export default function UserDashboard() {
+ 
+  const { getLoggedIn, loggedIn ,UserName,userprofile,getuserdeatils } = useContext(AuthContext);
   const [DashItem, setDashItem] = useState("Order");
   return (
     <>
@@ -20,7 +25,7 @@ export default function UserDashboard() {
               to our customer service team.</p>
           </div>
           <div>
-            <img src='/images/user_image.jpg ' className='UserImage' /></div>
+            <img src={userprofile} className='UserImage' /></div>
         </div>
         <hr />
         <div className='d-flex flex-wrap justify-content-evenly '>

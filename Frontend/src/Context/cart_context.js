@@ -16,8 +16,8 @@ const getLocalCartData = () => {
 
 }
 const initialState = {
-  //  cart:[],
-  cart: getLocalCartData(),
+   cart:[],
+  // cart: getLocalCartData(),
   total_items: 0,
   total_price: 0,
   shipping_fee: 50,
@@ -54,8 +54,7 @@ const CartProvider = ({ children }) => {
     dispatch({type:"TOTAL_ITEMS"});
     dispatch({type:"TOTAL_AMOUNT"});
     dispatch({type:"FINAL_AMOUNT"});
-    localStorage.setItem("SavorCart", JSON.stringify(state.cart));
-    // console.log(state.cart);
+    // localStorage.setItem("kalashCart", JSON.stringify(state.cart));
   }, [state.cart])
 
   return <CartContext.Provider value={{ ...state, addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>

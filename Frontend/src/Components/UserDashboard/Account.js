@@ -1,7 +1,24 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { userData } from './userData'
 
 export default function Account() {
+
+    const [userDetails,setuserDetails]=useState({});
+ 
+    async function details() {
+      try {
+       const response=await axios.get("/auth/dashboard")
+          setuserDetails(response.data);
+        // console.log(response.data);
+    } catch (err) {
+        console.error(err);
+      }
+    }
+    useEffect(() => {
+       details();
+    },[userDetails]);
+
 
     const [fname, setFname] = useState(userData[0].firstname);
     const [lname, setLname] = useState(userData[0].lastname);
@@ -14,8 +31,6 @@ export default function Account() {
     const [NameError, setNameError] = useState('');
     const [Password, setPassword] = useState(userData[0].password);
     const [PasswordError, setPasswordError] = useState('');
-
-
     const [editmode, seteditmode] = useState(false);
 
     const validemail = (email) => {
@@ -94,9 +109,9 @@ const  validpassword=(password)=>{
             setemail(val);
         if (key === "password")
             setPassword(val);
-
     }
 
+    
     return (
         <div>
             <div className='container'>
@@ -104,7 +119,7 @@ const  validpassword=(password)=>{
                 <div className='row'>
                     <div className='col-12 col-sm-4 d-flex flex-column'>
                         <div className='align-self-center'>
-                            <img src="/images/user_image.jpg" className='profile-photo' alt="profile photo" />
+                            <img src={userDetails.profilePic} className='profile-photo' alt="profile photo" />
                         </div>
                         <input className='align-self-center' type='file'></input>
 
