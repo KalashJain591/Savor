@@ -19,9 +19,11 @@ export default function Cart() {
           <table className="table text-center mb-0">
             <thead className="text-dark">
               <tr>
-                <th>Item</th>
+                
+                <th className='d-sm-none'>Item</th>
+                <th className=' d-none d-sm-block'>Item</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th className=' d-none d-sm-block'>Quantity</th>
                 <th>Total</th>
                 <th>Remove</th>
               </tr>
@@ -33,7 +35,7 @@ export default function Cart() {
             </tbody>
           </table>
           <div className="d-flex bd-highlight mb-3">
-            <NavLink to="/">  <button className=" btn btn-md btn-success m-2 " style={{backgroundColor:"#13C50C"}}>Continue Shopping </button></NavLink>
+            <NavLink to="/products">  <button className=" btn btn-md btn-success m-2 " style={{backgroundColor:"#13C50C"}}>Continue Shopping </button></NavLink>
             <button className="btn btn-md btn-  ms-auto m-2 " style={{backgroundColor:"gray"}} onClick={clearCart.bind(this)}>Clear Cart </button>
           </div>
         </div>

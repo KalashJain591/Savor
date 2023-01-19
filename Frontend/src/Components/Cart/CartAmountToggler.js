@@ -8,7 +8,7 @@ const CartAmountToggler = ({ Quantity, SetDecrease, SetIncrease }) => {
     <div className="cart-button">
       <div className=" d-flex flex-row justify-content-center ">
         <button onClick={() => SetDecrease()} className="toggler px-2">
-          <p className="toggler" style={{
+          <p className="toggler fs-sm-4" style={{
             fontSize: "2rem"
           }} >-</p>
         </button>
