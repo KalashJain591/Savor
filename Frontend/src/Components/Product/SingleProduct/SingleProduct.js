@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, NavLink } from "react-router-dom"
 import { useProductContext } from '../../../Context/ProductContext';
 import Star from "./Star"
 import axios from "axios"
 import "./SinglePage.css"
+import { useCartContext } from "../../../Context/cart_context";
+import CartAmountToggler from '../../Cart/CartAmountToggler';
 const API = "/product";
 const SingleProduct = () => {
     // const [dataProduct, setDataProduct] = useState()
@@ -13,7 +15,7 @@ const SingleProduct = () => {
     //         console.log(response.data)
     //       });
     // }
-
+    const {addToCart} = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
@@ -34,8 +36,20 @@ const SingleProduct = () => {
     console.log("test", images)
     useEffect(() => {
         // product();
-        getSingleProduct(`${API}/${id}`);
+        getSingleProduct(`${API}/${id}`); 
     }, [])
+
+    useEffect(() => {
+        var cnt=0;
+        {images && images.map((item) => {
+            if(cnt===0){
+                setImg(item.imgUrl);
+            }
+            cnt++;
+        })}
+
+    }, [singleProduct])
+
 
     return (
         <section className='single-product-page'>
@@ -73,25 +87,25 @@ const SingleProduct = () => {
                     <div className="product-data-warranty">
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-truck-fast warranty-icon"></i>
+                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Free Delivery</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-arrows-rotate warranty-icon"></i>
+                                <i className="fa-solid fa-arrows-rotate warranty-icon"></i>
                                 <p>30 Days Replacement</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-truck-fast warranty-icon"></i>
+                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Savor Delivered</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="img-contain">
-                                <i class="fa-solid fa-shield-halved warranty-icon"></i>
+                                <i className="fa-solid fa-shield-halved warranty-icon"></i>
                                 <p>6 months warranty</p>
                             </div>
                         </div>
@@ -101,6 +115,11 @@ const SingleProduct = () => {
                         <p>Weight : <span>{price}Kg</span></p>
                     </div>
                     <hr />
+                    <NavLink to="/cart" onClick={() => addToCart(id, price, images, name)}>
+                        <div className="single-addTocart">
+                            <button class="add-single-cart">Add To Cart</button>
+                        </div>
+                    </NavLink>
                 </div>
             </div>
         </section>

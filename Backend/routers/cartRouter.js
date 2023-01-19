@@ -36,8 +36,8 @@ router.post('/addtocart/:id', async (req, res) => {
       const price = productDetails.price;
       const name = productDetails.name;
       // console.log(name);
-      const imgurl = productDetails.imgurl;
-  
+      const images = productDetails.images[0].imgUrl;
+      // console.log(imgurl)
       if (cart) {
         //if cart exist for the user
         let indexFound = cart.products.findIndex(p => p.productId == productId); 
@@ -47,7 +47,7 @@ router.post('/addtocart/:id', async (req, res) => {
           productItem.quantity += quantity;
           cart.items[indexFound] = productItem;
         } else {
-          cart.products.push({ productId, name, quantity, price, imgurl });
+          cart.products.push({ productId, name, quantity, price, images });
         }
   
         cart.bill += quantity * price;
@@ -57,7 +57,7 @@ router.post('/addtocart/:id', async (req, res) => {
         //create cart if doesn't exist
         const newCart = await Cart.create({
           userId,
-          products: [{ productId, name, quantity, price, imgurl }],
+          products: [{ productId, name, quantity, price, images }],
           bill: quantity * price
         });
         return res.status(201).send(newCart);
@@ -69,10 +69,10 @@ router.post('/addtocart/:id', async (req, res) => {
   }
 );
 
-router.put('/updatecart/:id',async (req, res) => {
+router.post('/updatecart/:id',async (req, res) => {
     const userId = req.params.id;
     const { productId, quantity } = req.body;
-  
+    // console.log(productId)
     try {
       let cart = await Cart.findOne({ userId });
       let item = await Product.findOne({ _id: productId });
@@ -108,7 +108,7 @@ router.put('/updatecart/:id',async (req, res) => {
 );
 
 
-router.delete('/removefromcart/:userId/:itemId', async (req, res) => {
+router.get('/removefromcart/:userId/:itemId', async (req, res) => {
     const userId = req.params.userId;
     const productId = req.params.itemId;
     try {
@@ -128,5 +128,20 @@ router.delete('/removefromcart/:userId/:itemId', async (req, res) => {
     }
   });
 
+  // router.get('/clearcart/', async (req, res) => {
+  //   const token = req.cookies.token;
+  //   if (!token) return res.json(false);
+  //   var decoded = jwt_decode(token);
+    
+  //   try {
+  //     Cart.findOneAndDelete(({ userId }));
+  //     return res.status(201).json("Cart Cleared Succesfully");
+  //   } catch (error) {
+  //     console.log(error);
+  //     res.status(500).send('Something went wrong');
+  //   }
+  // });
 
+
+  
 module.exports = router;

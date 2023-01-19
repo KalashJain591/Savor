@@ -1,16 +1,22 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../../Context/auth_context';
 import './login.css'
 // import Signinwithgoogle from './Signinwithgoogle';
 export default function Login() {
-  const { getLoggedIn } = useContext(AuthContext);
+  const { loggedIn,getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
    const [ user, setUser] = useState({
        phoneno:"",
        password:"",
    })
+
+   useEffect(() => {
+    if (loggedIn) {
+      history("/");
+    }
+  }, [loggedIn]);
 
    const handleChange = e => {
        const { name, value } = e.target
@@ -36,11 +42,11 @@ export default function Login() {
       <p className="subtitle">Don't have an account? <a href="/register"> Signup</a></p>
       {/* <Signinwithgoogle/> */}
       <div className="email-login">
-         <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
+         <label htmlFor="Phone No"> <b>Phone No</b> <i className="fa fa-phone" aria-hidden="true"></i></label>
          <input type="text" placeholder="Enter Your Phone Number" name="phoneno"
              value={user.phoneno}
               onChange={ handleChange } required/>
-         <label htmlFor="psw"><b>Password</b> <i class="fa fa-eye-slash" aria-hidden="true"></i></label>
+         <label htmlFor="psw"><b>Password</b> <i className="fa fa-eye-slash" aria-hidden="true"></i></label>
          <input  type="password" name="password"
              value={user.password}
               placeholder="Your Password"

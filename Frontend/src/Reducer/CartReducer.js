@@ -1,107 +1,121 @@
+import axios from "axios";
 const CartReducer = (state, action) => {
 
   if (action.type === "ADD_TO_CART") {
     // console.log("clicked");
     // console.log(state.cart);
-    let { id, price, images, name } = action.payload;
+    let { id, price, images, name, userId } = action.payload;
     // console.log(itemData[key]);
-   
-  // tackle the existing product
- 
-    
-  let existingProduct = state.cart.find(
-    (curItem) => curItem.id === id
-  );
-// agar product exist krta hai
-  if (existingProduct) {
-    let updatedProduct = state.cart.map((curElem) => {
-      if (curElem.id === id ) {
-        let newAmount = curElem.Quantity + 1;
 
-        if (newAmount >= curElem.max) {
-          newAmount = curElem.max;
+    // tackle the existing product
+
+
+    let existingProduct = state.cart.find(
+      (curItem) => curItem.id === id
+    );
+    // agar product exist krta hai
+    if (existingProduct) {
+      let updatedProduct = state.cart.map((curElem) => {
+        if (curElem.id === id) {
+          let newAmount = curElem.Quantity + 1;
+          if (newAmount >= curElem.max) {
+            newAmount = curElem.max;
+          }
+          // console.log("hello", newAmount);
+          if(userId!==undefined){
+            axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: newAmount });
+          }
+          return {
+            ...curElem,
+            Quantity: newAmount,
+          };
+        } else {
+          return curElem;
         }
-        return {
-          ...curElem,
-          Quantity: newAmount,
-        };
-      } else {
-        return curElem;
-      }
-    });
-    return {
-      ...state,
-      cart: updatedProduct,
-    };
-  }
-else{
-    let cartProduct = {
-      id: id,
-      name: name,
-      price: price,
-      Quantity:1,
-      images: images[0].imgUrl,
-      max: 6,
-      total_cost:price
-    };
-    console.log(state.cart);
-    return {
-      ...state,
-      cart: [...state.cart, cartProduct],
-    };
-  }
-}
- 
-if (action.type === "SET_DECREMENT") {
-  let updatedProduct = state.cart.map((curElem) => {
-   
-    if (curElem.id === action.payload) {
-      // console.log("reached");
-      let decAmount = curElem.Quantity - 1;
-
-      if (decAmount <= 1) {
-        decAmount = 1;
-      }
-
+      });
       return {
-        ...curElem,
-        Quantity: decAmount,
-        total_cost:decAmount*(curElem.price),
+        ...state,
+        cart: updatedProduct,
       };
-    } else {
-      return curElem;
     }
-  });
-  return { ...state, cart: updatedProduct };
-}
+    else {
+      let cartProduct = {
+        id: id,
+        name: name,
+        price: price,
+        Quantity: 1,
+        images: images[0].imgUrl,
+        max: 6,
+        total_cost: price
+      };
+      if(userId!==undefined){
+      axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 });
+      }
+      // console.log(state.cart);
+      return {
+        ...state,
+        cart: [...state.cart, cartProduct],
+      };
+    }
+  }
 
-  if (action.type === "SET_INCREMENT") {
+  if (action.type === "SET_DECREMENT") {
     let updatedProduct = state.cart.map((curElem) => {
-      if (curElem.id === action.payload) {
+      let { id, userId } = action.payload;
+      if (curElem.id === id) {
         // console.log("reached");
-        let incAmount = curElem.Quantity + 1;
+        let decAmount = curElem.Quantity - 1;
 
-        if (incAmount >= curElem.max) {
-          incAmount = curElem.max;
+        if (decAmount <= 1) {
+          decAmount = 1;
         }
-
+        if(userId!==undefined){
+        axios.post(`/cart/updatecart/${userId}`,{productId:id, quantity:decAmount});
+        }
         return {
           ...curElem,
-          Quantity: incAmount,
-          total_cost:incAmount*(curElem.price)
+          Quantity: decAmount,
+          total_cost: decAmount * (curElem.price),
         };
       } else {
         return curElem;
       }
     });
     return { ...state, cart: updatedProduct };
-    
   }
 
+  if (action.type === "SET_INCREMENT") {
+    let updatedProduct = state.cart.map((curElem) => {
+      let { id, userId } = action.payload;
+      if (curElem.id === id) {
+        // console.log("reached");
+        let incAmount = curElem.Quantity + 1;
+
+        if (incAmount >= curElem.max) {
+          incAmount = curElem.max;
+        }
+        if(userId!==undefined){
+        axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: incAmount });
+        }
+        return {
+          ...curElem,
+          Quantity: incAmount,
+          total_cost: incAmount * (curElem.price)
+        };
+      } else {
+        return curElem;
+      }
+    });
+    return { ...state, cart: updatedProduct };
+  }
   if (action.type === "REMOVE_ITEM") {
+    let { id, userId } = action.payload;
     let updatedCart = state.cart.filter(
-      (curItem) => curItem.id !== action.payload
+      (curItem) => curItem.id !== id
     );
+    if(userId!==undefined){
+      axios.get(`/cart/removefromcart/${userId}/${id}`);
+    }
     return {
       ...state,
       cart: updatedCart,
@@ -110,32 +124,35 @@ if (action.type === "SET_DECREMENT") {
 
   // to empty or to clear to cart
   if (action.type === "CLEAR_CART") {
+    // console.log("clearcart")
+    // axios.get('/cart/clearcart/');
+    
     return {
       ...state,
       cart: [],
     };
   }
-  if(action.type==="TOTAL_ITEMS")
-  {
-    let updated=state.cart.reduce((initial,curElem)=>{
-        initial=initial+curElem.Quantity;
-        return initial;
-    },0);
-    return {...state,total_items:updated};
+  if (action.type === "TOTAL_ITEMS") {
+    let updated = state.cart.reduce((initial, curElem) => {
+      initial = initial + curElem.Quantity;
+      return initial;
+    }, 0);
+    return { ...state, total_items: updated };
   }
-  if(action.type==="TOTAL_AMOUNT"){
-    
-   let updated=state.cart.reduce((initial,curElem)=>{
-    initial=initial+curElem.total_cost;
-    return initial;
-   },0)
-   return {...state,total_price:updated};
+  if (action.type === "TOTAL_AMOUNT") {
+
+    let updated = state.cart.reduce((initial, curElem) => {
+      initial = initial + curElem.total_cost;
+      return initial;
+    }, 0)
+    return { ...state, total_price: updated };
   }
   if(action.type==="FINAL_AMOUNT"){
-    let discount=(state.total_price*5)/100;
+    // let discount=(state.total_price*5)/100;
+    let discount=0;
     // console.log(state.total_price);
-  let updated=state.total_price-discount+state.shipping_fee;
-  return {...state,final_amount:updated,Discount:discount};
+    let updated = state.total_price - discount + state.shipping_fee;
+    return { ...state, final_amount: updated, Discount: discount };
   }
 
   // if (action.type === "CART_TOTAL_ITEM") {

@@ -8,8 +8,9 @@ const jwt_decode=require("jwt-decode")
 router.post("/register", async (req, res) => {
   try {
     // console.log("register");
-    const { name,email,phoneno , password } = req.body;
+    const { profilePic,name,email,phoneno ,dob, password } = req.body;
     // validation
+    // console.log(req.body);
     if (!name||!email ||!phoneno ||!password )
       return res
         .status(400)
@@ -30,9 +31,11 @@ router.post("/register", async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
     // save a new user account to the db
     const newUser = new User({
+      profilePic,
       name,
       email,
       phoneno,
+      dob,
       passwordHash,
     });
 
@@ -58,7 +61,7 @@ router.post("/register", async (req, res) => {
     res.status(200).send("Successfully Registered");
   }
 });
-
+ 
 // log in
 
 router.post("/login", async (req, res) => {

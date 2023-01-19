@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import AuthContext from '../../Context/auth_context';
 import './cart.css';
 const CartAmountToggler = ({ Quantity, SetDecrease, SetIncrease }) => {
 
   // console.log(id);
   return (
     <div className="cart-button">
-      <div className=" d-flex flex-row justify-content-evenly">
-        <button onClick={() => SetDecrease()} className="toggler">
-          <p className="toggler" style={{
-
+      <div className=" d-flex flex-row justify-content-center ">
+        <button onClick={() => SetDecrease()} className="toggler px-2">
+          <p className="toggler fs-sm-4" style={{
             fontSize: "2rem"
           }} >-</p>
         </button>
-        <div className="amount-style mt-2" style={{ fontSize: "24px" }}>{Quantity}</div>
+        <div className="amount-style mt-2 px-3" style={{ fontSize: "24px" }}>{Quantity}</div>
         <button onClick={() => SetIncrease()} className='toggler'>
-          <p className='toggler' style={{
-
+          <p className='toggler px-2' style={{
             fontSize: "2rem"
           }}>+</p>
         </button>

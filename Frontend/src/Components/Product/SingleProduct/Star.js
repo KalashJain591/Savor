@@ -6,11 +6,11 @@ const Star = ({rating, reviews}) => {
         return (
           <span className="star-color" key={index}>
               {rating >= index + 1 ? (
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
               ): rating >= number ? (
-                  <i class="fa-solid fa-star-half-stroke"></i>
+                  <i className="fa-solid fa-star-half-stroke"></i>
               ):(
-                  <i class="fa-regular fa-star"></i>
+                  <i className="fa-regular fa-star"></i>
               )}
            
           </span>

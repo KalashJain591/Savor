@@ -30,7 +30,7 @@ export default function Dashboard() {
       <div className="col-lg-4">
         <div className="card shadow-sm">
           <div className="card-header bg-transparent text-center">
-            <img className="profile_img" src="https://img.icons8.com/fluency/512/user-male-circle.png" alt=""/>
+            <img className="profile_img" src={userDetails.profilePic} alt=""/>
             <h3>{userDetails.name}</h3>
           </div>
           <div className="card-body">
