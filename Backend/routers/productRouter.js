@@ -8,7 +8,6 @@ router.get("/",(req, res) => {
         Product.find()
         .then((product) => res.json(product))
         .catch((err) => res.status(400).json("Error: " + err));
-
     } catch (err) {
       res.json(false);
     }

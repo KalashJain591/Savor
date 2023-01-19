@@ -5,6 +5,20 @@ const OrderSchema = new Schema({
   userId: {
     type: String
   },
+  profilePic: { type: String, required: false },
+  name: { type: String, required: true },
+  email: { type: String, required: false },
+  phoneno: { type: String, required: false },
+  dob: { type: String, required: false },
+  address: { type: String, required: false },
+  addressoptional: { type: String, required: false },
+  state: { type: String, required: false },
+  city: { type: String, required: false },
+  postalcode: { type: String, required: false },
+  ordermobile1: { type: String, required: false },
+  ordermobile2: { type: String, required: false },
+  AddressOptional: { type: String, required: false },
+  AddressOptional: { type: String, required: false },
   products: [
     {
       productId: {
