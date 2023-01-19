@@ -1,45 +1,48 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import PaymentSummary from '../Cart/PaymentSummary'
+import { useCartContext } from '../../Context/cart_context';
+import CartItem from '../Cart/CartItem';
 export default function CheckoutForm() {
-
+    const { cart, clearCart, } = useCartContext();
     // creating  a state to store the values from the user
     const [Record, SetRecord] = useState([]);
-
+    const [display, setdisplay] = useState(false);
     const [BillingInfo, setBillingInfo] = useState({
         name: "",
-            email: "",
-            address1: "",
-            address2: "",
-            state: "",
-            city: "",
-            pincode: "",
-            mobileNumber1: "",
-            mobileNumber2: "",
+        email: "",
+        address1: "",
+        address2: "",
+        state: "",
+        city: "",
+        pincode: "",
+        mobileNumber1: "",
+        mobileNumber2: "",
     })
 
     async function details() {
         try {
-         const response=await axios.get("/auth/dashboard")
-           setBillingInfo({
-            name: response.data.name,
-            email: response.data.email,
-            address1: "",
-            address2: "",
-            state: "",
-            city: "",
-            pincode: "",
-            mobileNumber1: response.data.phoneno,
-            mobileNumber2: "",
-          })
-      } catch (err) {
-          console.error(err);
+            const response = await axios.get("/auth/dashboard")
+            setBillingInfo({
+                name: response.data.name,
+                email: response.data.email,
+                address1: "",
+                address2: "",
+                state: "",
+                city: "",
+                pincode: "",
+                mobileNumber1: response.data.phoneno,
+                mobileNumber2: "",
+            })
+        } catch (err) {
+            console.error(err);
         }
-      }
-      useEffect(() => {
-         details();
-      },[]);
-   
+    }
+    useEffect(() => {
+        details();
+    }, []);
+
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -130,7 +133,7 @@ export default function CheckoutForm() {
                                         <label htmlFor="username" className="form-label" >Mobile number 1:</label>
                                         <div className="input-group">
                                             <span className="input-group-text">+91</span>
-                                            <input type="tel"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" className="form-control" name="userName" placeholder="enter your 10-digit  mobile number" value={BillingInfo.mobileNumber1}  minlength="10" maxlength="10" onChange={handleInput} required />
+                                            <input type="tel" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" className="form-control" name="mobileNumber1" placeholder="enter your 10-digit  mobile number" value={BillingInfo.mobileNumber1} minlength="10" maxlength="10" onChange={handleInput} required />
                                             <div className="invalid-feedback">
                                                 Your username is required.
                                             </div>
@@ -138,7 +141,7 @@ export default function CheckoutForm() {
                                         <label htmlFor="username" className="form-label" >Mobile number 2:</label>
                                         <div className="input-group">
                                             <span className="input-group-text">+91</span>
-                                            <input type="tel"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" className="form-control" name="userName" placeholder="enter your 10-digit  mobile  number" value={BillingInfo.mobileNumber2} minlength="10" maxlength="10" onChange={handleInput} />
+                                            <input type="tel" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" className="form-control" name="mobileNumber2" placeholder="enter your 10-digit  mobile  number" value={BillingInfo.mobileNumber2} minlength="10" maxlength="10" onChange={handleInput} />
                                             <div className="invalid-feedback">
                                                 Your username is required.
                                             </div>
@@ -203,8 +206,28 @@ export default function CheckoutForm() {
                                 </div> */}
 
                                 {/* <hr className="my-4" /> */}
+                                <button className=" btn btn-primary btn-md mb-4 ms-2" style={{ backgroundColor: "gray" }} onClick={() => { setdisplay(!display) }}>Check Items</button>
+                                <button className=" btn btn-primary btn-md mb-4 float-end me-2" type="submit">Continue to checkout</button>
+                                { display?<div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
+                                    <table className="table text-center mb-0">
+                                        <thead className="text-dark">
+                                            <tr>
 
-                                <button className=" btn btn-primary btn-lg mb-4" type="submit">Continue to checkout</button>
+                                                <th className='d-sm-none'>Item</th>
+                                                <th className=' d-none d-sm-block'>Item</th>
+                                                <th>Price</th>
+                                                <th className=' d-none d-sm-block'>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {cart.map(Element => (
+                                                <CartItem key={Element.id} {...Element} />
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>: <div></div>}
                             </form>
                         </div>
                         <div className='col-md-5 col-lg-4'>
