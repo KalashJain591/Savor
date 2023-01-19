@@ -8,16 +8,20 @@ const OrderSchema = new Schema({
   products: [
     {
       productId: {
-        type: String
+        type: String,
+        ref: 'product'
       },
-      imgurl: String,
       name: String,
       quantity: {
         type: Number,
         required: true,
-        min: [1, 'Quantity can not be less then 1.']
+        min: [1, 'Quantity cannot be less than 1'],
+        default: 1
       },
-      price: Number
+      price: {
+        type: Number
+      },
+      images:  String,
     }
   ],
   bill: {
@@ -27,7 +31,8 @@ const OrderSchema = new Schema({
   date_added: {
     type: Date,
     default: Date.now
-  }
+  },
+  order_status: String
 });
 
 module.exports = Order = mongoose.model('order', OrderSchema);

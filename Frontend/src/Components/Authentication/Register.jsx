@@ -3,7 +3,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import './login.css'
 import AuthContext from '../../Context/auth_context';
-import Signinwithgoogle from './Signinwithgoogle';
+// import Signinwithgoogle from './Signinwithgoogle';
 import { storage } from '../../Firebase/firebase';
 import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
 import {v4} from 'uuid';
@@ -103,7 +103,7 @@ async function callapi(url) {
    {/* <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/> */}
    <h2 className="title"> Sign up</h2>
    <p className="subtitle">Do you have an account? <a href="/login"> Sign in</a></p>
-   <Signinwithgoogle/>
+   {/* <Signinwithgoogle/> */}
    <div className="email-login">
    <label htmlFor="name"> <b>Profile Photo</b> <i className="fa fa-user" aria-hidden="true"></i></label> 
         <input type="file" className='btn btn-secondary mx-4 my-4'  accept="image/png, image/gif, image/jpeg"  onChange={(event)=>{setImageUpload(event.target.files[0]) }} />
