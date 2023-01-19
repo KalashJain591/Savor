@@ -17,7 +17,7 @@ router.get("/",(req, res) => {
     }
 });
 
-router.get("/orderbycart/:id",async (req, res) => {
+router.post("/orderbycart/:id",async (req, res) => {
   const userId = req.params.id;
   try {
     let user = await User.findOne({_id:userId});
@@ -29,6 +29,15 @@ router.get("/orderbycart/:id",async (req, res) => {
       email:user.email,
       phoneno:user.phoneno,
       dob:user.dob,
+      address,
+      addressoptional,
+      state,
+      city,
+      postalcode,
+      ordermobile1,
+      ordermobile2,
+      AddressOptional,
+      AddressOptional,
       products:cart.products,
       bill:cart.bill,
       date_added:new Date(),

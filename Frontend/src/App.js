@@ -20,7 +20,7 @@ import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
 import Account from './Components/UserDashboard/Account';
 import Adminpanel from './Components/AdminPanel/Adminpanel';
-import AddProducts from './Components/AdminPanel/AddProducts';
+import AddProducts from './Components/AdminPanel/Addproducts';
 import Error404 from './Components/Error404';
 import { useEffect } from 'react';
 function App() {
