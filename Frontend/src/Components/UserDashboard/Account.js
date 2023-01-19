@@ -7,21 +7,25 @@ export default function Account() {
     const [userDetails,setuserDetails]=useState({});
  
     async function details() {
-      try {
-       const response=await axios.get("/auth/dashboard")
-          setuserDetails(response.data);
-        // console.log(response.data);
-    } catch (err) {
-        console.error(err);
+        try {
+         const response=await axios.get("/auth/dashboard")
+            setuserDetails(response.data);
+            setname(response.data.name);
+            setmob(response.data.phoneno);
+            setemail(response.data.email);
+          // console.log(response.data);
+      } catch (err) {
+          console.error(err);
+        }
       }
-    }
-    useEffect(() => {
-       details();
-    },[userDetails]);
+      useEffect(() => {
+         details();
+      },[userDetails]);
+  
+  
 
-
-    const [fname, setFname] = useState(userData[0].firstname);
-    const [lname, setLname] = useState(userData[0].lastname);
+    const [name, setname] = useState(userData[0].firstname);
+    // const [lname, setLname] = useState(userData[0].lastname);
     const [mob, setmob] = useState(userData[0].phoneno);
     const [gender, setgender] = useState(userData[0].gender);
     const [address, setaddress] = useState(userData[0].addres);
@@ -74,13 +78,13 @@ const  validpassword=(password)=>{
     const setProfile = (e) => {
         if (editmode) {
             e.preventDefault();
-            if (validemail(email) && validmob(mob) && validname(fname) && validname(lname) && validpassword(Password)) {
-                userData[0].firstname = fname
-                userData[0].lastname = lname
+            if (validemail(email) && validmob(mob) && validname(name) && validpassword(Password)) {
+                userData[0].firstname = name
+                // userData[0].lastname = lname
                 userData[0].gender = gender
                 userData[0].phoneno = mob
                 userData[0].email = email
-                userData[0].addres = address
+                userData[0].addresDelivery = address
             }
             else
                 return
@@ -92,17 +96,17 @@ const  validpassword=(password)=>{
     const changeProfile = (e) => {
         let key = e.target.id
         let val = e.target.value
-        if (key === "fname")
-            setFname(val);
-        if (key === "lname")
-            setLname(val);
+        if (key === "name")
+            setname(val);
+        // if (key === "lname")
+        //     setLname(val);
         if (key === "gender")
             setgender(val);
 
         if (key === "mob")
             setmob(val);
-        if (key === "fname")
-            setFname(val);
+        if (key === "name")
+            setname(val);
         if (key === "address")
             setaddress(val);
         if (key === "email")
@@ -135,8 +139,8 @@ const  validpassword=(password)=>{
                         <form>
                             <div className='my-3'>
                                 <span >Your Name </span><br /> {NameError && <div style={{ fontColor: "red" }}>{NameError}</div>}
-                                <input type="text" value={fname} id="fname" onChange={changeProfile} disabled={!editmode} className="me-3" ></input>
-                                <input type="text" value={lname} id="lname" onChange={changeProfile} disabled={!editmode} className=" me-3"></input>
+                                <input type="text" value={name} id="name" onChange={changeProfile} disabled={!editmode} className="me-3" ></input>
+                                {/* <input type="text" value={lname} id="lname" onChange={changeProfile} disabled={!editmode} className=" me-3"></input> */}
                             </div>
                             <div className='my-3'>
                                 <span>Your Gender </span>
