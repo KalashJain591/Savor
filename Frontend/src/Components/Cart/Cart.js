@@ -22,9 +22,11 @@ export default function Cart() {
           <table className="table text-center mb-0">
             <thead className="text-dark">
               <tr>
-                <th>Item</th>
+                
+                <th className='d-sm-none'>Item</th>
+                <th className=' d-none d-sm-block'>Item</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th className=' d-none d-sm-block'>Quantity</th>
                 <th>Total</th>
                 <th>Remove</th>
               </tr>

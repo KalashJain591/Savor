@@ -1,7 +1,7 @@
 import './App.css';
 import Header from "./Components/Universal/Header"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,useLocation } from 'react-router-dom';
 import Home from './Components/Home Page/Home';
 import Aboutus from './Components/About us/Aboutus';
 import Contactus from './Components/Contactus/Contactus';
@@ -21,8 +21,17 @@ import Orders from './Components/UserDashboard/orders';
 import Account from './Components/UserDashboard/Account';
 import Adminpanel from './Components/AdminPanel/Adminpanel';
 import Error404 from './Components/Error404';
+import { useEffect } from 'react';
 function App() {
   const { loggedIn } = useContext(AuthContext);
+  
+  // Scroll top when location changes
+  const location = useLocation(); 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+ // 
+
   return (
     <>
      <Header/>
