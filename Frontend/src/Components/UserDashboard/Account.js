@@ -84,7 +84,7 @@ const  validpassword=(password)=>{
                 userData[0].gender = gender
                 userData[0].phoneno = mob
                 userData[0].email = email
-                userData[0].addres = address
+                userData[0].addresDelivery = address
             }
             else
                 return
