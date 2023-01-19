@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../../Context/auth_context';
 import './login.css'
-import Signinwithgoogle from './Signinwithgoogle';
+// import Signinwithgoogle from './Signinwithgoogle';
 export default function Login() {
   const { getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
@@ -34,7 +34,7 @@ export default function Login() {
       {/* <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/> */}
       <h2 className="title"> Log in</h2>
       <p className="subtitle">Don't have an account? <a href="/register"> Signup</a></p>
-      <Signinwithgoogle/>
+      {/* <Signinwithgoogle/> */}
       <div className="email-login">
          <label htmlFor="Phone No"> <b>Phone No</b> <i class="fa fa-phone" aria-hidden="true"></i></label>
          <input type="text" placeholder="Enter Your Phone Number" name="phoneno"
