@@ -15,7 +15,7 @@ const SingleProduct = () => {
     //         console.log(response.data)
     //       });
     // }
-    const {addToCart} = useCartContext();
+    const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
@@ -36,17 +36,19 @@ const SingleProduct = () => {
     console.log("test", images)
     useEffect(() => {
         // product();
-        getSingleProduct(`${API}/${id}`); 
+        getSingleProduct(`${API}/${id}`);
     }, [])
 
     useEffect(() => {
-        var cnt=0;
-        {images && images.map((item) => {
-            if(cnt===0){
-                setImg(item.imgUrl);
-            }
-            cnt++;
-        })}
+        var cnt = 0;
+        {
+            images && images.map((item) => {
+                if (cnt === 0) {
+                    setImg(item.imgUrl);
+                }
+                cnt++;
+            })
+        }
 
     }, [singleProduct])
 
@@ -115,11 +117,18 @@ const SingleProduct = () => {
                         <p>Weight : <span>{price}Kg</span></p>
                     </div>
                     <hr />
-                    <NavLink to="/cart" onClick={() => addToCart(id, price, images, name)}>
-                        <div className="single-addTocart">
-                            <button class="add-single-cart">Add To Cart</button>
-                        </div>
-                    </NavLink>
+                    <div className="order-btns">
+                        <NavLink to="/cart" onClick={() => addToCart(id, price, images, name)}>
+                            <div className="single-addTocart">
+                                <button class="add-single-cart">Add To Cart</button>
+                            </div>
+                        </NavLink>
+                        <NavLink to="/cart/checkout">
+                            <div className="single-buyNow">
+                                <button class="buy-now">Buy Now</button>
+                            </div>
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </section>
