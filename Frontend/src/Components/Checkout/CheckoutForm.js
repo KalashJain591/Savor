@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import PaymentSummary from '../Cart/PaymentSummary'
 export default function CheckoutForm() {
 
@@ -17,7 +18,28 @@ export default function CheckoutForm() {
             mobileNumber2: "",
     })
 
-    // 
+    async function details() {
+        try {
+         const response=await axios.get("/auth/dashboard")
+           setBillingInfo({
+            name: response.data.name,
+            email: response.data.email,
+            address1: "",
+            address2: "",
+            state: "",
+            city: "",
+            pincode: "",
+            mobileNumber1: response.data.phoneno,
+            mobileNumber2: "",
+          })
+      } catch (err) {
+          console.error(err);
+        }
+      }
+      useEffect(() => {
+         details();
+      },[]);
+   
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
