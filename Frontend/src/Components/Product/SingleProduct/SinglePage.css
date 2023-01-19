@@ -115,10 +115,14 @@
 .product-details{
     margin: 30px 0;
 }
+.order-btns{
+    display: flex;
+    justify-content: space-between;
+}
 .single-addTocart{
     text-align: center;
 }
-.single-addTocart button{
+.single-addTocart button, .single-buyNow .buy-now{
     padding: 10px;
     border: 0;
     background: orangered;
