@@ -33,12 +33,12 @@ function App() {
           <Route path="/products" element={<Products/>}/>
           <Route path="/SingleProduct/:id" element={<SingleProduct/>}/>
           <Route path="/wishList" element={<WishList/>}/>
-          <Route path="/login" element={loggedIn ? <Dashboard/>:<Login/>}/>
-          <Route path="/register" element={loggedIn ? <Dashboard/>:<Register/>}/>
-          <Route path="/dashboard" element={loggedIn ?<Dashboard/>:<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/dashboard" element={<Login/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
-          <Route path ="/UserDashboard" element={loggedIn ?<UserDashboard/>:<Login/>}/>
+          <Route path ="/UserDashboard" element={<UserDashboard/>}/>
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>

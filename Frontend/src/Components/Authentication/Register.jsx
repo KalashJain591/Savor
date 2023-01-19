@@ -13,8 +13,14 @@ export default function Register() {
   const [loadingbtn,setloadingbtn]=useState(false);
   const [imageUpload,setImageUpload]=useState(null);
   const fileListRef=ref(storage,'files/');
-  const { getLoggedIn } = useContext(AuthContext);
+  const {loggedIn ,getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
+   useEffect(() => {
+    if (loggedIn) {
+      history("/");
+    }
+  }, [loggedIn]);
+
    const [ user, setUser] = useState({
       profilePic:"",
       name: "",

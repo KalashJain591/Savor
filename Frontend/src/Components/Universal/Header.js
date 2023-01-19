@@ -15,6 +15,7 @@ function NavBar() {
   async function logOut() {
     await axios.get("/auth/logout");
     await getLoggedIn();
+    await getuserdeatils();
     history('/');
   }
 

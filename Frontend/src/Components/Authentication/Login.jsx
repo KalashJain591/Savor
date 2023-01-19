@@ -1,16 +1,22 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../../Context/auth_context';
 import './login.css'
 import Signinwithgoogle from './Signinwithgoogle';
 export default function Login() {
-  const { getLoggedIn } = useContext(AuthContext);
+  const { loggedIn,getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
    const [ user, setUser] = useState({
        phoneno:"",
        password:"",
    })
+
+   useEffect(() => {
+    if (loggedIn) {
+      history("/");
+    }
+  }, [loggedIn]);
 
    const handleChange = e => {
        const { name, value } = e.target

@@ -22,7 +22,9 @@ const CartReducer = (state, action) => {
             newAmount = curElem.max;
           }
           // console.log("hello", newAmount);
-          axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: newAmount });
+          if(userId!==undefined){
+            axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: newAmount });
+          }
           return {
             ...curElem,
             Quantity: newAmount,
@@ -46,8 +48,10 @@ const CartReducer = (state, action) => {
         max: 6,
         total_cost: price
       };
+      if(userId!==undefined){
       axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 });
-      console.log(state.cart);
+      }
+      // console.log(state.cart);
       return {
         ...state,
         cart: [...state.cart, cartProduct],
@@ -65,7 +69,9 @@ const CartReducer = (state, action) => {
         if (decAmount <= 1) {
           decAmount = 1;
         }
+        if(userId!==undefined){
         axios.post(`/cart/updatecart/${userId}`,{productId:id, quantity:decAmount});
+        }
         return {
           ...curElem,
           Quantity: decAmount,
@@ -88,7 +94,9 @@ const CartReducer = (state, action) => {
         if (incAmount >= curElem.max) {
           incAmount = curElem.max;
         }
+        if(userId!==undefined){
         axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: incAmount });
+        }
         return {
           ...curElem,
           Quantity: incAmount,
@@ -105,7 +113,9 @@ const CartReducer = (state, action) => {
     let updatedCart = state.cart.filter(
       (curItem) => curItem.id !== id
     );
-    axios.get(`/cart/removefromcart/${userId}/${id}`);
+    if(userId!==undefined){
+      axios.get(`/cart/removefromcart/${userId}/${id}`);
+    }
     return {
       ...state,
       cart: updatedCart,
@@ -114,6 +124,9 @@ const CartReducer = (state, action) => {
 
   // to empty or to clear to cart
   if (action.type === "CLEAR_CART") {
+    // console.log("clearcart")
+    // axios.get('/cart/clearcart/');
+    
     return {
       ...state,
       cart: [],
