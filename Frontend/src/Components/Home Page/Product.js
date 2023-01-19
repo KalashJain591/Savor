@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Star from "../Product/SingleProduct/Star"
 import { useCartContext } from "../../Context/cart_context";
 import {useWishListContext} from "../../Context/WishListContext"
 import "./Product.css"
+import AuthContext from '../../Context/auth_context';
 
 const Product = (curElem) => {
   const { addToCart } = useCartContext();
   // const { addToWishList } = useWishListContext();
-
+  const { userId } = useContext(AuthContext);
   const { _id, name, images, price, rating, reviews } = curElem;
   const [heart, setHeart] = useState(false)
   return (
@@ -29,7 +30,7 @@ const Product = (curElem) => {
           </div>
           <div className="rate-section">
             <p>₹{price}</p>
-            <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name)}>
+            <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name, userId)}>
               <div className="addTocart">
                 <button className="add-cart"><i className="fas fa-plus"></i></button>
               </div>

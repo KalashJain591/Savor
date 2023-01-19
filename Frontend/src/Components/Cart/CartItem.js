@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useCartContext } from '../../Context/cart_context';
 import { FaTrash } from 'react-icons/fa';
-
 import CartAmountToggler from './CartAmountToggler';
+import AuthContext from '../../Context/auth_context';
 
 export default function CartItem({id, price, images, name, total_cost, Quantity }) {
     const { removeItem, SetDecrease, SetIncrease } = useCartContext();
+    const { userId } = useContext(AuthContext);
     return (
         <>
             <tr>

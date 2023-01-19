@@ -10,13 +10,13 @@
   /* border: 2px solid black; */
   width: 25%;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   padding-left: 10px;
 }
 .navbar-image .logo-img {
   width: 40px;
   height: 40px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 .navbar-image .logo-tag {
   /* border: 2px solid black; */

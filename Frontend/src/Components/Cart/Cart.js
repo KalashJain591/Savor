@@ -3,12 +3,15 @@
 import { useCartContext } from '../../Context/cart_context';
 import { NavLink } from 'react-router-dom'
 import CartItem from './CartItem';
-
+import AuthContext from '../../Context/auth_context';
 import PaymentSummary from './PaymentSummary';
+import { useContext } from 'react';
 export default function Cart() {
+  const { loggedIn } = useContext(AuthContext);
   const { cart, clearCart, } = useCartContext();
+
   if (cart.length === 0) {
-    return (<><h1 className='text-center fs-1' style={{height:"18rem", display:"flex", alignItems:"center", justifyContent:"center" }} >No Item in Your Cart</h1>
+    return (<><h1 className='text-center fs-1' style={{ height: "18rem", display: "flex", alignItems: "center", justifyContent: "center" }} >No Item in Your Cart</h1>
     </>)
   }
   return (
@@ -35,16 +38,22 @@ export default function Cart() {
             </tbody>
           </table>
           <div className="d-flex bd-highlight mb-3">
-            <NavLink to="/products">  <button className=" btn btn-md btn-success m-2 " style={{backgroundColor:"#13C50C"}}>Continue Shopping </button></NavLink>
-            <button className="btn btn-md btn-  ms-auto m-2 " style={{backgroundColor:"gray"}} onClick={clearCart.bind(this)}>Clear Cart </button>
+            <NavLink to="/">  <button className=" btn btn-md btn-success m-2 " style={{ backgroundColor: "#13C50C" }}>Continue Shopping </button></NavLink>
+            <button className="btn btn-md btn-  ms-auto m-2 " style={{ backgroundColor: "gray" }} onClick={clearCart.bind(this)}>Clear Cart </button>
           </div>
         </div>
         <div className="  d-flex flex-column col-12 col-lg-4">
-        <PaymentSummary />
-        <div className="align-self-center m-4">
-          <NavLink to="./checkout"> <button type="button" className="btn btn-primary  btn-lg ">
-            Proceed for Payment
-          </button></NavLink>
+          <PaymentSummary />
+          <div className="align-self-center m-4">
+            {loggedIn ? <NavLink to="./checkout" >
+              <button type="button" className="btn btn-primary  btn-lg ">
+                Proceed for Payment
+              </button>
+            </NavLink> : <NavLink to="/login">
+              <button type="button" className="btn btn-primary  btn-lg ">
+                Proceed for Payment
+              </button>
+            </NavLink>}
           </div>
         </div>
       </div>

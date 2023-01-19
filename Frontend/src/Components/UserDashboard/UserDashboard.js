@@ -28,11 +28,6 @@ export default function UserDashboard() {
             <img src={userprofile} className='UserImage' /></div>
         </div>
         <hr />
-
-     
-
-
-
         <div className='d-flex flex-wrap justify-content-evenly '>
           {dashData.map((curElem, key) => {
             return <div className='d-inline-flex col-md-5 col-12'><Component1 idx={key} />  </div >

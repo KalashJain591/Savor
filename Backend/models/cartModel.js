@@ -22,11 +22,7 @@ const CartSchema = new Schema({
       price: {
         type: Number
       },
-      images:  [
-        {
-         imgUrl:{ type: String, required: true }
-        }
-       ]  
+      images:  String,
     }
   ],
   bill: {
