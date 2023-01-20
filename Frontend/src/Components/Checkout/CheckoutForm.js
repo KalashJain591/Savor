@@ -25,8 +25,6 @@ export default function CheckoutForm() {
         mobileNumber2: "",
     })
 
-
-
     async function details() {
         try {
             const response = await axios.get("/auth/dashboard")
@@ -48,10 +46,11 @@ export default function CheckoutForm() {
         //local storage
         var x=localStorage.getItem("Buynow");
         let id=x.slice(2);
-        const [productDetails,setproductDetails]=useState(null);
+        const [productDetails,setproductDetails]=useState({"_id":"63bff8bc549ff24265d6afaa","images":[{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"}],"name":"GOREAL - COW URINE SOAP","description":"GoReal Ayurvedic soap made from Panchgavya and Gir cow milk.","price":30,"category":"Bathing","feature":"false"});
         const callapi=async()=>{
             await axios.get(`/product/${id}`)
-            .then((res)=>{setproductDetails(res.data)});   
+            .then((res)=>{console.log(res.data); setproductDetails(res.data)});   
+            
         }
     
     // useEffect(() => {
