@@ -10,6 +10,7 @@ const OrderSchema = new Schema({
   email: { type: String, required: false },
   phoneno: { type: String, required: false },
   dob: { type: String, required: false },
+  ordername: { type: String, required: true },
   address: { type: String, required: false },
   addressoptional: { type: String, required: false },
   state: { type: String, required: false },

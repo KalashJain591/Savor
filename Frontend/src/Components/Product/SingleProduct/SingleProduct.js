@@ -8,13 +8,7 @@ import { useCartContext } from "../../../Context/cart_context";
 import CartAmountToggler from '../../Cart/CartAmountToggler';
 const API = "/product";
 const SingleProduct = () => {
-    // const [dataProduct, setDataProduct] = useState()
-    // const product = async() =>{
-    //          await  axios.get(`/product/${id}`).then((response) => {
-    //         setDataProduct(response.data);
-    //         console.log(response.data)
-    //       });
-    // }
+        
     const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
@@ -125,7 +119,7 @@ const SingleProduct = () => {
                         </NavLink>
                         <NavLink to="/cart/checkout">
                             <div className="single-buyNow">
-                                <button class="buy-now">Buy Now</button>
+                                <button onClick={()=>{localStorage.setItem("Buynow","u:"+id );}} class="buy-now">Buy Now</button>
                             </div>
                         </NavLink>
                     </div>
