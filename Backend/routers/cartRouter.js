@@ -24,6 +24,7 @@ router.post('/addtocart/:id', async (req, res) => {
     const {productId} = req.body;
     const quantity = Number.parseInt(req.body.quantity);
     try {
+      // console.log("add to cart")
       let cart = await Cart.findOne({ userId });
       let productDetails = await Product.findOne({ _id: productId });
   
@@ -72,11 +73,10 @@ router.post('/addtocart/:id', async (req, res) => {
 router.post('/updatecart/:id',async (req, res) => {
     const userId = req.params.id;
     const { productId, quantity } = req.body;
-    // console.log(productId)
     try {
+      // console.log("dskjlkcjhxkjh");
       let cart = await Cart.findOne({ userId });
       let item = await Product.findOne({ _id: productId });
-  
       if (!item) {
         return res.status(404).send('Product not found');
       }
@@ -114,7 +114,6 @@ router.get('/removefromcart/:userId/:itemId', async (req, res) => {
     try {
       let cart = await Cart.findOne({ userId });  
       let itemIndex = cart.products.findIndex(p => p.productId == productId);
-  
       if (itemIndex > -1) {
         let productItem = cart.products[itemIndex];
         cart.bill -= productItem.quantity * productItem.price;
