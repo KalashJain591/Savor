@@ -103,8 +103,45 @@ router.post("/login", async (req, res) => {
       })
       .send();
   } catch (err) {
-    console.error(err);
-    res.status(200).send("Login Succesfull");
+    // console.error(err);
+    res.status(200).send(err);
+  }
+});
+
+router.post("/editinfo/:id", async (req, res) => {
+  const userId= req.params.id;
+  try {
+    // console.log(req.body);
+    const { profilePic,name,email,phoneno ,dob, password } = req.body;
+    const olddetails= await User.findOne({_id:userId});;
+    if(!profilePic){
+      profilePic:olddetails.profilePic;
+    }
+    if(!name){
+      name:olddetails.name;
+    }
+    if(!email){
+      email:olddetails.email;
+    }
+    if(!phoneno){
+      phoneno:olddetails.phoneno;
+    }
+    if(!dob){
+      dob:olddetails.dob;
+    }
+    if(!password){
+      let usersaved=await User.findOneAndUpdate({_id:userId},{profilePic,name,email,phoneno ,dob});
+      res.status(200).send(usersaved);
+    }
+    else{
+    // hash the password
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+    let usersaved=await User.findOneAndUpdate({_id:userId},{profilePic,name,email,phoneno ,dob,passwordHash});
+    res.status(200).send(usersaved);
+    }
+  } catch (err) {
+    res.status(200).send(err);
   }
 });
 
@@ -210,8 +247,6 @@ router.post("/signinwithgoogle", async (req, res) => {
     res.status(200).send("Successfully google sigin");
   }
 });
-
-
 
 
 

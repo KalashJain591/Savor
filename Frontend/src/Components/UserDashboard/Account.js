@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import AuthContext from '../../Context/auth_context';
 import { userData } from './userData'
 
 export default function Account() {
-
+    const { userId } = useContext(AuthContext);
     const [userDetails,setuserDetails]=useState({});
  
     async function details() {
@@ -20,7 +21,7 @@ export default function Account() {
       }
       useEffect(() => {
          details();
-      },[userDetails]);
+      },[]);
   
   
 
@@ -33,7 +34,7 @@ export default function Account() {
     const [emailError, setEmailError] = useState('');
     const [mobError, setmobError] = useState('');
     const [NameError, setNameError] = useState('');
-    const [Password, setPassword] = useState(userData[0].password);
+    const [Password, setPassword] = useState('');
     const [PasswordError, setPasswordError] = useState('');
     const [editmode, seteditmode] = useState(false);
 
@@ -75,22 +76,25 @@ const  validpassword=(password)=>{
 }
 
 
-    const setProfile = (e) => {
+    const setProfile = async (e) => {
         if (editmode) {
-            e.preventDefault();
-            if (validemail(email) && validmob(mob) && validname(name) && validpassword(Password)) {
-                userData[0].firstname = name
-                // userData[0].lastname = lname
-                userData[0].gender = gender
-                userData[0].phoneno = mob
-                userData[0].email = email
-                userData[0].addresDelivery = address
-            }
-            else
-                return
-            // console.log(userData);
-        }
+            // console.log("setprofile")
+            await axios.post(`/auth/editinfo/${userId}`,{name,email,password:Password,phoneno:mob})
+            .then((res)=>{alert("DETAILS UPDATED")})
 
+            // e.preventDefault();
+            // if (validemail(email) && validmob(mob) && validname(name) && validpassword(Password)) {
+            //     userData[0].firstname = name
+            //     // userData[0].lastname = lname
+            //     userData[0].gender = gender
+            //     userData[0].phoneno = mob
+            //     userData[0].email = email
+            //     userData[0].addresDelivery = address
+            // }
+            // else
+            //     return
+            // // console.log(userData);
+        }
         seteditmode(!editmode);
     }
     const changeProfile = (e) => {
@@ -133,7 +137,7 @@ const  validpassword=(password)=>{
 
                         <div>
                             {editmode ?
-                                <button type="submit" className='btn btn-md   my-3 ' onClick={setProfile}>Save and update </button>
+                                <button type="submit" className='btn btn-md my-3 ' onClick={setProfile}>Save and update </button>
                                 : <button className='btn btn-md  my-3 ' onClick={setProfile}>Edit Information</button>}
                         </div>
                         <form>
@@ -142,7 +146,7 @@ const  validpassword=(password)=>{
                                 <input type="text" value={name} id="name" onChange={changeProfile} disabled={!editmode} className="me-3" ></input>
                                 {/* <input type="text" value={lname} id="lname" onChange={changeProfile} disabled={!editmode} className=" me-3"></input> */}
                             </div>
-                            <div className='my-3'>
+                            {/* <div className='my-3'>
                                 <span>Your Gender </span>
                                 <select id="gender" className="form-select " style={{ width: "30%" }} aria-label="Default select example" onChange={changeProfile}>
                                     <option selected>{gender}</option>
@@ -150,13 +154,13 @@ const  validpassword=(password)=>{
                                     <option value="Female" disabled={!editmode} >Female</option>
                                     <option value="other" disabled={!editmode} >I came for shopping here</option>
                                 </select>
-                            </div>
+                            </div> */}
                             <div className='my-3'>
                                 <span>Email Information  </span><br /> {emailError && <div style={{ fontColor: "red" }}>{emailError}</div>}
                                 <input type="email" pattern='[a-z0-9]+@[a-z]+\.[a-z]{2,3}' id="email" value={email} onChange={changeProfile} disabled={!editmode} required className='email'></input>
                             </div>
                             <div className='my-3'>
-                                <span>Your Password</span><br /> {PasswordError && <div style={{ fontColor: "red" }}>{PasswordError}</div>}
+                                <span>New Password</span><br /> {PasswordError && <div style={{ fontColor: "red" }}>{PasswordError}</div>}
                                 <input type="password" id="password" value={Password} onChange={changeProfile} disabled={!editmode} required ></input>
                             </div>
                             <div className='my-3'>
@@ -164,11 +168,11 @@ const  validpassword=(password)=>{
                                 <input type="text" maxLength={10} id="mob" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" value={mob} onChange={changeProfile} required disabled={!editmode} ></input>
 
                             </div>
-                            <div className='my-3'>
+                            {/* <div className='my-3'>
                                 <span>Primary Address</span><br />
                                 <input id="address" type="text" value={address} onChange={changeProfile} disabled={!editmode} ></input>
 
-                            </div>
+                            </div> */}
                         </form>
                     </div>
 
