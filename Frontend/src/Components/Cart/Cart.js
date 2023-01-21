@@ -6,12 +6,21 @@ import CartItem from './CartItem';
 import AuthContext from '../../Context/auth_context';
 import PaymentSummary from './PaymentSummary';
 import { useContext } from 'react';
+
 export default function Cart() {
   const { userId,loggedIn } = useContext(AuthContext);
   const { cart, clearCart, } = useCartContext();
 
   if (cart.length === 0) {
-    return (<><h1 className='text-center fs-1' style={{ height: "18rem", display: "flex", alignItems: "center", justifyContent: "center" }} >No Item in Your Cart</h1>
+    return (<><h1 className='text-center fs-1' style={{ height: "10rem", display: "flex", alignItems: "center", justifyContent: "center" ,fontFamily:"cursive" }} >Oop's,<br/>No Item in Your Cart</h1>
+    <div className='text-center mb-2'>
+      <img className='img-fluid' src="images/emptyCart2.png"/>  
+    </div>
+    <div className='text-center'>
+    <NavLink to ="/products ">
+      <button className='btn btn-lg my-3 fs-2' style={{backgroundColor:"orange"}}>Fill Your Cart</button>
+      </NavLink></div>
+
     </>)
   }
   return (
