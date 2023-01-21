@@ -116,6 +116,13 @@ function NavBar() {
                   : <li className="R_Nav-list">
                     < NavLink to="/login" onClick={handleClose}>Sign in <i className="fa fa-sign-in"></i></NavLink>
                   </li>}
+                  <li className="R_Nav-list">
+                    <NavLink to="/cart" onClick={handleClose} className="navbar-link cart-trolley--link  me-2 ">
+                      <FiShoppingCart className="cart-trolley " />
+                      <span className="item-count ">{total_items}</span>
+                    </NavLink>
+                  </li>
+
               </ul>
             </Offcanvas.Body>
           </Offcanvas>

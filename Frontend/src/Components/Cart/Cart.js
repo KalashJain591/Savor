@@ -48,7 +48,7 @@ export default function Cart() {
           </table>
           <div className="d-flex bd-highlight mb-3">
             <NavLink to="/">  <button className=" btn btn-md btn-success m-2 " style={{ backgroundColor: "#13C50C" }}>Continue Shopping </button></NavLink>
-            {/* <button className="btn btn-md btn-  ms-auto m-2 " style={{ backgroundColor: "gray" }} onClick={ clearCart.bind(this)}>Clear Cart </button> */}
+            <button className="btn btn-md btn-  ms-auto m-2 " style={{ backgroundColor: "gray" }} onClick={ clearCart.bind(this)}>Clear Cart </button>
           </div>
         </div>
         <div className="  d-flex flex-column col-12 col-lg-4">

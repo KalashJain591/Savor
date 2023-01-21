@@ -63,15 +63,17 @@ const CartReducer = (state, action) => {
     let updatedProduct = state.cart.map((curElem) => {
       let { id, userId } = action.payload;
       if (curElem.id === id) {
-        // console.log("reached");
+        console.log("reached");
         let decAmount = curElem.Quantity - 1;
 
         if (decAmount <= 1) {
           decAmount = 1;
         }
         if(userId!==undefined){
+        console.log(userId);
         axios.post(`/cart/updatecart/${userId}`,{productId:id, quantity:decAmount});
         }
+
         return {
           ...curElem,
           Quantity: decAmount,
@@ -122,11 +124,14 @@ const CartReducer = (state, action) => {
     };
   }
 
+  const callapi=async()=>{
+    await axios.post("/cart/clearcart",{})
+  }
+
   // to empty or to clear to cart
   if (action.type === "CLEAR_CART") {
-    // console.log("clearcart")
-    // axios.get('/cart/clearcart/');
-    
+    console.log("clearcart")
+    callapi();
     return {
       ...state,
       cart: [],
