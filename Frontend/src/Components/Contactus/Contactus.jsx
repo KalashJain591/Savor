@@ -1,6 +1,41 @@
 import React from 'react'
+import { useState } from 'react'
 import './contactus.css'
+import axios from "axios"
+const API="/mail"
 export default function Contactus() {
+const [FormData,setFormData]=useState({
+  name:"",
+  subject:"",
+  text:"",
+  userID:"",
+  useremail:"",
+  phone:"",
+});
+
+const handleChange=(e)=>{
+  let key=e.target.name;
+  let val=e.target.value;
+  // console.log(key);
+  // console.log(val);
+  setFormData({...FormData,[key]:val});
+}
+
+const handleSubmit=(e)=>
+{
+  e.preventDefault();
+  console.log(FormData);
+  axios.post(`${API}/contactus`, FormData)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+}
+
+
   return (
     <section className="contact-page-sec">
     <div className="container">
@@ -52,31 +87,31 @@ export default function Contactus() {
         <div className="col-md-8">
           <div className="contact-page-form" method="post">
             <h2>Get in Touch</h2> 
-            <form action="contact-mail.php" method="post">
+            <form  onSubmit={handleSubmit} action="contact-mail.php" method="post">
               <div className="row">
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
-                  <input type="text" placeholder="Your Name" name="name"/>
+                  <input type="text" placeholder="Your Name" name="name"  onChange={handleChange}/>
                 </div>
               </div>  
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
-                  <input type="text" placeholder="E-mail" name="email" required/>
+                  <input type="text" placeholder="E-mail" name="email" onChange={handleChange} required/>
                 </div>
               </div>                              
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
-                  <input type="text" placeholder="Phone Number" name="phone"/>
+                  <input type="text" placeholder="Phone Number" onChange={handleChange} name="phone"/>
                 </div>
               </div>  
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
-                  <input type="text" placeholder="Subject" name="subject"/>
+                  <input type="text" placeholder="Subject"  onChange={handleChange} name="subject" />
                 </div>
               </div>                
               <div className="col-md-12 message-input">
                 <div className="single-input-field">
-                  <textarea  placeholder="Write Your Message" name="message"></textarea>
+                  <textarea  placeholder="Write Your Message" onChange={handleChange} name="text"></textarea>
                 </div>
               </div>                                                
               <div className="single-input-fieldsbtn">
