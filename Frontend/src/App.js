@@ -19,10 +19,9 @@ import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
 import Account from './Components/UserDashboard/Account';
-import Adminpanel from './Components/AdminPanel/Adminpanel.jsx';
-import AddProducts from './Components/AdminPanel/addProducts';
 import Error404 from './Components/Error404';
 import { useEffect } from 'react';
+import Index from './Components/AdminPanel/HomePage/Index';
 function App() {
   const { loggedIn } = useContext(AuthContext);
   
@@ -35,7 +34,7 @@ function App() {
 
   return (
     <>
-     <Header/>
+     {/* <Header/> */}
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route path="/contactus" element={<Contactus/>}/>
@@ -52,11 +51,10 @@ function App() {
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
-          <Route path ="/adminpanel" element={<Adminpanel/>}/>
-          <Route path ="/addproducts" element={<AddProducts/>}/>
+          <Route path='/adminPanel' element={<Index/>}/>
           <Route path='*' element={<Error404 />}/>
         </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
