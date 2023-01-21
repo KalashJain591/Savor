@@ -72,7 +72,7 @@ router.post('/addtocart/:id', async (req, res) => {
 router.post('/updatecart/:id',async (req, res) => {
     const userId = req.params.id;
     const { productId, quantity } = req.body;
-    // console.log(productId)
+    console.log(userId)
     try {
       let cart = await Cart.findOne({ userId });
       let item = await Product.findOne({ _id: productId });
@@ -106,12 +106,11 @@ router.post('/updatecart/:id',async (req, res) => {
     }
   },
 );
-
-
 router.get('/removefromcart/:userId/:itemId', async (req, res) => {
     const userId = req.params.userId;
     const productId = req.params.itemId;
     try {
+      console.log("hello");
       let cart = await Cart.findOne({ userId });  
       let itemIndex = cart.products.findIndex(p => p.productId == productId);
   

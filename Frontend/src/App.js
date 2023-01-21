@@ -19,8 +19,8 @@ import { useContext } from 'react';
 import AuthContext from './Context/auth_context';
 import Orders from './Components/UserDashboard/orders';
 import Account from './Components/UserDashboard/Account';
-import Adminpanel from './Components/AdminPanel/Adminpanel';
-import AddProducts from './Components/AdminPanel/Addproducts';
+import Adminpanel from './Components/AdminPanel/Adminpanel.jsx';
+import AddProducts from './Components/AdminPanel/addProducts';
 import Error404 from './Components/Error404';
 import { useEffect } from 'react';
 function App() {
@@ -55,7 +55,6 @@ function App() {
           <Route path ="/adminpanel" element={<Adminpanel/>}/>
           <Route path ="/addproducts" element={<AddProducts/>}/>
           <Route path='*' element={<Error404 />}/>
-     
         </Routes>
       <Footer/>
     </>

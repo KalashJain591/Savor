@@ -22,7 +22,7 @@ const CartReducer = (state, action) => {
             newAmount = curElem.max;
           }
           // console.log("hello", newAmount);
-          if(userId!==undefined){
+          if (userId !== undefined) {
             axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: newAmount });
           }
           return {
@@ -48,8 +48,8 @@ const CartReducer = (state, action) => {
         max: 6,
         total_cost: price
       };
-      if(userId!==undefined){
-      axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 });
+      if (userId !== undefined) {
+        axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 });
       }
       // console.log(state.cart);
       return {
@@ -69,8 +69,8 @@ const CartReducer = (state, action) => {
         if (decAmount <= 1) {
           decAmount = 1;
         }
-        if(userId!==undefined){
-        axios.post(`/cart/updatecart/${userId}`,{productId:id, quantity:decAmount});
+        if (userId !== undefined) {
+          axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: decAmount });
         }
         return {
           ...curElem,
@@ -94,8 +94,8 @@ const CartReducer = (state, action) => {
         if (incAmount >= curElem.max) {
           incAmount = curElem.max;
         }
-        if(userId!==undefined){
-        axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: incAmount });
+        if (userId !== undefined) {
+          axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: incAmount });
         }
         return {
           ...curElem,
@@ -113,7 +113,7 @@ const CartReducer = (state, action) => {
     let updatedCart = state.cart.filter(
       (curItem) => curItem.id !== id
     );
-    if(userId!==undefined){
+    if (userId !== undefined) {
       axios.get(`/cart/removefromcart/${userId}/${id}`);
     }
     return {
@@ -126,7 +126,7 @@ const CartReducer = (state, action) => {
   if (action.type === "CLEAR_CART") {
     // console.log("clearcart")
     // axios.get('/cart/clearcart/');
-    
+
     return {
       ...state,
       cart: [],
@@ -147,9 +147,9 @@ const CartReducer = (state, action) => {
     }, 0)
     return { ...state, total_price: updated };
   }
-  if(action.type==="FINAL_AMOUNT"){
+  if (action.type === "FINAL_AMOUNT") {
     // let discount=(state.total_price*5)/100;
-    let discount=0;
+    let discount = 0;
     // console.log(state.total_price);
     let updated = state.total_price - discount + state.shipping_fee;
     return { ...state, final_amount: updated, Discount: discount };
