@@ -51,7 +51,6 @@ const Customer = () => {
             title: "DOB",
             dataIndex: "dob",
           },
-
           // {
           //   title: "address",
           //   dataIndex: "address",

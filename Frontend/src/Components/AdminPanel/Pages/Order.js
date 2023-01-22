@@ -1,6 +1,7 @@
 import { Avatar, Rate, Space, Table, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ProductInfo from "../AdminPanelComponents/Orders/ProductInfo";
 
 const Order = () => {
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,7 @@ const Order = () => {
   const callapi=async()=>{
     await axios.get("/admin/order")
     .then((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
       setDataSource(res.data);
     })
   }  
@@ -47,29 +48,59 @@ const Order = () => {
             title: "DOB",
             dataIndex: "dob",
           },
+          {
+            title: "Ordered Name",
+            dataIndex: "ordername",
+          },
+          {
+            title: "Order Phone No.",
+            dataIndex: "ordermobile1",
+          },
+          {
+            title: "Order Phone No. (Optional)",
+            dataIndex: "ordermobile2",
+          },
 
-          // {
-          //   title: "Title",
-          //   dataIndex: "title",
-          // },
-          // {
-          //   title: "Price",
-          //   dataIndex: "price",
-          //   render: (value) => <span>${value}</span>,
-          // },
-          // {
-          //   title: "DiscountedPrice",
-          //   dataIndex: "discountedPrice",
-          //   render: (value) => <span>${value}</span>,
-          // },
-          // {
-          //   title: "Quantity",
-          //   dataIndex: "quantity",
-          // },
-          // {
-          //   title: "Total",
-          //   dataIndex: "total",
-          // },
+          {
+            title: "Address",
+            dataIndex: "address",
+          },
+          {
+            title: "Optional Address",
+            dataIndex: "addressoptional",
+          },
+          {
+            title: "City",
+            dataIndex: "city",
+          },
+          {
+            title: "State",
+            dataIndex: "state",
+          },
+          {
+            title: "PIN CODE",
+            dataIndex: "postalcode",
+          },
+          {
+            title:"ORDER SUMMARY",
+            dataIndex:"products",
+            render: (value) =><div ><ProductInfo products={value}/></div>,
+          }
+          ,
+          {
+            title: "Bill",
+            dataIndex: "bill",
+            render: (value) => <span>₹{value}</span>,
+          },
+          {
+            title: "Status",
+            dataIndex: "order_status",
+          },
+          {
+            title: "Date of Order",
+            dataIndex: "date_added",
+            render: (value) => <span>{value.slice(0,10)}</span>,
+          },
         ]}
         dataSource={dataSource}
         pagination={{
