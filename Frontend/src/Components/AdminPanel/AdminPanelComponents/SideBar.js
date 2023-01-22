@@ -9,7 +9,7 @@ import { Menu } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = (props) => {
   const location = useLocation();
   const [selectedKeys, setSelectedKeys] = useState("/adminPanel");
   useEffect(() => {
@@ -32,21 +32,21 @@ const SideBar = () => {
           {
             label: "Dashbaord",
             icon: <AppstoreOutlined />,
-            key: "/",
+            key: "/admin",
           },
           {
-            label: "Inventory",
-            key: "/inventory",
+            label: "Products",
+            key: "/admin/product",
             icon: <ShopOutlined />,
           },
           {
             label: "Orders",
-            key: "/orders",
+            key: "/admin/orders",
             icon: <ShoppingCartOutlined />,
           },
           {
-            label: "Customers",
-            key: "/customers",
+            label: "Users",
+            key: "/admin/user",
             icon: <UserOutlined />,
           },
         ]}

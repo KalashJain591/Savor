@@ -3,13 +3,19 @@ import { BellFilled, MailOutlined } from "@ant-design/icons";
 import { Badge, Drawer, Image, List, Space, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { getComments, getOrders } from "../API";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [comments, setComments] = useState([]);
   const [orders, setOrders] = useState([]);
   const [commentsOpen, setCommentsOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-
+  const navigate = useNavigate();
+  async function logOut() {
+    await axios.get("/auth/logout")
+    .then((res)=>{   navigate("/")});
+  }
   useEffect(() => {
     getComments().then((res) => {
       setComments(res.comments);
@@ -19,13 +25,14 @@ const Header = () => {
     });
   }, []);
   return (
-    <div className='header-section-admin-panel'>
+    <div className='header-section-admin-panel my-2'>
       <Image
         width={40}
-        src="https://yt3.ggpht.com/ytc/AMLnZu83ghQ28n1SqADR-RbI2BGYTrqqThAtJbfv9jcq=s176-c-k-c0x00ffffff-no-rj"
+        src="/images/SavorLogoTag.png"
       ></Image>
-      <Typography.Title>Aamir's Dashboard</Typography.Title>
+      <Typography.Title>Admin Dashboard</Typography.Title>
       <Space>
+      <button className='btn btn-secondary' onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </button>
         <Badge count={comments.length} dot>
           <MailOutlined
             style={{ fontSize: 24 }}
@@ -77,6 +84,7 @@ const Header = () => {
             );
           }}
         ></List>
+        
       </Drawer>
     </div>
   )

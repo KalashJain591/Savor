@@ -22,7 +22,6 @@ function NavBar() {
   useEffect(() => {
     getuserdeatils();
   }, [])
-
   const { total_items } = useCartContext()
   return (
     <>

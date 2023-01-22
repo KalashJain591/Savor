@@ -1,7 +1,7 @@
 import './App.css';
 import Header from "./Components/Universal/Header"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes,useLocation } from 'react-router-dom';
+import { Route, Routes,useLocation, useNavigate } from 'react-router-dom';
 import Home from './Components/Home Page/Home';
 import Aboutus from './Components/About us/Aboutus';
 import Contactus from './Components/Contactus/Contactus';
@@ -23,18 +23,25 @@ import Error404 from './Components/Error404';
 import { useEffect } from 'react';
 import Index from './Components/AdminPanel/HomePage/Index';
 function App() {
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn , admin} = useContext(AuthContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(admin===true){
+      navigate("/adminpanel/");          
+    }
+  }, [admin])
   
+
   // Scroll top when location changes
   const location = useLocation(); 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
  // 
-
+ 
   return (
     <>
-     {/* <Header/> */}
+     {admin?<></>:<Header/>}
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route path="/contactus" element={<Contactus/>}/>
@@ -51,10 +58,13 @@ function App() {
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
-          <Route path='/adminPanel' element={<Index/>}/>
+          <Route exact path='/adminPanel' element={<Index/>}/>
+          {/* <Route path='/adminPanel/user' element={<Index/>}/>
+          <Route path='/adminPanel/order' element={<Index/>}/>
+          <Route path='/adminPanel/products' element={<Index/>}/> */}
           <Route path='*' element={<Error404 />}/>
         </Routes>
-      {/* <Footer/> */}
+        {admin?<></>:<Footer/>}
     </>
   );
 }

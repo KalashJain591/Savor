@@ -5,11 +5,18 @@ import { useCartContext } from '../../Context/cart_context';
 import CartItem from '../Cart/CartItem';
 import AuthContext from '../../Context/auth_context';
 import SingleProductSummary from './SingleProductSummary';
+import { useNavigate } from 'react-router-dom';
 export default function CheckoutForm() {
     const { cart, clearCart, } = useCartContext();
     // console.log( localStorage.getItem("Buynow"));
-    const { userId } = useContext(AuthContext);
-    
+    const {loggedIn, userId } = useContext(AuthContext);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(loggedIn){
+          navigate("/login");          
+        }
+      }, [])
+      
     // creating  a state to store the values from the user
     const [Record, SetRecord] = useState([]);
     const [display, setdisplay] = useState(false);

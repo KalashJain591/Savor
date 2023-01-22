@@ -8,12 +8,15 @@ function AuthContextProvider(props) {
   const [UserName, setUsername] = useState("");
   const [userprofile, setuserprofile] = useState("");
   const [userId, setUserId] = useState("")
+  const [admin, setadmin] = useState("false");
   async function getuserdeatils() {
     try {
       const res = await axios.get("/auth/dashboard");
       setUsername(res.data.name);
       setuserprofile(res.data.profilePic);
       setUserId(res.data._id);
+      // console.log(res.data.admin);
+      setadmin(res.data.admin);
       await axios.get(`/cart/${res.data._id}`)
         .then((responce) => {
           let localStore = [];
@@ -43,7 +46,7 @@ function AuthContextProvider(props) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ UserName, userprofile, getuserdeatils, loggedIn, getLoggedIn, userId }}>
+    <AuthContext.Provider value={{ UserName,admin, userprofile, getuserdeatils, loggedIn, getLoggedIn, userId }}>
       {props.children}
     </AuthContext.Provider>
   );
