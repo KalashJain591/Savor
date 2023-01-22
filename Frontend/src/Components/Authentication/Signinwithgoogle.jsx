@@ -1,5 +1,6 @@
 import React from 'react'
-import { signInWithGoogle } from "../../../Firebase/firebase.js";
+import { signInWithGoogle } from '../../Firebase/firebase'
+
 export default function Signinwithgoogle() {
   return (
     <div>  
