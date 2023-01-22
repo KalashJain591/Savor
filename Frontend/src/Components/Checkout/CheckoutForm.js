@@ -144,7 +144,8 @@ export default function CheckoutForm() {
                                     <div className="col-md-4">
                                         <label htmlFor="state" className="form-label">State</label>
                                         <select className="form-select" id="state" placeholder='choose...' name='state' value={BillingInfo.state} onChange={handleInput} required >
-                                            <option>Madhya Pradesh</option>
+                                        <option>Not selected</option>
+                                        <option>Madhya Pradesh</option>
                                         </select>
                                         <div className="invalid-feedback">
                                             Please provide a valid state.
@@ -153,6 +154,7 @@ export default function CheckoutForm() {
                                     <div className="col-md-5">
                                         <label htmlFor="city" className="form-label">City</label>
                                         <select className="form-select" id="country" name='city' placeholder='choose...' value={BillingInfo.city} onChange={handleInput} required>
+                                        <option>Not selected</option>
                                             <option>Indore</option>
                                             <option>Ujjain</option>
                                             <option>Bhopal</option>

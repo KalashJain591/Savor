@@ -1,19 +1,28 @@
 import React from 'react'
 import { Avatar, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { getCustomers, getInventory } from "../API";
+import axios from 'axios';
 const Customer = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
+  
+  const callapi=async()=>{
+    await axios.get("/admin/user")
+    .then((res)=>{
+      // console.log(res.data);
+      setDataSource(res.data);
+    })
+  }  
+
   useEffect(() => {
     setLoading(true);
-    getCustomers().then((res) => {
-      setDataSource(res.users);
-      setLoading(false);
-    });
+    callapi();
+    setLoading(false);
   }, []);
+  
   return (
-    <div>
+    <div className='container'>
+      <br/>
       <Space size={20} direction="vertical">
       <Typography.Title level={4}>Customers</Typography.Title>
       <Table
@@ -21,39 +30,39 @@ const Customer = () => {
         columns={[
           {
             title: "Photo",
-            dataIndex: "image",
+            dataIndex: "profilePic",
             render: (link) => {
               return <Avatar src={link} />;
             },
           },
           {
-            title: "First Name",
-            dataIndex: "firstName",
+            title: "Name",
+            dataIndex: "name",
           },
           {
-            title: "LastName",
-            dataIndex: "lastName",
+            title: "Phone No.",
+            dataIndex: "phoneno",
           },
           {
             title: "Email",
             dataIndex: "email",
           },
           {
-            title: "Phone",
-            dataIndex: "phone",
+            title: "DOB",
+            dataIndex: "dob",
           },
 
-          {
-            title: "address",
-            dataIndex: "address",
-            render: (address) => {
-              return (
-                <span>
-                  {address.address}, {address.city}
-                </span>
-              );
-            },
-          },
+          // {
+          //   title: "address",
+          //   dataIndex: "address",
+          //   render: (address) => {
+          //     return (
+          //       <span>
+          //         {address.address}, {address.city}
+          //       </span>
+          //     );
+          //   },
+          // },
         ]}
         dataSource={dataSource}
         pagination={{

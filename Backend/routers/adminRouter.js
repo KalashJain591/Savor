@@ -91,7 +91,7 @@ router.get("/user",(req, res) => {
 });
 
 //all orders
-router.get("/",(req, res) => {
+router.get("/order",(req, res) => {
     try {
         Order.find()
         .then((order) => res.json(order))

@@ -11,8 +11,8 @@ const PageContent = () => {
       {/* <Dashboard/> */}
       {/* <Customer/> */}
       {/* <Inventory/> */}
-      {/* <Order/> */}
-      <AdminRoutes/>
+      <Order/>
+      {/* <AdminRoutes/> */}
     </div>
   )
 }

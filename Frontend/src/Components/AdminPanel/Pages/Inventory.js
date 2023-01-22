@@ -1,18 +1,27 @@
 import React from 'react'
 import { Avatar, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { getInventory } from "../API";
+import axios from 'axios';
 
 const Inventory = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
 
+  const callapi=async()=>{
+    await axios.get("/admin/product")
+    .then((res)=>{
+      console.log(res.data);
+      setDataSource(res.data);
+    })
+  }  
+
   useEffect(() => {
     setLoading(true);
-    getInventory().then((res) => {
-      setDataSource(res.products);
+    callapi();
+    // getInventory().then((res) => {
+    //   setDataSource(res.products);
+    // });
       setLoading(false);
-    });
   }, []);
   return (
     <Space size={20} direction="vertical">
@@ -22,19 +31,19 @@ const Inventory = () => {
         columns={[
           {
             title: "Thumbnail",
-            dataIndex: "thumbnail",
+            dataIndex: "images",
             render: (link) => {
-              return <Avatar src={link} />;
+              return <Avatar src={link[0].imgUrl} />;
             },
           },
           {
             title: "Title",
-            dataIndex: "title",
+            dataIndex: "name",
           },
           {
             title: "Price",
             dataIndex: "price",
-            render: (value) => <span>${value}</span>,
+            render: (value) => <span>₹{value}</span>,
           },
           {
             title: "Rating",
@@ -44,17 +53,24 @@ const Inventory = () => {
             },
           },
           {
+            title: "Reviews",
+            dataIndex: "reviews",
+          },
+          {
             title: "Stock",
             dataIndex: "stock",
-          },
-
-          {
-            title: "Brand",
-            dataIndex: "brand",
           },
           {
             title: "Category",
             dataIndex: "category",
+          },
+          {
+            title: "Feature",
+            dataIndex: "feature",
+          },
+          {
+            title: "description",
+            dataIndex: "description",
           },
         ]}
         dataSource={dataSource}
