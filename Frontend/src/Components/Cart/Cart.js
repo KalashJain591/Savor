@@ -7,7 +7,7 @@ import AuthContext from '../../Context/auth_context';
 import PaymentSummary from './PaymentSummary';
 import { useContext } from 'react';
 export default function Cart() {
-  const { loggedIn } = useContext(AuthContext);
+  const { userId,loggedIn } = useContext(AuthContext);
   const { cart, clearCart, } = useCartContext();
 
   if (cart.length === 0) {
@@ -46,11 +46,11 @@ export default function Cart() {
           <PaymentSummary />
           <div className="align-self-center m-4">
             {loggedIn ? <NavLink to="./checkout" >
-              <button type="button" className="btn btn-primary  btn-lg ">
+              <button type="button" onClick={()=>{localStorage.setItem("Buynow","c:"+userId );}} className="btn btn-primary  btn-lg ">
                 Proceed for Payment
               </button>
             </NavLink> : <NavLink to="/login">
-              <button type="button" className="btn btn-primary  btn-lg ">
+              <button type="button"  className="btn btn-primary  btn-lg ">
                 Proceed for Payment
               </button>
             </NavLink>}

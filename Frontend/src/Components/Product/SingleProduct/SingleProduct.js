@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams, NavLink } from "react-router-dom"
 import { useProductContext } from '../../../Context/ProductContext';
 import Star from "./Star"
@@ -6,15 +6,11 @@ import axios from "axios"
 import "./SinglePage.css"
 import { useCartContext } from "../../../Context/cart_context";
 import CartAmountToggler from '../../Cart/CartAmountToggler';
+import AuthContext from '../../../Context/auth_context';
 const API = "/product";
 const SingleProduct = () => {
-    // const [dataProduct, setDataProduct] = useState()
-    // const product = async() =>{
-    //          await  axios.get(`/product/${id}`).then((response) => {
-    //         setDataProduct(response.data);
-    //         console.log(response.data)
-    //       });
-    // }
+        
+    const { loggedIn } = useContext(AuthContext);
     const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
     if (isLoading) {
@@ -123,11 +119,19 @@ const SingleProduct = () => {
                                 <button class="add-single-cart">Add To Cart</button>
                             </div>
                         </NavLink>
+                        {loggedIn?
                         <NavLink to="/cart/checkout">
                             <div className="single-buyNow">
-                                <button class="buy-now">Buy Now</button>
+                                <button onClick={()=>{localStorage.setItem("Buynow","u:"+id );}} class="buy-now">Buy Now</button>
                             </div>
                         </NavLink>
+                        :
+                        <NavLink to="/login">
+                            <div className="single-buyNow">
+                                <button onClick={()=>{localStorage.setItem("Buynow","u:"+id );}} class="buy-now">Buy Now</button>
+                            </div>
+                        </NavLink>
+                        }
                     </div>
                 </div>
             </div>

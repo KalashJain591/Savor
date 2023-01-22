@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Product = require("../models/productModel");
 const Cart = require("../models/cartModel");
 const auth=require("../middleware/auth");
+const jwt = require("jsonwebtoken");
+const jwt_decode=require("jwt-decode")
 
 //Root route
 router.get('/:id',  async (req, res) => {
@@ -24,6 +26,7 @@ router.post('/addtocart/:id', async (req, res) => {
     const {productId} = req.body;
     const quantity = Number.parseInt(req.body.quantity);
     try {
+      // console.log("add to cart")
       let cart = await Cart.findOne({ userId });
       let productDetails = await Product.findOne({ _id: productId });
   
@@ -72,11 +75,9 @@ router.post('/addtocart/:id', async (req, res) => {
 router.post('/updatecart/:id',async (req, res) => {
     const userId = req.params.id;
     const { productId, quantity } = req.body;
-    console.log(userId)
     try {
       let cart = await Cart.findOne({ userId });
       let item = await Product.findOne({ _id: productId });
-  
       if (!item) {
         return res.status(404).send('Product not found');
       }
@@ -113,7 +114,6 @@ router.get('/removefromcart/:userId/:itemId', async (req, res) => {
       console.log("hello");
       let cart = await Cart.findOne({ userId });  
       let itemIndex = cart.products.findIndex(p => p.productId == productId);
-  
       if (itemIndex > -1) {
         let productItem = cart.products[itemIndex];
         cart.bill -= productItem.quantity * productItem.price;
@@ -127,19 +127,21 @@ router.get('/removefromcart/:userId/:itemId', async (req, res) => {
     }
   });
 
-  // router.get('/clearcart/', async (req, res) => {
-  //   const token = req.cookies.token;
-  //   if (!token) return res.json(false);
-  //   var decoded = jwt_decode(token);
-    
-  //   try {
-  //     Cart.findOneAndDelete(({ userId }));
-  //     return res.status(201).json("Cart Cleared Succesfully");
-  //   } catch (error) {
-  //     console.log(error);
-  //     res.status(500).send('Something went wrong');
-  //   }
-  // });
+  router.post('/clearcart', async (req, res) => {
+    try {
+      console.log("first")
+      const token = req.cookies.token;
+      if (!token) return res.json(false);
+      var decoded = jwt_decode(token);
+      // console.log(decoded.user);
+      var userId=decoded.user;
+      await Cart.findOneAndDelete({ userId});
+      return res.status(201).json("Cart Cleared Succesfully");
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Something went wrong');
+    }
+  });
 
 
   

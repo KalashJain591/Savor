@@ -1,11 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
 import PaymentSummary from '../Cart/PaymentSummary'
 import { useCartContext } from '../../Context/cart_context';
 import CartItem from '../Cart/CartItem';
+import AuthContext from '../../Context/auth_context';
+import SingleProductSummary from './SingleProductSummary';
 export default function CheckoutForm() {
     const { cart, clearCart, } = useCartContext();
+    // console.log( localStorage.getItem("Buynow"));
+    const { userId } = useContext(AuthContext);
+    
     // creating  a state to store the values from the user
     const [Record, SetRecord] = useState([]);
     const [display, setdisplay] = useState(false);
@@ -39,20 +43,37 @@ export default function CheckoutForm() {
             console.error(err);
         }
     }
+        //local storage
+        var x=localStorage.getItem("Buynow");
+        let id=x.slice(2);
+        const [productDetails,setproductDetails]=useState({"_id":"63bff8bc549ff24265d6afaa","images":[{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"}],"name":"GOREAL - COW URINE SOAP","description":"GoReal Ayurvedic soap made from Panchgavya and Gir cow milk.","price":30,"category":"Bathing","feature":"false"});
+        const callapi=async()=>{
+            await axios.get(`/product/${id}`)
+            .then((res)=>{console.log(res.data); setproductDetails(res.data)});   
+            
+        }
+    
+    // useEffect(() => {
+    //     console.log(productDetails)
+    // }, [productDetails])
+    
     useEffect(() => {
+        if(x[0]==='u'){
+            callapi();
+        }
         details();
     }, []);
 
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(name, value);
+        // console.log(name, value);
         setBillingInfo({ ...BillingInfo, [name]: value })
     }
     const onSubmit = (e) => {
         e.preventDefault();
         const newRecord = { ...BillingInfo, id: new Date().getTime().toString() }
-        console.log(newRecord);
+        // console.log(newRecord);
         SetRecord([...Record, newRecord]);
         setBillingInfo({
             name: "",
@@ -65,6 +86,24 @@ export default function CheckoutForm() {
             mobileNumber1: "",
             mobileNumber2: "",
         });
+    }
+
+    const payment=async()=>{
+        const {name,email,address1,address2,state,city,pincode,mobileNumber1,mobileNumber2}=BillingInfo;
+        if(name&&address1&&pincode&&mobileNumber1){
+            // console.log(x);
+
+            // console.log(id)
+            if(x[0]==='c'){
+                await axios.post(`/order/orderbycart/${id}`,{ordername:name, address:address1, addressoptional:address2, state, city, postalcode:pincode, ordermobile1:mobileNumber1,ordermobile2:mobileNumber2});
+            }
+            else{
+                await axios.post(`/order/orderbyproduct/${userId}/${id}`,{ordername:name, address:address1, addressoptional:address2, state, city, postalcode:pincode, ordermobile1:mobileNumber1,ordermobile2:mobileNumber2});
+            }
+        }
+        else{
+            alert("Invalid Details");
+        }
     }
 
     return (
@@ -207,7 +246,7 @@ export default function CheckoutForm() {
 
                                 {/* <hr className="my-4" /> */}
                                 <button className=" btn btn-primary btn-md mb-4 ms-2" style={{ backgroundColor: "gray" }} onClick={() => { setdisplay(!display) }}>Check Items</button>
-                                <button className=" btn btn-primary btn-md mb-4 float-end me-2" type="submit">Continue to checkout</button>
+                                <button className=" btn btn-primary btn-md mb-4 float-end me-2" onClick={payment}>Continue to checkout</button>
                                 { display?<div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
                                     <table className="table text-center mb-0">
                                         <thead className="text-dark">
@@ -221,17 +260,24 @@ export default function CheckoutForm() {
                                                 <th>Remove</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                            {x[0]==='c'?
+                                        <tbody>                                            
                                             {cart.map(Element => (
                                                 <CartItem key={Element.id} {...Element} />
                                             ))}
                                         </tbody>
+                                            :
+                                        <tbody>
+                                            <CartItem id={productDetails._id} price={productDetails.price} images={productDetails.images[0].imgUrl} name={productDetails.name} total_cost={productDetails.price} Quantity={1}/>
+                                        </tbody>    
+                                            }
+
                                     </table>
                                 </div>: <div></div>}
                             </form>
                         </div>
                         <div className='col-md-5 col-lg-4'>
-                            <PaymentSummary />
+                            {x[0]==='c'? <PaymentSummary />:<SingleProductSummary price={productDetails.price}/>       }
                         </div>
                     </div>
                 </main>
