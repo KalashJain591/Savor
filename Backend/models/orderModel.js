@@ -18,7 +18,7 @@ const OrderSchema = new Schema({
   postalcode: { type: String, required: false },
   ordermobile1: { type: String, required: false },
   ordermobile2: { type: String, required: false },
-  AddressOptional: { type: String, required: false },
+  Address: { type: String, required: false },
   AddressOptional: { type: String, required: false },
   products: [
     {

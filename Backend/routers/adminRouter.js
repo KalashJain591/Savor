@@ -106,7 +106,8 @@ router.post("/editorderstatus/:id", async (req, res) => {
     const orderId= req.params.id;
     try {
         const {order_status}=req.body;
-        let orderstatus=await Product.findOneAndUpdate({_id:orderId},{order_status});
+        // console.log(orderId,order_status)
+        let orderstatus=await Order.findOneAndUpdate({_id:orderId},{order_status:order_status});
         res.status(200).send(orderstatus);
     }
     catch(err){
