@@ -1,15 +1,17 @@
 .admin-section {
-  display: flex;
-  flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
-.SideMenuAndPageContent {
+.admin-section-grid-2{
   display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: flex-start;
+  height: 100vh;
+}
+
+.SideMenuAndPageContent {
+  /* display: flex; */
   background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  padding: 0 0 0 20%;
 }
 .footer-section-admin-panel {
   height: 50px;
@@ -28,6 +30,12 @@
 }
 .sideBar-admin-panel{
     height: 100%;
+    background-color: white;
+    display: flex;
+    /* align-items: center; */
+    width: 20%;
+    justify-content: center;
+    position: fixed;
 }
 .PageContent{
     padding-left: 12px;

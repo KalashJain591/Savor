@@ -1,0 +1,27 @@
+.header-section-admin-panel{
+    background: green;
+    border-radius: 0px 0px 7px 7px;
+}
+.admin-panel-logo img{
+    width: 250px;
+}
+.notification{
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-between;
+}
+.admin-panel-logout{
+    background-color: white;
+    border: 0;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+.admin-panel-logout p, .admin-sign-out{
+    margin: 0 1px;
+    color: rgba(33, 173, 76, 1);
+    font-weight: bold;
+}

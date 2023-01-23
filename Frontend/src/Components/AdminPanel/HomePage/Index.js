@@ -7,23 +7,24 @@ import "./Index.css"
 import AuthContext from '../../../Context/auth_context';
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 const Index = () => {
-  const { loggedIn , admin} = useContext(AuthContext);
+  const { loggedIn, admin } = useContext(AuthContext);
   const navigate = useNavigate();
   // useEffect(() => {
   //   if(admin!==true){
   //     navigate("/");          
   //   }
   // }, [admin])
-  
+
   return (
     <div className='admin-section'>
-      <Header />
-      <div className="SideMenuAndPageContent">
-        <SideBar ></SideBar>
-        <PageContent></PageContent>
-        
+      <div className="admin-section-grid-2">
+        <SideBar />
+        <div className="SideMenuAndPageContent">
+          <Header />
+          <PageContent />
+          {/* <Footer /> */}
+        </div>
       </div>
-      <Footer />
     </div>
   )
 }

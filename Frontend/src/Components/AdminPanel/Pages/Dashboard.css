@@ -1,0 +1,33 @@
+.dashboard-heading{
+    margin: 20px 10px 0 10px;
+}
+.dashboard-heading h4{
+    font-weight: 800;
+}
+.dashboard-info{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 40px 0;
+}
+.dashboard-child-info{
+    display: flex;
+    width: 100%;
+}
+.dashboard-card-info{
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    /* border: 2px solid black; */
+    padding: 20px;
+    border-radius: 10px;
+}
+.dashboard-card-num h3, p{
+    margin: 0;
+    color: white;
+}
+.dashboard-card-num h3{
+    font-weight: bold;
+}

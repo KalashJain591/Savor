@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getComments, getOrders } from "../API";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "./Header.css"
 
 const Header = () => {
   const [comments, setComments] = useState([]);
@@ -14,7 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
   async function logOut() {
     await axios.get("/auth/logout")
-    .then((res)=>{   navigate("/")});
+      .then((res) => { navigate("/") });
   }
   useEffect(() => {
     getComments().then((res) => {
@@ -25,17 +26,15 @@ const Header = () => {
     });
   }, []);
   return (
-    <div className='header-section-admin-panel my-2'>
-      <Image
-        width={40}
-        src="/images/SavorLogoTag.png"
-      ></Image>
-      <Typography.Title>Admin Dashboard</Typography.Title>
-      <Space>
-      <button className='btn btn-secondary' onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </button>
+    <div className='header-section-admin-panel'>
+      <div className="admin-panel-logo">
+        <img src="/images/SavorLogoTag.png" alt="" />
+      </div>
+      <div className='notification'>
+        <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
         <Badge count={comments.length} dot>
           <MailOutlined
-            style={{ fontSize: 24 }}
+            style={{ fontSize: 24, color: "white" }}
             onClick={() => {
               setCommentsOpen(true);
             }}
@@ -43,13 +42,13 @@ const Header = () => {
         </Badge>
         <Badge count={orders.length}>
           <BellFilled
-            style={{ fontSize: 24 }}
+            style={{ fontSize: 24, color: "white" }}
             onClick={() => {
               setNotificationsOpen(true);
             }}
           />
         </Badge>
-      </Space>
+      </div>
       <Drawer
         title="Comments"
         open={commentsOpen}
@@ -84,7 +83,6 @@ const Header = () => {
             );
           }}
         ></List>
-        
       </Drawer>
     </div>
   )

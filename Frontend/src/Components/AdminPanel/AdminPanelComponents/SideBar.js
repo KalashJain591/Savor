@@ -7,7 +7,8 @@ import {
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import "./SideBar.css"
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const SideBar = (props) => {
   const location = useLocation();
@@ -20,7 +21,26 @@ const SideBar = (props) => {
   const navigate = useNavigate();
   return (
     <div className='sideBar-admin-panel'>
-      <Menu
+      <div className="SideMenuVertical">
+        <div className="sideBar-heading">
+          <h4>Admin Dashboard</h4>
+        </div>
+        <ul className="sideBarMenu">
+          <NavLink to="/adminPanel">
+            <li><AppstoreOutlined className='admin-panel-icon'/>Dashbaord</li>
+          </NavLink>
+          <NavLink  to="/adminpanel/products">
+            <li><ShopOutlined className='admin-panel-icon' />Products</li>
+          </NavLink>
+          <NavLink  to="/adminpanel/orders">
+            <li><ShoppingCartOutlined className='admin-panel-icon' />Orders</li>
+          </NavLink>
+          <NavLink to="/adminpanel/customer">
+            <li><UserOutlined className='admin-panel-icon' />Users</li>
+          </NavLink>
+        </ul>
+      </div>
+      {/* <Menu
         className="SideMenuVertical"
         mode="vertical"
         onClick={(item) => {
@@ -50,7 +70,7 @@ const SideBar = (props) => {
             icon: <UserOutlined />,
           },
         ]}
-      ></Menu>
+      ></Menu> */}
     </div>
   )
 }
