@@ -12,7 +12,7 @@ export default function CheckoutForm() {
     const {loggedIn, userId } = useContext(AuthContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if(loggedIn){
+        if(!loggedIn){
           navigate("/login");          
         }
       }, [])

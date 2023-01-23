@@ -32,21 +32,21 @@ const SideBar = (props) => {
           {
             label: "Dashbaord",
             icon: <AppstoreOutlined />,
-            key: "/admin",
+            key: "/adminpanel",
           },
           {
             label: "Products",
-            key: "/admin/product",
+            key: "/adminpanel/products",
             icon: <ShopOutlined />,
           },
           {
             label: "Orders",
-            key: "/admin/orders",
+            key: "/adminpanel/orders",
             icon: <ShoppingCartOutlined />,
           },
           {
             label: "Users",
-            key: "/admin/user",
+            key: "/adminpanel/customer",
             icon: <UserOutlined />,
           },
         ]}

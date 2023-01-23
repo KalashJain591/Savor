@@ -1,12 +1,15 @@
 import { Avatar, Rate, Space, Table, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Footer from "../AdminPanelComponents/Footer";
+import Header from "../AdminPanelComponents/Header";
 import ChangeOrderStatus from "../AdminPanelComponents/Orders/ChangeOrderStatus";
 import OrderUserInfo from "../AdminPanelComponents/Orders/OrderUserInfo";
 import ProductInfo from "../AdminPanelComponents/Orders/ProductInfo";
 import UserInfo from "../AdminPanelComponents/Orders/UserInfo";
+import SideBar from "../AdminPanelComponents/SideBar";
 
-const Order = () => {
+export const AdminOrder = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
   
@@ -56,11 +59,11 @@ const Order = () => {
     //         dataIndex: "ordername",
     //       },
     //       {
-    //         title: "Order Phone No.",
+    //         titlAdminO: "Order Phone No.",
     //         dataIndex: "ordermobile1",
     //       },
     //       {
-    //         title: "Order Phone No. (Optional)",
+    //         titlAdminO: "Order Phone No. (Optional)",
     //         dataIndex: "ordermobile2",
     //       },
 
@@ -101,7 +104,7 @@ const Order = () => {
     //         render: (value) => <ChangeOrderStatus orderid={dataSource._id} order_status={value}/>,
     //       },
     //       {
-    //         title: "Date of Order",
+    //         title: "DateAdminOof Order",
     //         dataIndex: "date_added",
     //         render: (value) => <span>{value}</span>,
     //       },
@@ -112,14 +115,20 @@ const Order = () => {
     //     }}
     //   ></Table>
     // </Space>
-    <div >
+    <div className='admin-section'>
+      <Header />
+      <div className="SideMenuAndPageContent">
+        <SideBar ></SideBar>
+        
+    <div  className="container">
       <br/>
     <table class="table" style={{backgroundColor:"white", borderRadius:"10px"}}>
   <thead>
     <tr>
       <th scope="col">User Details</th>
       <th scope="col">Customer Details</th>
-      <th scope="col">Order Details</th>
+      <th scope="cAdminOl">Order Details</th>
+      <th scope="cAdminOl">Order Status</th>
       <th scope="col">Bill</th>
     </tr>
   </thead>
@@ -128,6 +137,7 @@ const Order = () => {
     <tr>
       <th scope="row"><UserInfo profilePic={order.profilePic} name={order.name} phoneno={order.phoneno} email={order.email} dob={order.dob}/></th>
       <td><OrderUserInfo ordername={order.ordername} address={order.address} addressoptional={order.addressoptional} state={order.state} city={order.city} postalcode={order.postalcode} ordermobile1={order.ordermobile1} ordermobile2={order.ordermobile2} Address={order.Address} AddressOptional={order.AddressOptional} /></td>
+      <td> <ProductInfo products={order.products}/></td>
       <td><ChangeOrderStatus orderId={order._id} order_status={order.order_status}/></td>
       <td> <span>₹{order.bill}</span></td>
     </tr>
@@ -135,7 +145,10 @@ const Order = () => {
   )} 
 </table>
 </div>
+        
+      </div>
+      <Footer />
+    </div>
   )
 }
 
-export default Order

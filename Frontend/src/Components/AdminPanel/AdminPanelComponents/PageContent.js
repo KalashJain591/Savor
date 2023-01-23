@@ -1,16 +1,16 @@
 import React from 'react'
-import Customer from '../Pages/Customer'
+// import Customer from '../Pages/Customer'
 import Dashboard from '../Pages/Dashboard'
-import Inventory from '../Pages/Inventory'
-import Order from '../Pages/Order'
+// import Inventory from '../Pages/Inventory'
+// import Order from '../Pages/AdminOrder'
 
 const PageContent = () => {
   return (
     <div className='PageContent container'>
       <Dashboard/>
-      <Customer/>
-      <Inventory/>
-      <Order/>
+      {/* <Customer/> */}
+      {/* <Inventory/> */}
+      {/* <Order/> */}
     </div>
   )
 }

@@ -22,14 +22,17 @@ import Account from './Components/UserDashboard/Account';
 import Error404 from './Components/Error404';
 import { useEffect } from 'react';
 import Index from './Components/AdminPanel/HomePage/Index';
+import Inventory from './Components/AdminPanel/Pages/Inventory';
+import Customer from './Components/AdminPanel/Pages/Customer';
+import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    if(admin===true){
-      navigate("/adminpanel/");          
-    }
-  }, [admin])
+  // useEffect(() => {
+  //   if(admin===true){
+  //     navigate("/adminpanel/");          
+  //   }
+  // }, [admin])
   
 
   // Scroll top when location changes
@@ -58,10 +61,10 @@ function App() {
           <Route path ="/UserDashboard/cart" element={<Cart/>}/>
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
-          <Route exact path='/adminPanel' element={<Index/>}/>
-          {/* <Route path='/adminPanel/user' element={<Index/>}/>
-          <Route path='/adminPanel/order' element={<Index/>}/>
-          <Route path='/adminPanel/products' element={<Index/>}/> */}
+          <Route exact path='/adminpanel' element={<Index/>}/>
+          <Route path="/adminpanel/customer" element={<Customer />} />
+          <Route path="/adminpanel/products" element={<Inventory />} />
+          <Route path="/adminpanel/orders" element={<AdminOrder />} />
           <Route path='*' element={<Error404 />}/>
         </Routes>
         {admin?<></>:<Footer/>}

@@ -5,15 +5,15 @@ import PageContent from '../AdminPanelComponents/PageContent'
 import SideBar from '../AdminPanelComponents/SideBar'
 import "./Index.css"
 import AuthContext from '../../../Context/auth_context';
-import { useNavigate } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 const Index = () => {
   const { loggedIn , admin} = useContext(AuthContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    if(admin!==true){
-      navigate("/");          
-    }
-  }, [admin])
+  // useEffect(() => {
+  //   if(admin!==true){
+  //     navigate("/");          
+  //   }
+  // }, [admin])
   
   return (
     <div className='admin-section'>
@@ -21,6 +21,7 @@ const Index = () => {
       <div className="SideMenuAndPageContent">
         <SideBar ></SideBar>
         <PageContent></PageContent>
+        
       </div>
       <Footer />
     </div>

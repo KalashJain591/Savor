@@ -2,6 +2,9 @@ import React from 'react'
 import { Avatar, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import SideBar from '../AdminPanelComponents/SideBar';
+import Header from '../AdminPanelComponents/Header';
+import Footer from '../AdminPanelComponents/Footer';
 
 const Inventory = () => {
   const [loading, setLoading] = useState(false);
@@ -24,6 +27,11 @@ const Inventory = () => {
       setLoading(false);
   }, []);
   return (
+    <div className='admin-section'>
+      <Header />
+      <div className="SideMenuAndPageContent">
+        <SideBar ></SideBar>
+        <div className='container'>
     <Space size={20} direction="vertical">
       <Typography.Title level={4}>Inventory</Typography.Title>
       <Table
@@ -79,6 +87,10 @@ const Inventory = () => {
         }}
       ></Table>
     </Space>
+    </div>       
+    </div>
+      <Footer />
+    </div>
   )
 }
 
