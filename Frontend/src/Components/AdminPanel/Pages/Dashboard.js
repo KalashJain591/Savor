@@ -10,7 +10,9 @@ import { getCustomers, getInventory, getOrders, getRevenue } from "../API";
 import "./Dashboard.css"
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, } from "chart.js";
 import { Bar } from "react-chartjs-2";
-
+import Header from '../AdminPanelComponents/Header'
+import SideBar from '../AdminPanelComponents/SideBar'
+import "../HomePage/Index.css"
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -39,40 +41,52 @@ const Dashboard = () => {
     });
   }, []);
   return (
-    <div className="dashboard-section">
-      <div className="dashboard-heading">
-        <h4>Dashboard</h4>
-      </div>
-      <div className="dashboard-info">
-        <div className="dashboard-child-info">
-          <div className="dashboard-card-info" style={{background:"#17a2b8"}}> 
-            <div className="dashboard-card-num ">
-              <h3>150</h3>
-              <p>Orders</p>
+    <div className='admin-section'>
+      <div className="admin-section-grid-2">
+        <SideBar />
+        <div className="SideMenuAndPageContent">
+          <Header />
+          <div className="dashboard-section">
+            <div className="dashboard-heading">
+              <h4>Dashboard</h4>
             </div>
-            <ShoppingCartOutlined  style={{fontSize: 50, color: "#148a9d"}}/>
-          </div>
-          <div className="dashboard-card-info" style={{background:"#28a745"}}>
-            <div className="dashboard-card-num">
-              <h3>150</h3>
-              <p>Inventory</p>
+            <div className="dashboard-info">
+              <div className="dashboard-child-info">
+                <div className="dashboard-card-info" style={{ background: "#17a2b8" }}>
+                  <div className="dashboard-card-num ">
+                    <h3>150</h3>
+                    <p>Orders</p>
+                  </div>
+                  <ShoppingCartOutlined style={{ fontSize: 50, color: "#148a9d" }} />
+                </div>
+                <div className="dashboard-card-info" style={{ background: "#28a745" }}>
+                  <div className="dashboard-card-num">
+                    <h3>150</h3>
+                    <p>Inventory</p>
+                  </div>
+                  <ShoppingOutlined style={{ fontSize: 50, color: "#228e3b" }} />
+                </div>
+                <div className="dashboard-card-info" style={{ background: "#ffc107" }}>
+                  <div className="dashboard-card-num">
+                    <h3>150</h3>
+                    <p>Customer</p>
+                  </div>
+                  <UserOutlined style={{ fontSize: 50, color: "#d9a406" }} />
+                </div>
+                <div className="dashboard-card-info" style={{ background: "#dc3545" }}>
+                  <div className="dashboard-card-num">
+                    <h3>150</h3>
+                    <p>Revenue</p>
+                  </div>
+                  <DollarCircleOutlined style={{ fontSize: 50, color: "#bb2d3b" }} />
+                </div>
+              </div>
             </div>
-            <ShoppingOutlined style={{fontSize: 50, color: "#228e3b"}}/>
           </div>
-          <div className="dashboard-card-info" style={{background:"#ffc107"}}>
-            <div className="dashboard-card-num">
-              <h3>150</h3>
-              <p>Customer</p>
-            </div>
-            <UserOutlined style={{fontSize: 50, color: "#d9a406"}}/>
-          </div>
-          <div className="dashboard-card-info" style={{background:"#dc3545"}}>
-            <div className="dashboard-card-num">
-              <h3>150</h3>
-              <p>Revenue</p>
-            </div>
-            <DollarCircleOutlined style={{fontSize: 50, color: "#bb2d3b"}}/>
-          </div>
+          <Space>
+            <RecentOrders />
+            <DashboardChart />
+          </Space>
         </div>
         {/* <DashboardCard
           icon={
@@ -135,10 +149,6 @@ const Dashboard = () => {
           value={revenue}
         />*/}
       </div>
-      <Space>
-        <RecentOrders />
-        <DashboardChart />
-      </Space>
     </div>
   )
 }

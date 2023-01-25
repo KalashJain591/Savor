@@ -5,82 +5,82 @@ import axios from 'axios';
 import Header from '../AdminPanelComponents/Header';
 import SideBar from '../AdminPanelComponents/SideBar';
 import Footer from '../AdminPanelComponents/Footer';
+import "../HomePage/Index.css"
 const Customer = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
-  
-  const callapi=async()=>{
+
+  const callapi = async () => {
     await axios.get("/admin/user")
-    .then((res)=>{
-      // console.log(res.data);
-      setDataSource(res.data);
-    })
-  }  
+      .then((res) => {
+        // console.log(res.data);
+        setDataSource(res.data);
+      })
+  }
 
   useEffect(() => {
     setLoading(true);
     callapi();
     setLoading(false);
   }, []);
-  
+
   return (
     <div className='admin-section'>
-      <Header />
-      <div className="SideMenuAndPageContent">
-        <SideBar ></SideBar>
-     
-    <div className='container'>
-      <br/>
-      <Space size={20} direction="vertical">
-      <Typography.Title level={4}>Customers</Typography.Title>
-      <Table
-        loading={loading}
-        columns={[
-          {
-            title: "Photo",
-            dataIndex: "profilePic",
-            render: (link) => {
-              return <Avatar src={link} />;
-            },
-          },
-          {
-            title: "Name",
-            dataIndex: "name",
-          },
-          {
-            title: "Phone No.",
-            dataIndex: "phoneno",
-          },
-          {
-            title: "Email",
-            dataIndex: "email",
-          },
-          {
-            title: "DOB",
-            dataIndex: "dob",
-          },
-          // {
-          //   title: "address",
-          //   dataIndex: "address",
-          //   render: (address) => {
-          //     return (
-          //       <span>
-          //         {address.address}, {address.city}
-          //       </span>
-          //     );
-          //   },
-          // },
-        ]}
-        dataSource={dataSource}
-        pagination={{
-          pageSize: 5,
-        }}
-      ></Table>
-    </Space>
-    </div>
-       
-    </div>
-      <Footer />
+      <div className="admin-section-grid-2">
+        <SideBar />
+        <div className="SideMenuAndPageContent">
+          <Header />
+          <div className='container'>
+            <br />
+            <Space size={20} direction="vertical">
+              <Typography.Title level={4}>Customers</Typography.Title>
+              <Table
+                loading={loading}
+                columns={[
+                  {
+                    title: "Photo",
+                    dataIndex: "profilePic",
+                    render: (link) => {
+                      return <Avatar src={link} />;
+                    },
+                  },
+                  {
+                    title: "Name",
+                    dataIndex: "name",
+                  },
+                  {
+                    title: "Phone No.",
+                    dataIndex: "phoneno",
+                  },
+                  {
+                    title: "Email",
+                    dataIndex: "email",
+                  },
+                  {
+                    title: "DOB",
+                    dataIndex: "dob",
+                  },
+                  // {
+                  //   title: "address",
+                  //   dataIndex: "address",
+                  //   render: (address) => {
+                  //     return (
+                  //       <span>
+                  //         {address.address}, {address.city}
+                  //       </span>
+                  //     );
+                  //   },
+                  // },
+                ]}
+                dataSource={dataSource}
+                pagination={{
+                  pageSize: 5,
+                }}
+              ></Table>
+            </Space>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

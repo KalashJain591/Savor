@@ -5,18 +5,18 @@ import axios from 'axios';
 import SideBar from '../AdminPanelComponents/SideBar';
 import Header from '../AdminPanelComponents/Header';
 import Footer from '../AdminPanelComponents/Footer';
-
+import "../HomePage/Index.css"
 const Inventory = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
 
-  const callapi=async()=>{
+  const callapi = async () => {
     await axios.get("/admin/product")
-    .then((res)=>{
-      console.log(res.data);
-      setDataSource(res.data);
-    })
-  }  
+      .then((res) => {
+        console.log(res.data);
+        setDataSource(res.data);
+      })
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -24,72 +24,78 @@ const Inventory = () => {
     // getInventory().then((res) => {
     //   setDataSource(res.products);
     // });
-      setLoading(false);
+    setLoading(false);
   }, []);
   return (
     <div className='admin-section'>
-      <Header />
-      <div className="SideMenuAndPageContent">
-        <SideBar ></SideBar>
-        <div className='container'>
-    <Space size={20} direction="vertical">
-      <Typography.Title level={4}>Inventory</Typography.Title>
-      <Table
-        loading={loading}
-        columns={[
-          {
-            title: "Thumbnail",
-            dataIndex: "images",
-            render: (link) => {
-              return <Avatar src={link[0].imgUrl} />;
-            },
-          },
-          {
-            title: "Title",
-            dataIndex: "name",
-          },
-          {
-            title: "Price",
-            dataIndex: "price",
-            render: (value) => <span>₹{value}</span>,
-          },
-          {
-            title: "Rating",
-            dataIndex: "rating",
-            render: (rating) => {
-              return <Rate value={rating} allowHalf disabled />;
-            },
-          },
-          {
-            title: "Reviews",
-            dataIndex: "reviews",
-          },
-          {
-            title: "Stock",
-            dataIndex: "stock",
-          },
-          {
-            title: "Category",
-            dataIndex: "category",
-          },
-          {
-            title: "Feature",
-            dataIndex: "feature",
-          },
-          {
-            title: "description",
-            dataIndex: "description",
-          },
-        ]}
-        dataSource={dataSource}
-        pagination={{
-          pageSize: 5,
-        }}
-      ></Table>
-    </Space>
-    </div>       
-    </div>
-      <Footer />
+      <div className="admin-section-grid-2">
+        <SideBar />
+        <div className="SideMenuAndPageContent">
+          <Header />
+          <div className='container'>
+            <Space size={20} direction="vertical">
+              <Typography.Title level={4}>Inventory</Typography.Title>
+              <Table
+                loading={loading}
+                columns={[
+                  {
+                    title: "Thumbnail",
+                    dataIndex: "images",
+                    render: (link) => {
+                      return <Avatar src={link[0].imgUrl} />;
+                    },
+                  },
+                  {
+                    title: "Title",
+                    dataIndex: "name",
+                  },
+                  {
+                    title: "Price",
+                    dataIndex: "price",
+                    render: (value) => <span>₹{value}</span>,
+                  },
+                  {
+                    title: "Rating",
+                    dataIndex: "rating",
+                    render: (rating) => {
+                      return <Rate value={rating} allowHalf disabled />;
+                    },
+                  },
+                  {
+                    title: "Reviews",
+                    dataIndex: "reviews",
+                  },
+                  {
+                    title: "Stock",
+                    dataIndex: "stock",
+                  },
+                  {
+                    title: "Category",
+                    dataIndex: "category",
+                  },
+                  {
+                    title: "Feature",
+                    dataIndex: "feature",
+                  },
+                  {
+                    title: "description",
+                    dataIndex: "description",
+                  },
+                  {
+                    title: "Edit Product",
+                    dataIndex: "Edit Product",
+                    render: () => <button>Edit Product</button>,
+                  },
+                ]}
+                dataSource={dataSource}
+                pagination={{
+                  pageSize: 5,
+                }}
+              ></Table>
+            </Space>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
