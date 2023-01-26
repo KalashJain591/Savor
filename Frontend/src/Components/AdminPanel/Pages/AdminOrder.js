@@ -8,22 +8,22 @@ import OrderUserInfo from "../AdminPanelComponents/Orders/OrderUserInfo";
 import ProductInfo from "../AdminPanelComponents/Orders/ProductInfo";
 import UserInfo from "../AdminPanelComponents/Orders/UserInfo";
 import SideBar from "../AdminPanelComponents/SideBar";
-
+import "../HomePage/Index.css"
 export const AdminOrder = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
-  
-  const callapi=async()=>{
+
+  const callapi = async () => {
     await axios.get("/admin/order")
-    .then((res)=>{
-      // console.log(res.data);
-      setDataSource(res.data);
-    })
-  }  
+      .then((res) => {
+        // console.log(res.data);
+        setDataSource(res.data);
+      })
+  }
   useEffect(() => {
     callapi();
     setLoading(true);
-      setLoading(false);
+    setLoading(false);
   }, []);
   return (
     // <Space size={20} direction="vertical">
@@ -116,38 +116,38 @@ export const AdminOrder = () => {
     //   ></Table>
     // </Space>
     <div className='admin-section'>
-      <Header />
-      <div className="SideMenuAndPageContent">
-        <SideBar ></SideBar>
-        
-    <div  className="container">
-      <br/>
-    <table class="table" style={{backgroundColor:"white", borderRadius:"10px"}}>
-  <thead>
-    <tr>
-      <th scope="col">User Details</th>
-      <th scope="col">Customer Details</th>
-      <th scope="cAdminOl">Order Details</th>
-      <th scope="cAdminOl">Order Status</th>
-      <th scope="col">Bill</th>
-    </tr>
-  </thead>
-  {dataSource.map((order) =>
-     <tbody  key={order.productId} >
-    <tr>
-      <th scope="row"><UserInfo profilePic={order.profilePic} name={order.name} phoneno={order.phoneno} email={order.email} dob={order.dob}/></th>
-      <td><OrderUserInfo ordername={order.ordername} address={order.address} addressoptional={order.addressoptional} state={order.state} city={order.city} postalcode={order.postalcode} ordermobile1={order.ordermobile1} ordermobile2={order.ordermobile2} Address={order.Address} AddressOptional={order.AddressOptional} /></td>
-      <td> <ProductInfo products={order.products}/></td>
-      <td><ChangeOrderStatus orderId={order._id} order_status={order.order_status}/></td>
-      <td> <span>₹{order.bill}</span></td>
-    </tr>
-    </tbody>
-  )} 
-</table>
-</div>
-        
+      <div className="admin-section-grid-2">
+        <SideBar />
+
+        <div className="SideMenuAndPageContent">
+          <Header />
+          <div className="container">
+            <br />
+            <table class="table" style={{ backgroundColor: "white", borderRadius: "10px" }}>
+              <thead>
+                <tr>
+                  <th scope="col">User Details</th>
+                  <th scope="col">Customer Details</th>
+                  <th scope="cAdminOl">Order Details</th>
+                  <th scope="cAdminOl">Order Status</th>
+                  <th scope="col">Bill</th>
+                </tr>
+              </thead>
+              {dataSource.map((order) =>
+                <tbody key={order.productId} >
+                  <tr>
+                    <th scope="row"><UserInfo profilePic={order.profilePic} name={order.name} phoneno={order.phoneno} email={order.email} dob={order.dob} /></th>
+                    <td><OrderUserInfo ordername={order.ordername} address={order.address} addressoptional={order.addressoptional} state={order.state} city={order.city} postalcode={order.postalcode} ordermobile1={order.ordermobile1} ordermobile2={order.ordermobile2} Address={order.Address} AddressOptional={order.AddressOptional} /></td>
+                    <td> <ProductInfo products={order.products} /></td>
+                    <td><ChangeOrderStatus orderId={order._id} order_status={order.order_status} /></td>
+                    <td> <span>₹{order.bill}</span></td>
+                  </tr>
+                </tbody>
+              )}
+            </table>
+          </div>
+        </div>
       </div>
-      <Footer />
     </div>
   )
 }
