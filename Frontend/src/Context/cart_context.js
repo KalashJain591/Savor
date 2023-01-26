@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext, useEffect } from "react";
+import { createContext, useReducer, useContext, useEffect, useState } from "react";
 import reducer from "../Reducer/CartReducer";
 
 // import {ItemData} from "../Data/ItemData";
@@ -20,9 +20,10 @@ const initialState = {
   cart: getLocalCartData(),
   total_items: 0,
   total_price: 0,
-  shipping_fee: 50,
+  shipping_fee: 80,
   final_amount:0,
   Discount:0,
+  hurray:0,
 };
 const CartProvider = ({ children }) => {
   // creating reducer to perform different operations

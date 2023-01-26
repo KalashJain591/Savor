@@ -1,5 +1,34 @@
+
 .toggler{
     background: none;
     border: none;
    
 }
+
+
+.free-delivery {
+    color: green;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .fa-truck {
+    font-size: 40px;
+    margin-right: 10px;
+  }
+  
+  .animated {
+    animation: bounce 1s;
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
