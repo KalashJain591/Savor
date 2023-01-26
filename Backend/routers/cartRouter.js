@@ -111,7 +111,7 @@ router.get('/removefromcart/:userId/:itemId', async (req, res) => {
     const userId = req.params.userId;
     const productId = req.params.itemId;
     try {
-      console.log("hello");
+      // console.log("hello");
       let cart = await Cart.findOne({ userId });  
       let itemIndex = cart.products.findIndex(p => p.productId == productId);
       if (itemIndex > -1) {
@@ -129,7 +129,7 @@ router.get('/removefromcart/:userId/:itemId', async (req, res) => {
 
   router.post('/clearcart', async (req, res) => {
     try {
-      console.log("first")
+      // console.log("first")
       const token = req.cookies.token;
       if (!token) return res.json(false);
       var decoded = jwt_decode(token);

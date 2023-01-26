@@ -16,7 +16,7 @@ router.get("/",(req, res) => {
 //Route to add a new post
 router.route("/addproduct").post((req, res) => {
     //Retrieve data for post
-    const { images,name,  description, price, stock,  category, feature,rating,reviews} = req.body;
+    const { images,name,  description, price, stock,  category, feature,rating,reviews, quantity,unit} = req.body;
     //Create a new Post and save it to DB
     const newProduct = new Product({
         images,
@@ -27,7 +27,9 @@ router.route("/addproduct").post((req, res) => {
         category,
         feature,
         rating,
-        reviews
+        reviews,
+        quantity,
+        unit
         });
     // Save the new post
     newProduct
