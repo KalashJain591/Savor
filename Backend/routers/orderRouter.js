@@ -21,7 +21,7 @@ router.post("/orderbycart/:id",async (req, res) => {
   const userId = req.params.id;
   // console.log(userId);
   try {
-    const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2}=req.body;
+    const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2, Cash_on_delivery, payment_status}=req.body;
     let user = await User.findOne({_id:userId});
     let cart = await Cart.findOne({userId});
     const newOrder = new Order({
@@ -39,6 +39,8 @@ router.post("/orderbycart/:id",async (req, res) => {
       postalcode,
       ordermobile1,
       ordermobile2,
+      Cash_on_delivery, 
+      payment_status,
       products:cart.products,
       bill:cart.bill,
       date_added:new Date(),
@@ -56,12 +58,14 @@ router.post("/orderbyproduct/:id/:productid",async (req, res) => {
   const userId = req.params.id;
   const productId =req.params.productid;
   try {
-    const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2}=req.body;
+    const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2, Cash_on_delivery, payment_status}=req.body;
     let user = await User.findOne({_id:userId});
     let productDetails = await Product.findOne({ _id: productId }); 
     const price = productDetails.price;
     const name = productDetails.name;
     const images = productDetails.images[0].imgUrl;
+    const quantity = productDetails.quantity;
+    const unit = productDetails.unit;
     const newOrder = new Order({
       userId,
       profilePic:user.profilePic,
@@ -77,7 +81,9 @@ router.post("/orderbyproduct/:id/:productid",async (req, res) => {
       postalcode,
       ordermobile1,
       ordermobile2,
-      products: [{ productId, name, quantity:1, price, images }],
+      Cash_on_delivery,
+       payment_status,
+      products: [{ productId, name, quantity:1, price, images,quantity,unit }],
       bill:price,
       date_added:new Date(),
       order_status:"ORDER PLACED"

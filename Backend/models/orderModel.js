@@ -37,6 +37,8 @@ const OrderSchema = new Schema({
         type: Number
       },
       images:  String,
+      quantity:Number,
+      unit:String,
     }
   ],
   bill: {
@@ -47,6 +49,8 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  payment_status:{type:String,required:false},
+  Cash_on_delivery:{type:Boolean,required:false},
   order_status: String
 });
 

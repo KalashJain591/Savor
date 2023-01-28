@@ -23,6 +23,8 @@ const CartSchema = new Schema({
         type: Number
       },
       images:  String,
+      quantity:Number,
+      unit:String,
     }
   ],
   bill: {
