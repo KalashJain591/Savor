@@ -1,19 +1,13 @@
-// import paymentRoute from "./routers/paymentRoute";
-// import { connectDB } from "./config/database.js";
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 dotenv.config();
-// import Razorpay from "razorpay"
-// connectDB();
-// set up server
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(cors({
   origin: [
@@ -33,22 +27,10 @@ mongoose.connect(process.env.MDB_CONNECT, {
     console.log("Connected to MongoDB");
   }
 );
-// export const connectDB = async()=>{
-//   const {connection} = await mongoose.connect(process.env.MONGO_URI);
-//   console.log(`MongoDB is connected with ${connection.host}`)
-// }
 
-// app.listen(process.env.PORT, ()=>
-//   console.log(`Server running on ${process.env.PORT}`) 
-// );
-// set up routes
 app.use("/auth", require("./routers/userRouter"));
 app.use("/product", require("./routers/productRouter"));
 app.use("/order", require("./routers/orderRouter"));
 app.use("/cart", require("./routers/cartRouter"));
 app.use("/mail", require("./routers/contactus"));
 app.use("/admin", require("./routers/adminRouter"));
-app.use("/api", require("./routers/paymentRoute"));
-app.get("/api/getkey", (req, res) =>
-res.status(200).json({key: process.env.RAZORPAY_API_KEY}))
-// module.exports = instance;
