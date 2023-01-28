@@ -7,19 +7,20 @@ import AuthContext from '../../Context/auth_context';
 import SingleProductSummary from './SingleProductSummary';
 import { useNavigate } from 'react-router-dom';
 export default function CheckoutForm() {
-    const { cart, clearCart, } = useCartContext();
+    const { total_items,cart, clearCart, } = useCartContext();
     // console.log( localStorage.getItem("Buynow"));
-    const {loggedIn, userId } = useContext(AuthContext);
+    const { loggedIn, userId } = useContext(AuthContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if(!loggedIn){
-          navigate("/login");          
+        if (!loggedIn) {
+            navigate("/login");
         }
-      }, [])
-      
+    }, [])
+
     // creating  a state to store the values from the user
     const [Record, SetRecord] = useState([]);
     const [display, setdisplay] = useState(false);
+    const [btnvalue,setbtnvalue]=useState("Check details");
     const [BillingInfo, setBillingInfo] = useState({
         name: "",
         email: "",
@@ -31,7 +32,15 @@ export default function CheckoutForm() {
         mobileNumber1: "",
         mobileNumber2: "",
     })
-
+    
+    const f1=()=>{
+     
+        if(!display)
+        setbtnvalue("Close Details");
+        else
+        setbtnvalue("Check Details");  
+        setdisplay(!display);
+    }
     async function details() {
         try {
             const response = await axios.get("/auth/dashboard")
@@ -50,22 +59,22 @@ export default function CheckoutForm() {
             console.error(err);
         }
     }
-        //local storage
-        var x=localStorage.getItem("Buynow");
-        let id=x.slice(2);
-        const [productDetails,setproductDetails]=useState({"_id":"63bff8bc549ff24265d6afaa","images":[{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"}],"name":"GOREAL - COW URINE SOAP","description":"GoReal Ayurvedic soap made from Panchgavya and Gir cow milk.","price":30,"category":"Bathing","feature":"false"});
-        const callapi=async()=>{
-            await axios.get(`/product/${id}`)
-            .then((res)=>{console.log(res.data); setproductDetails(res.data)});   
-            
-        }
-    
+    //local storage
+    var x = localStorage.getItem("Buynow");
+    let id = x.slice(2);
+    const [productDetails, setproductDetails] = useState({ "_id": "63bff8bc549ff24265d6afaa", "images": [{ "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }, { "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }, { "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }, { "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }], "name": "GOREAL - COW URINE SOAP", "description": "GoReal Ayurvedic soap made from Panchgavya and Gir cow milk.", "price": 30, "category": "Bathing", "feature": "false" });
+    const callapi = async () => {
+        await axios.get(`/product/${id}`)
+            .then((res) => { console.log(res.data); setproductDetails(res.data) });
+
+    }
+
     // useEffect(() => {
     //     console.log(productDetails)
     // }, [productDetails])
-    
+
     useEffect(() => {
-        if(x[0]==='u'){
+        if (x[0] === 'u') {
             callapi();
         }
         details();
@@ -95,20 +104,20 @@ export default function CheckoutForm() {
         });
     }
 
-    const payment=async()=>{
-        const {name,email,address1,address2,state,city,pincode,mobileNumber1,mobileNumber2}=BillingInfo;
-        if(name&&address1&&pincode&&mobileNumber1){
+    const payment = async () => {
+        const { name, email, address1, address2, state, city, pincode, mobileNumber1, mobileNumber2 } = BillingInfo;
+        if (name && address1 && pincode && mobileNumber1) {
             // console.log(x);
 
             // console.log(id)
-            if(x[0]==='c'){
-                await axios.post(`/order/orderbycart/${id}`,{ordername:name, address:address1, addressoptional:address2, state, city, postalcode:pincode, ordermobile1:mobileNumber1,ordermobile2:mobileNumber2});
+            if (x[0] === 'c') {
+                await axios.post(`/order/orderbycart/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2 });
             }
-            else{
-                await axios.post(`/order/orderbyproduct/${userId}/${id}`,{ordername:name, address:address1, addressoptional:address2, state, city, postalcode:pincode, ordermobile1:mobileNumber1,ordermobile2:mobileNumber2});
+            else {
+                await axios.post(`/order/orderbyproduct/${userId}/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2 });
             }
         }
-        else{
+        else {
             alert("Invalid Details");
         }
     }
@@ -151,8 +160,8 @@ export default function CheckoutForm() {
                                     <div className="col-md-4">
                                         <label htmlFor="state" className="form-label">State</label>
                                         <select className="form-select" id="state" placeholder='choose...' name='state' value={BillingInfo.state} onChange={handleInput} required >
-                                        <option>Not selected</option>
-                                        <option>Madhya Pradesh</option>
+                                            <option>Not selected</option>
+                                            <option>Madhya Pradesh</option>
                                         </select>
                                         <div className="invalid-feedback">
                                             Please provide a valid state.
@@ -161,7 +170,7 @@ export default function CheckoutForm() {
                                     <div className="col-md-5">
                                         <label htmlFor="city" className="form-label">City</label>
                                         <select className="form-select" id="country" name='city' placeholder='choose...' value={BillingInfo.city} onChange={handleInput} required>
-                                        <option>Not selected</option>
+                                            <option>Not selected</option>
                                             <option>Indore</option>
                                             <option>Ujjain</option>
                                             <option>Bhopal</option>
@@ -254,12 +263,13 @@ export default function CheckoutForm() {
                                 </div> */}
 
                                 {/* <hr className="my-4" /> */}
-                                <button className=" btn btn-primary btn-md mb-4 ms-2" style={{ backgroundColor: "gray" }} onClick={() => { setdisplay(!display) }}>Check Items</button>
-                                <button className=" btn btn-primary btn-md mb-4 float-end me-2" onClick={payment}>Continue to checkout</button>
-                                { display?<div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
-                                    <table className="table text-center mb-0">
+                                <div className='d-flex justify-content-between'>
+                                <button className=" btn btn-primary btn-md mb-4 "  style={{ backgroundColor: "gray" }} onClick={() => {f1()}}>{btnvalue}</button>
+                                <button className=" btn btn-primary btn-md mb-4 " onClick={payment}>Continue to checkout</button></div>
+                                {display ? <div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
+                                    {total_items ? <table className="table text-center mb-0">
                                         <thead className="text-dark">
-                                            <tr>
+                                           <tr>
 
                                                 <th className='d-sm-none'>Item</th>
                                                 <th className=' d-none d-sm-block'>Item</th>
@@ -269,24 +279,24 @@ export default function CheckoutForm() {
                                                 <th>Remove</th>
                                             </tr>
                                         </thead>
-                                            {x[0]==='c'?
-                                        <tbody>                                            
-                                            {cart.map(Element => (
-                                                <CartItem key={Element.id} {...Element} />
-                                            ))}
-                                        </tbody>
+                                        {x[0] === 'c' ?
+                                            <tbody>
+                                                {cart.map(Element => (
+                                                    <CartItem key={Element.id} {...Element} />
+                                                ))}
+                                            </tbody>
                                             :
-                                        <tbody>
-                                            <CartItem id={productDetails._id} price={productDetails.price} images={productDetails.images[0].imgUrl} name={productDetails.name} total_cost={productDetails.price} Quantity={1}/>
-                                        </tbody>    
-                                            }
+                                            <tbody>
+                                                <CartItem id={productDetails._id} price={productDetails.price} images={productDetails.images[0].imgUrl} name={productDetails.name} total_cost={productDetails.price} Quantity={1} />
+                                            </tbody>
+                                        }
 
-                                    </table>
-                                </div>: <div></div>}
+                                    </table> :<div className='text-center m-4' style={{backgroundColor:"pink",height:"50%"}}><h3>Empty Cart</h3></div>}
+                                </div> : <div></div>}
                             </form>
                         </div>
                         <div className='col-md-5 col-lg-4'>
-                            {x[0]==='c'? <PaymentSummary />:<SingleProductSummary price={productDetails.price}/>       }
+                            {x[0] === 'c' ? <PaymentSummary /> : <SingleProductSummary price={productDetails.price} />}
                         </div>
                     </div>
                 </main>
