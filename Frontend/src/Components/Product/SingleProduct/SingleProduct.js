@@ -9,10 +9,10 @@ import CartAmountToggler from '../../Cart/CartAmountToggler';
 import AuthContext from '../../../Context/auth_context';
 const API = "/product";
 const SingleProduct = () => {
-        
     const { loggedIn } = useContext(AuthContext);
     const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
+    
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
     }
@@ -29,7 +29,7 @@ const SingleProduct = () => {
         reviews
     } = singleProduct
     const [img, setImg] = useState(images && images[0].imgUrl)
-    console.log("test", images)
+    // console.log("hello", name)
     useEffect(() => {
         // product();
         getSingleProduct(`${API}/${id}`);

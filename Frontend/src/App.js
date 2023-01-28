@@ -26,8 +26,11 @@ import Inventory from './Components/AdminPanel/Pages/Inventory';
 import Dashboard from './Components/AdminPanel/Pages/Dashboard';
 import Customer from './Components/AdminPanel/Pages/Customer';
 import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
+import EditProductPage from './Components/AdminPanel/Pages/EditProductPage';
+import { useState } from 'react';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
+  // const[changeId, setChangeId] = useState("");
   const navigate = useNavigate();
   // useEffect(() => {
   //   if(admin===true){
@@ -63,11 +66,14 @@ function App() {
           <Route path ="/UserDashboard/orders" element={<Orders/>}/>
           <Route path ="/UserDashboard/account" element={<Account/>}/>
           <Route exact path='/adminpanel' element={<Dashboard/>}/>
-          <Route path="/adminpanel/customer" element={<Customer />} />
-          <Route path="/adminpanel/products" element={<Inventory />} />
-          <Route path="/adminpanel/orders" element={<AdminOrder />} />
+          <Route path="/adminpanel/customer" element={<Customer />}/>
+          <Route path="/adminpanel/products" element={<Inventory />}/>
+          <Route path="/adminpanel/orders" element={<AdminOrder />}/>
+          <Route path ="/adminpanel/products/EditProductPage/:id" element={<EditProductPage/>}/>
+          {/* <Route path="/SingleProduct/:id" element={<SingleProduct/>}/> */}
           <Route path='*' element={<Error404 />}/>
         </Routes>
+
         {admin?<></>:<Footer/>}
     </>
   );

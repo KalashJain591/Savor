@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css?family=Sen&display=swap");
+.EditProduct-Section {
+  margin: 0;
+  /* min-height: 100vh; */
+  font-family: Sen, sans-serif;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f2f38;
+  padding: 50px 0;
+}
+.Edit-product-section {
+  /* border: 2px solid yellow; */
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+.edit-file-img{
+  display: flex;
+  color: #e4e2e0;
+  flex-direction: column;
+  width: 200px;
+}
+.child-single-edit-img{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.child-single-edit-img img{
+  width: 200px;
+  padding: 10px;
+}
+.Edit-container {
+  width: 100%;
+  /* height: 550px; */
+  background: #162730;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.8);
+}
+
+.Edit-container h3{
+  color: #e4e2e0;
+  font-size: 40px;
+  margin-top: 20px;
+}
+.edit-section-images{
+  /* border: 2px solid yellow; */
+  display: flex;
+  /* width: 100%; */
+  justify-content: center;
+}
+.edit-sub-section-img{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+#edit-form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 2%;
+}
+.form-group {
+  height: 65px;
+}
+
+label {
+  position: relative;
+  bottom: 3px;
+  color: #e4e2e0;
+}
+
+input {
+  width: 100%;
+  height: 34px;
+  padding: 5px;
+  border: 1px solid #e4e2e0;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+.edit-contain-button {
+  cursor: pointer;
+  color: #1f2f38;
+  background: #e4e2e0;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  font-family: Sen, sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.edit-contain-button:hover {
+  filter: brightness(150%);
+  background: #e4e2e0;
+ }
+
+.edit-contain-button:focus {
+  outline: none;
+}
+.edit-page-form-group input:disabled{
+  color: #e4e2e0;
+}

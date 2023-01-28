@@ -44,7 +44,7 @@ router.post("/editproduct/:id", async (req, res) => {
     try {
       // console.log(req.body);
       const {images,name,description,price,stock,category,feature,rating,reviews} = req.body;
-      const olddetails= await Product.findOne({_id:productId});;
+      const olddetails= await Product.findOne({_id:productId});
       if(!images){
         images:olddetails.images;
       }
