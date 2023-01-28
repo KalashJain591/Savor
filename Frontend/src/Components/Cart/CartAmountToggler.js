@@ -6,7 +6,7 @@ const CartAmountToggler = ({ Quantity, SetDecrease, SetIncrease }) => {
 
   // console.log(id);
   return (
-    <div className="cart-button">
+    <div className="cart-button" style={{}}>
       <div className=" d-flex flex-row justify-content-center ">
         <button onClick={() => SetDecrease()} className="toggler px-2">
           <p className="toggler fs-sm-4" style={{
