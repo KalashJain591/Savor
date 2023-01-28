@@ -6,6 +6,7 @@ import SideBar from '../AdminPanelComponents/SideBar';
 import Header from '../AdminPanelComponents/Header';
 import Footer from '../AdminPanelComponents/Footer';
 import Button from 'react-bootstrap/Button';
+import { FaTrash } from 'react-icons/fa';
 import MyVerticallyCenteredModal from './Modal';
 // import EditOrderPage from './EditOrderPage';
 import "../HomePage/Index.css"
@@ -22,14 +23,19 @@ const Inventory = ({setChangeId}) => {
         setDataSource(res.data);
       })
   }
+  const removeItem = async(id) =>{
+    await axios.get(`/admin/deleteproduct/${id}`)
+    .then((res) => {
+      window.location.reload()
+      console.log("deleted")
+      // setDataSource(res.data);
+    })
+  }
   // setChangeId()
  
   useEffect(() => {
     setLoading(true);
     callapi();
-    // getInventory().then((res) => {
-    //   setDataSource(res.products);
-    // });
     setLoading(false);
   }, []);
   // useEffect(() => {
@@ -139,6 +145,7 @@ const Inventory = ({setChangeId}) => {
                   <th>Feature</th>
                   <th>description</th>
                   <th>Product</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               {dataSource.map((product) =>
@@ -153,6 +160,7 @@ const Inventory = ({setChangeId}) => {
                     <td>{product.feature}</td>
                     <td>{product.description}</td>
                     <td><Button onClick={()=>navigate(`./EditProductPage/${product._id}`)}>Edit Product</Button></td>
+                    <td><FaTrash onClick={() => removeItem(product._id)} /></td>
                   </tr>
                 </tbody>
               )}

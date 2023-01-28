@@ -82,7 +82,7 @@ router.post("/editproduct/:id", async (req, res) => {
   router.get("/deleteproduct/:id", async (req, res) => {
     const productId= req.params.id;
     try {
-        let productsaved= await Product.findOneAndDelete({ productId});
+        let productsaved= await Product.findOneAndDelete({ _id:productId});
         res.status(200).send(productsaved);
     } catch (err) {
       res.status(200).send(err);
