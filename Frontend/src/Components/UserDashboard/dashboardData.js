@@ -35,13 +35,13 @@ export const dashData = [{
     id: 1,
     imgUrl: "/images/returns.png",
     desc: "Track , Return or Buy things again",
-    title: "Returns and Exchange",
-    DirectTo: "/UserDashboard/cart",
+    title: "Track your Orders",
+    DirectTo: "/UserDashboard/trackorder",
 
 },
 {
     id: 1,
-    "imgUrl": "/images/customerSupport.png",
+    imgUrl: "/images/customerSupport.png",
     desc: "Track , Return or Buy things again",
     title: "Customer Support",
     DirectTo: "/contactus",
