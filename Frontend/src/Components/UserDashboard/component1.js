@@ -16,7 +16,7 @@ export default function Component1(props) {
         </div>
         <div>
         <h2 style={{paddingRight:"4px",fontSize:"28px"}}>{dashData[idx].title}</h2>
-        <p style={{fontSize:"20px"}}>{dashData[idx].desc}</p>
+        <p style={{fontSize:"20px",color:"black"}}>{dashData[idx].desc}</p>
         </div>
       </div>
     </div>

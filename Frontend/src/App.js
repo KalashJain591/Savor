@@ -26,6 +26,7 @@ import Inventory from './Components/AdminPanel/Pages/Inventory';
 import Dashboard from './Components/AdminPanel/Pages/Dashboard';
 import Customer from './Components/AdminPanel/Pages/Customer';
 import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
+import TrackOrders from './Components/UserDashboard/TrackOrders';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ function App() {
           <Route path="/wishList" element={<WishList/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
-          <Route path="/dashboard" element={<Login/>}/>
+          <Route exact path="/dashboard" element={<Login/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path ="/cart/checkout" element={<CheckoutForm/>}/>
           <Route path ="/UserDashboard" element={<UserDashboard/>}/>
@@ -66,6 +67,7 @@ function App() {
           <Route path="/adminpanel/customer" element={<Customer />} />
           <Route path="/adminpanel/products" element={<Inventory />} />
           <Route path="/adminpanel/orders" element={<AdminOrder />} />
+          <Route path="/UserDashboard/trackorder" element={<TrackOrders/>}/>
           <Route path='*' element={<Error404 />}/>
         </Routes>
         {admin?<></>:<Footer/>}

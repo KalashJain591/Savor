@@ -1,9 +1,9 @@
-import { createContext, useReducer, useContext, useEffect, useState } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 import reducer from "../Reducer/CartReducer";
 
 // import {ItemData} from "../Data/ItemData";
 const CartContext = createContext();
-
+const placed=1;
 // to prevent the data loss on refresh/rendering ,we use local storage to temp store the data
 const getLocalCartData = () => {
   let locaCartData = localStorage.getItem("SavorCart");
@@ -58,7 +58,7 @@ const CartProvider = ({ children }) => {
     localStorage.setItem("SavorCart", JSON.stringify(state.cart));
   }, [state.cart])
 
-  return <CartContext.Provider value={{ ...state, addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>
+  return <CartContext.Provider value={{ ...state, placed,addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>
     {children}
   </CartContext.Provider>
 

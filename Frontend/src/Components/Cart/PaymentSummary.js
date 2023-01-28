@@ -6,7 +6,7 @@ export default function PaymentSummary() {
 
 
   return (
-    <>
+    <>    
       {
         hurray > 0 &&
 
