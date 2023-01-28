@@ -5,23 +5,36 @@ import { NavLink } from 'react-router-dom'
 import CartItem from './CartItem';
 import AuthContext from '../../Context/auth_context';
 import PaymentSummary from './PaymentSummary';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 export default function Cart() {
-  const { userId,loggedIn } = useContext(AuthContext);
-  const { cart, clearCart, } = useCartContext();
+  const { userId, loggedIn } = useContext(AuthContext);
+  const { cart, clearCart, total_price } = useCartContext();
+  let ok = 0;
+  if (total_price >= 500)
+    ok = 1;
+  console.log(ok);
 
   if (cart.length === 0) {
-    return (<><h1 className='text-center fs-1' style={{ height: "10rem", display: "flex", alignItems: "center", justifyContent: "center" ,fontFamily:"cursive" }} >Oop's,<br/>No Item in Your Cart</h1>
-    <div className='text-center mb-2'>
-      <img className='img-fluid' src="images/emptyCart2.png"/>  
-    </div>
-    <div className='text-center'>
-    <NavLink to ="/products ">
-      <button className='btn btn-lg my-3 fs-2' style={{backgroundColor:"orange"}}>Fill Your Cart</button>
-      </NavLink></div>
+    return (<><h1 className='text-center fs-1' style={{ height: "10rem", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "cursive" }} >Oop's,<br />No Item in Your Cart</h1>
+      <div className='text-center mb-2'>
+        <img className='img-fluid' src="images/emptyCart2.png" />
+      </div>
+      <div className='text-center'>
+        <NavLink to="/products ">
+          <button className='btn btn-lg my-3 fs-2' style={{ backgroundColor: "orange" }}>Fill Your Cart</button>
+        </NavLink></div>
 
     </>)
+  }
+
+  const handleSubmit=(e)=>{
+    localStorage.setItem("Buynow", "c:" + userId);
+    if(!ok)
+    {
+      alert("Minimum Cart value should be atleast ₹500")
+      e.preventDefault();
+    }
   }
   return (
     <>
@@ -31,7 +44,7 @@ export default function Cart() {
           <table className="table text-center mb-0">
             <thead className="text-dark">
               <tr>
-                
+
                 <th className='d-sm-none'>Item</th>
                 <th className=' d-none d-sm-block'>Item</th>
                 <th>Price</th>
@@ -48,18 +61,18 @@ export default function Cart() {
           </table>
           <div className="d-flex bd-highlight mb-3">
             <NavLink to="/">  <button className=" btn btn-md btn-success m-2 " style={{ backgroundColor: "#13C50C" }}>Continue Shopping </button></NavLink>
-            <button className="btn btn-md btn-  ms-auto m-2 " style={{ backgroundColor: "gray" }} onClick={ clearCart.bind(this)}>Clear Cart </button>
+            <button className="btn btn-md btn-  ms-auto m-2 " style={{ backgroundColor: "gray" }} onClick={clearCart.bind(this)}>Clear Cart </button>
           </div>
         </div>
         <div className="  d-flex flex-column col-12 col-lg-4">
           <PaymentSummary />
           <div className="align-self-center m-4">
-            {loggedIn ? <NavLink to="./checkout" >
-              <button type="button" onClick={()=>{localStorage.setItem("Buynow","c:"+userId );}} className="btn btn-primary  btn-lg ">
+            {loggedIn ? <NavLink to="./checkout" onClick={handleSubmit}>
+              <button type="button" className="btn btn-primary  btn-lg ">
                 Proceed for Payment
               </button>
             </NavLink> : <NavLink to="/login">
-              <button type="button"  className="btn btn-primary  btn-lg ">
+              <button type="button" className="btn btn-primary  btn-lg ">
                 Proceed for Payment
               </button>
             </NavLink>}

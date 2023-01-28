@@ -7,9 +7,9 @@ import AuthContext from '../../Context/auth_context';
 import SingleProductSummary from './SingleProductSummary';
 import { useNavigate } from 'react-router-dom';
 export default function CheckoutForm() {
-    const { cart, clearCart, final_amount } = useCartContext();
-    // console.log( final_amount);
-    const { loggedIn, userId } = useContext(AuthContext);
+    const { cart, clearCart, } = useCartContext();
+    // console.log( localStorage.getItem("Buynow"));
+    const {loggedIn, userId } = useContext(AuthContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (!loggedIn) {
@@ -20,6 +20,7 @@ export default function CheckoutForm() {
     // creating  a state to store the values from the user
     const [Record, SetRecord] = useState([]);
     const [display, setdisplay] = useState(false);
+    const [btnvalue,setbtnvalue]=useState("Check details");
     const [BillingInfo, setBillingInfo] = useState({
         name: "",
         email: "",
@@ -31,7 +32,15 @@ export default function CheckoutForm() {
         mobileNumber1: "",
         mobileNumber2: "",
     })
-
+    
+    const f1=()=>{
+     
+        if(!display)
+        setbtnvalue("Close Details");
+        else
+        setbtnvalue("Check Details");  
+        setdisplay(!display);
+    }
     async function details() {
         try {
             const response = await axios.get("/auth/dashboard")
@@ -50,15 +59,20 @@ export default function CheckoutForm() {
             console.error(err);
         }
     }
-    //local storage
-    var x = localStorage.getItem("Buynow");
-    let id = x.slice(2);
-    const [productDetails, setproductDetails] = useState({ "_id": "63bff8bc549ff24265d6afaa", "images": [{ "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }, { "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }, { "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }, { "imgUrl": "https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg" }], "name": "GOREAL - COW URINE SOAP", "description": "GoReal Ayurvedic soap made from Panchgavya and Gir cow milk.", "price": 30, "category": "Bathing", "feature": "false" });
-    const callapi = async () => {
-        await axios.get(`/product/${id}`)
-            .then((res) => { console.log(res.data); setproductDetails(res.data) });
-
-    }
+        //local storage
+        var x=localStorage.getItem("Buynow");
+        let id=x.slice(2);
+        const [productDetails,setproductDetails]=useState({"_id":"63bff8bc549ff24265d6afaa","images":[{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"},{"imgUrl":"https://www.gomataseva.org/thumb.php?w=480&h=480&zc=2&q=100&src=https://www.gomataseva.org/uploads/productimages/go-real-soap.jpg"}],"name":"GOREAL - COW URINE SOAP","description":"GoReal Ayurvedic soap made from Panchgavya and Gir cow milk.","price":30,"category":"Bathing","feature":"false"});
+        const callapi=async()=>{
+            await axios.get(`/product/${id}`)
+            .then((res)=>{console.log(res.data); setproductDetails(res.data)});   
+            
+        }
+    
+    // useEffect(() => {
+    //     console.log(productDetails)
+    // }, [productDetails])
+    
     useEffect(() => {
         if (x[0] === 'u') {
             callapi();
@@ -222,12 +236,66 @@ export default function CheckoutForm() {
                                     </div>
                                 </div>
                                 <hr className="my-4" />
+
+                                {/* <h4 className="mb-3">Payment</h4>
+
+                                <div className="my-3">
+                                    <div className="form-check">
+                                        <input id="credit" name="paymentMethod" type="radio" className="form-check-input" checked required />
+                                        <label className="form-check-label" htmlFor="credit">Credit card</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input id="debit" name="paymentMethod" type="radio" className="form-check-input" required />
+                                        <label className="form-check-label" htmlFor="debit">Debit card</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input id="paypal" name="paymentMethod" type="radio" className="form-check-input" required />
+                                        <label className="form-check-label" htmlFor="paypal">PayPal</label>
+                                    </div>
+                                </div>
+
+                                <div className="row gy-3">
+                                    <div className="col-md-6">
+                                        <label htmlFor="cc-name" className="form-label">Name on card</label>
+                                        <input type="text" className="form-control" id="cc-name" placeholder="" required />
+                                        <small className="text-muted">Full name as displayed on card</small>
+                                        <div className="invalid-feedback">
+                                            Name on card is required
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <label htmlFor="cc-number" className="form-label">Credit card number</label>
+                                        <input type="text" className="form-control" id="cc-number" placeholder="" required />
+                                        <div className="invalid-feedback">
+                                            Credit card number is required
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3">
+                                        <label htmlFor="cc-expiration" className="form-label">Expiration</label>
+                                        <input type="text" className="form-control" id="cc-expiration" placeholder="" required />
+                                        <div className="invalid-feedback">
+                                            Expiration date required
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3">
+                                        <label htmlFor="cc-cvv" className="form-label">CVV</label>
+                                        <input type="text" className="form-control" id="cc-cvv" placeholder="" required />
+                                        <div className="invalid-feedback">
+                                            Security code required
+                                        </div>
+                                    </div>
+                                </div> */}
+
+                                {/* <hr className="my-4" /> */}
                                 <button className=" btn btn-primary btn-md mb-4 ms-2" style={{ backgroundColor: "gray" }} onClick={() => { setdisplay(!display) }}>Check Items</button>
-                                <button className=" btn btn-primary btn-md mb-4 float-end me-2" onClick={() => checkoutHandler(final_amount)}>Continue to checkout</button>
-                                {display ? <div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
+                                <button className=" btn btn-primary btn-md mb-4 float-end me-2" onClick={payment}>Continue to checkout</button>
+                                { display?<div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
                                     <table className="table text-center mb-0">
                                         <thead className="text-dark">
-                                            <tr>
+                                           <tr>
 
                                                 <th className='d-sm-none'>Item</th>
                                                 <th className=' d-none d-sm-block'>Item</th>
@@ -250,7 +318,7 @@ export default function CheckoutForm() {
                                         }
 
                                     </table>
-                                </div> : <div></div>}
+                                </div>: <div></div>}
                             </form>
                         </div>
                         <div className='col-md-5 col-lg-4'>

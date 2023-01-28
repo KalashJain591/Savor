@@ -11,7 +11,7 @@ export default function Error404() {
                     The page you’re looking for doesn’t exist.
                   </p>
                   
-                <a href="/" class="btn btn-primary">Go Home</a>
+                <a href="/" class="btn btn-primary m-2">Go Home</a>
             </div>
         </div>
     </div>

@@ -156,8 +156,17 @@ const CartReducer = (state, action) => {
     // let discount=(state.total_price*5)/100;
     let discount = 0;
     // console.log(state.total_price);
+    if(state.total_items===0)
+    state.shipping_fee=0
+    else
+    state.shipping_fee=80
+
     let updated = state.total_price - discount + state.shipping_fee;
-    return { ...state, final_amount: updated, Discount: discount };
+    if(state.total_price>=2000){
+    updated-=state.shipping_fee;
+    return { ...state, final_amount: updated, Discount: discount+80,hurray:1 };}
+    else
+    return { ...state, final_amount: updated, Discount: discount,hurray:0  };
   }
 
   // if (action.type === "CART_TOTAL_ITEM") {

@@ -3,7 +3,7 @@ import reducer from "../Reducer/CartReducer";
 
 // import {ItemData} from "../Data/ItemData";
 const CartContext = createContext();
-
+const placed=1;
 // to prevent the data loss on refresh/rendering ,we use local storage to temp store the data
 const getLocalCartData = () => {
   let locaCartData = localStorage.getItem("SavorCart");
@@ -20,9 +20,10 @@ const initialState = {
   cart: getLocalCartData(),
   total_items: 0,
   total_price: 0,
-  shipping_fee: 50,
+  shipping_fee: 80,
   final_amount:0,
   Discount:0,
+  hurray:0,
 };
 const CartProvider = ({ children }) => {
   // creating reducer to perform different operations
@@ -57,7 +58,7 @@ const CartProvider = ({ children }) => {
     localStorage.setItem("SavorCart", JSON.stringify(state.cart));
   }, [state.cart])
 
-  return <CartContext.Provider value={{ ...state, addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>
+  return <CartContext.Provider value={{ ...state, placed,addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>
     {children}
   </CartContext.Provider>
 
