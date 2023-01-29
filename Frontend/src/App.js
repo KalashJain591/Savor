@@ -26,8 +26,8 @@ import Inventory from './Components/AdminPanel/Pages/Inventory';
 import Dashboard from './Components/AdminPanel/Pages/Dashboard';
 import Customer from './Components/AdminPanel/Pages/Customer';
 import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
-import EditProductPage from './Components/AdminPanel/Pages/EditProductPage';
-import AddProduct from './Components/AdminPanel/Pages/AddProduct';
+import Datauploader from './DataUploader/Datauploader';
+import QRcodepayment from './Components/Checkout/QRcodepayment';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
@@ -71,6 +71,10 @@ function App() {
           <Route path="/adminpanel/products/EditProductPage/:id" element={<EditProductPage />} />
           <Route path="/adminpanel/products/AddProduct" element={<AddProduct/>} />
           <Route path="/adminpanel/orders" element={<AdminOrder />} />
+          
+          <Route path="/qrpayment" element={<QRcodepayment />} />
+          <Route path="/datauploader" element={<Datauploader />} />
+          
           <Route path='*' element={<Error404 />}/>
         </Routes>
 

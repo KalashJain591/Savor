@@ -50,7 +50,8 @@ const OrderSchema = new Schema({
     default: Date.now
   },
   payment_status:{type:String,required:false},
-  Cash_on_delivery:{type:Boolean,required:false},
+  transaction_code:{type:String,required:false},
+  cash_on_delivery:{type:String,required:false},
   order_status: String
 });
 

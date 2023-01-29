@@ -102,7 +102,7 @@ async function callapi(url) {
    <div className="containerdiv card1" style={loadingbtn?loadingstyle:nothing}>
    {/* <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/> */}
    <h2 className="title"> Sign up</h2>
-   <p className="subtitle">Do you have an account? <a href="/login"> Sign in</a></p>
+   <p className="subtitle" style={{color:'black'}}>Do you have an account? <a href="/login"> Sign in</a></p>
    <Signinwithgoogle/>
    <div className="email-login">
    <label htmlFor="name"> <b>Profile Photo</b> <i className="fa fa-user" aria-hidden="true"></i></label> 

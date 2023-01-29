@@ -9,9 +9,12 @@ const Header = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
+  const {setLoggedIn,setadmin} = useContext(AuthContext);
   async function logOut() {
+    setadmin(false);
+    setLoggedIn(false);
     await axios.get("/auth/logout")
-      .then((res) => { navigate("/") });
+      .then((res) => {navigate("/")});
   }
   return (
     <>
