@@ -9,11 +9,11 @@ import { Link, Outlet, useNavigate } from 'react-router-dom'
 const Index = () => {
   const { loggedIn, admin } = useContext(AuthContext);
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if(admin!==true){
-  //     navigate("/");          
-  //   }
-  // }, [admin])
+  useEffect(() => {
+    if(admin!==true){
+      navigate("/");          
+    }
+  }, [admin])
 
   return (
     <div className='admin-section'>

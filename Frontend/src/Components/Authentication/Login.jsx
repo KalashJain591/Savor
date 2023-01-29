@@ -39,7 +39,7 @@ export default function Login() {
    <div className="containerdiv card1">
       {/* <img className='card-img' src='https://previews.123rf.com/images/lenm/lenm1411/lenm141100355/34020456-illustration-featuring-materials-for-making-homemade-herbal-medicine.jpg' alt=''/> */}
       <h2 className="title"> Log in</h2>
-      <p className="subtitle">Don't have an account? <a href="/register"> Signup</a></p>
+      <p className="subtitle" style={{color:'black'}}>Don't have an account? <a href="/register"> Signup</a></p>
       <Signinwithgoogle/>
       <div className="email-login">
          <label htmlFor="Phone No"> <b>Phone No</b> <i className="fa fa-phone" aria-hidden="true"></i></label>

@@ -30,11 +30,11 @@ function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if(admin===true){
-  //     navigate("/adminpanel/");          
-  //   }
-  // }, [admin])
+  useEffect(() => {
+    if(admin===true){
+      navigate("/adminpanel/");          
+    }
+  }, [admin])
   
 
   // Scroll top when location changes

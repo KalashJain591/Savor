@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BellFilled, MailOutlined } from "@ant-design/icons";
 import { Badge, Drawer, Image, List, Space, Typography } from "antd";
 import { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import { getComments, getOrders } from "../API";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./Header.css"
+import AuthContext from '../../../Context/auth_context';
 
 const Header = () => {
   const [comments, setComments] = useState([]);
@@ -13,9 +14,12 @@ const Header = () => {
   const [commentsOpen, setCommentsOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
+  const {setLoggedIn,setadmin} = useContext(AuthContext);
   async function logOut() {
+    setadmin(false);
+    setLoggedIn(false);
     await axios.get("/auth/logout")
-      .then((res) => { navigate("/") });
+      .then((res) => {navigate("/")});
   }
   useEffect(() => {
     getComments().then((res) => {
