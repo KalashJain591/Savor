@@ -26,15 +26,16 @@ import Inventory from './Components/AdminPanel/Pages/Inventory';
 import Dashboard from './Components/AdminPanel/Pages/Dashboard';
 import Customer from './Components/AdminPanel/Pages/Customer';
 import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
+import Datauploader from './DataUploader/Datauploader';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    if(admin===true){
-      navigate("/adminpanel/");          
-    }
-  }, [admin])
+  // useEffect(() => {
+  //   if(admin===true){
+  //     navigate("/adminpanel/");          
+  //   }
+  // }, [admin])
   
 
   // Scroll top when location changes
@@ -67,6 +68,7 @@ function App() {
           <Route path="/adminpanel/customer" element={<Customer />} />
           <Route path="/adminpanel/products" element={<Inventory />} />
           <Route path="/adminpanel/orders" element={<AdminOrder />} />
+          <Route path="/datauploader" element={<Datauploader />} />
           <Route path='*' element={<Error404 />}/>
         </Routes>
 

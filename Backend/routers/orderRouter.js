@@ -17,6 +17,18 @@ router.get("/",(req, res) => {
     }
 });
 
+router.get("/personorder/:id",(req, res) => {
+  const userId = req.params.id;
+  try {
+      Order.find({userId})
+      .then((order) => res.json(order))
+      .catch((err) => res.status(400).json("Error: " + err));
+  } catch (err) {
+    res.json(false);
+  }
+});
+
+
 router.post("/orderbycart/:id",async (req, res) => {
   const userId = req.params.id;
   // console.log(userId);
@@ -41,6 +53,7 @@ router.post("/orderbycart/:id",async (req, res) => {
       ordermobile2,
       Cash_on_delivery, 
       payment_status,
+      transaction_code,
       products:cart.products,
       bill:cart.bill,
       date_added:new Date(),
@@ -81,8 +94,9 @@ router.post("/orderbyproduct/:id/:productid",async (req, res) => {
       postalcode,
       ordermobile1,
       ordermobile2,
-      Cash_on_delivery,
-       payment_status,
+      Cash_on_delivery, 
+      payment_status,
+      transaction_code,
       products: [{ productId, name, quantity:1, price, images,quantity,unit }],
       bill:price,
       date_added:new Date(),
