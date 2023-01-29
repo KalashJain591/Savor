@@ -30,8 +30,7 @@ export default function Cart() {
 
   const handleSubmit=(e)=>{
     localStorage.setItem("Buynow", "c:" + userId);
-    if(!ok)
-    {
+    if(!ok){
       alert("Minimum Cart value should be atleast ₹500")
       e.preventDefault();
     }

@@ -22,7 +22,7 @@ function AuthContextProvider(props) {
           let localStore = [];
           responce.data.products.map((curElem)=>{
             localStore.push({Quantity:curElem.quantity, id: curElem.productId, images:curElem.images, max:6, name: curElem.name, price:curElem.price, total_cost:(curElem.quantity*curElem.price) })
-            console.log("ls", localStore);
+            // console.log("ls", localStore);
             if (localStore === 'undefined') {
               console.log("[]")
             }

@@ -48,8 +48,10 @@ const CartReducer = (state, action) => {
         max: 6,
         total_cost: price
       };
+      console.log(userId);
       if (userId !== undefined) {
-        axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 });
+        axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 })
+        // .then((res)=>{console.log("cart me addd ho gaya")});
       }
       // console.log(state.cart);
       return {
