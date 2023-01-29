@@ -11,7 +11,7 @@ export default function PaymentSummary() {
         hurray > 0 &&
 
         <div className='text-center'>
-          <span class=" mx-3  fw-bold" style={{ color: "orange", fontSize: "25px" }}>Hurray!</span><img src="./images/congo.png" height={"50px"} width={"50px"} />
+          <span className=" mx-3  fw-bold" style={{ color: "orange", fontSize: "25px" }}>Hurray!</span><img src="./images/congo.png" height={"50px"} width={"50px"} />
           <p style={{ color: "#2aa8d4a1", fontSize: "23px" }}>Free delivery on  orders above 2000</p>
         </div>
       }
@@ -38,7 +38,9 @@ export default function PaymentSummary() {
               Delivery Charges
             <span>+ {shipping_fee}</span>
             </li>
-            {hurray > 0 && <li className="list-group-item d-flex justify-content-between align-items-center px-0">
+            <p style={{color:"gray",}}>*Delivery charges may vary<br/> according to delivery address</p>
+            
+            {hurray > 0 && <li className="list-group-item d-flex justify-content-between align-items-center px-0 fs-4">
               Free Delivery
               <div><span className='fs-5 fw-bold me-2 text-dark'>-</span><span className='text-decoration-line-through fw-bold fs-5 text-dark'>{shipping_fee}</span></div>
             </li>}
@@ -53,9 +55,9 @@ export default function PaymentSummary() {
               </div>
               <span><strong><h4>₹{final_amount}</h4></strong></span>
             </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center px-0 text-success">
+            { hurray>0? <li className="list-group-item d-flex justify-content-between align-items-center px-0 text-success">
               <strong className='fs-2'>You will save ₹ {Discount} on this order</strong>
-            </li>
+            </li>:<></>}
           </ul>
         </div>
       </div>
