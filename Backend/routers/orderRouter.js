@@ -31,7 +31,7 @@ router.get("/personorder/:id",(req, res) => {
 
 router.post("/orderbycart/:id",async (req, res) => {
   const userId = req.params.id;
-  // console.log(req.body);
+  console.log(req.body);
   try {
     const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2, cash_on_delivery, payment_status, transaction_code}=req.body;
     let user = await User.findOne({_id:userId});
@@ -71,7 +71,8 @@ router.post("/orderbyproduct/:id/:productid",async (req, res) => {
   const userId = req.params.id;
   const productId =req.params.productid;
   try {
-    const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2, Cash_on_delivery, payment_status,transaction_code}=req.body;
+
+    const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2, cash_on_delivery, payment_status,transaction_code}=req.body;
     let user = await User.findOne({_id:userId});
     let productDetails = await Product.findOne({ _id: productId }); 
     const price = productDetails.price;
@@ -94,7 +95,7 @@ router.post("/orderbyproduct/:id/:productid",async (req, res) => {
       postalcode,
       ordermobile1,
       ordermobile2,
-      Cash_on_delivery, 
+      cash_on_delivery, 
       payment_status,
       transaction_code,
       products: [{ productId, name, quantity:1, price, images,quantity,unit }],
