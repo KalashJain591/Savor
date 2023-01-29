@@ -34,8 +34,6 @@ export default function CheckoutForm() {
         pincode: "",
         mobileNumber1: "",
         mobileNumber2: "",
-        cityother:"",
-        stateother:"",
     })
     
     const f1=()=>{
@@ -59,6 +57,10 @@ export default function CheckoutForm() {
                 pincode: "",
                 mobileNumber1: response.data.phoneno,
                 mobileNumber2: "",
+                cash_on_delivery:"",
+                payment_status:"",
+                transaction_code:"",
+    
             })
         } catch (err) {
             console.error(err);
@@ -84,37 +86,6 @@ export default function CheckoutForm() {
         }
         details();
     }, []);
-    const checkoutHandler = async (final_amount) => {
-        const {data : {key}} = await axios.get("http://localhost:5000/api/getkey")
-        const { data: { order } } = await axios.post("http://localhost:5000/api/checkout", {
-            final_amount
-        })
-        // console.log(window)
-        var options = {
-            key, // Enter the Key ID generated from the Dashboard
-            amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            currency: "INR",
-            name: "Savor Naturals",
-            description: "Test Transaction",
-            image: "https://i.pinimg.com/474x/df/37/21/df372187578fdad0e7ded5affb93c083.jpg",
-            order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            callback_url: "http://localhost:5000/api/paymentVerification",
-            prefill: {
-                name: "Gaurav Kumar",
-                email: "gaurav.kumar@example.com",
-                contact: "7470620109"
-            },
-            notes: {
-                "address": "Razorpay Corporate Office"
-            },
-            theme: {
-                "color": "#121212"
-            }
-        };
-        const razor = new window.Razorpay(options);
-        razor.open();
-    }
-
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -122,7 +93,7 @@ export default function CheckoutForm() {
         if(name==="state")
         {
             if(value==="Other"){
-            setdiscount(51,"os");
+            setdiscount(50,"os");
             setCity(false);}
             if(value==="Madhya Pradesh")
             {
@@ -175,20 +146,28 @@ export default function CheckoutForm() {
             pincode: "",
             mobileNumber1: "",
             mobileNumber2: "",
+            cash_on_delivery:"",
+            payment_status:"",
+            transaction_code:"",
         });
     }
 
     const payment = async () => {
-        const { name, email, address1, address2, state, city, pincode, mobileNumber1, mobileNumber2 } = BillingInfo;
+        const { name, email, address1, address2, state, city, pincode, mobileNumber1, mobileNumber2,cash_on_delivery , payment_status,
+            transaction_code,} = BillingInfo;
         if (name && address1 && pincode && mobileNumber1) {
             // console.log(x);
 
             // console.log(id)
             if (x[0] === 'c') {
-                await axios.post(`/order/orderbycart/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2 });
+                await axios.post(`/order/orderbycart/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2,cash_on_delivery, payment_status,
+                    transaction_code, })
+                    .then((res)=>{navigate('/qrpayment')})
             }
             else {
-                await axios.post(`/order/orderbyproduct/${userId}/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2 });
+                await axios.post(`/order/orderbyproduct/${userId}/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2,cash_on_delivery , payment_status,
+                    transaction_code,})
+                    .then((res)=>{navigate('/qrpayment')})
             }
         }
         else {
@@ -281,7 +260,21 @@ export default function CheckoutForm() {
                                         </div>
                                     </div>
                                 </div>
+                                <br/>
+                                {BillingInfo.city==="Indore"?
+                                <div className="col-md-5">
+                                        <label htmlFor="city" className="form-label">Cash On Delivery <i class="fa-solid fa-wallet"></i></label>
+                                        <select className="form-select" id="country" name='cash_on_delivery' placeholder='choose...' value={BillingInfo.cash_on_delivery} onChange={handleInput} required>
+                                            <option>Not selected</option>
+                                            <option>Cash On Delivery</option>
+                                            <option>Pre-Paid <i class="fa fa-inr" aria-hidden="true"></i></option>
+                                        </select>
+                                </div>
+                                :<></>
+                                }
                                 <hr className="my-4" />
+
+                                
 
                                 <button className=" btn btn-primary btn-md mb-4 ms-2" style={{ backgroundColor: "gray" }} onClick={() => { setdisplay(!display) }}>Check Items</button>
                                 <button className=" btn btn-primary btn-md mb-4 float-end me-2" onClick={payment}>Continue to checkout</button>

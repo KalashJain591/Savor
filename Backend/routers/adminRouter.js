@@ -124,4 +124,17 @@ router.post("/editorderstatus/:id", async (req, res) => {
     }
 })
 
+//change order status
+router.post("/editpaymentstatus/:id", async (req, res) => {
+  const orderId= req.params.id;
+  try {
+      const {payment_status}=req.body;
+      // console.log(orderId,order_status)
+      let orderstatus=await Order.findOneAndUpdate({_id:orderId},{payment_status:payment_status});
+      res.status(200).send(orderstatus);
+  }
+  catch(err){
+      res.json(err)
+  }
+})
 module.exports = router;

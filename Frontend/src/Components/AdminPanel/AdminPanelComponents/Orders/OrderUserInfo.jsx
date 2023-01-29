@@ -7,13 +7,11 @@ export default function OrderUserInfo(props) {
         <p>Name:{props.ordername}</p>
         <p>
           Address :{props.address} {props.addressoptional} {props.state}{" "}
-          {props.city} {props.postalcode}
+          {props.city} , {props.postalcode}
         </p>
         <p>Phone No. :{props.ordermobile1}</p>
         <p>Phone No. (Optional):{props.ordermobile2}</p>
-        <p>
-          Address: {props.address} {props.addressoptional}
-        </p>
+        
       </div>
     </div>
   );
