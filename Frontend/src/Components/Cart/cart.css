@@ -5,18 +5,15 @@
     color: black;
    
 }
-
-
 .free-delivery {
     color: green;
     font-size: 20px;
     text-align: center;
   }
-  
-  .fa-truck {
+  /* .fa-truck {
     font-size: 40px;
     margin-right: 10px;
-  }
+  } */
   
   .animated {
     animation: bounce 1s;

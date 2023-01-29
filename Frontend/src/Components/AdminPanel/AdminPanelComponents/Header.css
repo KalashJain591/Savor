@@ -5,12 +5,6 @@
 .admin-panel-logo img{
     width: 250px;
 }
-.notification{
-    display: flex;
-    align-items: center;
-    width: 180px;
-    justify-content: space-between;
-}
 .admin-panel-logout{
     background-color: white;
     border: 0;

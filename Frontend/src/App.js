@@ -26,6 +26,8 @@ import Inventory from './Components/AdminPanel/Pages/Inventory';
 import Dashboard from './Components/AdminPanel/Pages/Dashboard';
 import Customer from './Components/AdminPanel/Pages/Customer';
 import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
+import EditProductPage from './Components/AdminPanel/Pages/EditProductPage';
+import AddProduct from './Components/AdminPanel/Pages/AddProduct';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
@@ -66,6 +68,8 @@ function App() {
           <Route exact path='/adminpanel' element={<Dashboard/>}/>
           <Route path="/adminpanel/customer" element={<Customer />} />
           <Route path="/adminpanel/products" element={<Inventory />} />
+          <Route path="/adminpanel/products/EditProductPage/:id" element={<EditProductPage />} />
+          <Route path="/adminpanel/products/AddProduct" element={<AddProduct/>} />
           <Route path="/adminpanel/orders" element={<AdminOrder />} />
           <Route path='*' element={<Error404 />}/>
         </Routes>

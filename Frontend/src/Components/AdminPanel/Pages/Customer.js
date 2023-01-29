@@ -60,17 +60,6 @@ const Customer = () => {
                     title: "DOB",
                     dataIndex: "dob",
                   },
-                  // {
-                  //   title: "address",
-                  //   dataIndex: "address",
-                  //   render: (address) => {
-                  //     return (
-                  //       <span>
-                  //         {address.address}, {address.city}
-                  //       </span>
-                  //     );
-                  //   },
-                  // },
                 ]}
                 dataSource={dataSource}
                 pagination={{

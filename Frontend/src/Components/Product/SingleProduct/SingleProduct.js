@@ -68,8 +68,8 @@ const SingleProduct = () => {
                         </div>
                     </div>
                 </div>
-                <div className="single-product-description">
-                    <p className="single-product-heading">{name}</p>
+                <div className="single-product-Content">
+                    <p className="singlePage-product-heading">{name}</p>
                     <div className="customer-info">
                         <Star rating={rating} reviews={reviews} />
                         {/* <p>{rating}</p>
@@ -84,25 +84,25 @@ const SingleProduct = () => {
                     </div>
                     <div className="product-data-warranty">
                         <div className="warranty-img">
-                            <div className="img-contain">
+                            <div className="feature-img-contain">
                                 <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Free Delivery</p>
                             </div>
                         </div>
                         <div className="warranty-img">
-                            <div className="img-contain">
+                            <div className="feature-img-contain">
                                 <i className="fa-solid fa-arrows-rotate warranty-icon"></i>
                                 <p>30 Days Replacement</p>
                             </div>
                         </div>
                         <div className="warranty-img">
-                            <div className="img-contain">
+                            <div className="feature-img-contain">
                                 <i className="fa-solid fa-truck-fast warranty-icon"></i>
                                 <p>Savor Delivered</p>
                             </div>
                         </div>
                         <div className="warranty-img">
-                            <div className="img-contain">
+                            <div className="feature-img-contain">
                                 <i className="fa-solid fa-shield-halved warranty-icon"></i>
                                 <p>6 months warranty</p>
                             </div>

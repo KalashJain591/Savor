@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import AuthContext from '../../Context/auth_context';
-import './cart.css';
+// import './cart.css';
 const CartAmountToggler = ({ Quantity, SetDecrease, SetIncrease }) => {
 
   // console.log(id);

@@ -7,15 +7,11 @@ import Header from '../AdminPanelComponents/Header';
 import Footer from '../AdminPanelComponents/Footer';
 import Button from 'react-bootstrap/Button';
 import { FaTrash } from 'react-icons/fa';
-import MyVerticallyCenteredModal from './Modal';
-// import EditOrderPage from './EditOrderPage';
 import "../HomePage/Index.css"
 import { NavLink, useNavigate } from 'react-router-dom';
-const Inventory = ({setChangeId}) => {
+const Inventory = () => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
-  const [manualId, setManualId] = useState("")
   const callapi = async () => {
     await axios.get("/admin/product")
       .then((res) => {
@@ -44,85 +40,6 @@ const Inventory = ({setChangeId}) => {
   const navigate = useNavigate();
 
   return (
-    // <div className='admin-section'>
-    //   <div className="admin-section-grid-2">
-    //     <SideBar />
-    //     <div className="SideMenuAndPageContent">
-    //       <Header />
-    //       <div className='container'>
-    //         <Space size={20} direction="vertical">
-    //           <Typography.Title level={4}>Inventory</Typography.Title>
-    //           <Table
-    //             loading={loading}
-    //             columns={[
-    //               {
-    //                 title: "Thumbnail",
-    //                 dataIndex: "images",
-    //                 render: (link) => {
-    //                   return <Avatar src={link[0].imgUrl} />;
-    //                 },
-    //               },
-    //               {
-    //                 title: "Title",
-    //                 dataIndex: "name",
-    //               },
-    //               {
-    //                 title: "Price",
-    //                 dataIndex: "price",
-    //                 render: (value) => <span>₹{value}</span>,
-    //               },
-    //               {
-    //                 title: "Rating",
-    //                 dataIndex: "rating",
-    //                 render: (rating) => {
-    //                   return <Rate value={rating} allowHalf disabled />;
-    //                 },
-    //               },
-    //               {
-    //                 title: "Reviews",
-    //                 dataIndex: "reviews",
-    //               },
-    //               {
-    //                 title: "Stock",
-    //                 dataIndex: "stock",
-    //               },
-    //               {
-    //                 title: "Category",
-    //                 dataIndex: "category",
-    //               },
-    //               {
-    //                 title: "Feature",
-    //                 dataIndex: "feature",
-    //               },
-    //               {
-    //                 title: "description",
-    //                 dataIndex: "description",
-    //               },
-    //               {
-    //                 title: "Edit Product",
-    //                 dataIndex: "_id",
-    //                 render: (_id) => <>
-    //                   {/* {console.log(_id)} */}
-    //                   <Button variant="primary" onClick={() => {setModalShow(true); localStorage.setItem("dataItem", _id)}}>
-    //                     Edit Product
-    //                   </Button>
-    //                   <MyVerticallyCenteredModal
-    //                     show={modalShow}
-    //                     onHide={() => setModalShow(false)}
-    //                   />
-    //                 </>,
-    //               },
-    //             ]}
-    //             dataSource={dataSource}
-    //             pagination={{
-    //               pageSize: 5,
-    //             }}
-    //           ></Table>
-    //         </Space>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className='admin-section'>
       <div className="admin-section-grid-2">
         <SideBar />
@@ -131,7 +48,7 @@ const Inventory = ({setChangeId}) => {
           <div className="container">
             <div className="upper-section" style={{display: "flex", justifyContent: "space-between"}}>
               <h3>Products</h3>
-              <button>Add new Product</button>
+              <button style={{padding: "2px 11px", border: "none", margin: "2px"}} onClick={()=>navigate('./AddProduct')}>Add new Product</button>
             </div>
             <table class="table" style={{ backgroundColor: "white", borderRadius: "10px" }}>
               <thead>

@@ -1,90 +1,100 @@
-import React from 'react'
-import { BellFilled, MailOutlined } from "@ant-design/icons";
-import { Badge, Drawer, Image, List, Space, Typography } from "antd";
-import { useEffect, useState } from "react";
-import { getComments, getOrders } from "../API";
+import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./Header.css"
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Header = () => {
-  const [comments, setComments] = useState([]);
-  const [orders, setOrders] = useState([]);
-  const [commentsOpen, setCommentsOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const navigate = useNavigate();
   async function logOut() {
     await axios.get("/auth/logout")
       .then((res) => { navigate("/") });
   }
-  useEffect(() => {
-    getComments().then((res) => {
-      setComments(res.comments);
-    });
-    getOrders().then((res) => {
-      setOrders(res.products);
-    });
-  }, []);
   return (
-    <div className='header-section-admin-panel'>
-      <div className="admin-panel-logo">
-        <img src="/images/SavorLogoTag.png" alt="" />
-      </div>
-      <div className='notification'>
+    <>
+      <div className='header-section-admin-panel'>
+        <div className="admin-panel-logo">
+          <img src="/images/SavorLogoTag.png" alt="" />
+        </div>
         <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
-        <Badge count={comments.length} dot>
-          <MailOutlined
-            style={{ fontSize: 24, color: "white" }}
-            onClick={() => {
-              setCommentsOpen(true);
-            }}
-          />
-        </Badge>
-        <Badge count={orders.length}>
-          <BellFilled
-            style={{ fontSize: 24, color: "white" }}
-            onClick={() => {
-              setNotificationsOpen(true);
-            }}
-          />
-        </Badge>
       </div>
-      <Drawer
-        title="Comments"
-        open={commentsOpen}
-        onClose={() => {
-          setCommentsOpen(false);
-        }}
-        maskClosable
-      >
-        <List
-          dataSource={comments}
-          renderItem={(item) => {
-            return <List.Item>{item.body}</List.Item>;
-          }}
-        ></List>
-      </Drawer>
-      <Drawer
-        title="Notifications"
-        open={notificationsOpen}
-        onClose={() => {
-          setNotificationsOpen(false);
-        }}
-        maskClosable
-      >
-        <List
-          dataSource={orders}
-          renderItem={(item) => {
-            return (
-              <List.Item>
-                <Typography.Text strong>{item.title}</Typography.Text> has been
-                ordered!
-              </List.Item>
-            );
-          }}
-        ></List>
-      </Drawer>
-    </div>
+      <div className="NavBar">
+        <div className="NavBar-nav">
+          <div className="navbar-image">
+            <img className='logo-img' src="/images/logo-img.png" alt="" />
+            <img className='logo-tag' src="/images/SavorLogoTag.png" alt="" />
+          </div>
+          <ul className="Navigation">
+            <li className="Nav-list">
+              < NavLink to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+            </li>
+            <li className="Nav-list">
+              < NavLink to="/products"><i className="fa fa-shopping-basket" aria-hidden="true"></i> Products</NavLink>
+            </li>
+            <li className="Nav-list">
+              < NavLink to="/aboutus"><i className="fa fa-info-circle" aria-hidden="true"></i> About Us</NavLink>
+            </li>
+            <li className="Nav-list">
+              < NavLink to="/contactus"><i className="fa fa-address-book" aria-hidden="true"></i> Contact Us</NavLink>
+            </li>
+              <li className="Nav-list">
+                < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
+              </li>
+            <li className="Nav-list">
+              < NavLink to="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
+            </li>
+          </ul>
+        </div>
+        <div className="R_NavBar-nav">
+          <div className="R_navbar-image">
+            <img src="/images/SavorLogoTag.png" alt="" />
+          </div>
+          <div onClick={handleShow} className="Burger">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+          <Offcanvas show={show} className="off_canvas" onHide={handleClose}>
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>
+                <div className="R-navbar-image">
+                  <img className='R-logo-tag' src="/images/SavorLogoTag.png" alt="" />
+                </div>
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <ul className="R_Navigation">
+                <li className="R_Nav-list">
+                  < NavLink to="/" onClick={handleClose}><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+                </li>
+                <li className="R_Nav-list">
+                  < NavLink to="/products" onClick={handleClose}><i className="fa fa-shopping-basket" aria-hidden="true"></i>Products</NavLink>
+                </li>
+                <li className="R_Nav-list">
+                  < NavLink to="/aboutus" onClick={handleClose}><i className="fa fa-info-circle" aria-hidden="true"></i>About Us</NavLink>
+                </li>
+                <li className="R_Nav-list">
+                  < NavLink to="/contactus" onClick={handleClose}><i className="fa fa-address-book" aria-hidden="true"></i>Contact Us</NavLink>
+                </li>
+                <li className="R_Nav-list">
+                  < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
+                </li>
+                <li className="R_Nav-list">
+                  < NavLink to="/dashboard" onClick={handleClose}><i className="fa-solid fa-user"></i></NavLink>
+                </li>
+
+                <li className="R_Nav-list">
+                  < NavLink to="/login" onClick={handleClose}>Sign in <i className="fa fa-sign-in"></i></NavLink>
+                </li>
+              </ul>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </div>
+      </div>
+    </>
   )
 }
 
