@@ -2,14 +2,8 @@ import axios from "axios";
 const CartReducer = (state, action) => {
 
   if (action.type === "ADD_TO_CART") {
-    // console.log("clicked");
-    // console.log(state.cart);
+
     let { id, price, images, name, userId } = action.payload;
-    // console.log(itemData[key]);
-
-    // tackle the existing product
-
-
     let existingProduct = state.cart.find(
       (curItem) => curItem.id === id
     );
@@ -21,7 +15,7 @@ const CartReducer = (state, action) => {
           if (newAmount >= curElem.max) {
             newAmount = curElem.max;
           }
-          // console.log("hello", newAmount);
+
           if (userId !== undefined) {
             axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: newAmount });
           }
@@ -63,14 +57,14 @@ const CartReducer = (state, action) => {
     let updatedProduct = state.cart.map((curElem) => {
       let { id, userId } = action.payload;
       if (curElem.id === id) {
-        console.log("reached");
+        // console.log("reached");
         let decAmount = curElem.Quantity - 1;
 
         if (decAmount <= 1) {
           decAmount = 1;
         }
-        if(userId!==undefined){
-        axios.post(`/cart/updatecart/${userId}`,{productId:id, quantity:decAmount});
+        if (userId !== undefined) {
+          axios.post(`/cart/updatecart/${userId}`, { productId: id, quantity: decAmount });
         }
 
         return {
@@ -123,15 +117,15 @@ const CartReducer = (state, action) => {
     };
   }
 
-  const callapi=async()=>{
-    await axios.post("/cart/clearcart",{})
+  const callapi = async () => {
+    await axios.post("/cart/clearcart", {})
   }
 
   // to empty or to clear to cart
   if (action.type === "CLEAR_CART") {
     // console.log("clearcart")
     // axios.get('/cart/clearcart/');
-    
+
     return {
       ...state,
       cart: [],
@@ -148,25 +142,49 @@ const CartReducer = (state, action) => {
 
     let updated = state.cart.reduce((initial, curElem) => {
       initial = initial + curElem.total_cost;
+
       return initial;
     }, 0)
     return { ...state, total_price: updated };
   }
+  // set delivery charge
+  if (action.type === "SET_DISCOUNT") {
+    let { disc, place } = action.payload;
+    let updated, t;
+    if (place === "os") {
+      updated = disc ;
+      t = 0
+    }
+    else if (place === "oc") {
+      updated = disc ;
+      t = 0;
+    }
+    else {
+      updated = disc;
+      t = 1;
+    }
+    console.log(updated,t);
+    return { ...state, shipping_fee: updated, city: t }
+  }
+
   if (action.type === "FINAL_AMOUNT") {
     // let discount=(state.total_price*5)/100;
     let discount = 0;
     // console.log(state.total_price);
-    if(state.total_items===0)
-    state.shipping_fee=0
-    else
-    state.shipping_fee=80
+    if (state.total_items === 0)
+      state.shipping_fee = 0
+    // else
+    //   state.shipping_fee = 80
 
     let updated = state.total_price - discount + state.shipping_fee;
-    if(state.total_price>=2000){
-    updated-=state.shipping_fee;
-    return { ...state, final_amount: updated, Discount: discount+80,hurray:1 };}
+    if (state.total_price >= 2000 && state.city===1) {
+      updated -= state.shipping_fee;
+      discount += state.shipping_fee;
+      console.log(discount);
+      return { ...state, final_amount: updated, Discount: discount, hurray: 1 };
+    }
     else
-    return { ...state, final_amount: updated, Discount: discount,hurray:0  };
+      return { ...state, final_amount: updated, Discount: discount, hurray: 0 };
   }
 
   // if (action.type === "CART_TOTAL_ITEM") {
