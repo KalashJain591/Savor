@@ -12,7 +12,7 @@ const SingleProduct = () => {
     const { loggedIn } = useContext(AuthContext);
     const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
-    
+
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
     }
@@ -26,7 +26,9 @@ const SingleProduct = () => {
         price,
         rating,
         stock,
-        reviews
+        reviews,
+        quantity,
+        unit
     } = singleProduct
     const [img, setImg] = useState(images && images[0].imgUrl)
     // console.log("hello", name)
@@ -77,7 +79,7 @@ const SingleProduct = () => {
                     </div>
                     <div className="product-info">
                         <div className="product-price">MRP : ₹{price}</div>
-                        <div className="product-Weight">{price} kg</div>
+                        <div className="product-Weight">{quantity} {unit}</div>
                     </div>
                     <div className="product-description">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto molestiae vero obcaecati illum neque quidem voluptatum minus enim sint corrupti id optio dolor praesentium doloremque corporis aspernatur harum, commodi tenetur?</p>
@@ -85,32 +87,32 @@ const SingleProduct = () => {
                     <div className="product-data-warranty">
                         <div className="warranty-img">
                             <div className="feature-img-contain">
-                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
-                                <p>Free Delivery</p>
+                                <img src="/images/pure.png" alt="" srcset="" className="warranty-icon" />
+                                <p>100% pure products</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="feature-img-contain">
-                                <i className="fa-solid fa-arrows-rotate warranty-icon"></i>
-                                <p>30 Days Replacement</p>
+                                <img src="/images/NoAdulteration.png" alt="" className="warranty-icon" />
+                                <p>No adulteration</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="feature-img-contain">
-                                <i className="fa-solid fa-truck-fast warranty-icon"></i>
-                                <p>Savor Delivered</p>
+                                <img src="/images/preservativesMain.png" alt="" className="warranty-icon" />
+                                <p>No preservatives</p>
                             </div>
                         </div>
                         <div className="warranty-img">
                             <div className="feature-img-contain">
-                                <i className="fa-solid fa-shield-halved warranty-icon"></i>
-                                <p>6 months warranty</p>
+                                <img src="/images/no-pesticides.png" alt="" className="warranty-icon" />
+                                <p>Chemical free</p>
                             </div>
                         </div>
                     </div>
                     <div className="product-details">
                         <p>Available : <span>{stock ? "Is Available" : "Out of stock"}</span></p>
-                        <p>Weight : <span>{price}Kg</span></p>
+                        <p>Weight : <span>{quantity} {unit}</span></p>
                     </div>
                     <hr />
                     <div className="order-btns">
@@ -119,18 +121,18 @@ const SingleProduct = () => {
                                 <button class="add-single-cart">Add To Cart</button>
                             </div>
                         </NavLink>
-                        {loggedIn?
-                        <NavLink to="/cart/checkout">
-                            <div className="single-buyNow">
-                                <button onClick={()=>{localStorage.setItem("Buynow","u:"+id );}} class="buy-now">Buy Now</button>
-                            </div>
-                        </NavLink>
-                        :
-                        <NavLink to="/login">
-                            <div className="single-buyNow">
-                                <button onClick={()=>{localStorage.setItem("Buynow","u:"+id );}} class="buy-now">Buy Now</button>
-                            </div>
-                        </NavLink>
+                        {loggedIn ?
+                            <NavLink to="/cart/checkout">
+                                <div className="single-buyNow">
+                                    <button onClick={() => { localStorage.setItem("Buynow", "u:" + id); }} class="buy-now">Buy Now</button>
+                                </div>
+                            </NavLink>
+                            :
+                            <NavLink to="/login">
+                                <div className="single-buyNow">
+                                    <button onClick={() => { localStorage.setItem("Buynow", "u:" + id); }} class="buy-now">Buy Now</button>
+                                </div>
+                            </NavLink>
                         }
                     </div>
                 </div>

@@ -1,3 +1,6 @@
+.dashboard-section{
+    width: 100%;
+}
 .dashboard-heading{
     margin: 20px 10px 0 10px;
 }
@@ -13,13 +16,14 @@
 .dashboard-child-info{
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
 }
 .dashboard-card-info{
     display: flex;
-    width: 25%;
+    width: 23%;
     justify-content: space-between;
     align-items: center;
-    margin: 0 10px;
+    margin: 5px 10px;
     /* border: 2px solid black; */
     padding: 20px;
     border-radius: 10px;
@@ -41,3 +45,8 @@
     margin: 20px 0;
     padding: 0 20px;
 }
+@media screen and (max-width: 980px) {
+    .dashboard-card-info{
+     width: 45%;
+    }
+  }

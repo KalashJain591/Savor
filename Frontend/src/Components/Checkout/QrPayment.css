@@ -1,0 +1,12 @@
+.payment-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.container-payment{
+    width: 40%;
+    padding: 60px 0;
+}
+.container-payment img{
+    height: 700px;
+}

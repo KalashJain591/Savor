@@ -9,11 +9,15 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  /* height: 100vh; */
+  flex-direction: column;
+  /* border: 2px solid saddlebrown; */
+  align-items: center;
 }
 
 .SideMenuAndPageContent{
   width: 90%;
+  /* border: 2px solid saddlebrown; */
+  display: flex;
 }
 .footer-section-admin-panel {
   height: 50px;

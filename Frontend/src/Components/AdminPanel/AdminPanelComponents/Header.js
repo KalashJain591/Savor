@@ -45,37 +45,8 @@ const Header = () => {
           <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
         </ul>
       </div>
-      <div className="NavBar">
-        <div className="NavBar-nav">
-          <div className="navbar-image">
-            <img className='logo-img' src="/images/logo-img.png" alt="" />
-            <img className='logo-tag' src="/images/SavorLogoTag.png" alt="" />
-          </div>
-          <ul className="Navigation">
-            <li className="Nav-list">
-              < NavLink to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
-            </li>
-            <li className="Nav-list">
-              < NavLink to="/products"><i className="fa fa-shopping-basket" aria-hidden="true"></i> Products</NavLink>
-            </li>
-            <li className="Nav-list">
-              < NavLink to="/aboutus"><i className="fa fa-info-circle" aria-hidden="true"></i> About Us</NavLink>
-            </li>
-            <li className="Nav-list">
-              < NavLink to="/contactus"><i className="fa fa-address-book" aria-hidden="true"></i> Contact Us</NavLink>
-            </li>
-            <li className="Nav-list">
-              < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
-            </li>
-            <li className="Nav-list">
-              < NavLink to="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
-            </li>
-          </ul>
-        </div>
-        <div className="R_NavBar-nav">
-          <div className="R_navbar-image">
-            <img src="/images/SavorLogoTag.png" alt="" />
-          </div>
+      <div className="header-container-admin-panel">
+        <div className="R_NavBar-nav-admin-panel">
           <div onClick={handleShow} className="Burger">
             <div className="line"></div>
             <div className="line"></div>
@@ -84,35 +55,24 @@ const Header = () => {
           <Offcanvas show={show} className="off_canvas" onHide={handleClose}>
             <Offcanvas.Header closeButton>
               <Offcanvas.Title>
-                <div className="R-navbar-image">
-                  <img className='R-logo-tag' src="/images/SavorLogoTag.png" alt="" />
-                </div>
+                Admin Dashboard
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <ul className="R_Navigation">
-                <li className="R_Nav-list">
-                  < NavLink to="/" onClick={handleClose}><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+              <ul className="R_Navigation-admin-panel">
+                <li>
+                  <NavLink to="/adminPanel"><AppstoreOutlined className='admin-panel-icon' />Dashbaord</NavLink>
                 </li>
-                <li className="R_Nav-list">
-                  < NavLink to="/products" onClick={handleClose}><i className="fa fa-shopping-basket" aria-hidden="true"></i>Products</NavLink>
+                <li>
+                  <NavLink to="/adminpanel/products"><ShopOutlined className='admin-panel-icon' />Products</NavLink>
                 </li>
-                <li className="R_Nav-list">
-                  < NavLink to="/aboutus" onClick={handleClose}><i className="fa fa-info-circle" aria-hidden="true"></i>About Us</NavLink>
+                <li>
+                  <NavLink to="/adminpanel/orders"><ShoppingCartOutlined className='admin-panel-icon' />Orders</NavLink>
                 </li>
-                <li className="R_Nav-list">
-                  < NavLink to="/contactus" onClick={handleClose}><i className="fa fa-address-book" aria-hidden="true"></i>Contact Us</NavLink>
+                <li>
+                  <NavLink to="/adminpanel/customer"><UserOutlined className='admin-panel-icon' />Users </NavLink>
                 </li>
-                <li className="R_Nav-list">
-                  < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
-                </li>
-                <li className="R_Nav-list">
-                  < NavLink to="/dashboard" onClick={handleClose}><i className="fa-solid fa-user"></i></NavLink>
-                </li>
-
-                <li className="R_Nav-list">
-                  < NavLink to="/login" onClick={handleClose}>Sign in <i className="fa fa-sign-in"></i></NavLink>
-                </li>
+                <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
               </ul>
             </Offcanvas.Body>
           </Offcanvas>

@@ -28,11 +28,10 @@ export const AdminOrder = () => {
   }, []);
   return (
     <div className='admin-section'>
-      <div className="admin-section-grid-2">
-        <SideBar />
-        <div className="SideMenuAndPageContent">
           <Header />
-          <div className="container">
+      <div className="admin-section-grid-2">
+        <div className="SideMenuAndPageContent">
+          <div className="container-order">
             <br />
             <table class="table" style={{ backgroundColor: "white", borderRadius: "10px" }}>
               <thead>

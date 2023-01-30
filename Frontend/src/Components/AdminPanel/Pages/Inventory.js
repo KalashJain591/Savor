@@ -41,11 +41,11 @@ const Inventory = () => {
 
   return (
     <div className='admin-section'>
+          <Header />
       <div className="admin-section-grid-2">
         {/* <SideBar /> */}
         <div className="SideMenuAndPageContent">
-          <Header />
-          <div className="container">
+          <div className="container-inventory">
             <div className="upper-section" style={{display: "flex", justifyContent: "space-between"}}>
               <h3>Products</h3>
               <button style={{padding: "2px 11px", border: "none", margin: "2px"}} onClick={()=>navigate('./AddProduct')}>Add new Product</button>
