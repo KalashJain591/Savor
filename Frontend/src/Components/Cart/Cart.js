@@ -13,7 +13,7 @@ export default function Cart() {
   let ok = 0;
   if (total_price >= 500)
     ok = 1;
-  console.log(ok);
+  // console.log(ok);
 
   if (cart.length === 0) {
     return (<><h1 className='text-center fs-1' style={{ height: "10rem", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "cursive" }} >Oop's,<br />No Item in Your Cart</h1>

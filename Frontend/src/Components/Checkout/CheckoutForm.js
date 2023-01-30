@@ -6,8 +6,10 @@ import CartItem from '../Cart/CartItem';
 import AuthContext from '../../Context/auth_context';
 import SingleProductSummary from './SingleProductSummary';
 import { useNavigate } from 'react-router-dom';
+import './checkout.css';
 export default function CheckoutForm() {
-    const { cart, clearCart, } = useCartContext();
+
+    const { cart, clearCart, setdiscount} = useCartContext();
     // console.log( localStorage.getItem("Buynow"));
     const {loggedIn, userId } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -18,6 +20,7 @@ export default function CheckoutForm() {
     }, [])
 
     // creating  a state to store the values from the user
+    const [dcity,setCity]=useState(false);
     const [Record, SetRecord] = useState([]);
     const [display, setdisplay] = useState(false);
     const [btnvalue,setbtnvalue]=useState("Check details");
@@ -31,9 +34,6 @@ export default function CheckoutForm() {
         pincode: "",
         mobileNumber1: "",
         mobileNumber2: "",
-        cash_on_delivery:"",
-        payment_status:"",
-        transaction_code:"",
     })
     
     const f1=()=>{
@@ -89,11 +89,50 @@ export default function CheckoutForm() {
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        // console.log(name, value);
+         console.log(name, value);
+        if(name==="state")
+        {
+            if(value==="Other"){
+            setdiscount(50,"os");
+            setCity(false);}
+            if(value==="Madhya Pradesh")
+            {
+                setdiscount(50,"oc");
+                setCity(true);
+            
+            }
+
+        }
+        if(name==="city")
+        {
+           if(BillingInfo.state=="Madhya Pradesh"){
+            if(value==="Other")
+            setdiscount(50,"oc");
+            else
+            setdiscount(70,"is");}
+        }
+        
+
         setBillingInfo({ ...BillingInfo, [name]: value })
     }
     const onSubmit = (e) => {
-        e.preventDefault();
+ 
+        if(BillingInfo.state==="other")
+        {
+          
+              let val=BillingInfo.stateother
+              setBillingInfo({ ...BillingInfo, state:val});
+               val=BillingInfo.cityother
+              setBillingInfo({ ...BillingInfo, city:val});
+        }
+        else
+        {
+            if(BillingInfo.city=="other"){   
+            let val=BillingInfo.cityother
+            setBillingInfo({ ...BillingInfo, city:val});}
+            
+        }
+        e.preventDefault();     
         const newRecord = { ...BillingInfo, id: new Date().getTime().toString() }
         // console.log(newRecord);
         SetRecord([...Record, newRecord]);
@@ -179,28 +218,30 @@ export default function CheckoutForm() {
                                     <div className="col-md-4">
                                         <label htmlFor="state" className="form-label">State</label>
                                         <select className="form-select" id="state" placeholder='choose...' name='state' value={BillingInfo.state} onChange={handleInput} required >
-                                            <option>Not selected</option>
+                                        {/* <option value="" disabled selected hidden>Select State</option> */}
+                                            <option>Other</option>
                                             <option>Madhya Pradesh</option>
                                         </select>
+                                        <input type="text" name="stateother" placeholder='enter the state name' value={BillingInfo.stateother} onChange={handleInput} style={{display:"block"}} required/>
+
                                         <div className="invalid-feedback">
                                             Please provide a valid state.
                                         </div>
                                     </div>
                                     <div className="col-md-5">
                                         <label htmlFor="city" className="form-label">City</label>
-                                        <select className="form-select" id="country" name='city' placeholder='choose...' value={BillingInfo.city} onChange={handleInput} required>
-                                            <option>Not selected</option>
+                                        {dcity ?<select className="form-select" id="country" name='city' placeholder='choose...' value={BillingInfo.city} onChange={handleInput} required>
+                                        {/* <option value="" disabled selected hidden>Select City</option> */}
+                                            <option>Other</option>
                                             <option>Indore</option>
-                                            <option>Ujjain</option>
-                                            <option>Bhopal</option>
-                                            <option>Dewas</option>
-                                        </select>
+                                        </select>: <></>}
+                                        <input type="text" name="cityother"  placeholder='enter the city name'  value={BillingInfo.cityother} onChange={handleInput} style={{display:"block"}} required/>
 
                                     </div>
 
                                     <div className="col-md-3">
                                         <label htmlFor="zip" className="form-label" >Postal Code</label>
-                                        <input type="text" className="form-control" name="pincode" value={BillingInfo.pincode} onChange={handleInput} required />
+                                        <input type="number" min="100000" max="999999"  className="form-control" name="pincode" value={BillingInfo.pincode} onChange={handleInput} required />
                                         <div className="invalid-feedback">
                                             Please fill  the postal code
                                         </div>
@@ -240,59 +281,6 @@ export default function CheckoutForm() {
 
                                 
 
-                                {/* <h4 className="mb-3">Payment</h4>
-
-                                <div className="my-3">
-                                    <div className="form-check">
-                                        <input id="credit" name="paymentMethod" type="radio" className="form-check-input" checked required />
-                                        <label className="form-check-label" htmlFor="credit">Credit card</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input id="debit" name="paymentMethod" type="radio" className="form-check-input" required />
-                                        <label className="form-check-label" htmlFor="debit">Debit card</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input id="paypal" name="paymentMethod" type="radio" className="form-check-input" required />
-                                        <label className="form-check-label" htmlFor="paypal">PayPal</label>
-                                    </div>
-                                </div>
-
-                                <div className="row gy-3">
-                                    <div className="col-md-6">
-                                        <label htmlFor="cc-name" className="form-label">Name on card</label>
-                                        <input type="text" className="form-control" id="cc-name" placeholder="" required />
-                                        <small className="text-muted">Full name as displayed on card</small>
-                                        <div className="invalid-feedback">
-                                            Name on card is required
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <label htmlFor="cc-number" className="form-label">Credit card number</label>
-                                        <input type="text" className="form-control" id="cc-number" placeholder="" required />
-                                        <div className="invalid-feedback">
-                                            Credit card number is required
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-3">
-                                        <label htmlFor="cc-expiration" className="form-label">Expiration</label>
-                                        <input type="text" className="form-control" id="cc-expiration" placeholder="" required />
-                                        <div className="invalid-feedback">
-                                            Expiration date required
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-3">
-                                        <label htmlFor="cc-cvv" className="form-label">CVV</label>
-                                        <input type="text" className="form-control" id="cc-cvv" placeholder="" required />
-                                        <div className="invalid-feedback">
-                                            Security code required
-                                        </div>
-                                    </div>
-                                </div> */}
-
-                                {/* <hr className="my-4" /> */}
                                 <button className=" btn btn-primary btn-md mb-4 ms-2" style={{ backgroundColor: "gray" }} onClick={() => { setdisplay(!display) }}>Check Items</button>
                                 <button className=" btn btn-primary btn-md mb-4 float-end me-2" onClick={payment}>Continue to checkout</button>
                                 { display?<div className=" container-fluid  col-12 col-lg-8 table-responsive mb-5">
