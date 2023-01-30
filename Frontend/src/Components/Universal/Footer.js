@@ -24,7 +24,6 @@ export default function Footer() {
             <h6>Help</h6>
             <ul>
               <li>Shipping Information (FAQs)</li>
-              <li>Returns & Exchange (Contact)</li>
               <li>Terms & Conditions</li>
               <li>Privacy Policy</li>
             </ul>
@@ -35,10 +34,10 @@ export default function Footer() {
               <i className="fa-solid fa-location-dot"></i> 184, Sukhdev Vihar, 60 Feet Rd, Indore, Madhya Pradesh 452005
             </div>
             <div className="footer-contact-no solo-contact">
-              <i className="fa-solid fa-phone"></i> 9827141324
+              <i className="fa-solid fa-phone"></i>+91 9827141324
             </div>
             <div className="footer-gmail solo-contact">
-              <i className="fa-solid fa-envelope"></i> admin@savornaturals.in
+              <i className="fa-solid fa-envelope"></i> info.savornaturals@gmail.com
             </div>
           </div>
         </div>

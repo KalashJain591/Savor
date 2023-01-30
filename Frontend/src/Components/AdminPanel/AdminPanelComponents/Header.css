@@ -1,9 +1,38 @@
+.header-container-admin-panel{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .header-section-admin-panel{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 20px 4px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     background: green;
     border-radius: 0px 0px 7px 7px;
 }
+.Navigation-admin-panel{
+    display: flex;
+    margin: 0;
+}
+.Navigation-admin-panel li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+.Navigation-admin-panel li a{
+    color: white;
+    display: flex;
+    align-items: center;
+}
 .admin-panel-logo img{
     width: 250px;
+}
+.admin-panel-icon{
+    color: white;
 }
 .admin-panel-logout{
     background-color: white;
@@ -19,3 +48,8 @@
     color: rgba(33, 173, 76, 1);
     font-weight: bold;
 }
+.sideBar-heading{
+    width: 20%;
+    color: white;
+}
+

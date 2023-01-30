@@ -2,21 +2,18 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   /* height: 100vh; */
 }
 .admin-section-grid-2{
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: center;
   /* height: 100vh; */
 }
 
 .SideMenuAndPageContent{
-  /* display: flex; */
-  /* background-color: rgba(0, 0, 0, 0.05); */
-  width: 100%;
-  /* padding: 0 0 0 20%; */
-  /* border: 2px solid black; */
+  width: 90%;
 }
 .footer-section-admin-panel {
   height: 50px;
@@ -24,14 +21,6 @@
   justify-content: space-evenly;
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-}
-.header-section-admin-panel{
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 20px 4px 12px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 .sideBar-admin-panel{
     background-color: white;

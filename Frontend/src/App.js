@@ -21,13 +21,14 @@ import Orders from './Components/UserDashboard/orders';
 import Account from './Components/UserDashboard/Account';
 import Error404 from './Components/Error404';
 import { useEffect } from 'react';
-// import Index from './Components/AdminPanel/HomePage/Index';
+import EditProductPage from './Components/AdminPanel/Pages/EditProductPage';
 import Inventory from './Components/AdminPanel/Pages/Inventory';
 import Dashboard from './Components/AdminPanel/Pages/Dashboard';
 import Customer from './Components/AdminPanel/Pages/Customer';
 import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
 import Datauploader from './DataUploader/Datauploader';
 import QRcodepayment from './Components/Checkout/QRcodepayment';
+import AddProduct from './Components/AdminPanel/Pages/AddProduct';
 function App() {
   const { loggedIn , admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");

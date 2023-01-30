@@ -42,10 +42,10 @@ const Dashboard = () => {
   }, []);
   return (
     <div className='admin-section'>
+          <Header />
       <div className="admin-section-grid-2">
         {/* <SideBar /> */}
         <div className="SideMenuAndPageContent">
-          <Header />
           <div className="dashboard-section">
             <div className="dashboard-heading">
               <h4>Dashboard</h4>

@@ -1,28 +1,49 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import "./Header.css"
+import {
+  AppstoreOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import AuthContext from '../../../Context/auth_context';
 
 const Header = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
-  const {setLoggedIn,setadmin} = useContext(AuthContext);
+  const { setLoggedIn, setadmin } = useContext(AuthContext);
   async function logOut() {
     setadmin(false);
     setLoggedIn(false);
     await axios.get("/auth/logout")
-      .then((res) => {navigate("/")});
+      .then((res) => { navigate("/") });
   }
   return (
-    <>
+    <div className='header-container-admin-panel'>
       <div className='header-section-admin-panel'>
-        <div className="admin-panel-logo">
-          <img src="/images/SavorLogoTag.png" alt="" />
+        <div className="sideBar-heading">
+          <h4>Admin Dashboard</h4>
         </div>
-        <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
+        <ul className="Navigation-admin-panel">
+          <li>
+            <NavLink to="/adminPanel"><AppstoreOutlined className='admin-panel-icon' />Dashbaord</NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminpanel/products"><ShopOutlined className='admin-panel-icon' />Products</NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminpanel/orders"><ShoppingCartOutlined className='admin-panel-icon' />Orders</NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminpanel/customer"><UserOutlined className='admin-panel-icon' />Users </NavLink>
+          </li>
+          <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
+        </ul>
       </div>
       <div className="NavBar">
         <div className="NavBar-nav">
@@ -43,9 +64,9 @@ const Header = () => {
             <li className="Nav-list">
               < NavLink to="/contactus"><i className="fa fa-address-book" aria-hidden="true"></i> Contact Us</NavLink>
             </li>
-              <li className="Nav-list">
-                < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
-              </li>
+            <li className="Nav-list">
+              < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
+            </li>
             <li className="Nav-list">
               < NavLink to="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>
             </li>
@@ -97,7 +118,7 @@ const Header = () => {
           </Offcanvas>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

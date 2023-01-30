@@ -42,7 +42,7 @@ const Inventory = () => {
   return (
     <div className='admin-section'>
       <div className="admin-section-grid-2">
-        <SideBar />
+        {/* <SideBar /> */}
         <div className="SideMenuAndPageContent">
           <Header />
           <div className="container">
@@ -54,6 +54,7 @@ const Inventory = () => {
               <thead>
                 <tr>
                   <th scope="row">Thumbnail</th>
+                  <th> Name</th>
                   <th> Price</th>
                   <th>Rating</th>
                   <th>Reviews</th>
@@ -69,6 +70,7 @@ const Inventory = () => {
                 <tbody key={product.productId} >
                   <tr>
                     <td scope="row"><Avatar src={product.images[0].imgUrl}/></td>
+                    <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.rating}</td>
                     <td>{product.reviews}</td>
