@@ -17,9 +17,10 @@ export default function ChangeOrderStatus(props) {
 return (
     <div>
       <div style={{width:"90%"}}>
+        <p>Transaction Status</p>
           <select className="form-select" placeholder='choose...' value={payment_status} onChange={handleInput} required>
-              <option>Failed</option>
               <option>Pending</option>
+              <option>Failed</option>
               <option>Completed</option>
           </select>
       </div>

@@ -11,6 +11,7 @@ function AuthContextProvider(props) {
   const [admin, setadmin] = useState("false");
   async function getuserdeatils() {
     try {
+      // console.log("refresh get user details")
       const res = await axios.get("/auth/dashboard");
       setUsername(res.data.name);
       setuserprofile(res.data.profilePic);
@@ -19,12 +20,17 @@ function AuthContextProvider(props) {
       setadmin(res.data.admin);
       await axios.get(`/cart/${res.data._id}`)
         .then((responce) => {
+          // console.log(responce)
           let localStore = [];
+          if(loggedIn===true){
+              localStorage.setItem("SavorCart", JSON.stringify([]));
+          }
           responce.data.products.map((curElem)=>{
             localStore.push({Quantity:curElem.quantity, id: curElem.productId, images:curElem.images, max:6, name: curElem.name, price:curElem.price, total_cost:(curElem.quantity*curElem.price) })
             // console.log("ls", localStore);
             if (localStore === 'undefined') {
               console.log("[]")
+              localStorage.setItem("SavorCart", JSON.stringify({}));
             }
             else{
               localStorage.setItem("SavorCart", JSON.stringify(localStore));

@@ -113,6 +113,11 @@ export default function CheckoutForm() {
         });
     }
 
+    const clearcart=async()=>{
+        await axios.post("/cart/clearcart",{})
+        .then((res)=>{ navigate('/qrpayment')});
+      }
+    
     const payment = async () => {
         const { name, email, address1, address2, state, city, pincode, mobileNumber1, mobileNumber2,cash_on_delivery , payment_status,
             transaction_code,} = BillingInfo;
@@ -123,7 +128,7 @@ export default function CheckoutForm() {
             if (x[0] === 'c') {
                 await axios.post(`/order/orderbycart/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2,cash_on_delivery, payment_status,
                     transaction_code, })
-                    .then((res)=>{navigate('/qrpayment')})
+                    .then((res)=>{clearcart()})
             }
             else {
                 await axios.post(`/order/orderbyproduct/${userId}/${id}`, { ordername: name, address: address1, addressoptional: address2, state, city, postalcode: pincode, ordermobile1: mobileNumber1, ordermobile2: mobileNumber2,cash_on_delivery , payment_status,

@@ -29,7 +29,7 @@ import { AdminOrder } from './Components/AdminPanel/Pages/AdminOrder';
 import Datauploader from './DataUploader/Datauploader';
 import QRcodepayment from './Components/Checkout/QRcodepayment';
 function App() {
-  const { loggedIn , admin} = useContext(AuthContext);
+  const { loggedIn , getuserdeatils,admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
   const navigate = useNavigate();
   // useEffect(() => {
@@ -42,6 +42,7 @@ function App() {
   // Scroll top when location changes
   const location = useLocation(); 
   useEffect(() => {
+    getuserdeatils();
     window.scrollTo(0, 0);
   }, [location]);
  // 
