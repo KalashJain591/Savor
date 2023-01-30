@@ -19,6 +19,7 @@ router.get("/",(req, res) => {
 
 router.get("/personorder/:id",(req, res) => {
   const userId = req.params.id;
+  // console.log("person order",userId);
   try {
       Order.find({userId})
       .then((order) => res.json(order))
