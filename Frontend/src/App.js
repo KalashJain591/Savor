@@ -30,7 +30,7 @@ import Datauploader from './DataUploader/Datauploader';
 import QRcodepayment from './Components/Checkout/QRcodepayment';
 import AddProduct from './Components/AdminPanel/Pages/AddProduct';
 function App() {
-  const { loggedIn , admin} = useContext(AuthContext);
+  const { loggedIn , getuserdeatils,admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
   const navigate = useNavigate();
   // useEffect(() => {

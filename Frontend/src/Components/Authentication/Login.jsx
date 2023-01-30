@@ -5,9 +5,9 @@ import AuthContext from '../../Context/auth_context';
 import './login.css'
 import Signinwithgoogle from './Signinwithgoogle';
 export default function Login() {
-  const { loggedIn,getLoggedIn } = useContext(AuthContext);
+  const { loggedIn,getLoggedIn, } = useContext(AuthContext);
    const history = useNavigate()
-   const [ user, setUser] = useState({
+   const [ user, setUser,getuserdeatils] = useState({
        phoneno:"",
        password:"",
    })
@@ -28,7 +28,8 @@ export default function Login() {
    async function login() {
      try {
        const { email, password } = user
-       await axios.post("auth/login",user);
+       await axios.post("auth/login",user)
+       .then(()=>{getuserdeatils()});
        await getLoggedIn();
        history("/");
      } catch (err) {

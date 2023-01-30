@@ -20,11 +20,14 @@ const initialState = {
   cart: getLocalCartData(),
   total_items: 0,
   total_price: 0,
-  shipping_fee: 80,
+  shipping_fee: 50,
   final_amount:0,
   Discount:0,
   hurray:0,
+  total_wt:5,
+  city:0,
 };
+
 const CartProvider = ({ children }) => {
   // creating reducer to perform different operations
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -49,6 +52,14 @@ const CartProvider = ({ children }) => {
   const clearCart=()=>{
   dispatch({type:"CLEAR_CART"});
   }
+
+  // function to set custom discount 
+  // disc=delivery charge , place =according to place
+const setdiscount=(disc,place)=>{
+  // console.log(place);
+dispatch({type:"SET_DISCOUNT",payload:{disc,place}});
+}
+
   // to add data in local storage
   // using set method
   useEffect(() => {
@@ -56,9 +67,9 @@ const CartProvider = ({ children }) => {
     dispatch({type:"TOTAL_AMOUNT"});
     dispatch({type:"FINAL_AMOUNT"});
     localStorage.setItem("SavorCart", JSON.stringify(state.cart));
-  }, [state.cart])
-
-  return <CartContext.Provider value={{ ...state, placed,addToCart, SetIncrease, SetDecrease, removeItem ,clearCart}}>
+  }, [state.cart,state.shipping_fee])
+  
+  return <CartContext.Provider value={{ ...state, placed,addToCart, SetIncrease, SetDecrease, removeItem ,clearCart,setdiscount}}>
     {children}
   </CartContext.Provider>
 
