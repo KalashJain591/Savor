@@ -9,7 +9,7 @@ function AuthContextProvider(props) {
   const [userprofile, setuserprofile] = useState("");
   const [userId, setUserId] = useState("")
   const [admin, setadmin] = useState("false");
-  async function getuserdeatils() {
+  async function getuserdeatils(){
     try {
       // console.log("refresh get user details")
       const res = await axios.get("/auth/dashboard");
@@ -30,7 +30,7 @@ function AuthContextProvider(props) {
             // console.log("ls", localStore);
             if (localStore === 'undefined') {
               console.log("[]")
-              localStorage.setItem("SavorCart", JSON.stringify({}));
+              localStorage.setItem("SavorCart", JSON.stringify([]));
             }
             else{
               localStorage.setItem("SavorCart", JSON.stringify(localStore));

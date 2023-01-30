@@ -8,9 +8,13 @@ import Carousel from './CarouselSection1'
 import AuthContext from '../../Context/auth_context'
 import { useNavigate } from 'react-router-dom'
 export default function Home() {
-  const { loggedIn , admin} = useContext(AuthContext);
+  const { loggedIn , admin, getuserdeatils} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    getuserdeatils();
+  }, [])
+  
   useEffect(() => {
     if(admin===true){
       navigate("/adminpanel/");          

@@ -42,7 +42,6 @@ function App() {
   // Scroll top when location changes
   const location = useLocation(); 
   useEffect(() => {
-    getuserdeatils();
     window.scrollTo(0, 0);
   }, [location]);
  // 

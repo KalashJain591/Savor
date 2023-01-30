@@ -19,7 +19,6 @@ export const auth = getAuth(app);
 export const storage=getStorage(app)
 
 const provider = new GoogleAuthProvider();
-
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
