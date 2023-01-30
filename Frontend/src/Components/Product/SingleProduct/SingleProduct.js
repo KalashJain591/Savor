@@ -128,11 +128,13 @@ const SingleProduct = () => {
                                 </div>
                             </NavLink>
                             :
+                            price >= 500 ?(
                             <NavLink to="/login">
                                 <div className="single-buyNow">
                                     <button onClick={() => { localStorage.setItem("Buynow", "u:" + id); }} class="buy-now">Buy Now</button>
                                 </div>
                             </NavLink>
+                            ):(<></>)
                         }
                     </div>
                 </div>
