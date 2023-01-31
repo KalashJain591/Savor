@@ -32,7 +32,6 @@ function NavBar() {
             <img className='logo-tag' src="/images/SavorLogoTag.png" alt="" />
           </div>
           <ul className="Navigation">
-          
             <li className="Nav-list">
               < NavLink to="/"><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
             </li>

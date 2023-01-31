@@ -73,7 +73,6 @@ function App() {
           <Route path="/adminpanel/products/EditProductPage/:id" element={<EditProductPage />} />
           <Route path="/adminpanel/products/AddProduct" element={<AddProduct/>} />
           <Route path="/adminpanel/orders" element={<AdminOrder />} />
-          
           <Route path="/qrpayment" element={<QRcodepayment />} />
           <Route path="/datauploader" element={<Datauploader />} />
           <Route path="/UserDashboard/trackorder" element={<TrackOrders />} />
