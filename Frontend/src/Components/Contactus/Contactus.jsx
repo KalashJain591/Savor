@@ -28,10 +28,13 @@ const handleSubmit=(e)=>
   axios.post(`${API}/contactus`, FormData)
   .then((res) => {
     console.log(res);
+    alert("Message Sent Successfully");
+    
   })
   .catch((err) => {
     console.log(err);
   });
+  
 
 }
 
@@ -96,14 +99,15 @@ const handleSubmit=(e)=>
               </div>  
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
-                  <input type="text" placeholder="E-mail" name="email" onChange={handleChange} required/>
+                  <input type="email" pattern='[a-z0-9]+@[a-z]+\.[a-z]{2,3}' className="form-control" placeholder="enter your email " onChange={handleChange} name="useremail"/>
                 </div>
-              </div>                              
+              </div>                            
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
                   <input type="text" placeholder="Phone Number" onChange={handleChange} name="phone"/>
                 </div>
               </div>  
+               
               <div className="col-md-6 col-sm-6 col-xs-12">
                 <div className="single-input-field">
                   <input type="text" placeholder="Subject"  onChange={handleChange} name="subject" />
