@@ -34,12 +34,22 @@
     width: 50%;
 }
 .presented-image{
-    background-color: #537932;
+    background-color:#a6d2e1;
     width: 42%;
     display: flex;
     height: 450px;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
+}
+.presented-sub-div{
+    width: 80%;
+    background-color: #a1d2e3;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 380px;
     border-radius: 50%;
 }
 .presented-image img{
