@@ -48,7 +48,8 @@ async function callapi(url) {
     console.log(err);
   }
 
-} 
+}
+ 
   async function signup() {
    try {
    if(imageUpload!==null){
@@ -74,6 +75,21 @@ async function callapi(url) {
    }
  }
 
+ const checkimg=()=>{
+  // console.log(imageUpload);
+  // console.log(imageUpload.size);
+  if(imageUpload.size>200000){
+    return false;
+  }
+  // console.log(imageUpload.name)
+  const fileExtension = imageUpload.name.split(".").at(-1);
+  // console.log(fileExtension)
+  const allowedFileTypes = ["jpg", "png","gif","jpeg"];
+  if (!allowedFileTypes.includes(fileExtension)) {
+      return false;
+  }  
+  return true;
+ }
 
  const register = () => {
      const { name, email,phoneno,dob, password } = user
@@ -83,10 +99,14 @@ async function callapi(url) {
      else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
        alert("Invalid Email");
      }
+     else if(!checkimg()){
+        alert("Please upload Valid image in less than 200KB ");
+     }
      else if(name&& email && phoneno && password ){
       setloadingbtn(true);
          signup();
-     } else {
+     } 
+     else {
          alert("Please fill all the fields")
      }
    }

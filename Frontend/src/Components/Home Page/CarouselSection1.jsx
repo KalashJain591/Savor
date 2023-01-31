@@ -19,7 +19,9 @@ function Carousel() {
                   <img src="/images/girlImage.png" alt="" />
                 </div>
                 <div className="presented-image">
-                  <img src="/images/customizeProduct.png" alt="" srcSet="" />
+                  <div className="presented-sub-div">
+                    <img src="/images/customizeProduct.png" alt="" srcSet="" />
+                  </div>
                 </div>
               </div>
             </div>
