@@ -1,6 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { v4 } from 'uuid';
+import { storage } from '../../../Firebase/firebase';
+import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
 import "./EditProductPage.css"
+import AuthContext from '../../../Context/auth_context';
 const AddProduct = () => {
     const [productName, setProductName] = useState('');
     const [editmode, seteditmode] = useState(true);
@@ -11,6 +15,63 @@ const AddProduct = () => {
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
+    const [images,setimages]=useState([]);
+    const [imageUpload,setImageUpload]=useState(null);
+    const fileListRef=ref(storage,'files/');
+    const [imagewasuploading, setimagewasuploading] = useState(false);
+
+    const checkimg=()=>{
+        // console.log(imageUpload);
+        if(imageUpload.size>200000){
+          return false;
+        }
+        const fileExtension = imageUpload.name.split(".").at(-1);
+        const allowedFileTypes = ["jpg", "png","gif","jpeg"];
+        if (!allowedFileTypes.includes(fileExtension)) {
+            return false;
+        }  
+        return true;
+    }
+
+    const afterurl=async(url)=>{
+        setimages(prevState=>[...prevState,{imgUrl:url}]);
+        // alert("Image was Succesfully Updated");
+    }
+    
+    useEffect(() => {
+        console.log("IMG :",images);
+    }, [images])
+    
+
+    const changeimage=async ()=>{
+        // console.log("change image");
+        try{
+        if(!checkimg()){
+            alert("Please Upload Valid image on 200KB");
+        }
+        else if(imageUpload!==null){
+            const imageRef=ref(storage,'files/'+v4()+imageUpload.name);
+            await uploadBytes(imageRef,imageUpload).then((snapshot)=>{
+              getDownloadURL(snapshot.ref).then((url)=>{
+                // console.log(url); 
+                 afterurl(url);
+              })
+            }) 
+        }
+        else{
+            console.log("nothing")
+        }
+       //  console.log(user);
+          } catch (err) {
+         console.error(err);
+           }
+    }
+    
+    useEffect(() => {
+        changeimage();
+    }, [imageUpload])
+
+
     const changeProfile = (e) => {
         let key = e.target.id
         let val = e.target.value
@@ -37,8 +98,8 @@ const AddProduct = () => {
         }
     }
     const addNewProduct = async () => {
-        console.log("hello guys")
-        await axios.post(`/admin/addproduct`, {name: productName,description: description,price: price,stock : stock,feature: feature, category: category,rating:star,reviews: reviews})
+        // console.log("hello guys")
+        await axios.post(`/admin/addproduct`, {images,name: productName,description: description,price: price,stock : stock,feature: feature, category: category,rating:star,reviews: reviews})
           .then((res) => {
            alert("Product has been Added")
            window.location.reload()
@@ -52,7 +113,7 @@ const AddProduct = () => {
                     <div id="edit-form">
                         <div className="edit-section-images">
                             <div className="edit-sub-section-img">
-                                <input className='edit-file-img' type='file'></input>
+                            <input type="file" className='btn btn-secondary my-4'  accept="image/png, image/gif, image/jpeg"  onChange={(event)=>{setImageUpload(event.target.files[0])}} />
                             </div>
                         </div>
                         <div className="edit-page-form-group">

@@ -127,8 +127,8 @@ const EditProductPage = () => {
               <label for="Feature">Feature</label>
               <select id="Feature" disabled={editmode} name="Feature">
                 <div value="False">{feature}</div>
-                <option value="True" >True</option>
-                <option value="False">False</option>
+                <option value="true" >True</option>
+                <option value="false">False</option>
               </select>
             </div>
             <div className="edit-page-form-group">

@@ -183,6 +183,18 @@ router.get("/dashboard", async (req, res) => {
 
 
 
+router.post("/changeprofilepic/:id", async (req, res) => {
+  const userId= req.params.id;
+  try {
+    // console.log(req.body);
+    const {profilePic}=req.body;
+    let usersaved=await User.findOneAndUpdate({_id:userId},{profilePic});
+    res.status(200).send(usersaved);
+    } catch (err) {
+    res.status(200).send(err);
+  }
+});
+
 
 
 router.post("/signinwithgoogle", async (req, res) => {

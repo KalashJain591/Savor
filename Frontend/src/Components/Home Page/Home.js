@@ -7,6 +7,7 @@ import TopDeals from './TopDeals'
 import Carousel from './CarouselSection1'
 import AuthContext from '../../Context/auth_context'
 import { useNavigate } from 'react-router-dom'
+import { useCartContext } from '../../Context/cart_context'
 export default function Home() {
   const { loggedIn , admin, getuserdeatils} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
@@ -15,6 +16,17 @@ export default function Home() {
     getuserdeatils();
   }, [])
   
+  const { cart } = useCartContext();
+  useEffect(() => {
+    if(loggedIn){
+      const lcd=localStorage.getItem("SavorCart");
+      const lcdsz =Object.keys(lcd).length/185;
+      if(lcdsz!==cart.length){
+        window.location.reload()
+      }  
+    }
+  }, [])
+
   useEffect(() => {
     if(admin===true){
       navigate("/adminpanel/");          
