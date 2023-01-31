@@ -22,7 +22,7 @@ try{
       // send mail with defined transport object
       let info = await transporter.sendMail({
         from: `thekalash52@gmail.com`, // sender address
-        to: `kalashj93@gmail.com, baz@example.com`, // list of receivers
+        to: useremail, // list of receivers
         subject:subject, // Subject line
         text: text, // plain text body
         // html: "<b>Hello world?</b>", // html body
