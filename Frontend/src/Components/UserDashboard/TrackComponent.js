@@ -2,7 +2,8 @@ import React from 'react'
 // import trackRecord from './trackRecord'
 export default function TrackComponent(props) {
     // console.log(idx);
-    let status=props.idx.status;;
+    
+    let status=props.idx.status;
     console.log("hello");
     return (
         <div>
