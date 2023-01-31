@@ -1,93 +1,83 @@
-import React, { useContext } from 'react'
-import { BellFilled, MailOutlined } from "@ant-design/icons";
-import { Badge, Drawer, Image, List, Space, Typography } from "antd";
-import { useEffect, useState } from "react";
-import { getComments, getOrders } from "../API";
+import React, { useContext, useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./Header.css"
+import {
+  AppstoreOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import Offcanvas from "react-bootstrap/Offcanvas";
 import AuthContext from '../../../Context/auth_context';
 
 const Header = () => {
-  const [comments, setComments] = useState([]);
-  const [orders, setOrders] = useState([]);
-  const [commentsOpen, setCommentsOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const navigate = useNavigate();
-  const {setLoggedIn,setadmin} = useContext(AuthContext);
+  const { setLoggedIn, setadmin } = useContext(AuthContext);
   async function logOut() {
     setadmin(false);
     setLoggedIn(false);
     await axios.get("/auth/logout")
-      .then((res) => {navigate("/")});
+      .then((res) => { navigate("/") });
   }
-  useEffect(() => {
-    getComments().then((res) => {
-      setComments(res.comments);
-    });
-    getOrders().then((res) => {
-      setOrders(res.products);
-    });
-  }, []);
   return (
-    <div className='header-section-admin-panel'>
-      <div className="admin-panel-logo">
-        <img src="/images/SavorLogoTag.png" alt="" />
+    <div className='header-container-admin-panel'>
+      <div className='header-section-admin-panel'>
+        <div className="sideBar-heading">
+          <h4>Admin Dashboard</h4>
+        </div>
+        <ul className="Navigation-admin-panel">
+          <li>
+            <NavLink to="/adminPanel"><AppstoreOutlined className='admin-panel-icon' />Dashbaord</NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminpanel/products"><ShopOutlined className='admin-panel-icon' />Products</NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminpanel/orders"><ShoppingCartOutlined className='admin-panel-icon' />Orders</NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminpanel/customer"><UserOutlined className='admin-panel-icon' />Users </NavLink>
+          </li>
+          <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
+        </ul>
       </div>
-      <div className='notification'>
-        <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
-        <Badge count={comments.length} dot>
-          <MailOutlined
-            style={{ fontSize: 24, color: "white" }}
-            onClick={() => {
-              setCommentsOpen(true);
-            }}
-          />
-        </Badge>
-        <Badge count={orders.length}>
-          <BellFilled
-            style={{ fontSize: 24, color: "white" }}
-            onClick={() => {
-              setNotificationsOpen(true);
-            }}
-          />
-        </Badge>
+      <div className="header-container-admin-panel">
+        <div className="R_NavBar-nav-admin-panel">
+          <div onClick={handleShow} className="Burger">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+          <Offcanvas show={show} className="off_canvas" onHide={handleClose}>
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>
+                Admin Dashboard
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <ul className="R_Navigation-admin-panel">
+                <li>
+                  <NavLink to="/adminPanel"><AppstoreOutlined className='admin-panel-icon' />Dashbaord</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/adminpanel/products"><ShopOutlined className='admin-panel-icon' />Products</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/adminpanel/orders"><ShoppingCartOutlined className='admin-panel-icon' />Orders</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/adminpanel/customer"><UserOutlined className='admin-panel-icon' />Users </NavLink>
+                </li>
+                <button className='admin-panel-logout' onClick={logOut}><i className="fa fa-sign-out admin-sign-out" aria-hidden="true"></i><p>Logout</p></button>
+              </ul>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </div>
       </div>
-      <Drawer
-        title="Comments"
-        open={commentsOpen}
-        onClose={() => {
-          setCommentsOpen(false);
-        }}
-        maskClosable
-      >
-        <List
-          dataSource={comments}
-          renderItem={(item) => {
-            return <List.Item>{item.body}</List.Item>;
-          }}
-        ></List>
-      </Drawer>
-      <Drawer
-        title="Notifications"
-        open={notificationsOpen}
-        onClose={() => {
-          setNotificationsOpen(false);
-        }}
-        maskClosable
-      >
-        <List
-          dataSource={orders}
-          renderItem={(item) => {
-            return (
-              <List.Item>
-                <Typography.Text strong>{item.title}</Typography.Text> has been
-                ordered!
-              </List.Item>
-            );
-          }}
-        ></List>
-      </Drawer>
     </div>
   )
 }

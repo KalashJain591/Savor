@@ -65,8 +65,7 @@ const handleSubmit=(e)=>
               </div>
               <div className="contact-info-text">
                 <h2>E-mail</h2>
-                <span> admin@savornaturals.in</span> 
-                <span>yourmail@gmail.com</span>
+                <span>info.savornaturals@gmail.com</span>
               </div>
             </div>            
           </div>                
@@ -119,7 +118,7 @@ const handleSubmit=(e)=>
                 </div>
               </div>                                                
               <div className="single-input-fieldsbtn">
-                <input type="submit" value="Send Now"/>
+                <button type='submit'>Send Now</button>
               </div>                          
             </div>
             </form>   

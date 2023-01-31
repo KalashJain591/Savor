@@ -42,10 +42,10 @@ const Dashboard = () => {
   }, []);
   return (
     <div className='admin-section'>
-      <div className="admin-section-grid-2">
-        <SideBar />
-        <div className="SideMenuAndPageContent">
           <Header />
+      <div className="admin-section-grid-2">
+        {/* <SideBar /> */}
+        <div className="SideMenuAndPageContent">
           <div className="dashboard-section">
             <div className="dashboard-heading">
               <h4>Dashboard</h4>
@@ -82,85 +82,15 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+            <div className="data-analysis">
+              <RecentOrders />
+              <DashboardChart />
+            </div>
           </div>
-          <Space>
-            <RecentOrders />
-            <DashboardChart />
-          </Space>
         </div>
-        {/* <DashboardCard
-          icon={
-            <ShoppingCartOutlined
-              style={{
-                color: "green",
-                backgroundColor: "rgba(0,255,0,0.25)",
-                borderRadius: 20,
-                fontSize: 24,
-                padding: 8,
-              }}
-            />
-          }
-          title={"Orders"}
-          value={orders}
-        />
-        <DashboardCard
-          icon={
-            <ShoppingOutlined
-              style={{
-                color: "blue",
-                backgroundColor: "rgba(0,0,255,0.25)",
-                borderRadius: 20,
-                fontSize: 24,
-                padding: 8,
-              }}
-            />
-          }
-          title={"Inventory"}
-          value={inventory}
-        />
-        <DashboardCard
-          icon={
-            <UserOutlined
-              style={{
-                color: "purple",
-                backgroundColor: "rgba(0,255,255,0.25)",
-                borderRadius: 20,
-                fontSize: 24,
-                padding: 8,
-              }}
-            />
-          }
-          title={"Customer"}
-          value={customers}
-        />
-        <DashboardCard
-          icon={
-            <DollarCircleOutlined
-              style={{
-                color: "red",
-                backgroundColor: "rgba(255,0,0,0.25)",
-                borderRadius: 20,
-                fontSize: 24,
-                padding: 8,
-              }}
-            />
-          }
-          title={"Revenue"}
-          value={revenue}
-        />*/}
       </div>
     </div>
   )
-}
-function DashboardCard({ title, value, icon }) {
-  return (
-    <Card>
-      <Space direction="horizontal">
-        {icon}
-        <Statistic title={title} value={value} />
-      </Space>
-    </Card>
-  );
 }
 function RecentOrders() {
   const [dataSource, setDataSource] = useState([]);
@@ -175,8 +105,8 @@ function RecentOrders() {
   }, []);
 
   return (
-    <>
-      <Typography.Text>Recent Orders</Typography.Text>
+    <div className="recent-orders">
+      <h3>Recent Orders</h3>
       <Table
         columns={[
           {
@@ -196,7 +126,7 @@ function RecentOrders() {
         dataSource={dataSource}
         pagination={false}
       ></Table>
-    </>
+    </div>
   );
 }
 
@@ -225,7 +155,6 @@ function DashboardChart() {
           },
         ],
       };
-
       setReveneuData(dataSource);
     });
   }, []);
@@ -244,9 +173,12 @@ function DashboardChart() {
   };
 
   return (
-    <Card style={{ width: 500, height: 250 }}>
-      <Bar options={options} data={reveneuData} />
-    </Card>
+    <div className="Revenue-Analysis">
+      <h3>Revenue Analysis</h3>
+      <Card style={{ width: 500, height: 250 }} className="revenue-graph">
+        <Bar options={options} data={reveneuData} />
+      </Card>
+    </div>
   );
 }
 export default Dashboard

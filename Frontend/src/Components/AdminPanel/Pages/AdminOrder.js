@@ -27,102 +27,11 @@ export const AdminOrder = () => {
     setLoading(false);
   }, []);
   return (
-    // <Space size={20} direction="vertical">
-    //   <Typography.Title level={4}>Orders</Typography.Title>
-    //   <Table
-    //     loading={loading}
-    //     columns={[
-    //       {
-    //         title: "Photo",
-    //         dataIndex: "profilePic",
-    //         render: (link) => {
-    //           return <Avatar src={link} />;
-    //         },
-    //       },
-    //       {
-    //         title: "Name",
-    //         dataIndex: "name",
-    //       },
-    //       {
-    //         title: "Phone No.",
-    //         dataIndex: "phoneno",
-    //       },
-    //       {
-    //         title: "Email",
-    //         dataIndex: "email",
-    //       },
-    //       {
-    //         title: "DOB",
-    //         dataIndex: "dob",
-    //       },
-    //       {
-    //         title: "Ordered Name",
-    //         dataIndex: "ordername",
-    //       },
-    //       {
-    //         titlAdminO: "Order Phone No.",
-    //         dataIndex: "ordermobile1",
-    //       },
-    //       {
-    //         titlAdminO: "Order Phone No. (Optional)",
-    //         dataIndex: "ordermobile2",
-    //       },
-
-    //       {
-    //         title: "Address",
-    //         dataIndex: "address",
-    //       },
-    //       {
-    //         title: "Optional Address",
-    //         dataIndex: "addressoptional",
-    //       },
-    //       {
-    //         title: "City",
-    //         dataIndex: "city",
-    //       },
-    //       {
-    //         title: "State",
-    //         dataIndex: "state",
-    //       },
-    //       {
-    //         title: "PIN CODE",
-    //         dataIndex: "postalcode",
-    //       },
-    //       {
-    //         title:"ORDER SUMMARY",
-    //         dataIndex:"products",
-    //         render: (value) =><div ><ProductInfo products={value}/></div>,
-    //       }
-    //       ,
-    //       {
-    //         title: "Bill",
-    //         dataIndex: "bill",
-    //         render: (value) => <span>₹{value}</span>,
-    //       },
-    //       {
-    //         title: "Status",
-    //         dataIndex: "order_status",
-    //         render: (value) => <ChangeOrderStatus orderid={dataSource._id} order_status={value}/>,
-    //       },
-    //       {
-    //         title: "DateAdminOof Order",
-    //         dataIndex: "date_added",
-    //         render: (value) => <span>{value}</span>,
-    //       },
-    //     ]}
-    //     dataSource={dataSource}
-    //     pagination={{
-    //       pageSize: 5,
-    //     }}
-    //   ></Table>
-    // </Space>
     <div className='admin-section'>
-      <div className="admin-section-grid-2">
-        <SideBar />
-
-        <div className="SideMenuAndPageContent">
           <Header />
-          <div className="container">
+      <div className="admin-section-grid-2">
+        <div className="SideMenuAndPageContent">
+          <div className="container-order">
             <br />
             <table class="table" style={{ backgroundColor: "white", borderRadius: "10px" }}>
               <thead>

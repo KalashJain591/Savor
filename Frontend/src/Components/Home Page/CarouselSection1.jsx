@@ -10,24 +10,30 @@ function Carousel() {
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
-          <img
-              src="https://muehlenchemie.com/wp-content/uploads/2022/06/mehl-basis3022_quer_blau_header-2-2500x1133.jpg"
-              className="carousel-img d-block w-100 "
-              height={"369px"}
-              alt="..."
-            />
+            <div
+              className="hero-section-image"
+              style={{ height: "500px" }}
+            >
+              <div className="hero-section-container">
+                <div className="presenter-image">
+                  <img src="/images/girlImage.png" alt="" />
+                </div>
+                <div className="presented-image">
+                  <img src="/images/customizeProduct.png" alt="" srcSet="" />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="carousel-item">
-          <img
+            <img
               src="./images/masala.jpeg"
               className="carousel-img d-block w-100 "
               alt="..."
             />
-            
           </div>
           <div className="carousel-item">
             <img
-              src="https://tasteofindore.store/wp-content/uploads/2019/11/snew2.jpg"
+              src="https://muehlenchemie.com/wp-content/uploads/2022/06/mehl-basis3022_quer_blau_header-2-2500x1133.jpg"
               className="carousel-img d-block w-100 "
               height={"369px"}
               alt="..."

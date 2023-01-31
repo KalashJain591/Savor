@@ -27,9 +27,8 @@ const Customer = () => {
   return (
     <div className='admin-section'>
       <div className="admin-section-grid-2">
-        <SideBar />
-        <div className="SideMenuAndPageContent">
           <Header />
+        <div className="SideMenuAndPageContent">
           <div className='container'>
             <br />
             <Space size={20} direction="vertical">
@@ -60,17 +59,6 @@ const Customer = () => {
                     title: "DOB",
                     dataIndex: "dob",
                   },
-                  // {
-                  //   title: "address",
-                  //   dataIndex: "address",
-                  //   render: (address) => {
-                  //     return (
-                  //       <span>
-                  //         {address.address}, {address.city}
-                  //       </span>
-                  //     );
-                  //   },
-                  // },
                 ]}
                 dataSource={dataSource}
                 pagination={{

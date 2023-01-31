@@ -5,7 +5,7 @@ import PageContent from '../AdminPanelComponents/PageContent'
 import SideBar from '../AdminPanelComponents/SideBar'
 import "./Index.css"
 import AuthContext from '../../../Context/auth_context';
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 const Index = () => {
   const { loggedIn, admin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Index = () => {
         <SideBar />
         <div className="SideMenuAndPageContent">
           <Header />
-          <PageContent />
+          {/* <PageContent /> */}
           {/* <Footer /> */}
         </div>
       </div>

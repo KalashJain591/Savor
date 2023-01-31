@@ -120,3 +120,6 @@ input:invalid {
 .edit-page-form-group input:disabled{
   color: #e4e2e0;
 }
+.edit-page-form-group ::-webkit-input-placeholder{
+  color: white;
+}

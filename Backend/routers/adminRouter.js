@@ -17,26 +17,30 @@ router.get("/product",(req, res) => {
 
 //Route to add a new post
 router.route("/addproduct").post((req, res) => {
-    //Retrieve data for post
-    const { images,name,  description, price, stock,  category, feature,rating,reviews} = req.body;
-    //Create a new Post and save it to DB
-    const newProduct = new Product({
-        images,
-        name,
-        description,
-        price,
-        stock,
-        category,
-        feature,
-        rating,
-        reviews
-        });
-    // Save the new post
-    newProduct
-        .save()
-        .then(() => res.json("Product Added!"))
-        .catch((err) => res.status(400).json("Error: " + err));
- });
+  //Retrieve data for post
+  const { images,name,  description, price, stock,  category, feature,rating,reviews, quantity,unit} = req.body;
+  //Create a new Post and save it to DB
+  // console.log(req.body);
+  const newProduct = new Product({
+      images,
+      name,
+      description,
+      price,
+      stock,
+      category,
+      feature,
+      rating,
+      reviews,
+      quantity,
+      unit
+      });
+  // Save the new post
+  newProduct
+      .save()
+      .then(() => res.json("Product Added!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+});
+
 
 //edit product
 router.post("/editproduct/:id", async (req, res) => {

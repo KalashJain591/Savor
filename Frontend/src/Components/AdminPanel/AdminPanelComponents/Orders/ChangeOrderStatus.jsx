@@ -17,10 +17,11 @@ export default function ChangeOrderStatus(props) {
 return (
     <div>
       <div style={{width:"90%"}}>
+        <p>Shipping Status</p>
           <select className="form-select" placeholder='choose...' value={order_status} onChange={handleInput} required>
               <option>Confirmed</option>
               <option>Processed</option>
-              <option>Arraving</option>
+              <option>Arriving</option>
               <option>Delivered</option>
           </select>
       </div>

@@ -13,7 +13,7 @@ export default function Register() {
   const [loadingbtn,setloadingbtn]=useState(false);
   const [imageUpload,setImageUpload]=useState(null);
   const fileListRef=ref(storage,'files/');
-  const {loggedIn ,getLoggedIn } = useContext(AuthContext);
+  const {loggedIn,getuserdeatils ,getLoggedIn } = useContext(AuthContext);
    const history = useNavigate()
    useEffect(() => {
     if (loggedIn) {
@@ -40,7 +40,8 @@ export default function Register() {
 async function callapi(url) {
   try{
     const {profilePic, name, email,phoneno,dob, password } = user
-    await axios.post("/auth/register",{profilePic:url,name, email,phoneno,dob, password});
+    await axios.post("/auth/register",{profilePic:url,name, email,phoneno,dob, password})
+    .then(()=>{getuserdeatils()});
           await getLoggedIn();
           history("/"); 
   }catch(err){

@@ -5,11 +5,24 @@ import { NavLink } from 'react-router-dom'
 import CartItem from './CartItem';
 import AuthContext from '../../Context/auth_context';
 import PaymentSummary from './PaymentSummary';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function Cart() {
+  
   const { userId, loggedIn } = useContext(AuthContext);
   const { cart, clearCart, total_price } = useCartContext();
+
+  useEffect(() => {
+    if(loggedIn){
+      const lcd=localStorage.getItem("SavorCart");
+      const lcdsz =Object.keys(lcd).length/185;
+      if(lcdsz!==cart.length){
+        window.location.reload()
+      }  
+    }
+  }, [])
+  
+
   let ok = 0;
   if (total_price >= 500)
     ok = 1;
@@ -24,18 +37,17 @@ export default function Cart() {
         <NavLink to="/products ">
           <button className='btn btn-lg my-3 fs-2' style={{ backgroundColor: "orange" }}>Fill Your Cart</button>
         </NavLink></div>
-
     </>)
   }
 
   const handleSubmit=(e)=>{
     localStorage.setItem("Buynow", "c:" + userId);
-    if(!ok)
-    {
+    if(!ok){
       alert("Minimum Cart value should be atleast ₹500")
       e.preventDefault();
     }
   }
+  
   return (
     <>
       <h1 className='m-5'>Your Cart<hr></hr></h1>
