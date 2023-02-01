@@ -9,8 +9,8 @@ router.post("/register", async (req, res) => {
   try {
     // console.log("register");
     const { profilePic,name,email,phoneno ,dob, password } = req.body;
-    // validation
-    // console.log(req.body);
+    // validation/
+    console.log(req.body);
     if (!name||!email ||!phoneno ||!password )
       return res
         .status(400)

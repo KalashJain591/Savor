@@ -16,11 +16,11 @@ export default function TrackOrders() {
     //         </div>
     //     </>)
     // }
-    var x = localStorage.getItem("Buynow");
-    console.log(x);
-    let id1 = x.slice(2);
-    console.log(id1);
-    console.log("hello from ")
+    // var x = localStorage.getItem("Buynow");
+    // console.log(x);
+    // let id1 = x.slice(2);
+    // console.log(id1);
+    // console.log("hello from ")
 
 
 
@@ -33,6 +33,8 @@ export default function TrackOrders() {
         await axios.get("/admin/order")
             .then((res) => {
                 setDataSource(res.data);
+                console.log(res.data);
+                console.log("hello from view");
                 //   setstatus(res.data.order_status);
                 //   console.log(res.data.order_status);
 

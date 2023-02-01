@@ -28,7 +28,11 @@ router.get("/personorder/:id",(req, res) => {
     res.json(false);
   }
 });
-
+router.route("/paticularOrderofperson/:id").get((req, res) => {
+  Order.findById(req.params.id)
+      .then((order) => res.json(order))
+      .catch((err) => res.status(400).json("Error: " + err));
+});
 
 router.post("/orderbycart/:id",async (req, res) => {
   const userId = req.params.id;

@@ -30,6 +30,7 @@ import Datauploader from './DataUploader/Datauploader';
 import QRcodepayment from './Components/Checkout/QRcodepayment';
 import TrackOrders from './Components/UserDashboard/TrackOrders';
 import AddProduct from './Components/AdminPanel/Pages/AddProduct';
+import ViewOrders from './Components/UserDashboard/ViewOrders';
 function App() {
   const { loggedIn , getuserdeatils,admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
@@ -75,7 +76,8 @@ function App() {
           <Route path="/adminpanel/orders" element={<AdminOrder />} />
           <Route path="/qrpayment" element={<QRcodepayment />} />
           <Route path="/datauploader" element={<Datauploader />} />
-          <Route path="/UserDashboard/trackorder" element={<TrackOrders />} />
+          <Route path="/UserDashboard/ViewOrders" element={<ViewOrders />} />
+          <Route path="/UserDashboard/ViewOrders/trackorder" element={<TrackOrders />} />
           
           <Route path='*' element={<Error404 />}/>
         </Routes>

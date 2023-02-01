@@ -36,7 +36,7 @@ export const dashData = [{
     imgUrl: "/images/returns.png",
     desc: "Track , Return or Buy things again",
     title: "Track your Orders",
-    DirectTo: "/UserDashboard/trackorder",
+    DirectTo: "/UserDashboard/ViewOrders",
 
 },
 {
