@@ -8,7 +8,7 @@ import AuthContext from '../../Context/auth_context';
 
 const Product = (curElem) => {
   const { addToCart } = useCartContext();
-  console.log(curElem)
+  // console.log(curElem)
   // const { addToWishList } = useWishListContext();
   const { userId } = useContext(AuthContext);
   const { _id, name, images, price, rating, reviews, quantity, unit } = curElem;

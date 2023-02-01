@@ -3,7 +3,7 @@ import trackRecord from './trackRecord'
 export default function TrackComponent(props) {
     // console.log(idx);
     let status=0;
-    if(props.status<=props.index)
+    if(props.status>=props.idx)
      status=1;
     // console.log("hello");
     return (
