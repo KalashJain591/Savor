@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/auth_context";
-
+import ViewOrderComponent from "./ViewOrderComponent";
 const ViewOrders = () => {
   // const [dataSource, setDataSource] = useState([]);
   // const Callingapi = async () => {
@@ -20,8 +20,8 @@ const ViewOrders = () => {
   const { userId, loggedIn } = useContext(AuthContext);
   const [id, setid] = useState();
   const [stats, setstatus] = useState([]);
-  const [dataSource, setDataSource] = useState("");
-  console.log(userId);
+  const [dataSource, setDataSource] = useState([]);
+  // console.log(userId);
   const callapi = async () => {
     // console.log('first')
     await axios.get(`/order/personorder/${userId}`).then((res) => {
@@ -33,9 +33,23 @@ const ViewOrders = () => {
     callapi();
   }, []);
   return (
-    <div className="viewOrderSection">
+    <div className="viewOrderSection container">
       <h1 className="fs-1 text-center">Your Orders</h1>
-      
+      <table class="table">
+        <thead>
+          <tr className="text-center"> 
+            <th className="col-6">Orders</th>
+            <th className="col-3">details</th>
+            <th className="col-3">Track</th>
+          </tr>
+        </thead>
+      <tbody>
+       { console.log("hello" , dataSource)}
+        {dataSource.map((currelem)=>{
+       return  <ViewOrderComponent id={currelem._id} status={currelem.order_status}/>
+        })}
+      </tbody>
+      </table>
     </div>
   );
 };

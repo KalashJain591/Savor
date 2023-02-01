@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../../Context/cart_context';
 import OrdersItem from './OrdersItem';
 
@@ -9,15 +10,15 @@ export default function Orders() {
     // change should be done in the first if condition id (cart && past && cancelle ==0) then renderd the No orders component
     if (window.length === 0) {
         return (<>
-         <h1 className='text-center'>Your Orders</h1>
+         <h1 className='text-center'>Your Orders</h1>               
          <hr/>
             <div className='d-flex justify-content-evenly'>
-                <p className='btn m-1' style={{}} onClick={()=>setwindow(cart)}>Past Orders</p>
+              <NavLink to="/UserDashboard/ViewOrders"> <p className='btn m-1'>Past Orders</p></NavLink>
                 <p className=' btn m-1' style={{}} onClick={()=>setwindow(cart)}>Current Orders</p>
-                <p className='btn m-1' style={{}} onClick={()=>setwindow(cart)}>Cancelled Orders</p>
+                {/* <p className='btn m-1' style={{}} onClick={()=>setwindow(cart)}>Cancelled Orders</p> */}
             </div>
             <hr/>
-        <h1 className='text-center fs-1' style={{height:"18rem", display:"flex", alignItems:"center", justifyContent:"center" }} >No Orders</h1>
+        <h1 className='text-center fs-1' style={{height:"18rem", display:"flex", alignItems:"center", justifyContent:"center" }} >No Current Orders</h1>
         </>)}
 
     return (
@@ -25,9 +26,9 @@ export default function Orders() {
             <h1 className='text-center mb-4'>Your Orders</h1>
           
             <div className='d-flex justify-content-evenly'>
-                <p className='btn m-1' style={{}} onClick={()=>setwindow(cart)}>Past Orders</p>
+            <NavLink to="/UserDashboard/ViewOrders"> <p className='btn m-1'>Past Orders</p></NavLink>
                 <p className=' btn m-1' style={{}} onClick={()=>setwindow(cart)}>Current Orders</p>
-                <p className='btn m-1' style={{}} onClick={()=>setwindow(cart)}>Cancelled Orders</p>
+               
             </div>
             <hr/>
            
