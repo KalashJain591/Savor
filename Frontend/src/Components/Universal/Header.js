@@ -120,7 +120,6 @@ function NavBar() {
                       <span className="item-count ">{total_items}</span>
                     </NavLink>
                   </li>
-
               </ul>
             </Offcanvas.Body>
           </Offcanvas>
