@@ -82,7 +82,7 @@ const SingleProduct = () => {
                         <div className="product-Weight">{quantity} {unit}</div>
                     </div>
                     <div className="product-description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto molestiae vero obcaecati illum neque quidem voluptatum minus enim sint corrupti id optio dolor praesentium doloremque corporis aspernatur harum, commodi tenetur?</p>
+                        <p>{description}</p>
                     </div>
                     <div className="product-data-warranty">
                         <div className="warranty-img">
