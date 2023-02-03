@@ -3,35 +3,28 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/auth_context";
 import ViewOrderComponent from "./ViewOrderComponent";
 const ViewOrders = () => {
-  // const [dataSource, setDataSource] = useState([]);
-  // const Callingapi = async () => {
-  //   await axios.get("/admin/order").then((res) => {
-  //     setDataSource(res.data);
-  //     //   setstatus(res.data.order_status);
-  //     //   console.log(res.data.order_status);
-
-  //       // console.log(res.data);
-  //     console.log("view order",res.data);
-  //   });
-  //   useEffect(() => {
-  //     Callingapi();
-  //   }, []);
-  // };
-  const { userId, loggedIn } = useContext(AuthContext);
+  // const { userId} = useContext(AuthContext);
   const [id, setid] = useState();
   const [stats, setstatus] = useState([]);
   const [dataSource, setDataSource] = useState([]);
-  // console.log(userId);
-  const callapi = async () => {
-    // console.log('first')
+
+  const callapi2= async (userId)=>{
+    console.log('first',userId)
     await axios.get(`/order/personorder/${userId}`).then((res) => {
       setDataSource(res.data);
       console.log(res.data);
     });
+  }
+  const callapi = async () => {
+    await axios.get("/auth/dashboard")
+    .then((res)=>{callapi2(res.data._id)})
+   
   };
+
   useEffect(() => {
     callapi();
   }, []);
+
   return (
     <div className="viewOrderSection container">
       <h1 className="fs-1 text-center">Your Orders</h1>
@@ -44,7 +37,7 @@ const ViewOrders = () => {
           </tr>
         </thead>
       <tbody>
-       { console.log("hello" , dataSource)}
+       {/* { console.log("hello" , dataSource)} */}
         {dataSource.map((currelem)=>{
        return  <ViewOrderComponent id={currelem._id} status={currelem.order_status}/>
         })}

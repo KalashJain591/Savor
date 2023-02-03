@@ -1,17 +1,16 @@
 import React from 'react'
 
 export default function OrderDetailComponent(props) {
- const data=props.val
- let total=data.price*data.quantity
+ 
+ let total=props.val.price*props.val.quantity
     return (
-    <div>
         <tr className='text-center'>
-            <td>{data.name}</td>
-            <td>{data.price}</td>
-            <td>{data.quantity}</td>
+        {/* { console.log("props ka val",props)} */}
+            <td>{props.val.name}</td>
+            <td>{props.val.price}</td>
+            <td>{props.val.quantity}</td>
             <td>{total}</td>
         </tr>
       
-    </div>
   )
 }

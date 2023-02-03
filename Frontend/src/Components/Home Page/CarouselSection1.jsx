@@ -9,7 +9,14 @@ function Carousel() {
         data-bs-ride="carousel"
       >
         <div className="carousel-inner">
-          <div className="carousel-item active">
+        <div className="carousel-item active">
+            <img
+              src="./images/carousel.png"
+              className="carousel-img d-block w-100 "
+              alt="..."
+            />
+          </div>
+          {/* <div className="carousel-item active">
             <div
               className="hero-section-image"
               style={{ height: "500px" }}
@@ -25,7 +32,7 @@ function Carousel() {
                 </div> */}
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="carousel-item">
             <img
               src="./images/masala.jpeg"

@@ -20,6 +20,7 @@ router.get("/",(req, res) => {
 router.get("/personorder/:id",(req, res) => {
   const userId = req.params.id;
   // console.log("person order",userId);
+
   try {
       Order.find({userId})
       .then((order) => res.json(order))
@@ -29,6 +30,7 @@ router.get("/personorder/:id",(req, res) => {
   }
 });
 router.route("/paticularOrderofperson/:id").get((req, res) => {
+  // console.log(req.params.id);
   Order.findById(req.params.id)
       .then((order) => res.json(order))
       .catch((err) => res.status(400).json("Error: " + err));
@@ -36,7 +38,7 @@ router.route("/paticularOrderofperson/:id").get((req, res) => {
 
 router.post("/orderbycart/:id",async (req, res) => {
   const userId = req.params.id;
-  // console.log(req.body);
+  console.log(req.body);
   try {
     const { ordername, address, addressoptional, state, city, postalcode, ordermobile1,ordermobile2, cash_on_delivery, payment_status, transaction_code}=req.body;
     let user = await User.findOne({_id:userId});
