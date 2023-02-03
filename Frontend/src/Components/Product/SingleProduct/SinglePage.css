@@ -46,8 +46,10 @@
     justify-content: center;
 }
 .child-single-img{
+    display: flex;
+    align-items: center;
     /* border: 2px solid green; */
-    width: 100%;
+    width: 25%;
     margin: 0 10px;
     box-shadow: 1px 1px 10px 3px #666;
 }
@@ -142,5 +144,9 @@
     .singlePage-product-description{
         justify-content: center;
         width: 100%;
+    }
+    .single-product-Content{
+        width: 100%;
+
     }
 }

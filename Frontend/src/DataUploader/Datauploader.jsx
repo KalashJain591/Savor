@@ -12,7 +12,7 @@ export default function Datauploader() {
 //       "Cumin Seeds	",
 //       "Cumin Seeds	",
 //       "Fennel	",
-//       "Fennel	",
+//       "Fennel	",HEAD
 //       "Rock Salt	",
 //       "Rock Salt	",
 //       "Carom Seeds	",
@@ -841,3 +841,5 @@ const name = ["A2 Dry Milk Powder ",
     <div>Data Was uploaded</div>
   )
 }
+
+
