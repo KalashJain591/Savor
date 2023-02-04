@@ -120,3 +120,23 @@ section {
 .contact-page-form form {
   padding: 20px 15px 0;
 }
+
+
+
+
+
+
+/* /* span{
+  font-size: 25px;
+  font-family: cursive;
+  color: white;
+  animation: blink 1s linear infinite;
+} */
+.ab{
+  
+}
+@keyframes ab{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+} 

@@ -2,12 +2,29 @@ const router = require("express").Router();
 const nodemailer = require("nodemailer");
 
 router.post('/contactus',  async (req, res) => {
+  
+
+
   console.log(req.body);
 try{
-  const { name, subject, text ,userID,useremail,phone} = req.body;
-          console.log("reached contactus")  
-        let testAccount = await nodemailer.createTestAccount();
+  const { name, subject, text ,userId,useremail,phone} = req.body;
+          console.log("reached contactus",userId)  
     
+        let testAccount = await nodemailer.createTestAccount();
+        let recieverSubject="We Successfully recieved your Mail"
+        let receiverText=
+        `Dear ${name},
+
+        Thank you for contacting us through our website's savornaturals.in Contact Us page. We have received your message and appreciate the opportunity to assist you.    
+        We have documented your inquiry in our database with your ID number  ${userId}, and a member of our support team will be in touch with you shortly to address your concerns.     
+        If you have any additional information that you would like to provide, please reply to this email, and we will make sure to forward it to the relevant department.
+        Thank you again for your patience and for giving us the opportunity to help.
+    
+        
+        Best regards,
+        Mukesh Kumawat
+        +91 9827141324
+        Savor Naturals`
       // create reusable transporter object using the default SMTP gmail transport
       let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -22,9 +39,16 @@ try{
       // send mail with defined transport object
       let info = await transporter.sendMail({
         from: `thekalash52@gmail.com`, // sender address
-        to: useremail, // list of receivers
+        to: 'info.savornaturals@gmail.com', // list of receivers
         subject:subject, // Subject line
         text: text, // plain text body
+        // html: "<b>Hello world?</b>", // html body
+      });
+      let info1 = await transporter.sendMail({
+        from: `thekalash52@gmail.com`, // sender address
+        to: useremail, // list of receivers
+        subject:recieverSubject, // Subject line
+        text: receiverText, // plain text body
         // html: "<b>Hello world?</b>", // html body
       });
     

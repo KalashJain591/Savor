@@ -44,10 +44,10 @@ function App() {
   
 
   // Scroll top when location changes
-  const location = useLocation(); 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+  // const location = useLocation(); 
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [location]);
  // 
  
   return (
