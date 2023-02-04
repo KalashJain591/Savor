@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import "./EditProductPage.css"
 const API = "/editproduct";
 const EditProductPage = () => {
@@ -26,7 +26,7 @@ const EditProductPage = () => {
     return true;
   }
   const { id } = useParams();
-  console.log("id", id)
+  // console.log("id", id)
   const callapi = async () => {
     await axios.get(`/product/${id}`)
       .then((res) => {
@@ -64,6 +64,9 @@ const EditProductPage = () => {
     if (key === "Reviews") {
       setReviews(val);
     }
+    if (key === "Feature") {
+      setFeature(val);
+    }
     if (key === "description") {
       setDescription(val);
     }
@@ -78,14 +81,16 @@ const EditProductPage = () => {
     callapi();
     // setProductName(dataSource.name)
   }, []);
+  const navigate=useNavigate();
   return (
     <div className="EditProduct-Section">
       <div className="Edit-product-section">
         <div className="Edit-container">
-          <h3>Edit Product</h3>
+        <button onClick={()=>{navigate('/adminpanel/products')}} className='my-2' style={{padding:"5px",marginLeft:"85%", borderRadius:"25px"}}><i class="fa fa-arrow-left" aria-hidden="true"></i> back</button>         
+          <h3 >Edit Product</h3>
           <div id="edit-form">
             <div className="edit-section-images">
-              <div className="edit-sub-section-img">
+              {/* <div className="edit-sub-section-img">
                 {dataSource.images && dataSource.images.map((item) => {
                   return (
                     <div className="child-single-edit-img" key={item.id}>
@@ -94,14 +99,14 @@ const EditProductPage = () => {
                     </div>
                   )
                 })}
-              </div>
+              </div> */}
             </div>
             <div className="edit-page-form-group">
               <label for="name">Name</label>
               <input type="text" value={productName} disabled={editmode} id="name" onChange={changeProfile} className="me-3" ></input>
             </div>
             <div className="edit-page-form-group">
-              <label for="prize">Prize</label>
+              <label for="prize">Price</label>
               <input type="text" value={price}  disabled={editmode} id="prize" onChange={changeProfile} className="me-3" ></input>
             </div>
             <div className="edit-page-form-group">
@@ -125,10 +130,9 @@ const EditProductPage = () => {
             </div>
             <div className="edit-page-form-group">
               <label for="Feature">Feature</label>
-              <select id="Feature" disabled={editmode} name="Feature">
-                <div value="False">{feature}</div>
+              <select id="Feature"  value={feature}  onChange={changeProfile} disabled={editmode} name="Feature">
+              <option value="false">False</option>
                 <option value="true" >True</option>
-                <option value="false">False</option>
               </select>
             </div>
             <div className="edit-page-form-group">

@@ -9,7 +9,7 @@ export default function ViewOrderComponent(props) {
     return (
         <>
             <tr className='text-center'>
-                <td>{props.id}</td>
+                <td style={{wordWrap: "normal"}}>  {props.id}</td>
                 <td><NavLink to={`./orderDetails/${props.id}`}> <button className='btn btn-sm'>See Details</button></NavLink></td>
                 <td><NavLink to={`./trackorder/${props.status}`}><button className='btn btn-sm'>Track Order</button></NavLink></td>
             </tr>
