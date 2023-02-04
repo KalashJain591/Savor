@@ -5,6 +5,7 @@ import { storage } from '../../../Firebase/firebase';
 import {getDownloadURL, listAll, ref, uploadBytes} from 'firebase/storage';
 import "./EditProductPage.css"
 import AuthContext from '../../../Context/auth_context';
+import { useNavigate } from 'react-router-dom';
 const AddProduct = () => {
     const [productName, setProductName] = useState('');
     const [editmode, seteditmode] = useState(true);
@@ -35,12 +36,14 @@ const AddProduct = () => {
 
     const afterurl=async(url)=>{
         setimages(prevState=>[...prevState,{imgUrl:url}]);
+
         // alert("Image was Succesfully Updated");
     }
     
-    useEffect(() => {
-        console.log("IMG :",images);
-    }, [images])
+    // useEffect(() => {
+    //     console.log("IMG :",images);
+    //     // setImageUpload(null);
+    // }, [images])
     
 
     const changeimage=async ()=>{
@@ -87,6 +90,9 @@ const AddProduct = () => {
         if (key === "Reviews") {
             setReviews(val);
         }
+        if (key === "Feature") {
+            setFeature(val);
+          }
         if (key === "description") {
             setDescription(val);
         }
@@ -105,12 +111,22 @@ const AddProduct = () => {
            window.location.reload()
           })
       }
+      const navigate=useNavigate();
     return (
         <div className="EditProduct-Section">
             <div className="Edit-product-section">
                 <div className="Edit-container">
+                <button onClick={()=>{navigate('/adminpanel/products')}} className='my-2' style={{padding:"5px",marginLeft:"85%", borderRadius:"25px"}}><i class="fa fa-arrow-left" aria-hidden="true"></i> back</button>         
                     <h3>Add Product</h3>
                     <div id="edit-form">
+                    
+                    <div style={{display:'flex', flexWrap:"wrap"}}>
+                        {images.map((url)=>{
+                            // {console.log(url.imgUrl)}
+                            return <img className='mx-1 my-1' style={{alignItems:'center'}} src={url.imgUrl} alt="image" width={"100px"}/>
+                        })}
+                    </div>
+
                         <div className="edit-section-images">
                             <div className="edit-sub-section-img">
                             <input type="file" className='btn btn-secondary my-4'  accept="image/png, image/gif, image/jpeg"  onChange={(event)=>{setImageUpload(event.target.files[0])}} />
@@ -121,7 +137,7 @@ const AddProduct = () => {
                             <input type="text" value={productName} placeholder="Product Name" disabled={editmode} id="name" onChange={changeProfile} className="me-3" ></input>
                         </div>
                         <div className="edit-page-form-group">
-                            <label for="prize">Prize</label>
+                            <label for="prize">Price</label>
                             <input type="text" value={price} placeholder="Product Price" disabled={editmode} id="prize" onChange={changeProfile} className="me-3" ></input>
                         </div>
                         <div className="edit-page-form-group">
@@ -145,10 +161,9 @@ const AddProduct = () => {
                         </div>
                         <div className="edit-page-form-group">
                             <label for="Feature">Feature</label>
-                            <select id="Feature" disabled={editmode} name="Feature" placeholder="Product Name">
-                                {/* <div value="False">{feature}</div> */}
-                                <option value="True" >True</option>
-                                <option value="False">False</option>
+                            <select id="Feature"  value={feature}  onChange={changeProfile} disabled={editmode} name="Feature">
+                                <option value="true" >True</option>
+                                <option value="false">False</option>
                             </select>
                         </div>
                         <div className="edit-page-form-group">
