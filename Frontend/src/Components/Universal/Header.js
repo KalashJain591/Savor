@@ -108,7 +108,7 @@ function NavBar() {
                       < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
                     </li>
                     <li className="R_Nav-list">
-                      < NavLink to="/dashboard" onClick={handleClose}><i className="fa-solid fa-user"></i></NavLink>
+                      < NavLink to="/UserDashboard" onClick={handleClose}><i className="fa-solid fa-user"></i></NavLink>
                     </li>
                   </>
                   : <li className="R_Nav-list">

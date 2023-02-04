@@ -23,13 +23,13 @@ function Carousel() {
             >
               <div className="hero-section-container">
                 <div className="presenter-image">
-                  <img src="/images/heroSection_image.png" alt="" />
+                  <img src="/images/girlImage.png" alt="" />
                 </div>
-                {/* <div className="presented-image">
+                <div className="presented-image">
                   <div className="presented-sub-div">
                     <img src="/images/customizeProduct.png" alt="" srcSet="" />
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div> */}
