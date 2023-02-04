@@ -1,16 +1,20 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState ,useContext} from 'react'
 import './contactus.css'
 import axios from "axios"
+import AuthContext from '../../Context/auth_context'
+import { NavLink } from 'react-router-dom'
 const API="/mail"
 export default function Contactus() {
+  const { userId, loggedIn } = useContext(AuthContext);
 const [FormData,setFormData]=useState({
   name:"",
   subject:"",
   text:"",
-  userID:"",
+  userId:"",
   useremail:"",
   phone:"",
+  
 });
 
 const handleChange=(e)=>{
@@ -23,6 +27,8 @@ const handleChange=(e)=>{
 
 const handleSubmit=(e)=>
 {
+  setFormData({...FormData,userId:userId});
+   
   e.preventDefault();
   console.log(FormData);
   axios.post(`${API}/contactus`, FormData)
@@ -39,7 +45,19 @@ const handleSubmit=(e)=>
 }
 
 
-  return (
+if(!loggedIn)
+return (<>
+<div className='text-center'>
+  <div className='d-flex align-items-center justify-content-center text-center' style={{height:"20rem"}}>
+  <NavLink to="/login ">
+    <button className='btn btn-sm m-3 fs-4 '  style={{ backgroundColor: "#0091ff96" ,animation: "ab 1s linear infinite"}}>Log in</button></NavLink>
+    <NavLink to="/login "> <button className='btn btn-sm m-3 fs-4' style={{ backgroundColor: "orange" ,animation: "ab 1s linear infinite"}}>Sign Up</button></NavLink>
+  </div>
+</div>
+
+</>)
+
+return (
     <section className="contact-page-sec">
     <div className="container">
       <div className="row">

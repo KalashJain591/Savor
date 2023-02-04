@@ -26,12 +26,12 @@ const ViewOrders = () => {
   }, []);
 
   return (
-    <div className="viewOrderSection container">
-      <h1 className="fs-1 text-center">Your Orders</h1>
-      <table class="table">
+    <div className="container">
+      <h1 className="fs-1 text-center m-2">Your Orders</h1>
+      <table class="table ">
         <thead>
           <tr className="text-center"> 
-            <th className="col-6">Orders</th>
+            <th className="col-5">Orders</th>
             <th className="col-3">details</th>
             <th className="col-3">Track</th>
           </tr>
