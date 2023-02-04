@@ -91,32 +91,32 @@ function NavBar() {
             <Offcanvas.Body>
               <ul className="R_Navigation">
                 <li className="R_Nav-list">
-                  < NavLink to="/" onClick={handleClose}><i className="fa fa-home" aria-hidden="true"></i> Home</NavLink>
+                  < NavLink to="/" onClick={handleClose}><i className="fa fa-home R_icon" aria-hidden="true"></i> Home</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to="/products" onClick={handleClose}><i className="fa fa-shopping-basket" aria-hidden="true"></i>Products</NavLink>
+                  < NavLink to="/products" onClick={handleClose}><i className="fa fa-shopping-basket R_icon" aria-hidden="true"></i>Products</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to="/aboutus" onClick={handleClose}><i className="fa fa-info-circle" aria-hidden="true"></i>About Us</NavLink>
+                  < NavLink to="/aboutus" onClick={handleClose}><i className="fa fa-info-circle R_icon" aria-hidden="true"></i>About Us</NavLink>
                 </li>
                 <li className="R_Nav-list">
-                  < NavLink to="/contactus" onClick={handleClose}><i className="fa fa-address-book" aria-hidden="true"></i>Contact Us</NavLink>
+                  < NavLink to="/contactus" onClick={handleClose}><i className="fa fa-address-book R_icon" aria-hidden="true"></i>Contact Us</NavLink>
                 </li>
                 {loggedIn ?
                   <>
                     <li className="R_Nav-list">
-                      < NavLink onClick={logOut}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout  </NavLink>
+                      < NavLink onClick={logOut}><i className="fa fa-sign-out R_icon" aria-hidden="true"></i> Logout  </NavLink>
                     </li>
                     <li className="R_Nav-list">
-                      < NavLink to="/dashboard" onClick={handleClose}><i className="fa-solid fa-user"></i></NavLink>
+                      < NavLink to="/UserDashboard" onClick={handleClose}><i className="fa-solid fa-user R_icon"></i>Dashboard</NavLink>
                     </li>
                   </>
                   : <li className="R_Nav-list">
-                    < NavLink to="/login" onClick={handleClose}>Sign in <i className="fa fa-sign-in"></i></NavLink>
+                    < NavLink to="/login" onClick={handleClose}>Sign in <i className="fa fa-sign-in R_icon"></i></NavLink>
                   </li>}
                   <li className="R_Nav-list">
                     <NavLink to="/cart" onClick={handleClose} className="navbar-link cart-trolley--link  me-2 ">
-                      <FiShoppingCart className="cart-trolley " />
+                      <FiShoppingCart className="cart-trolley"/> 
                       <span className="item-count ">{total_items}</span>
                     </NavLink>
                   </li>

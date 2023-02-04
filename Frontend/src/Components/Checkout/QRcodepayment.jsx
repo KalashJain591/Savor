@@ -7,8 +7,7 @@ export default function QRcodepayment() {
     <div className="payment-section">
     <div className='container-payment'>
         <img src="/images/qrcode.jpeg" alt='payment' width={"100%"}/>
-        <a style={{marginLeft:"32%", padding:"20px"}} target='_blank' href="https://web.whatsapp.com/send?phone=919827141324&text=Hi%20!" onClick={()=>{navigate("/UserDashboard/orders")}} className='btn my-4'>Submit Payment Recipt</a>
-        <br/>
+        <a style={{margin:"15%", padding:"20px"}} target='_blank' href="https://web.whatsapp.com/send?phone=919827141324&text=Hi%20!" onClick={()=>{navigate("/UserDashboard/orders")}} className='btn my-4'>Submit Payment Recipt</a>
     </div>
     </div>
       

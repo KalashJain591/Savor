@@ -1,9 +1,9 @@
 import React from 'react'
-// import trackRecord from './trackRecord'
+import trackRecord from './trackRecord'
 export default function TrackComponent(props) {
     // console.log(idx);
     let status=props.idx.status;;
-    // console.log("hello");
+    console.log("hello");
     return (
         <div>
             <div className='d-flex  '>
@@ -14,6 +14,7 @@ export default function TrackComponent(props) {
                 <i class="fas fa-clipboard-list fa-3x mx-4"></i>
                 <div >
                     <p style={{ color: status ? "green":"black" ,fontSize:"25px",fontWeight:"bold" }}>{props.idx.desc}</p>
+
                 </div>
             </div>
         </div>

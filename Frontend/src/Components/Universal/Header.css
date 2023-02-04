@@ -25,7 +25,7 @@
 }
 .navbar-image .logo-tag {
   /* border: 2px solid black; */
-  width: 64%;
+  width: 54%;
   height: 55px;
   z-index: 1;
   object-fit: fill;
@@ -127,6 +127,9 @@
     display: block;
     height: 50px;
     /* flex-direction: column; */
+  }
+  .R_icon{
+    margin: 0 10px;
   }
   .Navigation {
     display: none;
