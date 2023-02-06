@@ -3,7 +3,7 @@ import './gallery.css'
 export default function Gallery() {
   return (
     <div>
-  <p class="heading">CSS Gallery</p>
+  <p class="heading">Gallery</p>
   <div class="gallery-image">
         <div class="img-box">
       <img src="./images/gallery1.jpeg" alt="" />
