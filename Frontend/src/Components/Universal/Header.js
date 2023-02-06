@@ -39,6 +39,9 @@ function NavBar() {
               < NavLink to="/products"><i className="fa fa-shopping-basket" aria-hidden="true"></i> Products</NavLink>
             </li>
             <li className="Nav-list">
+                  < NavLink to="/gallery" onClick={handleClose}><i class="fa-solid fa-image"></i> Gallery</NavLink>
+              </li>
+            <li className="Nav-list">
               < NavLink to="/aboutus"><i className="fa fa-info-circle" aria-hidden="true"></i> About Us</NavLink>
             </li>
             <li className="Nav-list">
@@ -95,6 +98,9 @@ function NavBar() {
                 </li>
                 <li className="R_Nav-list">
                   < NavLink to="/products" onClick={handleClose}><i className="fa fa-shopping-basket R_icon" aria-hidden="true"></i>Products</NavLink>
+                </li>
+                <li className="R_Nav-list">
+                  < NavLink to="/gallery" onClick={handleClose}><i class="fa-solid fa-image R_icon"></i>Gallery</NavLink>
                 </li>
                 <li className="R_Nav-list">
                   < NavLink to="/aboutus" onClick={handleClose}><i className="fa fa-info-circle R_icon" aria-hidden="true"></i>About Us</NavLink>
