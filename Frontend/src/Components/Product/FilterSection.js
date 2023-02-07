@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFilterContext } from '../../Context/FilterContext'
 import "./FilterSection.css"
 const FilterSection = () => {
@@ -18,7 +18,7 @@ const FilterSection = () => {
     <div className='side-bar'>
       <div className='search-section'>
         <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" name="text" value={text} onChange={updateFilterValue} placeholder="SEARCH..." />
+          <input type="text" name="text" value={text.toLowerCase()} onChange={updateFilterValue} placeholder="SEARCH..." />
         </form>
       </div>
       <div className="category-filter-section">
