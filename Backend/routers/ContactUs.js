@@ -7,8 +7,8 @@ router.post('/contactus',  async (req, res) => {
 
   console.log(req.body);
 try{
-  const { name, subject, text ,userId,useremail,phone} = req.body;
-          console.log("reached contactus",userId)  
+  const { name, subject, text ,userID,useremail,phone} = req.body;
+          console.log("reached contactus",userID)  
     
         let testAccount = await nodemailer.createTestAccount();
         let recieverSubject="We Successfully recieved your Mail"
@@ -16,7 +16,7 @@ try{
         `Dear ${name},
 
         Thank you for contacting us through our website's savornaturals.in Contact Us page. We have received your message and appreciate the opportunity to assist you.    
-        We have documented your inquiry in our database with your ID number  ${userId}, and a member of our support team will be in touch with you shortly to address your concerns.     
+        We have documented your inquiry in our database with your ID number  ${userID}, and a member of our support team will be in touch with you shortly to address your concerns.     
         If you have any additional information that you would like to provide, please reply to this email, and we will make sure to forward it to the relevant department.
         Thank you again for your patience and for giving us the opportunity to help.
     
