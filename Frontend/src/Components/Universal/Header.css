@@ -119,14 +119,17 @@
     height: 50px;
   }
 }
-/* .offcanvas-header{
-  padding: 0 60px;
-} */
+.Nav-list a:hover, .R_Nav-list a:hover{
+  color: whitesmoke;
+}
 @media screen and (max-width: 980px) {
   .R_NavBar-nav {
     display: block;
     height: 50px;
     /* flex-direction: column; */
+  }
+  .R_icon{
+    margin: 0 10px;
   }
   .Navigation {
     display: none;

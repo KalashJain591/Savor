@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import "./Header.css"
@@ -16,13 +16,20 @@ const Header = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
-  const { setLoggedIn, setadmin } = useContext(AuthContext);
+  const {admin, setLoggedIn, setadmin, getLoggedIn,getuserdeatils } = useContext(AuthContext);
   async function logOut() {
     setadmin(false);
-    setLoggedIn(false);
     await axios.get("/auth/logout")
-      .then((res) => { navigate("/") });
+      await getLoggedIn();
+      await getuserdeatils();
+      navigate("/") 
   }
+  useEffect(() => {
+    if(admin!==true){
+      navigate("/");          
+    }
+  }, [])
+
   return (
     <div className='header-container-admin-panel'>
       <div className='header-section-admin-panel'>

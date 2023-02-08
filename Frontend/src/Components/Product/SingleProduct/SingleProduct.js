@@ -111,7 +111,7 @@ const SingleProduct = () => {
                         </div>
                     </div>
                     <div className="product-details">
-                        <p>Available : <span>{stock ? "Is Available" : "Out of stock"}</span></p>
+                        <p>Available : <span>{stock ? "Yes" : "Out of stock"}</span></p>
                         <p>Weight : <span>{quantity} {unit}</span></p>
                     </div>
                     <hr />

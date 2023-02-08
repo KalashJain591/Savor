@@ -9,30 +9,13 @@ function Carousel() {
         data-bs-ride="carousel"
       >
         <div className="carousel-inner">
-        <div className="carousel-item active">
+          <div className="carousel-item active">
             <img
               src="./images/carousel.png"
               className="carousel-img d-block w-100 "
               alt="..."
             />
           </div>
-          {/* <div className="carousel-item active">
-            <div
-              className="hero-section-image"
-              style={{ height: "500px" }}
-            >
-              <div className="hero-section-container">
-                <div className="presenter-image">
-                  <img src="/images/girlImage.png" alt="" />
-                </div>
-                <div className="presented-image">
-                  <div className="presented-sub-div">
-                    <img src="/images/customizeProduct.png" alt="" srcSet="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
           <div className="carousel-item">
             <img
               src="./images/masala.jpeg"

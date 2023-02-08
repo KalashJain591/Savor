@@ -1,1 +1,83 @@
+.about-page-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.about-page-container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+}
+.aboutUs-head{
+    padding: 20px 0;
+    /* display: flex; */
+    text-align: center;
+}
+.about-content-section{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-wrap: wrap;
 
+}
+.about-main-img{
+    /* border: 2px solid black; */
+    width: 20%; 
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    /* height: 200px; */
+}
+svg{
+    width: 150px;
+}
+.about-description{
+    width: 80%; 
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-description p{
+    font-size: 150%;
+    /* width: 90%; */
+    text-align: justify;
+    /* font-weight: 700; */
+    /* padding: 0 40px; */
+}
+.slogan-about{
+    width: 60%;
+    border: 2px solid #666;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #eee;
+}
+.about-content-section2{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about-content-section2 p{
+    font-size: 150%;
+    padding: 0 40px;
+    text-align: justify;
+}
+@media screen and (max-width: 980px) {
+    .about-content-section2 p, .about-description p{
+        font-size: 13px;
+    }
+    .slogan-about{
+        width: 80%;
+        font-size: 25px;
+    }
+    .about-main-img, .about-description{
+        width: 100%;
+    }
+}

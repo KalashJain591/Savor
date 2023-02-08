@@ -12,10 +12,10 @@ export default function Footer() {
               <h6>Category</h6>
               <ul>
                 <li>Spices</li>
-                <li>Flours</li>
-                <li>Healthy Snacks</li>
+                <li>Flours/Cereals</li>
                 <li>Sweetners</li>
-                <li>Cereals</li>
+                <li>Combos</li>
+                <li>Healthy Snacks/Desserts</li>
                 <li>GoSeva Products</li>
               </ul>
             </div>
@@ -29,7 +29,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="footer-contact-section footer-solo-section">
-            <h6>Have a Questions?</h6>
+            <h6>Have Questions?</h6>
             <div className="footer-address solo-contact">
               <i className="fa-solid fa-location-dot"></i> 184, Sukhdev Vihar, 60 Feet Rd, Indore, Madhya Pradesh 452005
             </div>
