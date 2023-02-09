@@ -36,14 +36,19 @@ export default function Register() {
           [name]: value
       })
   }
+  const afterregister= ()=>{
+    console.log("After order");
+    getuserdeatils()
+    getLoggedIn();
+    history("/");
+   }
 
 async function callapi(url) {
   try{
+    // console.log(user);
     const {profilePic, name, email,phoneno,dob, password } = user
     await axios.post("/auth/register",{profilePic:url,name, email,phoneno,dob, password})
-    .then(()=>{getuserdeatils()});
-          await getLoggedIn();
-          history("/"); 
+    .then(()=>{afterregister()});
   }catch(err){
     console.log(err);
   }
@@ -52,7 +57,11 @@ async function callapi(url) {
  
   async function signup() {
    try {
+    // console.log("SIGNUP");
    if(imageUpload!==null){
+    if(!checkimg()){
+      alert("Please upload Valid image in less than 200KB ");
+   }
     const imageRef=ref(storage,'files/'+v4()+imageUpload.name);
     await uploadBytes(imageRef,imageUpload).then((snapshot)=>{
       getDownloadURL(snapshot.ref).then((url)=>{
@@ -98,9 +107,6 @@ async function callapi(url) {
      }
      else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
        alert("Invalid Email");
-     }
-     else if(!checkimg()){
-        alert("Please upload Valid image in less than 200KB ");
      }
      else if(name&& email && phoneno && password ){
       setloadingbtn(true);
