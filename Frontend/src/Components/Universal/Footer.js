@@ -9,24 +9,27 @@ export default function Footer() {
           </div>
           <div className="footer-content-section footer-solo-section">
             <div className="content-section-heading">
-              <h6>Category</h6>
+              <h6>Quick Links</h6>
               <ul>
-                <li>Spices</li>
-                <li>Flours/Cereals</li>
-                <li>Sweetners</li>
-                <li>Combos</li>
-                <li>Healthy Snacks/Desserts</li>
-                <li>GoSeva Products</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/contactus">Contact Us</a></li>
+                <li><a href="/cart">Cart</a></li>
               </ul>
             </div>
           </div>
           <div className="footer-help-section footer-solo-section">
-            <h6>Help</h6>
-            <ul>
-              <li>Shipping Information (FAQs)</li>
-              <li>Terms & Conditions</li>
-              <li>Privacy Policy</li>
-            </ul>
+            <h6>Category</h6>
+              <ul>
+                <li><a href="/products">Spices</a></li>
+                <li><a href="/products">Flours/Cereals</a></li>
+                <li><a href="/products">Sweetners</a></li>
+                <li><a href="/products">Combos</a></li>
+                <li><a href="/products">Healthy Snacks/Desserts</a></li>
+                <li><a href="/products">GoSeva Products</a></li>
+              </ul>
           </div>
           <div className="footer-contact-section footer-solo-section">
             <h6>Have Questions?</h6>
