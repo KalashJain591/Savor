@@ -2,7 +2,10 @@ import React from 'react'
 import trackRecord from './trackRecord'
 export default function TrackComponent(props) {
     // console.log(idx);
-    let status=props.idx.status;;
+     
+    let status=0;
+    if(props.idx<=props.status)
+    status=1;
     console.log("hello");
     return (
         <div>
@@ -13,7 +16,7 @@ export default function TrackComponent(props) {
                 </div>
                 <i class="fas fa-clipboard-list fa-3x mx-4"></i>
                 <div >
-                    <p style={{ color: status ? "green":"black" ,fontSize:"25px",fontWeight:"bold" }}>{props.idx.desc}</p>
+                    <p style={{ color: status ? "green":"black" ,fontSize:"25px",fontWeight:"bold" }}>{trackRecord[props.idx].desc}</p>
 
                 </div>
             </div>

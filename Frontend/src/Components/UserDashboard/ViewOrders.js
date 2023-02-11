@@ -38,8 +38,8 @@ const ViewOrders = () => {
         </thead>
       <tbody>
        {/* { console.log("hello" , dataSource)} */}
-        {dataSource.map((currelem)=>{
-       return  <ViewOrderComponent id={currelem._id} status={currelem.order_status}/>
+        {dataSource.map((currelem,key)=>{
+       return  <ViewOrderComponent idx={key} id={currelem._id} status={currelem.order_status}/>
         })}
       </tbody>
       </table>

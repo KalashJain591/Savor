@@ -11,7 +11,7 @@ const [FormData,setFormData]=useState({
   name:"",
   subject:"",
   text:"",
-  userId:"",
+  userID:"",
   useremail:"",
   phone:"",
   
@@ -27,7 +27,7 @@ const handleChange=(e)=>{
 
 const handleSubmit=(e)=>
 {
-  setFormData({...FormData,userId:userId});
+  setFormData({...FormData,userID:userId});
    
   e.preventDefault();
   console.log(FormData);
