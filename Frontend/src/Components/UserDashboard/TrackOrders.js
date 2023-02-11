@@ -21,7 +21,7 @@ export default function TrackOrders() {
         }
     }
     
-
+console.log(present_status);
 
 
     return (
@@ -32,7 +32,7 @@ export default function TrackOrders() {
                 <div className='col-12 col-md-5'>
                     {
                         trackRecord.map((key, index) => {
-                            return <TrackComponent idx={index} status={present_status} />
+                            return <TrackComponent idx={index} status={present_status}/>
                         })}
                     <h1 className='ms-2 text-center' style={{ backgroundColor: present_status==4 ? "green" : "gray", color: stats ? "black" : "#6d6767" }}>Completed</h1>
                 </div>
