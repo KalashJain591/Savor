@@ -8,18 +8,22 @@ export default function OrderDetails() {
 
   const [data, setData] = useState([]);
   const [bill, setBill] = useState(0);
+  const [date,setDate]=useState("");
   const callapi = async () => {
     // console.log('first')
     await axios.get(`/order/paticularOrderofperson/${id}`).then((res) => {
-      setData(res.data.products);
+      let obj=res.data.products;
+      let dates=res.data.date_added.slice(0,10);
+      setDate(dates);
+      setData(obj);
       setBill(res.data.bill)
-      console.log(res.data, "HELLO");
+      console.log(data, "HELLO");
     });
   };
   useEffect(() => {
     callapi();
   }, []);
-
+  
 
   return (
     <div className='container'>
@@ -30,19 +34,26 @@ export default function OrderDetails() {
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
+          
           </tr>
         </thead>
         <tbody>
+       
           {data.map((currelem)=>{
-            {/* {console.log("map ke andar",currelem)} */}
+             console.log(data) 
             return <OrderDetailComponent val={currelem }  />
           })}
-          <div>
-          {/* {console.log(data)} */}
-            <h3>Total Bill : {bill}</h3>
-          </div>
+          
+         
+          
+          
         </tbody>
+        
       </table>
+      <div className='mt-5 d-flex justify-content-evenly'>
+            <h3 className='p-2' style={{backgroundColor:"#98e0ec"}}>Total Bill :-<br/> {bill}</h3>
+            <h3   className='p-2'style={{backgroundColor:"#98e0ec"}}>Ordered On :-<br/>{date}</h3>
+            </div>
 
     </div>
   )

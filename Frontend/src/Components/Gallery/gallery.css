@@ -31,7 +31,10 @@
     position: relative;
     background-color: white;
   }
-  
+  .img-box img{
+    object-fit: cover;
+    object-position: 20% 36%;
+  }
   .caption {
     position: absolute;
     bottom: 5px;

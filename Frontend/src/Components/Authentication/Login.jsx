@@ -5,9 +5,9 @@ import AuthContext from '../../Context/auth_context';
 import './login.css'
 import Signinwithgoogle from './Signinwithgoogle';
 export default function Login() {
-  const { loggedIn,getLoggedIn, } = useContext(AuthContext);
+  const { loggedIn,getLoggedIn, getuserdeatils} = useContext(AuthContext);
    const history = useNavigate()
-   const [ user, setUser,getuserdeatils] = useState({
+   const [ user, setUser] = useState({
        phoneno:"",
        password:"",
    })
@@ -25,13 +25,18 @@ export default function Login() {
            [name]: value
        })
    }
+   const  afterlogin= ()=>{
+    console.log("After order");
+    getuserdeatils()
+    getLoggedIn();
+    history("/");
+   }
    async function login() {
      try {
        const { email, password } = user
+    console.log("before order");
        await axios.post("auth/login",user)
-       .then(()=>{getuserdeatils()});
-       await getLoggedIn();
-       history("/");
+       .then((res)=>{afterlogin()});
      } catch (err) {
        console.error(err);
      }
@@ -53,7 +58,7 @@ export default function Login() {
               placeholder="Your Password"
                onChange={ handleChange } required/>
       </div>
-      <button  onClick={login} className="submit-btn">Sign in</button>
+      <button  onClick={()=>{login()}} className="submit-btn">Sign in</button>
       {/* <a className="forget-pass" href="#">Forgot password?</a> */}
 </div>
   )
