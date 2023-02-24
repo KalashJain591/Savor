@@ -3,9 +3,7 @@ const nodemailer = require("nodemailer");
 
 router.post('/contactus',  async (req, res) => {
   
-
-
-  console.log(req.body);
+  // console.log(req.body);
 try{
   const { name, subject, text ,userID,useremail,phone} = req.body;
           console.log("reached contactus",userID)  
