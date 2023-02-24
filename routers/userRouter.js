@@ -286,7 +286,7 @@ router.post("/forgot-password", async (req, res) => {
     var mailOptions = {
       from: "info.savornaturals@gmail.com",
       to: email,
-      subject: "Password Reset",
+      subject: "Password Reset (Savor Naturals)",
       text: link,
     };
 

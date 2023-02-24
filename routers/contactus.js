@@ -29,21 +29,21 @@ try{
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: 'thekalash52@gmail.com', // generated gmail user
-          pass: "zfkfkiryzwnrohkf", // generated ethereal password
+          user: 'info.savornaturals@gmail.com', // generated gmail user
+          pass: "oqqvracamdjlpetw", // generated ethereal password
         },
       });
     
       // send mail with defined transport object
       let info = await transporter.sendMail({
-        from: `thekalash52@gmail.com`, // sender address
+        from: `info.savornaturals@gmail.com`, // sender address
         to: 'info.savornaturals@gmail.com', // list of receivers
         subject:subject, // Subject line
         text: text, // plain text body
         // html: "<b>Hello world?</b>", // html body
       });
       let info1 = await transporter.sendMail({
-        from: `thekalash52@gmail.com`, // sender address
+        from: `info.savornaturals@gmail.com`, // sender address
         to: useremail, // list of receivers
         subject:recieverSubject, // Subject line
         text: receiverText, // plain text body
