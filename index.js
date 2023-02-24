@@ -34,3 +34,9 @@ app.use("/order", require("./routers/orderRouter"));
 app.use("/cart", require("./routers/cartRouter"));
 app.use("/mail", require("./routers/contactus"));
 app.use("/admin", require("./routers/adminRouter"));
+
+app.use(express.static('build'));
+  const path=require("path");
+  app.get('*', (req,res) => {
+    res.sendFile(path.resolve('build','index.html'));
+})
