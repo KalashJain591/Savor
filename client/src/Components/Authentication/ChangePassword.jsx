@@ -6,9 +6,13 @@ export default function Forgetpassword() {
     const [password, setpassord] = useState("")
     const navigate=useNavigate();
     const { id } = useParams();
+    const afterreset=()=>{
+      alert("Password Changed Successfully");
+      navigate("/login")
+  }
     const resetpassword=async()=>{
         await axios.post(`/auth/passwordreseted/${id}`,{password})
-        .then((res)=>{ navigate("/login")});
+        .then((res)=>{ afterreset()});
         // console.log(password);
         // console.log(id);
     }

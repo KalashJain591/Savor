@@ -5,9 +5,13 @@ import { useNavigate } from 'react-router-dom';
 export default function Forgetpassword() {
     const [email, setemail] = useState("")
     const navigate=useNavigate();
+    const afterreset=()=>{
+        alert("Password Reset Link Sended Successfuly Please Check Your Gamil");
+        navigate("/login")
+    }
     const resetpassword=async()=>{
         await axios.post("auth/forgot-password",{email})
-        .then((res)=>{ navigate("/login")});
+        .then((res)=>{afterreset() });
         // console.log(email);
     }
     return (
