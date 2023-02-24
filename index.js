@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   origin: [
-    "http://localhost:3000",
+    "http://localhost:5000",
   ],
   credentials: true,
 })
@@ -39,4 +39,4 @@ const path=require("path");
 app.use(express.static('client/build'));
  app.get('*', (req, res) => {
     res.sendFile(path.resolve('client','build','index.html'));
- });
+});
