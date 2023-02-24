@@ -267,7 +267,7 @@ router.post("/signinwithgoogle", async (req, res) => {
 
 router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
-  console.log(email)
+  // console.log("forget password",email)
   try {
     const oldUser = await User.findOne({ email });
     if (!oldUser) {
@@ -278,13 +278,13 @@ router.post("/forgot-password", async (req, res) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "thekalash52@gmail.com",
-        pass: "zfkfkiryzwnrohkf",
+        user: "info.savornaturals@gmail.com",
+        pass: "oqqvracamdjlpetw",
       },
     });
 
     var mailOptions = {
-      from: "thekalash52@gmail.com",
+      from: "info.savornaturals@gmail.com",
       to: email,
       subject: "Password Reset",
       text: link,
