@@ -26,7 +26,7 @@ export default function Login() {
        })
    }
    const  afterlogin= ()=>{
-    console.log("After order");
+    // console.log("After order");
     getuserdeatils()
     getLoggedIn();
     history("/");
@@ -34,7 +34,7 @@ export default function Login() {
    async function login() {
      try {
        const { email, password } = user
-    console.log("before order");
+    // console.log("before order");
        await axios.post("auth/login",user)
        .then((res)=>{afterlogin()});
      } catch (err) {
@@ -59,7 +59,7 @@ export default function Login() {
                onChange={ handleChange } required/>
       </div>
       <button  onClick={()=>{login()}} className="submit-btn">Sign in</button>
-      {/* <a className="forget-pass" href="#">Forgot password?</a> */}
+      <a className="forget-pass" href="/passwordforget">Forgot password?</a>
 </div>
   )
 }

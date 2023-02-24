@@ -33,6 +33,8 @@ import AddProduct from './Components/AdminPanel/Pages/AddProduct';
 import ViewOrders from './Components/UserDashboard/ViewOrders';
 import OrderDetails from './Components/UserDashboard/OrderDetails'
 import Gallery from './Components/Gallery/Gallery';
+import Forgetpassword from './Components/Authentication/Forgetpassword';
+import ChangePassword from './Components/Authentication/ChangePassword';
 function App() {
   const { loggedIn , getuserdeatils,admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
@@ -82,6 +84,8 @@ function App() {
           <Route path="/UserDashboard/ViewOrders/trackorder/:id" element={<TrackOrders />} />
           <Route path="/UserDashboard/ViewOrders/orderDetails/:id" element={<OrderDetails />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/passwordforget" element={<Forgetpassword />} />
+          <Route path="/reset-password/:id" element={<ChangePassword/>} />
           <Route path='*' element={<Error404 />}/>
         </Routes>
 

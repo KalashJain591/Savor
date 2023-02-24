@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const jwt_decode=require("jwt-decode")
+const nodemailer = require("nodemailer");
 
 // register
 router.post("/register", async (req, res) => {
@@ -260,6 +261,67 @@ router.post("/signinwithgoogle", async (req, res) => {
   }
 });
 
+
+
+// forget password
+
+router.post("/forgot-password", async (req, res) => {
+  const { email } = req.body;
+  console.log(email)
+  try {
+    const oldUser = await User.findOne({ email });
+    if (!oldUser) {
+      return res.json({ status: "User Not Exists!!" });
+    }
+    // const secret = JWT_SECRET + oldUser.password;
+    const link = `https://www.savornaturals.in/reset-password/${oldUser._id}/`;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "thekalash52@gmail.com",
+        pass: "zfkfkiryzwnrohkf",
+      },
+    });
+
+    var mailOptions = {
+      from: "thekalash52@gmail.com",
+      to: email,
+      subject: "Password Reset",
+      text: link,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+    res.status(200).send();
+    // console.log(link);
+  } catch (error) {
+    console.log(error)
+  }
+});
+
+router.post("/passwordreseted/:id", async (req, res) => {
+  const { id } = req.params;
+  const {password} = req.body;
+  // console.log(id,password);
+  const oldUser = await User.findOne({ _id: id });
+  if (!oldUser) {
+    return res.json({ status: "User Not Exists!!" });
+  }
+  try {
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+    let usersaved=await User.findOneAndUpdate({_id:id},{passwordHash});
+    res.status(200).send(usersaved);
+  } catch (error) {
+    console.log(error);
+    res.send("Not Verified");
+  }
+});
 
 
 module.exports = router;
