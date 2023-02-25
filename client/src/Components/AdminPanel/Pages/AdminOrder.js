@@ -18,7 +18,7 @@ export const AdminOrder = () => {
     await axios.get("/admin/order")
       .then((res) => {
         // console.log(res.data);
-        setDataSource(res.data);
+        setDataSource(res.data.reverse());
       })
   }
   useEffect(() => {
@@ -55,7 +55,7 @@ export const AdminOrder = () => {
                     </div> 
                     <ChangePaymentStatus orderId={order._id} payment_status={order.payment_status} />
                     </td>
-                    <td> <span>₹{order.bill}</span></td>
+                    <td> <span>₹{order.bill}</span>  <div className="alert alert-warning my-1">{(new Date(order.date_added)).getDate()}/ {(new Date(order.date_added)).getMonth()+1}/ {(new Date(order.date_added)).getFullYear()}</div></td>
                   </tr>
                 </tbody>
               )}
