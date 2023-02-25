@@ -294,7 +294,7 @@ router.post("/forgot-password", async (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Email sent: " + info.response);
+        res.status(200).send("Email sent: " + info.response);
       }
     });
     res.status(200).send();
@@ -322,6 +322,5 @@ router.post("/passwordreseted/:id", async (req, res) => {
     res.send("Not Verified");
   }
 });
-
 
 module.exports = router;
