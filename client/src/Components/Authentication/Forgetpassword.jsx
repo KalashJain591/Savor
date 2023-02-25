@@ -6,10 +6,10 @@ export default function Forgetpassword() {
     const [email, setemail] = useState("")
     const navigate=useNavigate();
     const afterreset=()=>{
-        alert("Password Reset Link Sended Successfuly Please Check Your Gamil");
         navigate("/login")
     }
     const resetpassword=async()=>{
+        alert("Password Reset Link Sended Successfuly Please Check Your Gamil");
         await axios.post("auth/forgot-password",{email})
         .then((res)=>{afterreset()});
         // console.log(email);
