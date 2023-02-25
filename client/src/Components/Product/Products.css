@@ -23,6 +23,7 @@
     /* display: flex; */
 }
 .Filter-Section{
+    margin-top: 31px;
     display: flex;
     justify-content: flex-start;
 } 
