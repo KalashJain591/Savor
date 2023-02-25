@@ -58,7 +58,6 @@ function NavBar() {
                     <img src={userprofile} width={"35px"} height={"35px"} style={{ borderRadius: "25px" }} />
                   </NavLink>
                 </li>
-
               </>
               : <li className="Nav-list">
                 < NavLink to="/login">Sign in <i className="fa fa-sign-in"></i></NavLink>

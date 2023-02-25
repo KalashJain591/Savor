@@ -28,6 +28,14 @@
 .footer-solo-section li{
   list-style: none;
 }
+.footer-solo-section li a{
+  color: white;
+}
+.category-list-footer{
+  background: none;
+  border: 0;
+  color: white;
+}
 @media screen and (max-width: 950px) {
   .footer-solo-section{
       width: 50%;
