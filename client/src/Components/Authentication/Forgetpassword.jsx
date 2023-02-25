@@ -11,7 +11,7 @@ export default function Forgetpassword() {
     }
     const resetpassword=async()=>{
         await axios.post("auth/forgot-password",{email})
-        .then((res)=>{afterreset() });
+        .then((res)=>{afterreset()});
         // console.log(email);
     }
     return (
