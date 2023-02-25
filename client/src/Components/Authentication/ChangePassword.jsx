@@ -11,10 +11,15 @@ export default function Forgetpassword() {
       navigate("/login")
   }
     const resetpassword=async()=>{
+      if(password.length<6){
+        alert("Password length is greater than 6");
+      }
+      else{
         await axios.post(`/auth/passwordreseted/${id}`,{password})
         .then((res)=>{ afterreset()});
         // console.log(password);
         // console.log(id);
+      }
     }
     return (
     <div>

@@ -5,7 +5,7 @@ export default function SingleGallery(props) {
     <>
     {console.log(props.details.slice(0,4))}
     {props.details.slice(0,4)==="http"?
-    <div class="img-box" onClick={()=>{window.location=props.details}} >
+      <div class="img-box" onClick={()=>{window.open(props.details, '_blank')}} >
     <img src={props.photolink} alt="" />
     <div class="transparent-box">
       <div class="caption">
