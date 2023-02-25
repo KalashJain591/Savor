@@ -35,7 +35,7 @@ app.use("/order", require("./routers/orderRouter"));
 app.use("/cart", require("./routers/cartRouter"));
 app.use("/mail", require("./routers/contactus"));
 app.use("/admin", require("./routers/adminRouter"));
-app.use("/gallery", require("./routers/galleryRouter"));
+app.use("/gallerys", require("./routers/galleryRouter"));
 
 const path=require("path");
 app.use(express.static('client/build'));

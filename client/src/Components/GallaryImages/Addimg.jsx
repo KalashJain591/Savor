@@ -59,7 +59,7 @@ const Addimg = () => {
 
     const addNewImage = async () => {
         // console.log("hello guys")
-        await axios.post(`/gallery/addimg`, {photolink, name, details})
+        await axios.post(`/gallerys/addimg`, {photolink, name, details})
           .then((res) => {
            alert("Image has been Added")
            window.location.reload()

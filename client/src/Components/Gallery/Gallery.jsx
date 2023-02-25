@@ -5,7 +5,7 @@ import SingleGallery from "./SingleGallery";
 export default function Gallery() {
   const [content,setContent]=useState([]);
   const callapi = async () => {
-    await axios.get(`/gallery/`).then((res) => {
+    await axios.get(`/gallerys/`).then((res) => {
       setContent(res.data);
       // console.log(res.data)
     });

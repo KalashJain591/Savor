@@ -7,7 +7,7 @@ export default function Galleryimg() {
   const navigate=useNavigate();
   const [content,setContent]=useState([]);
   const callapi = async () => {
-    await axios.get(`/gallery/`).then((res) => {
+    await axios.get(`/gallerys/`).then((res) => {
       setContent(res.data);
       // console.log(res.data)
     });

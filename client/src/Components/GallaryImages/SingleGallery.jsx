@@ -9,7 +9,7 @@ export default function SingleGallery(props) {
 const callapi = async () => {
   // console.log(props.id)
   const re=props.id;
-  await axios.get(`/gallery/deleteimg/${re}`).then((res) => {afterapi()});
+  await axios.get(`/gallerys/deleteimg/${re}`).then((res) => {afterapi()});
 };
 
 return (
