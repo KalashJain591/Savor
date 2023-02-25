@@ -267,37 +267,76 @@ router.post("/signinwithgoogle", async (req, res) => {
 
 router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
-  // console.log("forget password",email)
+  console.log("forget password",email)
   try {
     const oldUser = await User.findOne({ email });
     if (!oldUser) {
       return res.json({ status: "User Not Exists!!" });
     }
-    // const secret = JWT_SECRET + oldUser.password;
-    const link = `https://www.savornaturals.in/reset-password/${oldUser._id}/`;
-    var transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "info.savornaturals@gmail.com",
-        pass: "oqqvracamdjlpetw",
-      },
-    });
+    console.log("forget password Valid user");
+    const link = `https://www.savornaturals.in/reset-password/${oldUser._id}/`; 
+        
+   let testAccount = await nodemailer.createTestAccount();
+   let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: 'info.savornaturals@gmail.com', // generated gmail user
+      pass: "oqqvracamdjlpetw", // generated ethereal password
+    },
+  });
 
-    var mailOptions = {
-      from: "info.savornaturals@gmail.com",
-      to: email,
-      subject: "Password Reset (Savor Naturals)",
-      text: link,
-    };
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: `info.savornaturals@gmail.com`, // sender address
+    to: email, // list of receivers
+    subject:"Reset Password (SavorNaturals)", // Subject line
+    text: 
+    `Dear ${oldUser.name},
+Your Reset Password link is ${link}    
+Best regards,
+Mukesh Kumawat
++91 9827141324
+Savor Naturals`, // plain text body
+    // html: "<b>Hello world?</b>", // html body
+  });
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        res.status(200).send("Email sent: " + info.response);
-      }
-    });
-    res.status(200).send();
+  // let info1 = await transporter.sendMail({
+  //   from: `info.savornaturals@gmail.com`, // sender address
+  //   to: useremail, // list of receivers
+  //   subject:recieverSubject, // Subject line
+  //   text: receiverText, // plain text body
+  //   // html: "<b>Hello world?</b>", // html body
+  // });
+
+  console.log("Message sent: %s", info.messageId);
+//   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    res.send("I am sending mail");
+
+    // var transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: "info.savornaturals@gmail.com",
+    //     pass: "oqqvracamdjlpetw",
+    //   },
+    // });
+    
+    // var mailOptions = {
+    //   from: "info.savornaturals@gmail.com",
+    //   to: email,
+    //   subject: "Password Reset (Savor Naturals)",
+    //   text: link,
+    // };
+
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     res.status(200).send("Email sent: " + info.response);
+    //   }
+    // });
+    // res.status(200).send();
     // console.log(link);
   } catch (error) {
     console.log(error)
