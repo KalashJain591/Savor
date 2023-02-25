@@ -14,6 +14,7 @@ import Header from '../AdminPanelComponents/Header'
 import SideBar from '../AdminPanelComponents/SideBar'
 import "../HomePage/Index.css"
 import Galleryimg from "../../GallaryImages/Galleryimg";
+import axios from "axios";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,19 +29,28 @@ const Dashboard = () => {
   const [inventory, setInventory] = useState(0);
   const [customers, setCustomers] = useState(0);
   const [revenue, setRevenue] = useState(0);
-
+  const callapi = async () => {
+    await axios.get("/admin/product")
+      .then((res) => {
+        // console.log(res.data);
+        setInventory(res.data);
+      })
+      await axios.get("/admin/user")
+      .then((res) => {
+        // console.log(res.data);
+        setCustomers(res.data);
+      })
+      await axios.get("/admin/order")
+      .then((res) => {
+        // console.log(res.data);
+        setOrders(res.data);
+      })
+  }
   useEffect(() => {
-    getOrders().then((res) => {
-      setOrders(res.total);
-      setRevenue(res.discountedTotal);
-    });
-    getInventory().then((res) => {
-      setInventory(res.total);
-    });
-    getCustomers().then((res) => {
-      setCustomers(res.total);
-    });
+    callapi();
   }, []);
+
+
   return (
     <div className='admin-section'>
           <Header />
@@ -55,32 +65,32 @@ const Dashboard = () => {
               <div className="dashboard-child-info">
                 <div className="dashboard-card-info" style={{ background: "#17a2b8" }}>
                   <div className="dashboard-card-num ">
-                    <h3>150</h3>
+                    <h3>{orders.length}</h3>
                     <p>Orders</p>
                   </div>
                   <ShoppingCartOutlined style={{ fontSize: 50, color: "#148a9d" }} />
                 </div>
                 <div className="dashboard-card-info" style={{ background: "#28a745" }}>
                   <div className="dashboard-card-num">
-                    <h3>150</h3>
+                    <h3>{inventory.length}</h3>
                     <p>Inventory</p>
                   </div>
                   <ShoppingOutlined style={{ fontSize: 50, color: "#228e3b" }} />
                 </div>
                 <div className="dashboard-card-info" style={{ background: "#ffc107" }}>
                   <div className="dashboard-card-num">
-                    <h3>150</h3>
+                    <h3>{customers.length}</h3>
                     <p>Customer</p>
                   </div>
                   <UserOutlined style={{ fontSize: 50, color: "#d9a406" }} />
                 </div>
-                <div className="dashboard-card-info" style={{ background: "#dc3545" }}>
+                {/* <div className="dashboard-card-info" style={{ background: "#dc3545" }}>
                   <div className="dashboard-card-num">
                     <h3>150</h3>
                     <p>Revenue</p>
                   </div>
                   <DollarCircleOutlined style={{ fontSize: 50, color: "#bb2d3b" }} />
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="data-analysis">

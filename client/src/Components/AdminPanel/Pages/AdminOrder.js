@@ -55,7 +55,7 @@ export const AdminOrder = () => {
                     </div> 
                     <ChangePaymentStatus orderId={order._id} payment_status={order.payment_status} />
                     </td>
-                    <td> <span>₹{order.bill}</span>  <div className="alert alert-warning my-1">{(new Date(order.date_added)).getDate()}/ {(new Date(order.date_added)).getMonth()+1}/ {(new Date(order.date_added)).getFullYear()}</div></td>
+                    <td> <span>₹{order.bill}</span>  <div className="alert alert-warning my-1">Date :{(new Date(order.date_added)).getDate()}/ {(new Date(order.date_added)).getMonth()+1}/ {(new Date(order.date_added)).getFullYear()}</div></td>
                   </tr>
                 </tbody>
               )}
