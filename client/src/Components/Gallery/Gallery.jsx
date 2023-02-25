@@ -1,55 +1,26 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./gallery.css";
+import SingleGallery from "./SingleGallery";
 export default function Gallery() {
+  const [content,setContent]=useState([]);
+  const callapi = async () => {
+    await axios.get(`/gallery/`).then((res) => {
+      setContent(res.data);
+      // console.log(res.data)
+    });
+  };
+  useEffect(() => {
+    callapi();
+  }, []);
+ 
   return (
     <div>
       <p class="heading">Gallery</p>
       <div class="gallery-image">
-        <div class="img-box">
-          <img src="./images/gallery1.jpeg" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Jaivik Mahotsav</p>
-              <p class="opacity-low">SavorNaturals</p>
-            </div>
-          </div>
-        </div>
-        <div class="img-box">
-          <img src="./images/gallery2.jpeg" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Jaivik Mahotsav</p>
-              <p class="opacity-low">SavorNaturals</p>
-            </div>
-          </div>
-        </div>
-        <div class="img-box">
-          <img src="./images/gallery3.jpeg" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Jaivik Mahotsav</p>
-              <p class="opacity-low">SavorNaturals</p>
-            </div>
-          </div>
-        </div>
-        <div class="img-box">
-          <img src="./images/gallery4.jpeg" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Jaivik Mahotsav</p>
-              <p class="opacity-low">SavorNaturals</p>
-            </div>
-          </div>
-        </div>
-        <div class="img-box">
-          <img src="./images/gallery5.jpeg" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Jaivik Mahotsav</p>
-              <p class="opacity-low">SavorNaturals</p>
-            </div>
-          </div>
-        </div>
+        {content.map((currele)=>{
+          return <SingleGallery photolink={currele.photolink} name={currele.name} details={currele.details}/>
+        })}
       </div>
     </div>
   );

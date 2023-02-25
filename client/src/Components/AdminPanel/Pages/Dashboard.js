@@ -13,6 +13,7 @@ import { Bar } from "react-chartjs-2";
 import Header from '../AdminPanelComponents/Header'
 import SideBar from '../AdminPanelComponents/SideBar'
 import "../HomePage/Index.css"
+import Galleryimg from "../../GallaryImages/Galleryimg";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -83,8 +84,9 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="data-analysis">
-              <RecentOrders />
-              <DashboardChart />
+              {/* <RecentOrders /> */}
+              {/* <DashboardChart /> */}
+              <Galleryimg/>
             </div>
           </div>
         </div>

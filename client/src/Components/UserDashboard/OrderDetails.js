@@ -17,7 +17,7 @@ export default function OrderDetails() {
       setDate(dates);
       setData(obj);
       setBill(res.data.bill)
-      console.log(data, "HELLO");
+      // console.log(data, "HELLO");
     });
   };
   useEffect(() => {

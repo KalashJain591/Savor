@@ -35,6 +35,7 @@ import OrderDetails from './Components/UserDashboard/OrderDetails'
 import Gallery from './Components/Gallery/Gallery';
 import Forgetpassword from './Components/Authentication/Forgetpassword';
 import ChangePassword from './Components/Authentication/ChangePassword';
+import Addimg from './Components/GallaryImages/Addimg';
 function App() {
   const { loggedIn , getuserdeatils,admin} = useContext(AuthContext);
   // const[changeId, setChangeId] = useState("");
@@ -86,6 +87,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/passwordforget" element={<Forgetpassword />} />
           <Route path="/reset-password/:id" element={<ChangePassword/>} />
+          <Route path="/addgalleryimg/" element={<Addimg/>} />
           <Route path='*' element={<Error404 />}/>
         </Routes>
 
