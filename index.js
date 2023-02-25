@@ -17,6 +17,7 @@ app.use(cors({
   credentials: true,
 })
 );
+mongoose.set('strictQuery', false);
 
 // connect to mongoDB
 mongoose.connect(process.env.MDB_CONNECT, {
