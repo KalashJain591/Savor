@@ -31,6 +31,14 @@ export const FilterContextProvider = ({children}) =>{
         //
         return dispatch({type: "UPDATE_FILTER_VALUE", payload:{name, value}})
     }
+    const updateSearchValue = (event) =>{
+        let name = event.target.name;
+        let value = event.target.value;
+        //change heading
+        setCurrentfilter(value);
+        //
+        return dispatch({type: "UPDATE_SEARCH_VALUE", payload:{name, value}})
+    }
 
     //clearFilter
     const clearFilters = () =>{
@@ -49,7 +57,7 @@ export const FilterContextProvider = ({children}) =>{
     },[products])
 
     return(
-        <FilterContext.Provider value = {{...state, setGridView, updateFilterValue, clearFilters,Currentfilter}}>
+        <FilterContext.Provider value = {{...state, setGridView, updateFilterValue, updateSearchValue, clearFilters,Currentfilter}}>
             {children}
         </FilterContext.Provider> 
     )

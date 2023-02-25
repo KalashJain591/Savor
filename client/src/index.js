@@ -8,7 +8,7 @@ import { CartProvider } from "./Context/cart_context";
 import { FilterContextProvider } from "./Context/FilterContext";
 import { AppProvider } from "./Context/ProductContext";
 import { AuthContextProvider } from "./Context/auth_context";
-import { WishListProvider} from "./Context/WishListContext";
+// import { WishListProvider} from "./Context/WishListContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthContextProvider>

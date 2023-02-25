@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useFilterContext } from '../../Context/FilterContext'
 import "./FilterSection.css"
 const FilterSection = () => {
-  const { filters: { text }, updateFilterValue, all_products, clearFilters } = useFilterContext();
+  const { filters: { text }, updateFilterValue, updateSearchValue, all_products, clearFilters } = useFilterContext();
 
   //To Get the unique data of each fields
   const getUniqueData = (data, property) => {
@@ -18,7 +18,7 @@ const FilterSection = () => {
     <div className='side-bar'>
       <div className='search-section'>
         <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" name="text" value={text.toLowerCase()} onChange={updateFilterValue} placeholder="SEARCH..." />
+          <input type="text" name="text" value={text} onChange={updateSearchValue} placeholder="SEARCH..." />
         </form>
       </div>
       <div className="category-filter-section">

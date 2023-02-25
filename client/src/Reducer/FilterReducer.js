@@ -23,6 +23,16 @@ const FilterReducer = (state, action) => {
             }
         }
     }
+    if(action.type === "UPDATE_SEARCH_VALUE"){
+        const { name, value } = action.payload
+        return {
+            ...state,
+            filters: {
+                ...state.filters,
+                [name]: value.toLowerCase(),
+            }
+        }
+    }
     if (action.type === "FILTER_PRODUCTS") {
         let { all_products } = state;
         let tempFilterProduct = [...all_products];

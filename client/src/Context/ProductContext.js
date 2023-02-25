@@ -43,7 +43,7 @@ const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state, getSingleProduct, }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, getSingleProduct }}>{children}</AppContext.Provider>
   );
 };
 const useProductContext = () => {

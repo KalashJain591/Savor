@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Star from "../Product/SingleProduct/Star"
 import { useCartContext } from "../../Context/cart_context";
-import {useWishListContext} from "../../Context/WishListContext"
+// import {useWishListContext} from "../../Context/WishListContext"
 import "./Product.css"
 import AuthContext from '../../Context/auth_context';
 
