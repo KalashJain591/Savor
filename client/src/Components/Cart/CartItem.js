@@ -5,7 +5,7 @@ import CartAmountToggler from './CartAmountToggler';
 import AuthContext from '../../Context/auth_context';
 import { NavLink } from 'react-router-dom';
 
-export default function CartItem({ id, price, images, name, total_cost, Quantity }) {
+export default function CartItem({ id, price, images, name, total_cost, Quantity,Weight, unit  }) {
     const { removeItem, SetDecrease, SetIncrease } = useCartContext();
     const { userId } = useContext(AuthContext);
 
@@ -23,6 +23,7 @@ export default function CartItem({ id, price, images, name, total_cost, Quantity
                 <td className="d-none d-sm-table-cell align-middle p-0"><CartAmountToggler Quantity={Quantity} id={id} SetDecrease={() => SetDecrease(id, userId)}
                     SetIncrease={() => SetIncrease(id, userId)} /> </td>
                 <td className="align-middle" value="1">₹{total_cost}</td>
+                <td className="align-middle" value="1">{Weight}</td>
                 <td className="align-middle p-0"> <FaTrash onClick={() => removeItem(id, userId)} /></td>
             </tr>
 

@@ -116,7 +116,7 @@ const SingleProduct = () => {
                     </div>
                     <hr />
                     <div className="order-btns">
-                        <NavLink to="/cart" onClick={() => addToCart(id, price, images, name)}>
+                        <NavLink to="/cart" onClick={() => addToCart(id, price, images, name,quantity,unit)}>
                             <div className="single-addTocart">
                                 <button class="add-single-cart">Add To Cart</button>
                             </div>

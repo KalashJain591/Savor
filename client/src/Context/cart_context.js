@@ -7,6 +7,7 @@ const placed=1;
 // to prevent the data loss on refresh/rendering ,we use local storage to temp store the data
 const getLocalCartData = () => {
   let locaCartData = localStorage.getItem("SavorCart");
+  // console.log(locaCartData);
   if (locaCartData === null) {
     return [];
   }
@@ -24,7 +25,6 @@ const initialState = {
   final_amount:0,
   Discount:0,
   hurray:0,
-  total_wt:5,
   city:0,
 };
 
@@ -33,8 +33,9 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // add to cart functionality
-  const addToCart = (id, price, images, name, userId) => {
-    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId } });
+  const addToCart = (id, price, images, name, userId,quantity,unit) => {
+    console.log("hello from here");
+    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId ,quantity,unit} });
   };
 
   const SetDecrease = (id, userId) => {
@@ -67,6 +68,7 @@ dispatch({type:"SET_DISCOUNT",payload:{disc,place}});
     dispatch({type:"TOTAL_AMOUNT"});
     dispatch({type:"FINAL_AMOUNT"});
     localStorage.setItem("SavorCart", JSON.stringify(state.cart));
+    console.log(state.cart);
   }, [state.cart,state.shipping_fee])
   
   return <CartContext.Provider value={{ ...state, placed,addToCart, SetIncrease, SetDecrease, removeItem ,clearCart,setdiscount}}>

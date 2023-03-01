@@ -3,7 +3,8 @@ const CartReducer = (state, action) => {
 
   if (action.type === "ADD_TO_CART") {
 
-    let { id, price, images, name, userId } = action.payload;
+    let { id, price, images, name, userId ,quantity,unit} = action.payload;
+    console.log(name);
     let existingProduct = state.cart.find(
       (curItem) => curItem.id === id
     );
@@ -40,7 +41,10 @@ const CartReducer = (state, action) => {
         Quantity: 1,
         images: images[0].imgUrl,
         max: 6,
-        total_cost: price
+        total_cost: price,
+        Weight:3,
+        unit:"kg",
+
       };
       console.log(userId);
       if (userId !== undefined) {
@@ -152,20 +156,24 @@ const CartReducer = (state, action) => {
   // set delivery charge
   if (action.type === "SET_DISCOUNT") {
     let { disc, place } = action.payload;
-    let updated, t;
+    let i,j,updated, t,wt=0;
+
+    // os->other state , oc->other city,
+  
+     // 25 ruppes per 500gm ,13 for 250 gm;
     if (place === "os") {
-      updated = disc ;
+      updated = (wt/500)*25+(wt%500)?13:0 ;
       t = 0
     }
     else if (place === "oc") {
-      updated = disc ;
+      updated =(wt/500)*25+(wt%500)?13:0 ;
       t = 0;
     }
     else {
       updated = disc;
       t = 1;
     }
-    console.log(updated,t);
+    // console.log(updated,t);
     return { ...state, shipping_fee: updated, city: t }
   }
 

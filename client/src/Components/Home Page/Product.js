@@ -12,6 +12,7 @@ const Product = (curElem) => {
   // const { addToWishList } = useWishListContext();
   const { userId } = useContext(AuthContext);
   const { _id, name, images, price, rating, reviews, quantity, unit } = curElem;
+  
   // const [heart, setHeart] = useState(false)
   return (
     <div className="singleProduct-origin" >
@@ -31,7 +32,7 @@ const Product = (curElem) => {
           </div>
           <div className="rate-section">
             <p>₹{price}</p>
-            <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name, userId)}>
+            <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name, userId,quantity,unit)}>
               <div className="addTocart">
                 <button className="add-cart"><i className="fas fa-plus"></i></button>
               </div>

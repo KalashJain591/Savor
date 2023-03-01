@@ -1,3 +1,5 @@
+// const { singleProduct} = useProductContext();
+
 const ProductReducer = (state, action) => {
     if(action.type === "SET_LOADING"){
         return{
