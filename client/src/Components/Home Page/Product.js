@@ -31,7 +31,7 @@ const Product = (curElem) => {
           </div>
           <div className="rate-section">
             <p>₹{price}</p>
-            <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name, userId)}>
+            <NavLink to="/cart" onClick={() => addToCart(_id, price, images, name, userId,quantity, unit)}>
               <div className="addTocart">
                 <button className="add-cart"><i className="fas fa-plus"></i></button>
               </div>
@@ -39,7 +39,7 @@ const Product = (curElem) => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 

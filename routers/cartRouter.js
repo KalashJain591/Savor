@@ -40,6 +40,9 @@ router.post("/addtocart/:id", async (req, res) => {
       const name = productDetails.name;
       // console.log(name);
       const images = productDetails.images[0].imgUrl;
+      const weight=productDetails.quantity;
+      const unit=productDetails.unit;
+      console.log(weight,unit);
       // console.log(imgurl)
       if (cart) {
         //if cart exist for the user
@@ -50,7 +53,7 @@ router.post("/addtocart/:id", async (req, res) => {
           productItem.quantity += quantity;
           cart.items[indexFound] = productItem;
         } else {
-          cart.products.push({ productId, name, quantity, price, images });
+          cart.products.push({ productId, name, quantity, price, images,weight,unit });
         }
   
         cart.bill += quantity * price;
@@ -60,7 +63,7 @@ router.post("/addtocart/:id", async (req, res) => {
         //create cart if doesn't exist
         const newCart = await Cart.create({
           userId,
-          products: [{ productId, name, quantity, price, images }],
+          products: [{ productId, name, quantity, price, images,weight,unit  }],
           bill: quantity * price
         });
         return res.status(201).send(newCart);
