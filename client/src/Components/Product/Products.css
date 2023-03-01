@@ -1,0 +1,41 @@
+.display-filterProduct-section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+}
+.Filter-Section{
+    width: 20%;
+}
+.product-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.display-product-section{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    /* border: 5px solid red; */
+}
+.main-product-list{
+    width: 100%;
+    /* display: flex; */
+}
+.Filter-Section{
+    margin-top: 31px;
+    display: flex;
+    justify-content: flex-start;
+} 
+@media screen and (max-width: 500px){
+    .Filter-Section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .display-filterProduct-section{
+        justify-content: center;
+        width: 90%;
+    }
+    
+}   
