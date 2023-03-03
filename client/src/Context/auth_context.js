@@ -26,8 +26,8 @@ function AuthContextProvider(props) {
               localStorage.setItem("SavorCart", JSON.stringify([]));
           }
           responce.data.products.map((curElem)=>{
-            localStore.push({Quantity:curElem.quantity, id: curElem.productId, images:curElem.images, max:6, name: curElem.name, price:curElem.price, total_cost:(curElem.quantity*curElem.price) })
-            // console.log("ls", localStore);
+            localStore.push({Quantity:curElem.quantity, id: curElem.productId, images:curElem.images, max:6, name: curElem.name, price:curElem.price,Weight:curElem.weight,unit:curElem.unit,total_cost:(curElem.quantity*curElem.price) })
+            console.log("ls", localStore);
             if (localStore === 'undefined') {
               console.log("[]")
               localStorage.setItem("SavorCart", JSON.stringify([]));

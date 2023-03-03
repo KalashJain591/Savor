@@ -42,7 +42,7 @@ router.post("/addtocart/:id", async (req, res) => {
       const images = productDetails.images[0].imgUrl;
       const weight=productDetails.quantity;
       const unit=productDetails.unit;
-      console.log(weight,unit);
+      // console.log(weight,unit);
       // console.log(imgurl)
       if (cart) {
         //if cart exist for the user
