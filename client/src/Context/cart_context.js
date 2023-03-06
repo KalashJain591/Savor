@@ -33,8 +33,8 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // add to cart functionality
-  const addToCart = (id, price, images, name, userId,quantity,unit) => {
-    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId ,quantity,unit} });
+  const addToCart = (id, price, images, name, userId,quantity,Weight,unit) => {
+    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId ,quantity,Weight,unit} });
   };
 
   const SetDecrease = (id, userId) => {
