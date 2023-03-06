@@ -62,7 +62,7 @@ export default function Cart() {
                 <th>Price</th>
                 <th className=' d-none d-sm-block'>Quantity</th>
                 <th>Total</th>
-                <th>weight</th>
+                <th>Weight</th>
                 <th>Remove</th>
               </tr>
             </thead>

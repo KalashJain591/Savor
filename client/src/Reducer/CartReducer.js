@@ -3,8 +3,7 @@ const CartReducer = (state, action) => {
 
   if (action.type === "ADD_TO_CART") {
 
-    let { id, price, images, name, userId ,quantity,unit} = action.payload;
-    console.log(name);
+    let { id, price, images, name, userId,quantity,unit } = action.payload;
     let existingProduct = state.cart.find(
       (curItem) => curItem.id === id
     );
@@ -42,11 +41,11 @@ const CartReducer = (state, action) => {
         images: images[0].imgUrl,
         max: 6,
         total_cost: price,
-        Weight:3,
-        unit:"kg",
-
+        Weight:quantity,
+        unit:unit,
+        
       };
-      console.log(userId);
+      // console.log(userId);
       if (userId !== undefined) {
         axios.post(`/cart/addtocart/${userId}`, { productId: id, quantity: 1 })
         // .then((res)=>{console.log("cart me addd ho gaya")});

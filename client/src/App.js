@@ -90,8 +90,7 @@ function App() {
           <Route path="/addgalleryimg/" element={<Addimg/>} />
           <Route path='*' element={<Error404 />}/>
         </Routes>
-
-        {admin?<></>:<Footer/>}
+       {admin?<></>:<Footer/>}
     </>
   );
 }

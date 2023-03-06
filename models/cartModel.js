@@ -23,7 +23,7 @@ const CartSchema = new Schema({
         type: Number
       },
       images:  String,
-      quantity:Number,
+      weight:Number,
       unit:String,
     }
   ],

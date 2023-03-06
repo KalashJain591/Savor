@@ -34,7 +34,6 @@ const CartProvider = ({ children }) => {
 
   // add to cart functionality
   const addToCart = (id, price, images, name, userId,quantity,unit) => {
-    console.log("hello from here");
     dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId ,quantity,unit} });
   };
 
