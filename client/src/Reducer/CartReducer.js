@@ -155,24 +155,34 @@ const CartReducer = (state, action) => {
   // set delivery charge
   if (action.type === "SET_DISCOUNT") {
     let { disc, place } = action.payload;
-    let i,j,updated, t,wt=0;
+    let wt=0,t,updated;
+     
+    state.cart.map((curElem)=>{
+      console.log(curElem.unit);
+      if(curElem.unit==="kg")
+      wt+=(curElem.Weight*1000)*curElem.Quantity;
+      else
+      wt+=(curElem.Weight)*curElem.Quantity;
+    });
 
+
+    console.log(wt);
     // os->other state , oc->other city,
   
      // 25 ruppes per 500gm ,13 for 250 gm;
     if (place === "os") {
-      updated = (wt/500)*25+(wt%500)?13:0 ;
+      updated = (wt/500)*25+( (wt%500)?13:0) ;
       t = 0
     }
     else if (place === "oc") {
-      updated =(wt/500)*25+(wt%500)?13:0 ;
+      updated =(wt/500)*25+((wt%500)?13:0) ;
       t = 0;
     }
     else {
       updated = disc;
       t = 1;
     }
-    // console.log(updated,t);
+    console.log(updated,t);
     return { ...state, shipping_fee: updated, city: t }
   }
 
@@ -189,7 +199,7 @@ const CartReducer = (state, action) => {
     if (state.total_price >= 2000 && state.city===1) {
       updated -= state.shipping_fee;
       discount += state.shipping_fee;
-      console.log(discount);
+      // console.log(discount);
       return { ...state, final_amount: updated, Discount: discount, hurray: 1 };
     }
     else

@@ -38,7 +38,8 @@ export default function PaymentSummary() {
               Delivery Charges
             <span>+ {shipping_fee}</span>
             </li>
-            <p style={{color:"gray",}}>*Delivery charges may vary<br/> according to delivery address</p>
+            
+            <p style={{color:"gray",}}>*Delivery charges may vary<br/> according to delivery address <br/>and weight of the cart</p>
             
             {hurray > 0 && <li className="list-group-item d-flex justify-content-between align-items-center px-0 fs-4">
               Free Delivery

@@ -9,10 +9,9 @@ import CartAmountToggler from '../../Cart/CartAmountToggler';
 import AuthContext from '../../../Context/auth_context';
 const API = "/product";
 const SingleProduct = () => {
-    const { loggedIn } = useContext(AuthContext);
+    const { userId, loggedIn } = useContext(AuthContext);
     const { addToCart } = useCartContext();
     const { getSingleProduct, singleProduct, isLoading } = useProductContext();
-
     if (isLoading) {
         <div className='Loading-page'>Loading...</div>
     }
@@ -116,7 +115,8 @@ const SingleProduct = () => {
                     </div>
                     <hr />
                     <div className="order-btns">
-                        <NavLink to="/cart" onClick={() => addToCart(id, price, images, name,quantity,unit)}>
+                        {/* Note:-here quantity is Weight */}
+                        <NavLink to="/cart" onClick={() => addToCart(id, price, images, name,userId,quantity,unit)}>
                             <div className="single-addTocart">
                                 <button class="add-single-cart">Add To Cart</button>
                             </div>

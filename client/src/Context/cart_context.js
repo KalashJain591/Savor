@@ -26,6 +26,7 @@ const initialState = {
   Discount:0,
   hurray:0,
   city:0,
+  total_wt:0,
 };
 
 const CartProvider = ({ children }) => {
@@ -34,7 +35,7 @@ const CartProvider = ({ children }) => {
 
   // add to cart functionality
   const addToCart = (id, price, images, name, userId,quantity,Weight,unit) => {
-    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId ,quantity,Weight,unit} });
+    dispatch({ type: "ADD_TO_CART", payload: {id, price, images, name, userId ,Weight,unit} });
   };
 
   const SetDecrease = (id, userId) => {
@@ -55,7 +56,7 @@ const CartProvider = ({ children }) => {
 
   // function to set custom discount 
   // disc=delivery charge , place =according to place
-const setdiscount=(disc,place)=>{
+const setdiscount=(disc,place,)=>{
   // console.log(place);
 dispatch({type:"SET_DISCOUNT",payload:{disc,place}});
 }
